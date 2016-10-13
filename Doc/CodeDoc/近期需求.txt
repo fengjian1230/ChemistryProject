@@ -1,0 +1,87 @@
+winform 调用flash ok
+winform 调用pdf
+winform Access数据库
+github安装  ok
+winform 界面设计 
+应用程序打包
+接加密狗
+
+
+
+
+
+1：winfrom 调用flash流程：
+1.选择“工具箱”，单击鼠标右键，在弹出的快捷菜单中选择“选择项”。
+2.弹出“选择工具箱项”对话框，选择“COM组件”选项卡。
+3.在COM组件列表，单击[浏览]按钮，在对话框中选择"C:\Windows\System32\Macromed\Flash\Flash10h.ocx"。(版本可能有细微差别)
+
+ 在工具箱的容器面板里有个MacroMedia Flash Factory Object  
+
+而且自动添加了引用AxShockwaveFlashObjects, ShockwaveFlashObjects  
+
+如果工具箱中已经有了，可以删除重新添加，以便自动添加引用。
+
+
+在放入窗体中时报错“未能导入ActiveX 控件。请确保它已正确注册”.
+所以手动添加如下代码: 
+
+C# code
+(1) 在Form1.Designer.cs中的最下方与其他定义控件语句放一块定义：
+ private AxShockwaveFlashObjects.AxShockwaveFlash FlashBox;
+(2) 在在Form1.Designer.cs中private void InitializeComponent()方法中添加2条语句: 
+this.FlashBox = new AxShockwaveFlashObjects.AxShockwaveFlash(); 
+this.Controls.Add(this.FlashBox);
+接下来就可以在Form [设计]中可视化编程了，以上语句也会自动规格化。
+
+在加载Flash时可以在窗体的Load函数中添加：
+
+FlashBox.Movie = Application.StartupPath + "\\a.swf";  
+这里的Application.StartupPath一般为程序的Debug文件夹，这时需要把a.swf放入该文件夹。
+
+按以上做后，会发现Flash加载成功，但大小和缩放均不合适，还需要设置两个属性：
+
+设置SAlign属性值为1。ScaleMode(缩放模式)设置为2.
+
+这时就可以实现任意大小、可以拖放到任意位置的Flash了
+
+
+
+2：winform 调用pdf 
+C#显示PDF文件,winform打开PDF文件并在窗体中显示
+
+1.在工具箱中添加Adobe提供的ActiveX控件，如图所示：
+
+
+选择com组件,我用的是7.0版本
+
+打勾点确定,在控件工具栏就有了,见下图:
+
+拖一个Adobe PDF Reader控件到窗体上，双击窗体，在窗体加载时，弹出对话框，加载PDF文件：
+string fileName = MyOpenFileDialog();
+axAcroPDF1.LoadFile(fileName);
+
+MyOpenFileDialog()函数为：
+        string MyOpenFileDialog()
+         {
+            OpenFileDialog ofd = new OpenFileDialog();
+             ofd.Filter = "PDF文档(*.pdf)|*.pdf";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+             {
+                return ofd.FileName;
+             }
+            else
+             {
+                return null;
+             }
+         }
+
+也可以用代码创建Adobe PDF Reader组件：
+string fileName = MyOpenFileDialog();
+AxAcroPDFLib.AxAcroPDF axAcroPDF = new AxAcroPDFLib.AxAcroPDF();
+axAcroPDF.Location = new System.Drawing.Point(0, 24);
+axAcroPDF.Size = new System.Drawing.Size(292, 242);
+axAcroPDF.Dock = DockStyle.Fill;
+Controls.Add(axAcroPDF);
+axAcroPDF.LoadFile(fileName);
+
