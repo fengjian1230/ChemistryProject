@@ -47,6 +47,9 @@ FlashBox.Movie = Application.StartupPath + "\\a.swf";
 
 
 2：winform 调用pdf 
+
+本机需安装adobe reader  pdf阅读器。
+
 C#显示PDF文件,winform打开PDF文件并在窗体中显示
 
 1.在工具箱中添加Adobe提供的ActiveX控件，如图所示：
