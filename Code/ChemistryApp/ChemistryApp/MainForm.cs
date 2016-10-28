@@ -12,6 +12,11 @@ namespace ChemistryApp
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// 存储左边lessonitem
+        /// </summary>
+        List<Panel> panelItem;
+
         public MainForm()
         {
             InitializeComponent();
@@ -19,8 +24,8 @@ namespace ChemistryApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
-           
+            panelItem = new List<Panel>();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,9 +105,6 @@ namespace ChemistryApp
             {
                 MessageBox.Show("已经取消");
             }
-
-            
-            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -112,34 +114,19 @@ namespace ChemistryApp
             //controlPPT.PPTAuto(@System.Windows.Forms.Application.StartupPath + "\\111.pptx", 2);
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
 
-            //ControlWord controlWord = new ControlWord();
-            //controlWord.OpenFile();
-            //OpenFileDialog P_GetFile = new OpenFileDialog();       //创建打开文件对话框对象
-            //DialogResult P_dr = P_GetFile.ShowDialog();        //显示打开文件对话框
-            //if (P_dr == DialogResult.OK)           //是否单击确定
-            //{
-            //    webBrowser1.Navigate(P_GetFile.FileName);       //打开Word文档并显示
-            //}
-
-
-
-        }
-
-        private void axFramerControl1_OnFileCommand(object sender, AxDSOFramer._DFramerCtlEvents_OnFileCommandEvent e)
-        {
-
-        }
-
+        /// <summary>
+        /// 定时器，做左边收缩按钮动画
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LeftPlaneTimer_Tick(object sender, EventArgs e)
         {
             long longWidth = LeftPlane.Width;
             //如果panel目前是隐藏的
             if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 0)
             {
-                if (longWidth >= 320)
+                if (longWidth == 320)
                 {
                     LeftPlaneTimer.Enabled = false;
                     LeftPlane.Tag = 1;//设置为显示标识
@@ -147,7 +134,7 @@ namespace ChemistryApp
                 }
                 else
                 {
-                    LeftPlane.Width += 20;
+                    LeftPlane.Width += 10;
                 }
             }
             //如果panel目前是显示的
@@ -161,12 +148,27 @@ namespace ChemistryApp
                 }
                 else
                 {
-                    LeftPlane.Width -= 20;
+                    LeftPlane.Width -= 10;
                 }
             }
         }
-        private void button1_Click_3(object sender, EventArgs e)
+
+        /// <summary>
+        /// 左边收缩按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnShrink_Click(object sender, EventArgs e)
         {
+            panelItem.Clear();
+            //创建panel
+            for (int i = 0; i < 20; i++)
+            {
+                MyLessonItem item = new MyLessonItem();
+                panelItem.Add(item.CreateControl(10, i * (140 + 10)));
+                this.panel_item.Controls.Add(panelItem[i]);
+            }
+
 
             if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 1)
             {
@@ -182,9 +184,114 @@ namespace ChemistryApp
             }
         }
 
+
+        #region 主页上四个按钮
+        /// <summary>
+        /// 化学元素按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_ChemicalElement_Click(object sender, EventArgs e)
         {
 
         }
+
+        /// <summary>
+        /// 知识回顾
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_KnowledgeReview_Click(object sender, EventArgs e)
+        {
+            MyLessonItem item = new MyLessonItem();
+            this.LeftPlane.Controls.Add(item.CreateControl(23, 134));
+            
+        }
+
+        /// <summary>
+        /// 课堂教学
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_ClassroomTeaching_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 实验平台
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_ExperlmentalPlatform_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+
+        /// <summary>
+        /// 搜索按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        #region 搜索对话框事件
+        /// <summary>
+        /// 当textbox发生变化时,显示收收缩结果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextSearch_TextChanged(object sender, EventArgs e)
+        {
+            this.listBox_searchRuslut.Visible = true;
+            string sql = "select * from LessonList where  LessonID like '%" + this.txt_search.Text + "%'";
+            DataSet ds = AccessDBConn.ExecuteQuery(sql);
+            try
+            {
+                this.listBox_searchRuslut.Items.Clear();
+                DataRow[] dr = ds.Tables["LessonList"].Select();
+                foreach (var item in dr)
+                {
+                    this.listBox_searchRuslut.Items.Add(item["LessonID"].ToString());
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
+            ///当为空的时候清空list
+            if (this.txt_search.Text == "")
+            {
+                this.listBox_searchRuslut.Items.Clear();
+            }
+        }
+
+        /// <summary>
+        /// 当输入框失去焦点时不显示搜索结果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txt_search_Leave(object sender, EventArgs e)
+        {
+            this.listBox_searchRuslut.Visible = false;
+        }
+
+        /// <summary>
+        /// 失去焦点时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txt_search_Enter(object sender, EventArgs e)
+        {
+            
+        }
     }
+    #endregion
 }

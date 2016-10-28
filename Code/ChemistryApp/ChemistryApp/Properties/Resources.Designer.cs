@@ -203,6 +203,16 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap myLessonItemBG {
+            get {
+                object obj = ResourceManager.GetObject("myLessonItemBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap planeBG1 {
             get {
                 object obj = ResourceManager.GetObject("planeBG1", resourceCulture);
