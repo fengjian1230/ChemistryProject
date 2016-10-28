@@ -160,13 +160,13 @@
             // pic_title
             // 
             this.pic_title.BackColor = System.Drawing.Color.Transparent;
+            this.pic_title.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pic_title.Dock = System.Windows.Forms.DockStyle.Left;
             this.pic_title.Image = global::ChemistryApp.Properties.Resources.title;
             this.pic_title.Location = new System.Drawing.Point(0, 0);
             this.pic_title.Name = "pic_title";
             this.pic_title.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.pic_title.Size = new System.Drawing.Size(32, 728);
-            this.pic_title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pic_title.TabIndex = 10;
             this.pic_title.TabStop = false;
             // 
@@ -180,11 +180,11 @@
             this.btn_shrink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_shrink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_shrink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_shrink.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_shrink.ForeColor = System.Drawing.Color.Black;
             this.btn_shrink.Location = new System.Drawing.Point(32, 0);
             this.btn_shrink.Name = "btn_shrink";
             this.btn_shrink.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.btn_shrink.Size = new System.Drawing.Size(22, 728);
+            this.btn_shrink.Size = new System.Drawing.Size(30, 728);
             this.btn_shrink.TabIndex = 12;
             this.btn_shrink.UseVisualStyleBackColor = false;
             this.btn_shrink.Click += new System.EventHandler(this.BtnShrink_Click);
@@ -344,9 +344,14 @@
             // panel_item
             // 
             this.panel_item.AutoScroll = true;
+            this.panel_item.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_item.BackColor = System.Drawing.Color.White;
+            this.panel_item.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel_item.ForeColor = System.Drawing.Color.Black;
+            this.panel_item.ImeMode = System.Windows.Forms.ImeMode.On;
             this.panel_item.Location = new System.Drawing.Point(0, 112);
             this.panel_item.Name = "panel_item";
-            this.panel_item.Size = new System.Drawing.Size(320, 516);
+            this.panel_item.Size = new System.Drawing.Size(325, 516);
             this.panel_item.TabIndex = 17;
             // 
             // MainForm
@@ -356,11 +361,11 @@
             this.BackgroundImage = global::ChemistryApp.Properties.Resources.BG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1006, 728);
+            this.Controls.Add(this.btn_shrink);
+            this.Controls.Add(this.pic_title);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.listBox_searchRuslut);
             this.Controls.Add(this.btn_search);
-            this.Controls.Add(this.btn_shrink);
-            this.Controls.Add(this.pic_title);
             this.Controls.Add(this.LeftPlane);
             this.Controls.Add(this.btn_ExperlmentalPlatform);
             this.Controls.Add(this.btn_ClassroomTeaching);

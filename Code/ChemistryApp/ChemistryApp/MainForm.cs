@@ -131,6 +131,7 @@ namespace ChemistryApp
                     LeftPlaneTimer.Enabled = false;
                     LeftPlane.Tag = 1;//设置为显示标识
                     this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_left;
+                    this.LeftPlane.Size = new Size(330, 728);
                 }
                 else
                 {
