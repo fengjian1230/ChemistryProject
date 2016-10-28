@@ -143,7 +143,7 @@ namespace ChemistryApp
                 {
                     LeftPlaneTimer.Enabled = false;
                     LeftPlane.Tag = 1;//设置为显示标识
-                    //this.btn_shrink.BackgroundImage = Image.FromFile(@"Resources\btn_left.png");
+                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_left;
                 }
                 else
                 {
@@ -157,7 +157,7 @@ namespace ChemistryApp
                 {
                     LeftPlaneTimer.Enabled = false;
                     LeftPlane.Tag = 0;//设置为隐藏标识
-                    //this.btn_shrink.BackgroundImage = Image.FromFile(@"Resources\btn_right.png");
+                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_right;
                 }
                 else
                 {

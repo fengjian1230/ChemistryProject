@@ -42,6 +42,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btn_classSearch = new System.Windows.Forms.Button();
             this.LeftPlane = new System.Windows.Forms.Panel();
+            this.btn_search = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_title)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).BeginInit();
@@ -142,7 +143,7 @@
             this.pic_title.BackColor = System.Drawing.Color.Transparent;
             this.pic_title.Dock = System.Windows.Forms.DockStyle.Left;
             this.pic_title.Image = global::ChemistryApp.Properties.Resources.title;
-            this.pic_title.Location = new System.Drawing.Point(320, 0);
+            this.pic_title.Location = new System.Drawing.Point(0, 0);
             this.pic_title.Name = "pic_title";
             this.pic_title.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.pic_title.Size = new System.Drawing.Size(32, 728);
@@ -161,7 +162,7 @@
             this.btn_shrink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_shrink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_shrink.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_shrink.Location = new System.Drawing.Point(352, 0);
+            this.btn_shrink.Location = new System.Drawing.Point(32, 0);
             this.btn_shrink.Name = "btn_shrink";
             this.btn_shrink.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.btn_shrink.Size = new System.Drawing.Size(22, 728);
@@ -213,9 +214,23 @@
             this.LeftPlane.Margin = new System.Windows.Forms.Padding(0);
             this.LeftPlane.Name = "LeftPlane";
             this.LeftPlane.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LeftPlane.Size = new System.Drawing.Size(320, 728);
+            this.LeftPlane.Size = new System.Drawing.Size(0, 728);
             this.LeftPlane.TabIndex = 8;
             this.LeftPlane.Tag = "1";
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_search;
+            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_search.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_search.FlatAppearance.BorderSize = 0;
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_search.Location = new System.Drawing.Point(738, 118);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(30, 41);
+            this.btn_search.TabIndex = 13;
+            this.btn_search.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -224,6 +239,7 @@
             this.BackgroundImage = global::ChemistryApp.Properties.Resources.BG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1006, 728);
+            this.Controls.Add(this.btn_search);
             this.Controls.Add(this.btn_shrink);
             this.Controls.Add(this.pic_title);
             this.Controls.Add(this.LeftPlane);
@@ -262,6 +278,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btn_classSearch;
         private System.Windows.Forms.Panel LeftPlane;
+        private System.Windows.Forms.Button btn_search;
     }
 }
 
