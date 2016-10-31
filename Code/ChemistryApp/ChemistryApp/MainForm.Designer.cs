@@ -36,8 +36,6 @@
             this.btn_ClassroomTeaching = new System.Windows.Forms.Button();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.Button();
             this.LeftPlaneTimer = new System.Windows.Forms.Timer(this.components);
-            this.pic_title = new System.Windows.Forms.PictureBox();
-            this.btn_shrink = new System.Windows.Forms.Button();
             this.pic_classSearch = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btn_classSearch = new System.Windows.Forms.Button();
@@ -45,20 +43,15 @@
             this.panel_item = new System.Windows.Forms.Panel();
             this.btn_search = new System.Windows.Forms.Button();
             this.listBox_searchRuslut = new System.Windows.Forms.ListBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panle_shrink = new System.Windows.Forms.Panel();
+            this.pic_title = new System.Windows.Forms.PictureBox();
+            this.btn_shrink = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).BeginInit();
             this.LeftPlane.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.panle_shrink.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -157,40 +150,6 @@
             this.LeftPlaneTimer.Interval = 10;
             this.LeftPlaneTimer.Tick += new System.EventHandler(this.LeftPlaneTimer_Tick);
             // 
-            // pic_title
-            // 
-            this.pic_title.BackColor = System.Drawing.Color.Transparent;
-            this.pic_title.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pic_title.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pic_title.Image = global::ChemistryApp.Properties.Resources.title;
-            this.pic_title.Location = new System.Drawing.Point(0, 0);
-            this.pic_title.Name = "pic_title";
-            this.pic_title.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.pic_title.Size = new System.Drawing.Size(32, 728);
-            this.pic_title.TabIndex = 10;
-            this.pic_title.TabStop = false;
-            this.pic_title.Tag = "1";
-            // 
-            // btn_shrink
-            // 
-            this.btn_shrink.BackColor = System.Drawing.Color.Transparent;
-            this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_right;
-            this.btn_shrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_shrink.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_shrink.FlatAppearance.BorderSize = 0;
-            this.btn_shrink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btn_shrink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btn_shrink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_shrink.ForeColor = System.Drawing.Color.Black;
-            this.btn_shrink.Location = new System.Drawing.Point(32, 0);
-            this.btn_shrink.Name = "btn_shrink";
-            this.btn_shrink.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.btn_shrink.Size = new System.Drawing.Size(19, 728);
-            this.btn_shrink.TabIndex = 12;
-            this.btn_shrink.Tag = "1";
-            this.btn_shrink.UseVisualStyleBackColor = false;
-            this.btn_shrink.Click += new System.EventHandler(this.BtnShrink_Click);
-            // 
             // pic_classSearch
             // 
             this.pic_classSearch.BackgroundImage = global::ChemistryApp.Properties.Resources.classSearch;
@@ -224,7 +183,7 @@
             // LeftPlane
             // 
             this.LeftPlane.AllowDrop = true;
-            this.LeftPlane.BackColor = System.Drawing.Color.Black;
+            this.LeftPlane.BackColor = System.Drawing.Color.Transparent;
             this.LeftPlane.BackgroundImage = global::ChemistryApp.Properties.Resources.planeBG1;
             this.LeftPlane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.LeftPlane.Controls.Add(this.panel_item);
@@ -236,7 +195,7 @@
             this.LeftPlane.Margin = new System.Windows.Forms.Padding(0);
             this.LeftPlane.Name = "LeftPlane";
             this.LeftPlane.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LeftPlane.Size = new System.Drawing.Size(0, 728);
+            this.LeftPlane.Size = new System.Drawing.Size(0, 768);
             this.LeftPlane.TabIndex = 8;
             this.LeftPlane.Tag = "1";
             // 
@@ -250,7 +209,7 @@
             this.panel_item.ImeMode = System.Windows.Forms.ImeMode.On;
             this.panel_item.Location = new System.Drawing.Point(0, 112);
             this.panel_item.Name = "panel_item";
-            this.panel_item.Size = new System.Drawing.Size(325, 516);
+            this.panel_item.Size = new System.Drawing.Size(320, 516);
             this.panel_item.TabIndex = 17;
             // 
             // btn_search
@@ -272,123 +231,79 @@
             // 
             this.listBox_searchRuslut.FormattingEnabled = true;
             this.listBox_searchRuslut.ItemHeight = 15;
+            this.listBox_searchRuslut.Items.AddRange(new object[] {
+            "dddddd",
+            "21321321\t",
+            "132132",
+            "111sdasdsa"});
             this.listBox_searchRuslut.Location = new System.Drawing.Point(236, 162);
             this.listBox_searchRuslut.Name = "listBox_searchRuslut";
-            this.listBox_searchRuslut.Size = new System.Drawing.Size(550, 4);
-            this.listBox_searchRuslut.TabIndex = 14;
-            this.listBox_searchRuslut.Visible = false;
+            this.listBox_searchRuslut.Size = new System.Drawing.Size(550, 124);
+            this.listBox_searchRuslut.TabIndex = 1;
+            this.listBox_searchRuslut.SelectedIndexChanged += new System.EventHandler(this.listBox_searchRuslut_SelectedIndexChanged);
             // 
-            // pictureBox5
+            // panle_shrink
             // 
-            this.pictureBox5.Image = global::ChemistryApp.Properties.Resources._1_03;
-            this.pictureBox5.Location = new System.Drawing.Point(4, 8);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(19, 21);
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
+            this.panle_shrink.BackColor = System.Drawing.Color.White;
+            this.panle_shrink.Controls.Add(this.btn_shrink);
+            this.panle_shrink.Controls.Add(this.pic_title);
+            this.panle_shrink.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panle_shrink.Location = new System.Drawing.Point(0, 0);
+            this.panle_shrink.Name = "panle_shrink";
+            this.panle_shrink.Size = new System.Drawing.Size(54, 768);
+            this.panle_shrink.TabIndex = 17;
             // 
-            // label8
+            // pic_title
             // 
-            this.label8.AutoSize = true;
-            this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label8.Font = new System.Drawing.Font("苹方 中等", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(22, 7);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 21);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "置顶";
+            this.pic_title.BackgroundImage = global::ChemistryApp.Properties.Resources.title;
+            this.pic_title.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pic_title.Location = new System.Drawing.Point(0, 47);
+            this.pic_title.Name = "pic_title";
+            this.pic_title.Size = new System.Drawing.Size(35, 626);
+            this.pic_title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_title.TabIndex = 0;
+            this.pic_title.TabStop = false;
             // 
-            // label7
+            // btn_shrink
             // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.Font = new System.Drawing.Font("苹方 中等", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(239, 7);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 21);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "展开";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::ChemistryApp.Properties.Resources._1_07;
-            this.pictureBox4.Location = new System.Drawing.Point(19, 46);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(57, 64);
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("苹方 中等", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(86, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 34);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "课时一";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("苹方 中等", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(83, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(177, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "（备注：星期一要讲的课）";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = global::ChemistryApp.Properties.Resources.myLessonItemBG;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.pictureBox5);
-            this.panel2.Font = new System.Drawing.Font("苹方 特粗", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.panel2.Location = new System.Drawing.Point(403, 26);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(279, 140);
-            this.panel2.TabIndex = 16;
-            this.panel2.Visible = false;
+            this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_right;
+            this.btn_shrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_shrink.Location = new System.Drawing.Point(31, 330);
+            this.btn_shrink.Name = "btn_shrink";
+            this.btn_shrink.Size = new System.Drawing.Size(23, 70);
+            this.btn_shrink.TabIndex = 1;
+            this.btn_shrink.TabStop = false;
+            this.btn_shrink.Click += new System.EventHandler(this.BtnShrink_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::ChemistryApp.Properties.Resources.BG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1006, 728);
-            this.Controls.Add(this.btn_shrink);
-            this.Controls.Add(this.pic_title);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.panle_shrink);
+            this.Controls.Add(this.LeftPlane);
             this.Controls.Add(this.listBox_searchRuslut);
             this.Controls.Add(this.btn_search);
-            this.Controls.Add(this.LeftPlane);
             this.Controls.Add(this.btn_ExperlmentalPlatform);
             this.Controls.Add(this.btn_ClassroomTeaching);
             this.Controls.Add(this.btn_ChemicalElement);
             this.Controls.Add(this.btn_KnowledgeReview);
             this.Controls.Add(this.txt_search);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
+            this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).EndInit();
             this.LeftPlane.ResumeLayout(false);
             this.LeftPlane.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panle_shrink.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,8 +317,6 @@
         private System.Windows.Forms.Button btn_ClassroomTeaching;
         private System.Windows.Forms.Button btn_ExperlmentalPlatform;
         private System.Windows.Forms.Timer LeftPlaneTimer;
-        private System.Windows.Forms.PictureBox pic_title;
-        private System.Windows.Forms.Button btn_shrink;
         private System.Windows.Forms.PictureBox pic_classSearch;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btn_classSearch;
@@ -411,13 +324,9 @@
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.ListBox listBox_searchRuslut;
         private System.Windows.Forms.Panel panel_item;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel panle_shrink;
+        private System.Windows.Forms.PictureBox btn_shrink;
+        private System.Windows.Forms.PictureBox pic_title;
     }
 }
 

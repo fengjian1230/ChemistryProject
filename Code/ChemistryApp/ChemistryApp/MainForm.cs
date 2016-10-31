@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ChemistryApp
 {
@@ -116,6 +117,41 @@ namespace ChemistryApp
 
 
         /// <summary>
+        /// 左边收缩按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnShrink_Click(object sender, EventArgs e)
+        {
+            panelItem.Clear();
+            //创建panel
+            for (int i = 0; i < 20; i++)
+            {
+                MyLessonItem item = new MyLessonItem();
+                panelItem.Add(item.CreateControl(10, i * (140 + 10)));
+                this.panel_item.Controls.Add(panelItem[i]);
+            }
+
+
+            if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 1)
+            {
+                LeftPlaneTimer.Start();
+                //  LeftPlane.Tag = 0;
+                //this.LeftPlane.Size = new Size(320, 728);
+
+            }
+            else
+            {
+                if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 0)
+                {
+                    LeftPlaneTimer.Start();
+                    //LeftPlane.Tag = 1;
+                    //this.LeftPlane.Size = new Size(0, 728);
+                }
+            }
+        }
+
+        /// <summary>
         /// 定时器，做左边收缩按钮动画
         /// </summary>
         /// <param name="sender"></param>
@@ -126,12 +162,12 @@ namespace ChemistryApp
             //如果panel目前是隐藏的
             if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 0)
             {
-                if (longWidth == 320)
+                if (longWidth == 330)
                 {
                     LeftPlaneTimer.Enabled = false;
                     LeftPlane.Tag = 1;//设置为显示标识
                     this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_left;
-                    this.LeftPlane.Size = new Size(330, 728);
+                    //this.LeftPlane.Size = new Size(320, 728);
                 }
                 else
                 {
@@ -154,36 +190,7 @@ namespace ChemistryApp
             }
         }
 
-        /// <summary>
-        /// 左边收缩按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnShrink_Click(object sender, EventArgs e)
-        {
-            panelItem.Clear();
-            //创建panel
-            for (int i = 0; i < 20; i++)
-            {
-                MyLessonItem item = new MyLessonItem();
-                panelItem.Add(item.CreateControl(10, i * (140 + 10)));
-                this.panel_item.Controls.Add(panelItem[i]);
-            }
-
-
-            if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 1)
-            {
-                LeftPlaneTimer.Start();
-
-            }
-            else
-            {
-                if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 0)
-                {
-                    LeftPlaneTimer.Start();
-                }
-            }
-        }
+      
 
 
         #region 主页上四个按钮
@@ -281,7 +288,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void txt_search_Leave(object sender, EventArgs e)
         {
-            this.listBox_searchRuslut.Visible = false;
+            //this.listBox_searchRuslut.Visible = false;
         }
 
         /// <summary>
@@ -292,6 +299,20 @@ namespace ChemistryApp
         private void txt_search_Enter(object sender, EventArgs e)
         {
             
+        }
+
+        private void pic_title_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox_searchRuslut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox_searchRuslut.SelectedItem != null)
+            {
+                this.txt_search.Text = listBox_searchRuslut.SelectedItem.ToString();
+            }
+           
         }
     }
     #endregion

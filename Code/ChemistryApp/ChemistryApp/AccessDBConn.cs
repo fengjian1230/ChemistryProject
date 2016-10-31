@@ -14,7 +14,7 @@ namespace ChemistryApp
     /// </summary>
     class AccessDBConn
     {
-        public static string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= ChemistryDB.accdb";
+        public static string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= ChemistryDB.accdb;Persist Security Info=False";
 
         public AccessDBConn()
         {
