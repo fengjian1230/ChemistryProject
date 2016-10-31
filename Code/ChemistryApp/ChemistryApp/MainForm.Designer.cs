@@ -42,6 +42,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btn_classSearch = new System.Windows.Forms.Button();
             this.LeftPlane = new System.Windows.Forms.Panel();
+            this.panel_item = new System.Windows.Forms.Panel();
             this.btn_search = new System.Windows.Forms.Button();
             this.listBox_searchRuslut = new System.Windows.Forms.ListBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -51,7 +52,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel_item = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_title)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).BeginInit();
@@ -169,6 +169,7 @@
             this.pic_title.Size = new System.Drawing.Size(32, 728);
             this.pic_title.TabIndex = 10;
             this.pic_title.TabStop = false;
+            this.pic_title.Tag = "1";
             // 
             // btn_shrink
             // 
@@ -184,8 +185,9 @@
             this.btn_shrink.Location = new System.Drawing.Point(32, 0);
             this.btn_shrink.Name = "btn_shrink";
             this.btn_shrink.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.btn_shrink.Size = new System.Drawing.Size(30, 728);
+            this.btn_shrink.Size = new System.Drawing.Size(19, 728);
             this.btn_shrink.TabIndex = 12;
+            this.btn_shrink.Tag = "1";
             this.btn_shrink.UseVisualStyleBackColor = false;
             this.btn_shrink.Click += new System.EventHandler(this.BtnShrink_Click);
             // 
@@ -222,7 +224,7 @@
             // LeftPlane
             // 
             this.LeftPlane.AllowDrop = true;
-            this.LeftPlane.BackColor = System.Drawing.Color.Transparent;
+            this.LeftPlane.BackColor = System.Drawing.Color.Black;
             this.LeftPlane.BackgroundImage = global::ChemistryApp.Properties.Resources.planeBG1;
             this.LeftPlane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.LeftPlane.Controls.Add(this.panel_item);
@@ -237,6 +239,19 @@
             this.LeftPlane.Size = new System.Drawing.Size(0, 728);
             this.LeftPlane.TabIndex = 8;
             this.LeftPlane.Tag = "1";
+            // 
+            // panel_item
+            // 
+            this.panel_item.AutoScroll = true;
+            this.panel_item.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_item.BackColor = System.Drawing.Color.White;
+            this.panel_item.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel_item.ForeColor = System.Drawing.Color.Black;
+            this.panel_item.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.panel_item.Location = new System.Drawing.Point(0, 112);
+            this.panel_item.Name = "panel_item";
+            this.panel_item.Size = new System.Drawing.Size(325, 516);
+            this.panel_item.TabIndex = 17;
             // 
             // btn_search
             // 
@@ -319,7 +334,7 @@
             this.label5.Font = new System.Drawing.Font("苹方 中等", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.Location = new System.Drawing.Point(83, 88);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 18);
+            this.label5.Size = new System.Drawing.Size(177, 20);
             this.label5.TabIndex = 5;
             this.label5.Text = "（备注：星期一要讲的课）";
             // 
@@ -340,19 +355,6 @@
             this.panel2.Size = new System.Drawing.Size(279, 140);
             this.panel2.TabIndex = 16;
             this.panel2.Visible = false;
-            // 
-            // panel_item
-            // 
-            this.panel_item.AutoScroll = true;
-            this.panel_item.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_item.BackColor = System.Drawing.Color.White;
-            this.panel_item.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel_item.ForeColor = System.Drawing.Color.Black;
-            this.panel_item.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.panel_item.Location = new System.Drawing.Point(0, 112);
-            this.panel_item.Name = "panel_item";
-            this.panel_item.Size = new System.Drawing.Size(325, 516);
-            this.panel_item.TabIndex = 17;
             // 
             // MainForm
             // 
