@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.LeftPlaneTimer = new System.Windows.Forms.Timer(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.btn_classSearch = new System.Windows.Forms.Button();
             this.panel_item = new System.Windows.Forms.Panel();
             this.LeftPlane = new System.Windows.Forms.Panel();
@@ -61,7 +60,7 @@
             this.pic_title = new System.Windows.Forms.PictureBox();
             this.pic_classSearch = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_itme = new System.Windows.Forms.Panel();
+            this.panel_Left = new System.Windows.Forms.Panel();
             this.LeftPlane.SuspendLayout();
             this.panle_shrink.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -90,15 +89,6 @@
             // 
             this.LeftPlaneTimer.Interval = 10;
             this.LeftPlaneTimer.Tick += new System.EventHandler(this.LeftPlaneTimer_Tick);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("苹方 中等", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(36, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(203, 26);
-            this.textBox2.TabIndex = 1;
             // 
             // btn_classSearch
             // 
@@ -131,7 +121,6 @@
             this.LeftPlane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.LeftPlane.Controls.Add(this.panel_item);
             this.LeftPlane.Controls.Add(this.btn_classSearch);
-            this.LeftPlane.Controls.Add(this.textBox2);
             this.LeftPlane.Controls.Add(this.pic_classSearch);
             this.LeftPlane.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftPlane.Location = new System.Drawing.Point(0, 0);
@@ -172,7 +161,7 @@
             this.MainPanel.Controls.Add(this.btn_KnowledgeReview);
             this.MainPanel.Controls.Add(this.btn_MindMap);
             this.MainPanel.Controls.Add(this.btn_ExperlmentalPlatform);
-            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Location = new System.Drawing.Point(3, 0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1027, 768);
             this.MainPanel.TabIndex = 18;
@@ -274,7 +263,7 @@
             // tab_caogao
             // 
             this.tab_caogao.BackColor = System.Drawing.Color.Transparent;
-            this.tab_caogao.Controls.Add(this.panel_itme);
+            this.tab_caogao.Controls.Add(this.panel_Left);
             this.tab_caogao.ForeColor = System.Drawing.SystemColors.Control;
             this.tab_caogao.Location = new System.Drawing.Point(4, 25);
             this.tab_caogao.Name = "tab_caogao";
@@ -470,12 +459,12 @@
             this.panel1.Size = new System.Drawing.Size(320, 626);
             this.panel1.TabIndex = 15;
             // 
-            // panel_itme
+            // panel_Left
             // 
-            this.panel_itme.Location = new System.Drawing.Point(0, 0);
-            this.panel_itme.Name = "panel_itme";
-            this.panel_itme.Size = new System.Drawing.Size(282, 539);
-            this.panel_itme.TabIndex = 0;
+            this.panel_Left.Location = new System.Drawing.Point(0, 0);
+            this.panel_Left.Name = "panel_Left";
+            this.panel_Left.Size = new System.Drawing.Size(282, 539);
+            this.panel_Left.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -492,7 +481,6 @@
             this.Text = "App";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.LeftPlane.ResumeLayout(false);
-            this.LeftPlane.PerformLayout();
             this.panle_shrink.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
@@ -523,7 +511,6 @@
         #endregion
         private System.Windows.Forms.Timer LeftPlaneTimer;
         private System.Windows.Forms.PictureBox pic_classSearch;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btn_classSearch;
         private System.Windows.Forms.Panel panel_item;
         private System.Windows.Forms.Panel LeftPlane;
@@ -553,7 +540,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tab_classList;
-        private System.Windows.Forms.Panel panel_itme;
+        private System.Windows.Forms.Panel panel_Left;
     }
 }
 
