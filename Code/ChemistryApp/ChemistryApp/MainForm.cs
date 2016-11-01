@@ -33,68 +33,15 @@ namespace ChemistryApp
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
+            MyLessonItem item = new MyLessonItem();
+            this.MainPanel.Controls.Add(item.CreateControl(0, 100));
+
+
             panelItem = new List<Panel>();
             //初始位置
             this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2);
             this.Size = new Size(mainFormWidth, mainFormWidth);
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           // string str = null;
-
-
-            //foreach (RadioButton item in groupBox1.Controls)
-            //{
-            //    if (item.Checked)
-            //    {
-            //        MessageBox.Show(item.Text);
-            //        str = item.Text;
-            //    }
-            //}
-            //this.label1.Text = null;
-            //string sql = "select * from LessonList where "+ str + " like '%"+ textBox1.Text+"%'" ;
-            //if (str != null && this.textBox1.Text != "")
-            //{
-            
-            //    DataSet ds = AccessDBConn.ExecuteQuery(sql);
-            //    try
-            //    {
-            //        DataRow[] dr = ds.Tables["LessonList"].Select();
-            //        foreach (var item in dr)
-            //        {
-            //            this.label1.Text += item[str].ToString();
-            //        }
-
-
-            //    }
-            //    catch (Exception exp)
-            //    {
-
-            //        MessageBox.Show(exp.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("不能为空");
-            //}
-           
-           
-          
-
-            
-
-            //string str = null;
-            //for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            //{
-            //    for (int j = 0; j < ds.Tables[0].Columns.Count; j++)
-            //    {
-            //        str += ds.Tables[0].Rows[i][j].ToString();
-            //    }
-            //}
-            //this.textBox1.Text = str;
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -138,9 +85,9 @@ namespace ChemistryApp
             //创建panel
             for (int i = 0; i < 20; i++)
             {
-                MyLessonItem item = new MyLessonItem();
-                panelItem.Add(item.CreateControl(10, i * (140 + 10)));
-                this.panel_item.Controls.Add(panelItem[i]);
+                //MyLessonItem item = new MyLessonItem();
+                //panelItem.Add(item.CreateControl(10, i * (140 + 10)));
+                //this.panel_item.Controls.Add(panelItem[i]);
             }
 
 
@@ -259,7 +206,25 @@ namespace ChemistryApp
             
         }
 
+        /// <summary>
+        /// 思维导图
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_MindMap_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        /// <summary>
+        /// 视频资源
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_VideoSource_Click(object sender, EventArgs e)
+        {
+
+        }
         #region 搜索对话框事件
         /// <summary>
         /// 当textbox发生变化时,显示收收缩结果
@@ -321,6 +286,7 @@ namespace ChemistryApp
         {
            
         }
+
     }
     #endregion
 }
