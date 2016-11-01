@@ -69,6 +69,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -212,16 +213,16 @@
     <None Include="Resources\BG.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_01.png" />
+    <None Include="Resources\old_01.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_02.png" />
+    <None Include="Resources\oldpic.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_03.png" />
+    <None Include="Resources\old_03.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_04.png" />
+    <None Include="Resources\old_04.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_left.png" />
@@ -255,6 +256,84 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\myLessonItemBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2_04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2_05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2_06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0_04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0_05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\背景.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\课件列表.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\搜索条.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\我的备课.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_021.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_031.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_041.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_051.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_061.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

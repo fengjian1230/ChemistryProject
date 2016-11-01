@@ -29,136 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txt_search = new System.Windows.Forms.TextBox();
-            this.btn_KnowledgeReview = new System.Windows.Forms.Button();
-            this.btn_ChemicalElement = new System.Windows.Forms.Button();
-            this.btn_ClassroomTeaching = new System.Windows.Forms.Button();
-            this.btn_ExperlmentalPlatform = new System.Windows.Forms.Button();
             this.LeftPlaneTimer = new System.Windows.Forms.Timer(this.components);
-            this.pic_classSearch = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btn_classSearch = new System.Windows.Forms.Button();
-            this.LeftPlane = new System.Windows.Forms.Panel();
             this.panel_item = new System.Windows.Forms.Panel();
-            this.btn_search = new System.Windows.Forms.Button();
-            this.listBox_searchRuslut = new System.Windows.Forms.ListBox();
+            this.LeftPlane = new System.Windows.Forms.Panel();
             this.panle_shrink = new System.Windows.Forms.Panel();
-            this.pic_title = new System.Windows.Forms.PictureBox();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
             this.btn_shrink = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).BeginInit();
+            this.pic_title = new System.Windows.Forms.PictureBox();
+            this.pic_classSearch = new System.Windows.Forms.PictureBox();
+            this.btn_MindMap = new System.Windows.Forms.PictureBox();
+            this.btn_KnowledgeReview = new System.Windows.Forms.PictureBox();
+            this.btn_ClassroomTeaching = new System.Windows.Forms.PictureBox();
+            this.btn_ChemicalElement = new System.Windows.Forms.PictureBox();
+            this.btn_VideoSource = new System.Windows.Forms.PictureBox();
             this.LeftPlane.SuspendLayout();
             this.panle_shrink.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).BeginInit();
+            this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_ExperlmentalPlatform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_MindMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_KnowledgeReview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_ClassroomTeaching)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_ChemicalElement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_VideoSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::ChemistryApp.Properties.Resources.search;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(236, 117);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(550, 43);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // txt_search
-            // 
-            this.txt_search.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_search.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_search.CausesValidation = false;
-            this.txt_search.Font = new System.Drawing.Font("苹方 中等", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_search.Location = new System.Drawing.Point(249, 121);
-            this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(485, 35);
-            this.txt_search.TabIndex = 2;
-            this.txt_search.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_search.TextChanged += new System.EventHandler(this.TextSearch_TextChanged);
-            this.txt_search.Enter += new System.EventHandler(this.txt_search_Enter);
-            this.txt_search.Leave += new System.EventHandler(this.txt_search_Leave);
-            // 
-            // btn_KnowledgeReview
-            // 
-            this.btn_KnowledgeReview.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_KnowledgeReview.BackColor = System.Drawing.Color.Black;
-            this.btn_KnowledgeReview.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_01;
-            this.btn_KnowledgeReview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_KnowledgeReview.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_KnowledgeReview.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btn_KnowledgeReview.FlatAppearance.BorderSize = 0;
-            this.btn_KnowledgeReview.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.btn_KnowledgeReview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
-            this.btn_KnowledgeReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_KnowledgeReview.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_KnowledgeReview.Location = new System.Drawing.Point(36, 263);
-            this.btn_KnowledgeReview.Name = "btn_KnowledgeReview";
-            this.btn_KnowledgeReview.Size = new System.Drawing.Size(229, 295);
-            this.btn_KnowledgeReview.TabIndex = 3;
-            this.btn_KnowledgeReview.UseVisualStyleBackColor = false;
-            this.btn_KnowledgeReview.Click += new System.EventHandler(this.btn_KnowledgeReview_Click);
-            // 
-            // btn_ChemicalElement
-            // 
-            this.btn_ChemicalElement.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_02;
-            this.btn_ChemicalElement.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_ChemicalElement.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btn_ChemicalElement.FlatAppearance.BorderSize = 0;
-            this.btn_ChemicalElement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btn_ChemicalElement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ChemicalElement.Location = new System.Drawing.Point(278, 263);
-            this.btn_ChemicalElement.Name = "btn_ChemicalElement";
-            this.btn_ChemicalElement.Size = new System.Drawing.Size(229, 295);
-            this.btn_ChemicalElement.TabIndex = 4;
-            this.btn_ChemicalElement.UseVisualStyleBackColor = true;
-            this.btn_ChemicalElement.Click += new System.EventHandler(this.btn_ChemicalElement_Click);
-            // 
-            // btn_ClassroomTeaching
-            // 
-            this.btn_ClassroomTeaching.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_03;
-            this.btn_ClassroomTeaching.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_ClassroomTeaching.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btn_ClassroomTeaching.FlatAppearance.BorderSize = 0;
-            this.btn_ClassroomTeaching.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btn_ClassroomTeaching.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ClassroomTeaching.Location = new System.Drawing.Point(518, 263);
-            this.btn_ClassroomTeaching.Name = "btn_ClassroomTeaching";
-            this.btn_ClassroomTeaching.Size = new System.Drawing.Size(229, 295);
-            this.btn_ClassroomTeaching.TabIndex = 5;
-            this.btn_ClassroomTeaching.UseVisualStyleBackColor = true;
-            this.btn_ClassroomTeaching.Click += new System.EventHandler(this.btn_ClassroomTeaching_Click);
-            // 
-            // btn_ExperlmentalPlatform
-            // 
-            this.btn_ExperlmentalPlatform.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_04;
-            this.btn_ExperlmentalPlatform.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_ExperlmentalPlatform.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_ExperlmentalPlatform.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btn_ExperlmentalPlatform.FlatAppearance.BorderSize = 0;
-            this.btn_ExperlmentalPlatform.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.btn_ExperlmentalPlatform.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ExperlmentalPlatform.Location = new System.Drawing.Point(759, 264);
-            this.btn_ExperlmentalPlatform.Name = "btn_ExperlmentalPlatform";
-            this.btn_ExperlmentalPlatform.Size = new System.Drawing.Size(229, 295);
-            this.btn_ExperlmentalPlatform.TabIndex = 6;
-            this.btn_ExperlmentalPlatform.UseVisualStyleBackColor = true;
-            this.btn_ExperlmentalPlatform.Click += new System.EventHandler(this.btn_ExperlmentalPlatform_Click);
             // 
             // LeftPlaneTimer
             // 
             this.LeftPlaneTimer.Interval = 10;
             this.LeftPlaneTimer.Tick += new System.EventHandler(this.LeftPlaneTimer_Tick);
-            // 
-            // pic_classSearch
-            // 
-            this.pic_classSearch.BackgroundImage = global::ChemistryApp.Properties.Resources.classSearch;
-            this.pic_classSearch.InitialImage = null;
-            this.pic_classSearch.Location = new System.Drawing.Point(23, 70);
-            this.pic_classSearch.Name = "pic_classSearch";
-            this.pic_classSearch.Size = new System.Drawing.Size(270, 36);
-            this.pic_classSearch.TabIndex = 0;
-            this.pic_classSearch.TabStop = false;
             // 
             // textBox2
             // 
@@ -180,11 +84,23 @@
             this.btn_classSearch.TabIndex = 2;
             this.btn_classSearch.UseVisualStyleBackColor = true;
             // 
+            // panel_item
+            // 
+            this.panel_item.AutoScroll = true;
+            this.panel_item.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_item.BackColor = System.Drawing.Color.White;
+            this.panel_item.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel_item.ForeColor = System.Drawing.Color.Black;
+            this.panel_item.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.panel_item.Location = new System.Drawing.Point(0, 112);
+            this.panel_item.Name = "panel_item";
+            this.panel_item.Size = new System.Drawing.Size(320, 516);
+            this.panel_item.TabIndex = 17;
+            // 
             // LeftPlane
             // 
             this.LeftPlane.AllowDrop = true;
             this.LeftPlane.BackColor = System.Drawing.Color.Transparent;
-            this.LeftPlane.BackgroundImage = global::ChemistryApp.Properties.Resources.planeBG1;
             this.LeftPlane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.LeftPlane.Controls.Add(this.panel_item);
             this.LeftPlane.Controls.Add(this.btn_classSearch);
@@ -199,49 +115,6 @@
             this.LeftPlane.TabIndex = 8;
             this.LeftPlane.Tag = "1";
             // 
-            // panel_item
-            // 
-            this.panel_item.AutoScroll = true;
-            this.panel_item.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_item.BackColor = System.Drawing.Color.White;
-            this.panel_item.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel_item.ForeColor = System.Drawing.Color.Black;
-            this.panel_item.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.panel_item.Location = new System.Drawing.Point(0, 112);
-            this.panel_item.Name = "panel_item";
-            this.panel_item.Size = new System.Drawing.Size(320, 516);
-            this.panel_item.TabIndex = 17;
-            // 
-            // btn_search
-            // 
-            this.btn_search.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_search;
-            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_search.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_search.FlatAppearance.BorderSize = 0;
-            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_search.Location = new System.Drawing.Point(738, 118);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(30, 41);
-            this.btn_search.TabIndex = 13;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
-            // 
-            // listBox_searchRuslut
-            // 
-            this.listBox_searchRuslut.FormattingEnabled = true;
-            this.listBox_searchRuslut.ItemHeight = 15;
-            this.listBox_searchRuslut.Items.AddRange(new object[] {
-            "dddddd",
-            "21321321\t",
-            "132132",
-            "111sdasdsa"});
-            this.listBox_searchRuslut.Location = new System.Drawing.Point(236, 162);
-            this.listBox_searchRuslut.Name = "listBox_searchRuslut";
-            this.listBox_searchRuslut.Size = new System.Drawing.Size(550, 124);
-            this.listBox_searchRuslut.TabIndex = 1;
-            this.listBox_searchRuslut.SelectedIndexChanged += new System.EventHandler(this.listBox_searchRuslut_SelectedIndexChanged);
-            // 
             // panle_shrink
             // 
             this.panle_shrink.BackColor = System.Drawing.Color.White;
@@ -250,23 +123,37 @@
             this.panle_shrink.Dock = System.Windows.Forms.DockStyle.Left;
             this.panle_shrink.Location = new System.Drawing.Point(0, 0);
             this.panle_shrink.Name = "panle_shrink";
-            this.panle_shrink.Size = new System.Drawing.Size(54, 768);
+            this.panle_shrink.Size = new System.Drawing.Size(0, 768);
             this.panle_shrink.TabIndex = 17;
             // 
-            // pic_title
+            // MainPanel
             // 
-            this.pic_title.BackgroundImage = global::ChemistryApp.Properties.Resources.title;
-            this.pic_title.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pic_title.Location = new System.Drawing.Point(0, 47);
-            this.pic_title.Name = "pic_title";
-            this.pic_title.Size = new System.Drawing.Size(35, 626);
-            this.pic_title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_title.TabIndex = 0;
-            this.pic_title.TabStop = false;
+            this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources._1;
+            this.MainPanel.Controls.Add(this.btn_ChemicalElement);
+            this.MainPanel.Controls.Add(this.btn_VideoSource);
+            this.MainPanel.Controls.Add(this.btn_ClassroomTeaching);
+            this.MainPanel.Controls.Add(this.btn_KnowledgeReview);
+            this.MainPanel.Controls.Add(this.btn_MindMap);
+            this.MainPanel.Controls.Add(this.btn_ExperlmentalPlatform);
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(1027, 768);
+            this.MainPanel.TabIndex = 18;
+            // 
+            // btn_ExperlmentalPlatform
+            // 
+            this.btn_ExperlmentalPlatform.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ExperlmentalPlatform.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_011;
+            this.btn_ExperlmentalPlatform.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_ExperlmentalPlatform.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ExperlmentalPlatform.Location = new System.Drawing.Point(240, 176);
+            this.btn_ExperlmentalPlatform.Name = "btn_ExperlmentalPlatform";
+            this.btn_ExperlmentalPlatform.Size = new System.Drawing.Size(175, 226);
+            this.btn_ExperlmentalPlatform.TabIndex = 0;
+            this.btn_ExperlmentalPlatform.TabStop = false;
             // 
             // btn_shrink
             // 
-            this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_right;
             this.btn_shrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_shrink.Location = new System.Drawing.Point(31, 330);
             this.btn_shrink.Name = "btn_shrink";
@@ -275,58 +162,133 @@
             this.btn_shrink.TabStop = false;
             this.btn_shrink.Click += new System.EventHandler(this.BtnShrink_Click);
             // 
+            // pic_title
+            // 
+            this.pic_title.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pic_title.Location = new System.Drawing.Point(0, 47);
+            this.pic_title.Name = "pic_title";
+            this.pic_title.Size = new System.Drawing.Size(35, 626);
+            this.pic_title.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_title.TabIndex = 0;
+            this.pic_title.TabStop = false;
+            // 
+            // pic_classSearch
+            // 
+            this.pic_classSearch.InitialImage = null;
+            this.pic_classSearch.Location = new System.Drawing.Point(23, 70);
+            this.pic_classSearch.Name = "pic_classSearch";
+            this.pic_classSearch.Size = new System.Drawing.Size(270, 36);
+            this.pic_classSearch.TabIndex = 0;
+            this.pic_classSearch.TabStop = false;
+            // 
+            // btn_MindMap
+            // 
+            this.btn_MindMap.BackColor = System.Drawing.Color.Transparent;
+            this.btn_MindMap.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_021;
+            this.btn_MindMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_MindMap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_MindMap.Location = new System.Drawing.Point(425, 176);
+            this.btn_MindMap.Name = "btn_MindMap";
+            this.btn_MindMap.Size = new System.Drawing.Size(175, 226);
+            this.btn_MindMap.TabIndex = 1;
+            this.btn_MindMap.TabStop = false;
+            // 
+            // btn_KnowledgeReview
+            // 
+            this.btn_KnowledgeReview.BackColor = System.Drawing.Color.Transparent;
+            this.btn_KnowledgeReview.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_031;
+            this.btn_KnowledgeReview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_KnowledgeReview.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_KnowledgeReview.Location = new System.Drawing.Point(609, 176);
+            this.btn_KnowledgeReview.Name = "btn_KnowledgeReview";
+            this.btn_KnowledgeReview.Size = new System.Drawing.Size(175, 226);
+            this.btn_KnowledgeReview.TabIndex = 2;
+            this.btn_KnowledgeReview.TabStop = false;
+            // 
+            // btn_ClassroomTeaching
+            // 
+            this.btn_ClassroomTeaching.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ClassroomTeaching.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_041;
+            this.btn_ClassroomTeaching.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_ClassroomTeaching.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ClassroomTeaching.Location = new System.Drawing.Point(240, 408);
+            this.btn_ClassroomTeaching.Name = "btn_ClassroomTeaching";
+            this.btn_ClassroomTeaching.Size = new System.Drawing.Size(175, 226);
+            this.btn_ClassroomTeaching.TabIndex = 3;
+            this.btn_ClassroomTeaching.TabStop = false;
+            // 
+            // btn_ChemicalElement
+            // 
+            this.btn_ChemicalElement.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ChemicalElement.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_061;
+            this.btn_ChemicalElement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_ChemicalElement.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ChemicalElement.Location = new System.Drawing.Point(609, 408);
+            this.btn_ChemicalElement.Name = "btn_ChemicalElement";
+            this.btn_ChemicalElement.Size = new System.Drawing.Size(175, 226);
+            this.btn_ChemicalElement.TabIndex = 5;
+            this.btn_ChemicalElement.TabStop = false;
+            // 
+            // btn_VideoSource
+            // 
+            this.btn_VideoSource.BackColor = System.Drawing.Color.Transparent;
+            this.btn_VideoSource.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_051;
+            this.btn_VideoSource.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_VideoSource.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_VideoSource.Location = new System.Drawing.Point(425, 408);
+            this.btn_VideoSource.Name = "btn_VideoSource";
+            this.btn_VideoSource.Size = new System.Drawing.Size(175, 226);
+            this.btn_VideoSource.TabIndex = 4;
+            this.btn_VideoSource.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::ChemistryApp.Properties.Resources.BG;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panle_shrink);
             this.Controls.Add(this.LeftPlane);
-            this.Controls.Add(this.listBox_searchRuslut);
-            this.Controls.Add(this.btn_search);
-            this.Controls.Add(this.btn_ExperlmentalPlatform);
-            this.Controls.Add(this.btn_ClassroomTeaching);
-            this.Controls.Add(this.btn_ChemicalElement);
-            this.Controls.Add(this.btn_KnowledgeReview);
-            this.Controls.Add(this.txt_search);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.RightToLeftLayout = true;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "App";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).EndInit();
             this.LeftPlane.ResumeLayout(false);
             this.LeftPlane.PerformLayout();
             this.panle_shrink.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).EndInit();
+            this.MainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btn_ExperlmentalPlatform)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_title)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_classSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_MindMap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_KnowledgeReview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_ClassroomTeaching)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_ChemicalElement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_VideoSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txt_search;
-        private System.Windows.Forms.Button btn_KnowledgeReview;
-        private System.Windows.Forms.Button btn_ChemicalElement;
-        private System.Windows.Forms.Button btn_ClassroomTeaching;
-        private System.Windows.Forms.Button btn_ExperlmentalPlatform;
         private System.Windows.Forms.Timer LeftPlaneTimer;
         private System.Windows.Forms.PictureBox pic_classSearch;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btn_classSearch;
-        private System.Windows.Forms.Panel LeftPlane;
-        private System.Windows.Forms.Button btn_search;
-        private System.Windows.Forms.ListBox listBox_searchRuslut;
         private System.Windows.Forms.Panel panel_item;
-        private System.Windows.Forms.Panel panle_shrink;
-        private System.Windows.Forms.PictureBox btn_shrink;
+        private System.Windows.Forms.Panel LeftPlane;
         private System.Windows.Forms.PictureBox pic_title;
+        private System.Windows.Forms.PictureBox btn_shrink;
+        private System.Windows.Forms.Panel panle_shrink;
+        private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.PictureBox btn_ExperlmentalPlatform;
+        private System.Windows.Forms.PictureBox btn_ChemicalElement;
+        private System.Windows.Forms.PictureBox btn_ClassroomTeaching;
+        private System.Windows.Forms.PictureBox btn_KnowledgeReview;
+        private System.Windows.Forms.PictureBox btn_MindMap;
+        private System.Windows.Forms.PictureBox btn_VideoSource;
     }
 }
 

@@ -49,7 +49,6 @@ namespace ChemistryApp
             // panel1
             // 
             this.panelItem.BackColor = System.Drawing.Color.Transparent;
-            this.panelItem.BackgroundImage = global::ChemistryApp.Properties.Resources.myLessonItemBG;
             this.panelItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panelItem.Controls.Add(this.lab_tips);
             this.panelItem.Controls.Add(this.lab_classTime);
@@ -65,7 +64,6 @@ namespace ChemistryApp
             // 
             // pictureBox2
             // 
-            this.pic_top.Image = global::ChemistryApp.Properties.Resources._1_03;
             this.pic_top.Location = new System.Drawing.Point(4, 8);
             this.pic_top.Name = "pictureBox2";
             this.pic_top.Size = new System.Drawing.Size(19, 21);
@@ -96,7 +94,6 @@ namespace ChemistryApp
             // 
             // pictureBox3
             // 
-            this.pic_book.Image = global::ChemistryApp.Properties.Resources._1_07;
             this.pic_book.Location = new System.Drawing.Point(19, 46);
             this.pic_book.Name = "pic_book";
             this.pic_book.Size = new System.Drawing.Size(57, 64);

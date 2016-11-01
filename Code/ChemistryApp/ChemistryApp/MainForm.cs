@@ -23,9 +23,20 @@ namespace ChemistryApp
             InitializeComponent();
         }
 
+        /// <summary>
+        /// mainform加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+            int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
+            int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
+
             panelItem = new List<Panel>();
+            //初始位置
+            this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2);
+            this.Size = new Size(mainFormWidth, mainFormWidth);
 
         }
 
@@ -257,28 +268,28 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void TextSearch_TextChanged(object sender, EventArgs e)
         {
-            this.listBox_searchRuslut.Visible = true;
-            string sql = "select * from LessonList where  LessonID like '%" + this.txt_search.Text + "%'";
-            DataSet ds = AccessDBConn.ExecuteQuery(sql);
-            try
-            {
-                this.listBox_searchRuslut.Items.Clear();
-                DataRow[] dr = ds.Tables["LessonList"].Select();
-                foreach (var item in dr)
-                {
-                    this.listBox_searchRuslut.Items.Add(item["LessonID"].ToString());
-                }
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-            }
+            //this.listBox_searchRuslut.Visible = true;
+            //string sql = "select * from LessonList where  LessonID like '%" + this.txt_search.Text + "%'";
+            //DataSet ds = AccessDBConn.ExecuteQuery(sql);
+            //try
+            //{
+            //    this.listBox_searchRuslut.Items.Clear();
+            //    DataRow[] dr = ds.Tables["LessonList"].Select();
+            //    foreach (var item in dr)
+            //    {
+            //        this.listBox_searchRuslut.Items.Add(item["LessonID"].ToString());
+            //    }
+            //}
+            //catch (Exception exp)
+            //{
+            //    MessageBox.Show(exp.Message);
+            //}
 
-            ///当为空的时候清空list
-            if (this.txt_search.Text == "")
-            {
-                this.listBox_searchRuslut.Items.Clear();
-            }
+            /////当为空的时候清空list
+            //if (this.txt_search.Text == "")
+            //{
+            //    this.listBox_searchRuslut.Items.Clear();
+            //}
         }
 
         /// <summary>
@@ -308,10 +319,6 @@ namespace ChemistryApp
 
         private void listBox_searchRuslut_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_searchRuslut.SelectedItem != null)
-            {
-                this.txt_search.Text = listBox_searchRuslut.SelectedItem.ToString();
-            }
            
         }
     }
