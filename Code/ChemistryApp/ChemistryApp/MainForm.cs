@@ -21,6 +21,9 @@ namespace ChemistryApp
         public MainForm()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         /// <summary>
@@ -30,11 +33,11 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
             MyLessonItem item = new MyLessonItem();
-            this.MainPanel.Controls.Add(item.CreateControl(0, 100));
 
 
             panelItem = new List<Panel>();
@@ -85,26 +88,29 @@ namespace ChemistryApp
             //创建panel
             for (int i = 0; i < 20; i++)
             {
-                //MyLessonItem item = new MyLessonItem();
-                //panelItem.Add(item.CreateControl(10, i * (140 + 10)));
-                //this.panel_item.Controls.Add(panelItem[i]);
+                MyLessonItem item = new MyLessonItem();
+                panelItem.Add(item.CreateControl(10, i * (140 + 10)));
+                this.panel_item.Controls.Add(panelItem[i]);
             }
 
 
-            if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 1)
+            if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 1)
             {
                 LeftPlaneTimer.Start();
-                //  LeftPlane.Tag = 0;
-                //this.LeftPlane.Size = new Size(320, 728);
-
+                //panel_classListBG.Tag = 0;
+                //this.panel_classListBG.Size = new Size(0, 626);
+                //this.btn_shrink.Location = new Point(28, 349);
+                //this.pic_titleBG.Location = new Point(0, 48);
             }
             else
             {
-                if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 0)
+                if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 0)
                 {
                     LeftPlaneTimer.Start();
-                    //LeftPlane.Tag = 1;
-                    //this.LeftPlane.Size = new Size(0, 728);
+                    //panel_classListBG.Tag = 1;
+                    //this.panel_classListBG.Size = new Size(330, 626);
+                    //this.btn_shrink.Location = new Point(358, 349);
+                    //this.pic_titleBG.Location = new Point(328, 48);     
                 }
             }
         }
@@ -116,34 +122,56 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void LeftPlaneTimer_Tick(object sender, EventArgs e)
         {
-            long longWidth = LeftPlane.Width;
+            int scrollWight = 20;
+            long longWidth = panel_classListBG.Size.Width;
             //如果panel目前是隐藏的
-            if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 0)
+            if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 0)
             {
-                if (longWidth == 330)
+                if (longWidth >= 330)
                 {
                     LeftPlaneTimer.Enabled = false;
-                    LeftPlane.Tag = 1;//设置为显示标识
+                    panel_classListBG.Tag = 1;//设置为显示标识
                     this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_left;
                     //this.LeftPlane.Size = new Size(320, 728);
                 }
                 else
                 {
-                    LeftPlane.Width += 10;
+                    Point m_point = new Point();
+                    m_point.X = this.pic_titleBG.Location.X + scrollWight;
+                    m_point.Y = this.pic_titleBG.Location.Y;
+
+                    Point btnPoint = new Point();
+                    btnPoint.X = btn_shrink.Location.X + scrollWight;
+                    btnPoint.Y = btn_shrink.Location.Y;
+
+                    this.pic_titleBG.Location = m_point;
+                    this.btn_shrink.Location = btnPoint;
+
+                    panel_classListBG.Width += scrollWight;
                 }
             }
             //如果panel目前是显示的
-            if (Convert.ToInt16(LeftPlane.Tag.ToString()) == 1)
+            if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 1)
             {
-                if (longWidth == 0)
+                if (longWidth <= 0)
                 {
                     LeftPlaneTimer.Enabled = false;
-                    LeftPlane.Tag = 0;//设置为隐藏标识
+                    panel_classListBG.Tag = 0;//设置为隐藏标识
                     this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_right;
                 }
                 else
                 {
-                    LeftPlane.Width -= 10;
+                    Point m_point = new Point();
+                    m_point.X = this.pic_titleBG.Location.X - scrollWight;
+                    m_point.Y = this.pic_titleBG.Location.Y;
+
+                    Point btnPoint = new Point();
+                    btnPoint.X = btn_shrink.Location.X - scrollWight;
+                    btnPoint.Y = btn_shrink.Location.Y;
+
+                    this.btn_shrink.Location = btnPoint;
+                    this.pic_titleBG.Location = m_point;
+                    panel_classListBG.Width -= scrollWight;
                 }
             }
         }
@@ -170,7 +198,6 @@ namespace ChemistryApp
         private void btn_KnowledgeReview_Click(object sender, EventArgs e)
         {
             MyLessonItem item = new MyLessonItem();
-            this.LeftPlane.Controls.Add(item.CreateControl(23, 134));
             
         }
 
@@ -287,6 +314,10 @@ namespace ChemistryApp
            
         }
 
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+            //MessageBox.Show("AAAA");
+        }
     }
     #endregion
 }

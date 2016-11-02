@@ -100,6 +100,7 @@ namespace ChemistryApp
             this.pic_book.Location = new System.Drawing.Point(19, 46);
             this.pic_book.BackgroundImage = global::ChemistryApp.Properties.Resources._1_07;
             this.pic_book.Name = "pic_book";
+            this.pic_book.BackgroundImageLayout = ImageLayout.Center;
             this.pic_book.Size = new System.Drawing.Size(57, 64);
             this.pic_book.TabIndex = 3;
             this.pic_book.TabStop = false;
