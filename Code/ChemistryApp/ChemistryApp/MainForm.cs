@@ -131,7 +131,7 @@ namespace ChemistryApp
                 {
                     LeftPlaneTimer.Enabled = false;
                     panel_classListBG.Tag = 1;//设置为显示标识
-                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_left;
+                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_left1;
                     //this.LeftPlane.Size = new Size(320, 728);
                 }
                 else
@@ -316,7 +316,22 @@ namespace ChemistryApp
 
         private void MainPanel_Paint(object sender, PaintEventArgs e)
         {
-            //MessageBox.Show("AAAA");
+            
+        }
+
+        private void btn_bianji_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_bianji_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji_2;
+        }
+
+        private void btn_bianji_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
         }
     }
     #endregion
