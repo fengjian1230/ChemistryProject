@@ -17,6 +17,7 @@ namespace ChemistryApp
         /// 存储左边lessonitem
         /// </summary>
         List<Panel> panelItem;
+        MyTeachingPanel teachingPanel;
 
         public MainForm()
         {
@@ -33,11 +34,9 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
-
-            MyLessonItem item = new MyLessonItem();
 
 
             panelItem = new List<Panel>();
@@ -148,6 +147,8 @@ namespace ChemistryApp
                     this.btn_shrink.Location = btnPoint;
 
                     panel_classListBG.Width += scrollWight;
+
+                    panel_myteachingBG.Width += scrollWight;
                 }
             }
             //如果panel目前是显示的
@@ -172,6 +173,7 @@ namespace ChemistryApp
                     this.btn_shrink.Location = btnPoint;
                     this.pic_titleBG.Location = m_point;
                     panel_classListBG.Width -= scrollWight;
+                    panel_myteachingBG.Width -= scrollWight;
                 }
             }
         }
@@ -314,16 +316,6 @@ namespace ChemistryApp
            
         }
 
-        private void MainPanel_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void btn_bianji_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btn_bianji_MouseDown(object sender, MouseEventArgs e)
         {
             this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji_2;
@@ -332,6 +324,21 @@ namespace ChemistryApp
         private void btn_bianji_MouseUp(object sender, MouseEventArgs e)
         {
             this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
+        }
+
+        private void btn_myteachingShrink_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt16(teachingPanel.Tag.ToString()) == 1)
+            {
+                teachingPanel.myTeachingTimer.Start();
+            }
+            else
+            {
+                if (Convert.ToInt16(teachingPanel.Tag.ToString()) == 0)
+                {
+                    teachingPanel.myTeachingTimer.Start();
+                }
+            }
         }
     }
     #endregion

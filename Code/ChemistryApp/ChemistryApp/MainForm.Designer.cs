@@ -33,13 +33,9 @@
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
-            this.pic_typeIcon = new System.Windows.Forms.Panel();
-            this.panel_myTeachingItem = new System.Windows.Forms.Panel();
-            this.txt_title = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pic_myteachingDelete = new System.Windows.Forms.PictureBox();
-            this.pic_myteachingDown = new System.Windows.Forms.PictureBox();
-            this.pic_myteachingUp = new System.Windows.Forms.PictureBox();
+            this.btn_myteachingShrink = new System.Windows.Forms.PictureBox();
+            this.pic_myteachingMianban = new System.Windows.Forms.PictureBox();
+            this.panel_myteachingBG = new System.Windows.Forms.Panel();
             this.btn_shrink = new System.Windows.Forms.PictureBox();
             this.pic_titleBG = new System.Windows.Forms.PictureBox();
             this.panel_classListBG = new System.Windows.Forms.Panel();
@@ -47,6 +43,7 @@
             this.panel_item = new System.Windows.Forms.Panel();
             this.txt_classListSerch = new System.Windows.Forms.TextBox();
             this.pic_classListSearchBG = new System.Windows.Forms.PictureBox();
+            this.teachingPanel = new ChemistryApp.MyTeachingPanel();
             this.pic_close = new System.Windows.Forms.PictureBox();
             this.pic_max = new System.Windows.Forms.PictureBox();
             this.pic_min = new System.Windows.Forms.PictureBox();
@@ -60,12 +57,8 @@
             this.btn_MindMap = new System.Windows.Forms.PictureBox();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
             this.MainPanel.SuspendLayout();
-            this.pic_typeIcon.SuspendLayout();
-            this.panel_myTeachingItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).BeginInit();
             this.panel_classListBG.SuspendLayout();
@@ -105,10 +98,13 @@
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景;
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MainPanel.Controls.Add(this.pic_typeIcon);
+            this.MainPanel.Controls.Add(this.btn_myteachingShrink);
+            this.MainPanel.Controls.Add(this.pic_myteachingMianban);
+            this.MainPanel.Controls.Add(this.panel_myteachingBG);
             this.MainPanel.Controls.Add(this.btn_shrink);
             this.MainPanel.Controls.Add(this.pic_titleBG);
             this.MainPanel.Controls.Add(this.panel_classListBG);
+            this.MainPanel.Controls.Add(this.teachingPanel);
             this.MainPanel.Controls.Add(this.pic_close);
             this.MainPanel.Controls.Add(this.pic_max);
             this.MainPanel.Controls.Add(this.pic_min);
@@ -123,86 +119,43 @@
             this.MainPanel.Controls.Add(this.btn_ExperlmentalPlatform);
             this.MainPanel.Location = new System.Drawing.Point(12, 12);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1027, 768);
+            this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;
-            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
-            // pic_typeIcon
+            // btn_myteachingShrink
             // 
-            this.pic_typeIcon.BackColor = System.Drawing.Color.White;
-            this.pic_typeIcon.Controls.Add(this.panel_myTeachingItem);
-            this.pic_typeIcon.Location = new System.Drawing.Point(704, 61);
-            this.pic_typeIcon.Name = "pic_typeIcon";
-            this.pic_typeIcon.Size = new System.Drawing.Size(320, 626);
-            this.pic_typeIcon.TabIndex = 15;
+            this.btn_myteachingShrink.BackColor = System.Drawing.Color.Transparent;
+            this.btn_myteachingShrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_myteachingShrink.Image = global::ChemistryApp.Properties.Resources.shrinkRight;
+            this.btn_myteachingShrink.Location = new System.Drawing.Point(652, 349);
+            this.btn_myteachingShrink.Name = "btn_myteachingShrink";
+            this.btn_myteachingShrink.Size = new System.Drawing.Size(23, 72);
+            this.btn_myteachingShrink.TabIndex = 17;
+            this.btn_myteachingShrink.TabStop = false;
+            this.btn_myteachingShrink.Tag = "0";
+            this.btn_myteachingShrink.Click += new System.EventHandler(this.btn_myteachingShrink_Click);
             // 
-            // panel_myTeachingItem
+            // pic_myteachingMianban
             // 
-            this.panel_myTeachingItem.BackColor = System.Drawing.Color.Transparent;
-            this.panel_myTeachingItem.BackgroundImage = global::ChemistryApp.Properties.Resources.myteachingItemBG;
-            this.panel_myTeachingItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel_myTeachingItem.Controls.Add(this.txt_title);
-            this.panel_myTeachingItem.Controls.Add(this.pictureBox1);
-            this.panel_myTeachingItem.Controls.Add(this.pic_myteachingDelete);
-            this.panel_myTeachingItem.Controls.Add(this.pic_myteachingDown);
-            this.panel_myTeachingItem.Controls.Add(this.pic_myteachingUp);
-            this.panel_myTeachingItem.Location = new System.Drawing.Point(17, 39);
-            this.panel_myTeachingItem.Name = "panel_myTeachingItem";
-            this.panel_myTeachingItem.Size = new System.Drawing.Size(279, 70);
-            this.panel_myTeachingItem.TabIndex = 0;
+            this.pic_myteachingMianban.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.pic_myteachingMianban.BackColor = System.Drawing.Color.Transparent;
+            this.pic_myteachingMianban.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pic_myteachingMianban.Image = global::ChemistryApp.Properties.Resources.myteachingmianban;
+            this.pic_myteachingMianban.Location = new System.Drawing.Point(662, 61);
+            this.pic_myteachingMianban.Name = "pic_myteachingMianban";
+            this.pic_myteachingMianban.Size = new System.Drawing.Size(31, 668);
+            this.pic_myteachingMianban.TabIndex = 16;
+            this.pic_myteachingMianban.TabStop = false;
+            this.pic_myteachingMianban.Tag = "0";
             // 
-            // txt_title
+            // panel_myteachingBG
             // 
-            this.txt_title.AutoSize = true;
-            this.txt_title.Font = new System.Drawing.Font("苹方 中等", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_title.Location = new System.Drawing.Point(100, 39);
-            this.txt_title.Name = "txt_title";
-            this.txt_title.Size = new System.Drawing.Size(130, 21);
-            this.txt_title.TabIndex = 4;
-            this.txt_title.Text = "《氯的化学反应》";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::ChemistryApp.Properties.Resources.icon_1_03;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 37);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pic_myteachingDelete
-            // 
-            this.pic_myteachingDelete.BackgroundImage = global::ChemistryApp.Properties.Resources.删除键;
-            this.pic_myteachingDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pic_myteachingDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_myteachingDelete.Location = new System.Drawing.Point(257, 8);
-            this.pic_myteachingDelete.Name = "pic_myteachingDelete";
-            this.pic_myteachingDelete.Size = new System.Drawing.Size(15, 15);
-            this.pic_myteachingDelete.TabIndex = 2;
-            this.pic_myteachingDelete.TabStop = false;
-            // 
-            // pic_myteachingDown
-            // 
-            this.pic_myteachingDown.BackgroundImage = global::ChemistryApp.Properties.Resources.向下键;
-            this.pic_myteachingDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pic_myteachingDown.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_myteachingDown.Location = new System.Drawing.Point(31, 8);
-            this.pic_myteachingDown.Name = "pic_myteachingDown";
-            this.pic_myteachingDown.Size = new System.Drawing.Size(15, 15);
-            this.pic_myteachingDown.TabIndex = 1;
-            this.pic_myteachingDown.TabStop = false;
-            // 
-            // pic_myteachingUp
-            // 
-            this.pic_myteachingUp.BackgroundImage = global::ChemistryApp.Properties.Resources.向上键;
-            this.pic_myteachingUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pic_myteachingUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_myteachingUp.Location = new System.Drawing.Point(10, 8);
-            this.pic_myteachingUp.Name = "pic_myteachingUp";
-            this.pic_myteachingUp.Size = new System.Drawing.Size(15, 15);
-            this.pic_myteachingUp.TabIndex = 0;
-            this.pic_myteachingUp.TabStop = false;
+            this.panel_myteachingBG.BackColor = System.Drawing.Color.White;
+            this.panel_myteachingBG.Location = new System.Drawing.Point(690, 61);
+            this.panel_myteachingBG.Name = "panel_myteachingBG";
+            this.panel_myteachingBG.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.panel_myteachingBG.Size = new System.Drawing.Size(0, 628);
+            this.panel_myteachingBG.TabIndex = 15;
             // 
             // btn_shrink
             // 
@@ -296,6 +249,16 @@
             this.pic_classListSearchBG.Size = new System.Drawing.Size(279, 33);
             this.pic_classListSearchBG.TabIndex = 1;
             this.pic_classListSearchBG.TabStop = false;
+            // 
+            // teachingPanel
+            // 
+            this.teachingPanel.AutoScroll = true;
+            this.teachingPanel.BackColor = System.Drawing.Color.White;
+            this.teachingPanel.Location = new System.Drawing.Point(693, 61);
+            this.teachingPanel.Name = "teachingPanel";
+            this.teachingPanel.Size = new System.Drawing.Size(330, 628);
+            this.teachingPanel.TabIndex = 18;
+            this.teachingPanel.Tag = 1;
             // 
             // pic_close
             // 
@@ -451,7 +414,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.ClientSize = new System.Drawing.Size(1103, 768);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panle_shrink);
             this.Name = "MainForm";
@@ -461,13 +424,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
-            this.pic_typeIcon.ResumeLayout(false);
-            this.panel_myTeachingItem.ResumeLayout(false);
-            this.panel_myTeachingItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).EndInit();
             this.panel_classListBG.ResumeLayout(false);
@@ -508,16 +466,12 @@
         private System.Windows.Forms.TextBox txt_classListSerch;
         private System.Windows.Forms.PictureBox pic_titleBG;
         private System.Windows.Forms.PictureBox btn_shrink;
-        private System.Windows.Forms.Panel pic_typeIcon;
         private System.Windows.Forms.Timer LeftPlaneTimer;
         private System.Windows.Forms.Timer RightPanelTimer;
         private System.Windows.Forms.Button btn_bianji;
-        private System.Windows.Forms.Panel panel_myTeachingItem;
-        private System.Windows.Forms.PictureBox pic_myteachingUp;
-        private System.Windows.Forms.PictureBox pic_myteachingDown;
-        private System.Windows.Forms.PictureBox pic_myteachingDelete;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label txt_title;
+        private System.Windows.Forms.Panel panel_myteachingBG;
+        private System.Windows.Forms.PictureBox pic_myteachingMianban;
+        private System.Windows.Forms.PictureBox btn_myteachingShrink;
     }
 }
 
