@@ -76,6 +76,7 @@ namespace ChemistryApp
         }
 
 
+        #region 我的课表列表动画
         /// <summary>
         /// 左边收缩按钮
         /// </summary>
@@ -174,11 +175,9 @@ namespace ChemistryApp
                 }
             }
         }
+        #endregion
 
-      
-
-
-        #region 主页上四个按钮
+        #region 主页上六个按钮
         /// <summary>
         /// 化学元素按钮
         /// </summary>
@@ -219,18 +218,6 @@ namespace ChemistryApp
         {
 
         }
-        #endregion
-
-
-        /// <summary>
-        /// 搜索按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_search_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         /// <summary>
         /// 思维导图
@@ -251,7 +238,20 @@ namespace ChemistryApp
         {
 
         }
+        #endregion
+
         #region 搜索对话框事件
+
+        /// <summary>
+        /// 搜索按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// 当textbox发生变化时,显示收收缩结果
         /// </summary>
@@ -259,28 +259,28 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void TextSearch_TextChanged(object sender, EventArgs e)
         {
-            //this.listBox_searchRuslut.Visible = true;
-            //string sql = "select * from LessonList where  LessonID like '%" + this.txt_search.Text + "%'";
-            //DataSet ds = AccessDBConn.ExecuteQuery(sql);
-            //try
-            //{
-            //    this.listBox_searchRuslut.Items.Clear();
-            //    DataRow[] dr = ds.Tables["LessonList"].Select();
-            //    foreach (var item in dr)
-            //    {
-            //        this.listBox_searchRuslut.Items.Add(item["LessonID"].ToString());
-            //    }
-            //}
-            //catch (Exception exp)
-            //{
-            //    MessageBox.Show(exp.Message);
-            //}
+            this.listBox_searchRuslut.Visible = true;
+            string sql = "select * from LessonList where  LessonID like '%" + this.txt_search.Text + "%'";
+            DataSet ds = AccessDBConn.ExecuteQuery(sql);
+            try
+            {
+                this.listBox_searchRuslut.Items.Clear();
+                DataRow[] dr = ds.Tables["LessonList"].Select();
+                foreach (var item in dr)
+                {
+                    this.listBox_searchRuslut.Items.Add(item["LessonID"].ToString());
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
 
-            /////当为空的时候清空list
-            //if (this.txt_search.Text == "")
-            //{
-            //    this.listBox_searchRuslut.Items.Clear();
-            //}
+            ///当为空的时候清空list
+            if (this.txt_search.Text == "")
+            {
+                this.listBox_searchRuslut.Items.Clear();
+            }
         }
 
         /// <summary>
@@ -303,6 +303,18 @@ namespace ChemistryApp
             
         }
 
+
+        private void txt_search_Click(object sender, EventArgs e)
+        {
+            TextBox txtSearch = (TextBox)sender;
+            txtSearch.Parent.Click += new EventHandler(HideSearchRulust);
+        }
+
+        private void HideSearchRulust(object sender, EventArgs e)
+        {
+            this.listBox_searchRuslut.Visible = false;
+        }
+
         private void pic_title_Click(object sender, EventArgs e)
         {
 
@@ -313,6 +325,8 @@ namespace ChemistryApp
            
         }
 
+
+        #region 我的课表编辑按钮
         private void btn_bianji_MouseDown(object sender, MouseEventArgs e)
         {
             this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji_2;
@@ -322,18 +336,25 @@ namespace ChemistryApp
         {
             this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
         }
+        #endregion
 
+
+        /// <summary>
+        /// 我的备课动画效果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_myteachingShrink_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt16(teachingPanel.Tag.ToString()) == 1)
             {
-                teachingPanel.myTeachingTimer.Start();
+                teachingPanel.TimerStart(this.pic_myteachingMianban, this.btn_myteachingShrink);
             }
             else
             {
                 if (Convert.ToInt16(teachingPanel.Tag.ToString()) == 0)
                 {
-                    teachingPanel.myTeachingTimer.Start();
+                    teachingPanel.TimerStart(this.pic_myteachingMianban, this.btn_myteachingShrink);
                 }
             }
         }

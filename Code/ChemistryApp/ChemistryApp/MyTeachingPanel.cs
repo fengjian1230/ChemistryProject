@@ -16,7 +16,16 @@ namespace ChemistryApp
     class MyTeachingPanel : Panel
     {
         //做动画的计时器
-        public Timer myTeachingTimer;
+        private Timer myTeachingTimer;
+        /// <summary>
+        /// 我的备课的面板
+        /// </summary>
+        private PictureBox picMyTeachingMianBan;
+        /// <summary>
+        /// 我的备课动画按钮
+        /// </summary>
+        private PictureBox btnMyTeachingButton;
+
 
         public MyTeachingPanel()
         {
@@ -55,18 +64,30 @@ namespace ChemistryApp
         }
 
         /// <summary>
-        /// 定时器，做左边收缩按钮动画
+        /// 开启
+        /// </summary>
+        /// <param name="picMianban"></param>
+        /// <param name="picBtn"></param>
+        public void TimerStart(PictureBox picMianban,PictureBox picBtn)
+        {
+            this.myTeachingTimer.Start();
+            this.picMyTeachingMianBan = picMianban;
+            this.btnMyTeachingButton = picBtn;
+        }
+
+        /// <summary>
+        /// 定时器，做我的备课收缩按钮动画
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MyTeachingPlaneTimer_Tick(object sender, EventArgs e)
         {
-            int scrollWight = 20;
+            int scrollWight = 15;
             long longWidth = this.Location.X;
             //如果panel目前是隐藏的
             if (Convert.ToInt16(this.Tag.ToString()) == 0)
             {
-                if (longWidth >= 1040)
+                if (longWidth >= 1035)
                 {
                     myTeachingTimer.Enabled = false;
                     this.Tag = 1;//设置为显示标识
@@ -74,6 +95,19 @@ namespace ChemistryApp
                 }
                 else
                 {
+                    //面板动画
+                    Point mianbanPoint = new Point();
+                    mianbanPoint.X = this.picMyTeachingMianBan.Location.X + scrollWight;
+                    mianbanPoint.Y = this.picMyTeachingMianBan.Location.Y;
+                    this.picMyTeachingMianBan.Location = mianbanPoint;
+
+                    //收缩按钮动画
+                    Point btnShrinkPoint = new Point();
+                    btnShrinkPoint.X = this.btnMyTeachingButton.Location.X + scrollWight;
+                    btnShrinkPoint.Y = this.btnMyTeachingButton.Location.Y;
+                    this.btnMyTeachingButton.Location = btnShrinkPoint;
+
+                    //我的备课panele动画
                     Point m_point = new Point();
                     m_point.X = this.Location.X + scrollWight;
                     m_point.Y = this.Location.Y;
@@ -91,6 +125,19 @@ namespace ChemistryApp
                 }
                 else
                 {
+                    //面板动画
+                    Point mianbanPoint = new Point();
+                    mianbanPoint.X = this.picMyTeachingMianBan.Location.X - scrollWight;
+                    mianbanPoint.Y = this.picMyTeachingMianBan.Location.Y;
+                    this.picMyTeachingMianBan.Location = mianbanPoint;
+
+                    //收缩按钮动画
+                    Point btnShrinkPoint = new Point();
+                    btnShrinkPoint.X = this.btnMyTeachingButton.Location.X - scrollWight;
+                    btnShrinkPoint.Y = this.btnMyTeachingButton.Location.Y;
+                    this.btnMyTeachingButton.Location = btnShrinkPoint;
+
+                    //我的备课panele动画
                     Point m_point = new Point();
                     m_point.X = this.Location.X - scrollWight;
                     m_point.Y = this.Location.Y;

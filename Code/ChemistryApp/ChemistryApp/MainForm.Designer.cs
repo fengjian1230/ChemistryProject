@@ -39,11 +39,13 @@
             this.btn_shrink = new System.Windows.Forms.PictureBox();
             this.pic_titleBG = new System.Windows.Forms.PictureBox();
             this.panel_classListBG = new System.Windows.Forms.Panel();
+            this.btn_myClassSearch = new System.Windows.Forms.PictureBox();
             this.btn_bianji = new System.Windows.Forms.Button();
             this.panel_item = new System.Windows.Forms.Panel();
             this.txt_classListSerch = new System.Windows.Forms.TextBox();
             this.pic_classListSearchBG = new System.Windows.Forms.PictureBox();
             this.teachingPanel = new ChemistryApp.MyTeachingPanel();
+            this.listBox_searchRuslut = new System.Windows.Forms.ListBox();
             this.pic_close = new System.Windows.Forms.PictureBox();
             this.pic_max = new System.Windows.Forms.PictureBox();
             this.pic_min = new System.Windows.Forms.PictureBox();
@@ -62,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).BeginInit();
             this.panel_classListBG.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_myClassSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_classListSearchBG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_max)).BeginInit();
@@ -105,6 +108,7 @@
             this.MainPanel.Controls.Add(this.pic_titleBG);
             this.MainPanel.Controls.Add(this.panel_classListBG);
             this.MainPanel.Controls.Add(this.teachingPanel);
+            this.MainPanel.Controls.Add(this.listBox_searchRuslut);
             this.MainPanel.Controls.Add(this.pic_close);
             this.MainPanel.Controls.Add(this.pic_max);
             this.MainPanel.Controls.Add(this.pic_min);
@@ -127,7 +131,7 @@
             this.btn_myteachingShrink.BackColor = System.Drawing.Color.Transparent;
             this.btn_myteachingShrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_myteachingShrink.Image = global::ChemistryApp.Properties.Resources.shrinkRight;
-            this.btn_myteachingShrink.Location = new System.Drawing.Point(652, 349);
+            this.btn_myteachingShrink.Location = new System.Drawing.Point(970, 349);
             this.btn_myteachingShrink.Name = "btn_myteachingShrink";
             this.btn_myteachingShrink.Size = new System.Drawing.Size(23, 72);
             this.btn_myteachingShrink.TabIndex = 17;
@@ -141,7 +145,7 @@
             this.pic_myteachingMianban.BackColor = System.Drawing.Color.Transparent;
             this.pic_myteachingMianban.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pic_myteachingMianban.Image = global::ChemistryApp.Properties.Resources.myteachingmianban;
-            this.pic_myteachingMianban.Location = new System.Drawing.Point(662, 61);
+            this.pic_myteachingMianban.Location = new System.Drawing.Point(993, 61);
             this.pic_myteachingMianban.Name = "pic_myteachingMianban";
             this.pic_myteachingMianban.Size = new System.Drawing.Size(31, 668);
             this.pic_myteachingMianban.TabIndex = 16;
@@ -187,6 +191,7 @@
             // 
             this.panel_classListBG.BackColor = System.Drawing.Color.White;
             this.panel_classListBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel_classListBG.Controls.Add(this.btn_myClassSearch);
             this.panel_classListBG.Controls.Add(this.btn_bianji);
             this.panel_classListBG.Controls.Add(this.panel_item);
             this.panel_classListBG.Controls.Add(this.txt_classListSerch);
@@ -197,6 +202,17 @@
             this.panel_classListBG.Size = new System.Drawing.Size(0, 626);
             this.panel_classListBG.TabIndex = 0;
             this.panel_classListBG.Tag = "0";
+            // 
+            // btn_myClassSearch
+            // 
+            this.btn_myClassSearch.BackgroundImage = global::ChemistryApp.Properties.Resources.myclassSearchBtn;
+            this.btn_myClassSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_myClassSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_myClassSearch.Location = new System.Drawing.Point(245, 16);
+            this.btn_myClassSearch.Name = "btn_myClassSearch";
+            this.btn_myClassSearch.Size = new System.Drawing.Size(27, 31);
+            this.btn_myClassSearch.TabIndex = 19;
+            this.btn_myClassSearch.TabStop = false;
             // 
             // btn_bianji
             // 
@@ -243,6 +259,7 @@
             // pic_classListSearchBG
             // 
             this.pic_classListSearchBG.BackColor = System.Drawing.Color.White;
+            this.pic_classListSearchBG.BackgroundImage = global::ChemistryApp.Properties.Resources.myclassListSearchBG;
             this.pic_classListSearchBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pic_classListSearchBG.Location = new System.Drawing.Point(10, 15);
             this.pic_classListSearchBG.Name = "pic_classListSearchBG";
@@ -254,11 +271,26 @@
             // 
             this.teachingPanel.AutoScroll = true;
             this.teachingPanel.BackColor = System.Drawing.Color.White;
-            this.teachingPanel.Location = new System.Drawing.Point(693, 61);
+            this.teachingPanel.Location = new System.Drawing.Point(1023, 61);
             this.teachingPanel.Name = "teachingPanel";
             this.teachingPanel.Size = new System.Drawing.Size(330, 628);
             this.teachingPanel.TabIndex = 18;
             this.teachingPanel.Tag = 1;
+            // 
+            // listBox_searchRuslut
+            // 
+            this.listBox_searchRuslut.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox_searchRuslut.Font = new System.Drawing.Font("苹方 常规", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listBox_searchRuslut.ForeColor = System.Drawing.Color.Silver;
+            this.listBox_searchRuslut.FormattingEnabled = true;
+            this.listBox_searchRuslut.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.listBox_searchRuslut.ItemHeight = 42;
+            this.listBox_searchRuslut.Location = new System.Drawing.Point(240, 131);
+            this.listBox_searchRuslut.Name = "listBox_searchRuslut";
+            this.listBox_searchRuslut.Size = new System.Drawing.Size(552, 336);
+            this.listBox_searchRuslut.TabIndex = 19;
+            this.listBox_searchRuslut.Visible = false;
+            this.listBox_searchRuslut.SelectedIndexChanged += new System.EventHandler(this.listBox_searchRuslut_SelectedIndexChanged);
             // 
             // pic_close
             // 
@@ -312,13 +344,15 @@
             // txt_search
             // 
             this.txt_search.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_search.Font = new System.Drawing.Font("苹方 常规", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txt_search.Font = new System.Drawing.Font("苹方 常规", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txt_search.ForeColor = System.Drawing.Color.Silver;
             this.txt_search.Location = new System.Drawing.Point(257, 88);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(480, 42);
+            this.txt_search.Size = new System.Drawing.Size(480, 38);
             this.txt_search.TabIndex = 7;
             this.txt_search.Text = "搜索/Serch";
+            this.txt_search.Click += new System.EventHandler(this.txt_search_Click);
+            this.txt_search.TextChanged += new System.EventHandler(this.TextSearch_TextChanged);
             // 
             // pic_searchBG
             // 
@@ -430,6 +464,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).EndInit();
             this.panel_classListBG.ResumeLayout(false);
             this.panel_classListBG.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_myClassSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_classListSearchBG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_max)).EndInit();
@@ -472,6 +507,8 @@
         private System.Windows.Forms.Panel panel_myteachingBG;
         private System.Windows.Forms.PictureBox pic_myteachingMianban;
         private System.Windows.Forms.PictureBox btn_myteachingShrink;
+        private System.Windows.Forms.ListBox listBox_searchRuslut;
+        private System.Windows.Forms.PictureBox btn_myClassSearch;
     }
 }
 
