@@ -147,8 +147,6 @@ namespace ChemistryApp
                     this.btn_shrink.Location = btnPoint;
 
                     panel_classListBG.Width += scrollWight;
-
-                    panel_myteachingBG.Width += scrollWight;
                 }
             }
             //如果panel目前是显示的
@@ -173,7 +171,6 @@ namespace ChemistryApp
                     this.btn_shrink.Location = btnPoint;
                     this.pic_titleBG.Location = m_point;
                     panel_classListBG.Width -= scrollWight;
-                    panel_myteachingBG.Width -= scrollWight;
                 }
             }
         }
