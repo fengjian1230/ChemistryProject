@@ -40,12 +40,11 @@
             this.pic_titleBG = new System.Windows.Forms.PictureBox();
             this.panel_classListBG = new System.Windows.Forms.Panel();
             this.btn_myClassSearch = new System.Windows.Forms.PictureBox();
-            this.btn_bianji = new System.Windows.Forms.Button();
             this.panel_item = new System.Windows.Forms.Panel();
             this.txt_classListSerch = new System.Windows.Forms.TextBox();
             this.pic_classListSearchBG = new System.Windows.Forms.PictureBox();
-            this.teachingPanel = new ChemistryApp.MyTeachingPanel();
             this.listBox_searchRuslut = new System.Windows.Forms.ListBox();
+            this.teachingPanel = new ChemistryApp.MyTeachingPanel();
             this.pic_close = new System.Windows.Forms.PictureBox();
             this.pic_max = new System.Windows.Forms.PictureBox();
             this.pic_min = new System.Windows.Forms.PictureBox();
@@ -58,6 +57,7 @@
             this.btn_KnowledgeReview = new System.Windows.Forms.PictureBox();
             this.btn_MindMap = new System.Windows.Forms.PictureBox();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
+            this.btn_bianji = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).BeginInit();
@@ -107,8 +107,8 @@
             this.MainPanel.Controls.Add(this.btn_shrink);
             this.MainPanel.Controls.Add(this.pic_titleBG);
             this.MainPanel.Controls.Add(this.panel_classListBG);
-            this.MainPanel.Controls.Add(this.teachingPanel);
             this.MainPanel.Controls.Add(this.listBox_searchRuslut);
+            this.MainPanel.Controls.Add(this.teachingPanel);
             this.MainPanel.Controls.Add(this.pic_close);
             this.MainPanel.Controls.Add(this.pic_max);
             this.MainPanel.Controls.Add(this.pic_min);
@@ -145,7 +145,7 @@
             this.pic_myteachingMianban.BackColor = System.Drawing.Color.Transparent;
             this.pic_myteachingMianban.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pic_myteachingMianban.Image = global::ChemistryApp.Properties.Resources.myteachingmianban;
-            this.pic_myteachingMianban.Location = new System.Drawing.Point(993, 61);
+            this.pic_myteachingMianban.Location = new System.Drawing.Point(993, 62);
             this.pic_myteachingMianban.Name = "pic_myteachingMianban";
             this.pic_myteachingMianban.Size = new System.Drawing.Size(31, 668);
             this.pic_myteachingMianban.TabIndex = 16;
@@ -214,24 +214,6 @@
             this.btn_myClassSearch.TabIndex = 19;
             this.btn_myClassSearch.TabStop = false;
             // 
-            // btn_bianji
-            // 
-            this.btn_bianji.BackColor = System.Drawing.Color.Transparent;
-            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
-            this.btn_bianji.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_bianji.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_bianji.FlatAppearance.BorderSize = 0;
-            this.btn_bianji.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btn_bianji.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btn_bianji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_bianji.Location = new System.Drawing.Point(187, 579);
-            this.btn_bianji.Name = "btn_bianji";
-            this.btn_bianji.Size = new System.Drawing.Size(131, 41);
-            this.btn_bianji.TabIndex = 18;
-            this.btn_bianji.UseVisualStyleBackColor = false;
-            this.btn_bianji.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseDown);
-            this.btn_bianji.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseUp);
-            // 
             // panel_item
             // 
             this.panel_item.AutoScroll = true;
@@ -267,16 +249,6 @@
             this.pic_classListSearchBG.TabIndex = 1;
             this.pic_classListSearchBG.TabStop = false;
             // 
-            // teachingPanel
-            // 
-            this.teachingPanel.AutoScroll = true;
-            this.teachingPanel.BackColor = System.Drawing.Color.White;
-            this.teachingPanel.Location = new System.Drawing.Point(1023, 61);
-            this.teachingPanel.Name = "teachingPanel";
-            this.teachingPanel.Size = new System.Drawing.Size(330, 628);
-            this.teachingPanel.TabIndex = 18;
-            this.teachingPanel.Tag = 1;
-            // 
             // listBox_searchRuslut
             // 
             this.listBox_searchRuslut.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -287,10 +259,20 @@
             this.listBox_searchRuslut.ItemHeight = 42;
             this.listBox_searchRuslut.Location = new System.Drawing.Point(240, 131);
             this.listBox_searchRuslut.Name = "listBox_searchRuslut";
-            this.listBox_searchRuslut.Size = new System.Drawing.Size(552, 336);
+            this.listBox_searchRuslut.Size = new System.Drawing.Size(552, 42);
             this.listBox_searchRuslut.TabIndex = 19;
             this.listBox_searchRuslut.Visible = false;
             this.listBox_searchRuslut.SelectedIndexChanged += new System.EventHandler(this.listBox_searchRuslut_SelectedIndexChanged);
+            // 
+            // teachingPanel
+            // 
+            this.teachingPanel.AutoScroll = true;
+            this.teachingPanel.BackColor = System.Drawing.Color.White;
+            this.teachingPanel.Location = new System.Drawing.Point(1023, 61);
+            this.teachingPanel.Name = "teachingPanel";
+            this.teachingPanel.Size = new System.Drawing.Size(330, 628);
+            this.teachingPanel.TabIndex = 18;
+            this.teachingPanel.Tag = 1;
             // 
             // pic_close
             // 
@@ -444,6 +426,24 @@
             this.btn_ExperlmentalPlatform.TabStop = false;
             this.btn_ExperlmentalPlatform.Click += new System.EventHandler(this.btn_ExperlmentalPlatform_Click);
             // 
+            // btn_bianji
+            // 
+            this.btn_bianji.BackColor = System.Drawing.Color.Transparent;
+            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
+            this.btn_bianji.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_bianji.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_bianji.FlatAppearance.BorderSize = 0;
+            this.btn_bianji.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_bianji.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_bianji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_bianji.Location = new System.Drawing.Point(187, 579);
+            this.btn_bianji.Name = "btn_bianji";
+            this.btn_bianji.Size = new System.Drawing.Size(131, 41);
+            this.btn_bianji.TabIndex = 18;
+            this.btn_bianji.UseVisualStyleBackColor = false;
+            this.btn_bianji.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseDown);
+            this.btn_bianji.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseUp);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -503,12 +503,12 @@
         private System.Windows.Forms.PictureBox btn_shrink;
         private System.Windows.Forms.Timer LeftPlaneTimer;
         private System.Windows.Forms.Timer RightPanelTimer;
-        private System.Windows.Forms.Button btn_bianji;
         private System.Windows.Forms.Panel panel_myteachingBG;
         private System.Windows.Forms.PictureBox pic_myteachingMianban;
         private System.Windows.Forms.PictureBox btn_myteachingShrink;
         private System.Windows.Forms.ListBox listBox_searchRuslut;
         private System.Windows.Forms.PictureBox btn_myClassSearch;
+        private System.Windows.Forms.Button btn_bianji;
     }
 }
 

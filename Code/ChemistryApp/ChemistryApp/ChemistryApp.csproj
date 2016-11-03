@@ -435,6 +435,18 @@
   <ItemGroup>
     <None Include="Resources\myclassSearchBtn.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bendiziyuan%28norml%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bendiziyuan%28xuanting%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yijianshengcheng%28norml%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yijianshengcheng%28xuanting%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

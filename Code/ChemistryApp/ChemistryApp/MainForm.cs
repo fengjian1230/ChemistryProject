@@ -17,8 +17,10 @@ namespace ChemistryApp
         /// 存储左边lessonitem
         /// </summary>
         List<Panel> panelItem;
+        /// <summary>
+        /// 我的备课panel
+        /// </summary>
         MyTeachingPanel teachingPanel;
-
         public MainForm()
         {
             InitializeComponent();

@@ -113,6 +113,26 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap bendiziyuan_norml_ {
+            get {
+                object obj = ResourceManager.GetObject("bendiziyuan(norml)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap bendiziyuan_xuanting_ {
+            get {
+                object obj = ResourceManager.GetObject("bendiziyuan(xuanting)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap BG {
             get {
                 object obj = ResourceManager.GetObject("BG", resourceCulture);
@@ -476,6 +496,26 @@ namespace ChemistryApp.Properties {
         internal static System.Drawing.Bitmap title {
             get {
                 object obj = ResourceManager.GetObject("title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap yijianshengcheng_norml_ {
+            get {
+                object obj = ResourceManager.GetObject("yijianshengcheng(norml)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap yijianshengcheng_xuanting_ {
+            get {
+                object obj = ResourceManager.GetObject("yijianshengcheng(xuanting)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
