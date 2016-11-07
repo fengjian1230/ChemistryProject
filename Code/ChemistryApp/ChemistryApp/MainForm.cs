@@ -8,15 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using ADOX;
+using System.Data.OleDb;
+using ChemistryApp.MyLesson;
 
 namespace ChemistryApp
 {
     public partial class MainForm : Form
     {
-        /// <summary>
-        /// 存储左边lessonitem
-        /// </summary>
-        List<Panel> panelItem;
         /// <summary>
         /// 我的备课panel
         /// </summary>
@@ -36,16 +35,13 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+           
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
-
-            panelItem = new List<Panel>();
             //初始位置
             this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2);
             this.Size = new Size(mainFormWidth, mainFormWidth);
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -86,33 +82,20 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void BtnShrink_Click(object sender, EventArgs e)
         {
-            panelItem.Clear();
             //创建panel
-            for (int i = 0; i < 20; i++)
-            {
-                MyLessonItem item = new MyLessonItem();
-                panelItem.Add(item.CreateControl(10, i * (140 + 10)));
-                this.panel_item.Controls.Add(panelItem[i]);
-            }
-
+            //MyLessonItem item = new MyLessonItem();
+            //panelItem.Add(item.CreateControl(10, 0 * (140 + 10)));
+            //this.panel_item.Controls.Add(panelItem[0]);
 
             if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 1)
             {
                 LeftPlaneTimer.Start();
-                //panel_classListBG.Tag = 0;
-                //this.panel_classListBG.Size = new Size(0, 626);
-                //this.btn_shrink.Location = new Point(28, 349);
-                //this.pic_titleBG.Location = new Point(0, 48);
             }
             else
             {
                 if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 0)
                 {
-                    LeftPlaneTimer.Start();
-                    //panel_classListBG.Tag = 1;
-                    //this.panel_classListBG.Size = new Size(330, 626);
-                    //this.btn_shrink.Location = new Point(358, 349);
-                    //this.pic_titleBG.Location = new Point(328, 48);     
+                    LeftPlaneTimer.Start();  
                 }
             }
         }
@@ -197,7 +180,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_KnowledgeReview_Click(object sender, EventArgs e)
         {
-            MyLessonItem item = new MyLessonItem();
+            //MyLessonItem item = new MyLessonItem();
             
         }
 
@@ -243,7 +226,6 @@ namespace ChemistryApp
         #endregion
 
         #region 搜索对话框事件
-
         /// <summary>
         /// 搜索按钮
         /// </summary>
@@ -262,15 +244,15 @@ namespace ChemistryApp
         private void TextSearch_TextChanged(object sender, EventArgs e)
         {
             this.listBox_searchRuslut.Visible = true;
-            string sql = "select * from LessonList where  LessonID like '%" + this.txt_search.Text + "%'";
-            DataSet ds = AccessDBConn.ExecuteQuery(sql);
+            string sql = "select * from LessonList where  LessonTitel like '%" + this.txt_search.Text + "%'";
+            DataSet ds = AccessDBConn.ExecuteQuery(sql, "LessonList");
             try
             {
                 this.listBox_searchRuslut.Items.Clear();
                 DataRow[] dr = ds.Tables["LessonList"].Select();
                 foreach (var item in dr)
                 {
-                    this.listBox_searchRuslut.Items.Add(item["LessonID"].ToString());
+                    this.listBox_searchRuslut.Items.Add(item["LessonTitle"].ToString());
                 }
             }
             catch (Exception exp)
@@ -292,7 +274,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void txt_search_Leave(object sender, EventArgs e)
         {
-            //this.listBox_searchRuslut.Visible = false;
+          
         }
 
         /// <summary>
@@ -358,6 +340,16 @@ namespace ChemistryApp
                 {
                     teachingPanel.TimerStart(this.pic_myteachingMianban, this.btn_myteachingShrink);
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ////创建item
+            MyLessonItemManager.GetInstace.CreateMyLessonItem();
+            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+            {
+                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
             }
         }
     }

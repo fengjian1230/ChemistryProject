@@ -66,22 +66,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessDBConn.cs" />
+    <Compile Include="AccessDB\AccessDBConn.cs" />
+    <Compile Include="AccessDB\AccessPage.cs" />
     <Compile Include="BackGroundPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ControlPPT.cs" />
-    <Compile Include="ControlWord.cs" />
-    <Compile Include="LessonItem.cs" />
+    <Compile Include="ControlPPT\ControlPPT.cs" />
+    <Compile Include="ControlPPT\ControlWord.cs" />
+    <Compile Include="MyLesson\LessonItem.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyLessonItem.cs" />
-    <Compile Include="MyTeachingItem.cs" />
-    <Compile Include="MyTeachingPanel.cs">
+    <Compile Include="MyLesson\MyLessonItem.cs" />
+    <Compile Include="MyLesson\MyLessonItemManager.cs" />
+    <Compile Include="MyTeaching\MyTeachingItem.cs" />
+    <Compile Include="MyTeaching\MyTeachingPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -89,7 +91,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyTeachingPanel.resx">
+    <EmbeddedResource Include="MyTeaching\MyTeachingPanel.resx">
       <DependentUpon>MyTeachingPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -116,6 +118,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="AxDSOFramer">
       <Guid>{00460180-9E5E-11D5-B7C8-B8269041DD57}</Guid>
       <VersionMajor>1</VersionMajor>

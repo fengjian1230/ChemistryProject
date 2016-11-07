@@ -46,6 +46,7 @@ namespace ChemistryApp
             SetStyle(ControlStyles.DoubleBuffer, true);
         }
 
+        #region 初始化
         private void InitializeComponent()
         {
             //timer
@@ -132,6 +133,7 @@ namespace ChemistryApp
             this.btn_bendiziyuan.Click += new EventHandler(btn_bendiziyuan_Click);
             this.btn_yijianshengcheng.Click += new EventHandler(btn_yijianshengcheng_Click);
         }
+        #endregion
 
         #region 按钮变换动画 和点击事件
         //本地资源按钮变换事件

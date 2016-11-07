@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.OleDb;
 using System.Diagnostics;
+using ADOX;
+using System.IO;
+using System.Windows.Forms;
 
 namespace ChemistryApp
 {
@@ -21,7 +24,7 @@ namespace ChemistryApp
 
         }
 
-        public static int ExecuteInsert(string strSql,OleDbParameter[] parameters)
+        public static int ExecuteInsert(string strSql, OleDbParameter[] parameters)
         {
             using (OleDbConnection conn = new OleDbConnection(strConn))
             {
@@ -91,7 +94,7 @@ namespace ChemistryApp
         /// <param name="sql">sql语句</param>
         /// <param name="parameters">参数</param>
         /// <returns></returns>
-        public static int ExecuteScalar(string sql,OleDbParameter[] parameters)
+        public static int ExecuteScalar(string sql, OleDbParameter[] parameters)
         {
             using (OleDbConnection connection = new OleDbConnection(strConn))
             {
@@ -123,7 +126,7 @@ namespace ChemistryApp
         /// </summary>
         /// <param name="sqlList"></param>
         /// <param name="paraList"></param>
-        public static void ExecuteTrans(List<string> sqlList,List<OleDbParameter[]> paraList)
+        public static void ExecuteTrans(List<string> sqlList, List<OleDbParameter[]> paraList)
         {
             using (OleDbConnection connection = new OleDbConnection(strConn))
             {
@@ -139,7 +142,7 @@ namespace ChemistryApp
                     for (int i = 0; i < sqlList.Count; i++)
                     {
                         cmd.CommandText = sqlList[i];
-                        if (paraList !=null && paraList[i] != null)
+                        if (paraList != null && paraList[i] != null)
                         {
                             cmd.Parameters.Clear();
                             cmd.Parameters.AddRange(paraList[i]);
@@ -174,9 +177,9 @@ namespace ChemistryApp
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public static DataSet ExecuteQuery(string sql,OleDbParameter[] parameters)
+        public static DataSet ExecuteQuery(string sql, OleDbParameter[] parameters, string tableName)
         {
-            
+
             using (OleDbConnection connection = new OleDbConnection(strConn))
             {
                 DataSet ds = new DataSet();
@@ -188,7 +191,7 @@ namespace ChemistryApp
                     {
                         da.SelectCommand.Parameters.AddRange(parameters);
                     }
-                    da.Fill(ds, "LessonList");
+                    da.Fill(ds, tableName);
 
                 }
                 catch (Exception)
@@ -198,12 +201,12 @@ namespace ChemistryApp
                 }
                 return ds;
             }
-            
+
         }
 
-        public static DataSet ExecuteQuery(string sql)
+        public static DataSet ExecuteQuery(string sql,string tableName)
         {
-            return ExecuteQuery(sql, null);
+            return ExecuteQuery(sql, null,tableName);
         }
 
         /// <summary>
@@ -227,6 +230,46 @@ namespace ChemistryApp
             }
         }
 
-
+        /// <summary>
+        /// 在access数据库中创建表
+        /// </summary>
+        /// <param name="filePath">数据库表文件全路径如D:\\NewDb.mdb 没有则创建 </param> 
+        /// <param name="tableName">表名</param>
+        /// <param name="colums">ADOX.Column对象数组</param>
+        public static void CreateAccessTable(string tableName, params ADOX.Column[] colums)
+        {
+            try
+            {
+                ADOX.Catalog catalog = new Catalog();
+                //数据库文件不存在则创建
+                ADODB.Connection cn = new ADODB.Connection();
+                cn.Open(strConn, null, null, -1);
+                catalog.ActiveConnection = cn;
+                ADOX.Table table = new ADOX.Table();
+                table.Name = tableName;
+                foreach (var column in colums)
+                {
+                    table.Columns.Append(column);
+                }
+                // column.ParentCatalog = catalog; 
+                //column.Properties["AutoIncrement"].Value = true; //设置自动增长
+                //table.Keys.Append("FirstTablePrimaryKey", KeyTypeEnum.adKeyPrimary, column, null, null); //定义主键
+                catalog.Tables.Append(table);
+                cn.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                
+            }
+           
+        }
+        //========================================================================================调用
+        //ADOX.Column[] columns = {
+        //                     new ADOX.Column(){Name="id",Type=DataTypeEnum.adInteger,DefinedSize=9},
+        //                     new ADOX.Column(){Name="col1",Type=DataTypeEnum.adWChar,DefinedSize=50},
+        //                     new ADOX.Column(){Name="col2",Type=DataTypeEnum.adLongVarChar,DefinedSize=50}
+        //                 };
+        // AccessDbHelper.CreateAccessTable("d:\\111.mdb", "testTable", columns);
     }
 }

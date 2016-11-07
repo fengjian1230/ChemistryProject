@@ -33,6 +33,7 @@
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_myteachingShrink = new System.Windows.Forms.PictureBox();
             this.pic_myteachingMianban = new System.Windows.Forms.PictureBox();
             this.panel_myteachingBG = new System.Windows.Forms.Panel();
@@ -40,6 +41,7 @@
             this.pic_titleBG = new System.Windows.Forms.PictureBox();
             this.panel_classListBG = new System.Windows.Forms.Panel();
             this.btn_myClassSearch = new System.Windows.Forms.PictureBox();
+            this.btn_bianji = new System.Windows.Forms.Button();
             this.panel_item = new System.Windows.Forms.Panel();
             this.txt_classListSerch = new System.Windows.Forms.TextBox();
             this.pic_classListSearchBG = new System.Windows.Forms.PictureBox();
@@ -57,7 +59,6 @@
             this.btn_KnowledgeReview = new System.Windows.Forms.PictureBox();
             this.btn_MindMap = new System.Windows.Forms.PictureBox();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
-            this.btn_bianji = new System.Windows.Forms.Button();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).BeginInit();
@@ -101,6 +102,7 @@
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景;
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MainPanel.Controls.Add(this.button1);
             this.MainPanel.Controls.Add(this.btn_myteachingShrink);
             this.MainPanel.Controls.Add(this.pic_myteachingMianban);
             this.MainPanel.Controls.Add(this.panel_myteachingBG);
@@ -125,6 +127,16 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(374, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_myteachingShrink
             // 
@@ -213,6 +225,24 @@
             this.btn_myClassSearch.Size = new System.Drawing.Size(27, 31);
             this.btn_myClassSearch.TabIndex = 19;
             this.btn_myClassSearch.TabStop = false;
+            // 
+            // btn_bianji
+            // 
+            this.btn_bianji.BackColor = System.Drawing.Color.Transparent;
+            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
+            this.btn_bianji.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_bianji.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_bianji.FlatAppearance.BorderSize = 0;
+            this.btn_bianji.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_bianji.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_bianji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_bianji.Location = new System.Drawing.Point(187, 579);
+            this.btn_bianji.Name = "btn_bianji";
+            this.btn_bianji.Size = new System.Drawing.Size(131, 41);
+            this.btn_bianji.TabIndex = 18;
+            this.btn_bianji.UseVisualStyleBackColor = false;
+            this.btn_bianji.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseDown);
+            this.btn_bianji.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseUp);
             // 
             // panel_item
             // 
@@ -426,24 +456,6 @@
             this.btn_ExperlmentalPlatform.TabStop = false;
             this.btn_ExperlmentalPlatform.Click += new System.EventHandler(this.btn_ExperlmentalPlatform_Click);
             // 
-            // btn_bianji
-            // 
-            this.btn_bianji.BackColor = System.Drawing.Color.Transparent;
-            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
-            this.btn_bianji.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_bianji.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_bianji.FlatAppearance.BorderSize = 0;
-            this.btn_bianji.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btn_bianji.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btn_bianji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_bianji.Location = new System.Drawing.Point(187, 579);
-            this.btn_bianji.Name = "btn_bianji";
-            this.btn_bianji.Size = new System.Drawing.Size(131, 41);
-            this.btn_bianji.TabIndex = 18;
-            this.btn_bianji.UseVisualStyleBackColor = false;
-            this.btn_bianji.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseDown);
-            this.btn_bianji.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseUp);
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -509,6 +521,7 @@
         private System.Windows.Forms.ListBox listBox_searchRuslut;
         private System.Windows.Forms.PictureBox btn_myClassSearch;
         private System.Windows.Forms.Button btn_bianji;
+        private System.Windows.Forms.Button button1;
     }
 }
 
