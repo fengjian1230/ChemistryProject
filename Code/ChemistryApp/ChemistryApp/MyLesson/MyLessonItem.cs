@@ -144,7 +144,24 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void TopLabelClick(object sender, EventArgs e)
         {
-
+            Label pic = (Label)sender;
+            Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
+            Label label = (Label)control;
+            string sqlStr = "select * from LessonList where  LessonTitle like '%" + label.Text + "%'";
+            DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
+            try
+            {
+                DataRow[] dr = ds.Tables["LessonList"].Select();
+                foreach (var item in dr)
+                {
+                    MessageBox.Show(item["ListID"].ToString());
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>

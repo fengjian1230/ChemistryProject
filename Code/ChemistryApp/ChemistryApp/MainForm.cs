@@ -82,10 +82,6 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void BtnShrink_Click(object sender, EventArgs e)
         {
-            //创建panel
-            //MyLessonItem item = new MyLessonItem();
-            //panelItem.Add(item.CreateControl(10, 0 * (140 + 10)));
-            //this.panel_item.Controls.Add(panelItem[0]);
 
             if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 1)
             {
@@ -267,25 +263,6 @@ namespace ChemistryApp
             }
         }
 
-        /// <summary>
-        /// 当输入框失去焦点时不显示搜索结果
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txt_search_Leave(object sender, EventArgs e)
-        {
-          
-        }
-
-        /// <summary>
-        /// 失去焦点时
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txt_search_Enter(object sender, EventArgs e)
-        {
-            
-        }
 
 
         private void txt_search_Click(object sender, EventArgs e)
