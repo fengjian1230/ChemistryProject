@@ -244,7 +244,7 @@ namespace ChemistryApp
         private void TextSearch_TextChanged(object sender, EventArgs e)
         {
             this.listBox_searchRuslut.Visible = true;
-            string sql = "select * from LessonList where  LessonTitel like '%" + this.txt_search.Text + "%'";
+            string sql = "select * from LessonList where  LessonTitle like '%" + this.txt_search.Text + "%'";
             DataSet ds = AccessDBConn.ExecuteQuery(sql, "LessonList");
             try
             {
@@ -351,6 +351,8 @@ namespace ChemistryApp
             {
                 this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
             }
+
+            teachingPanel.CreateTeachingItem();
         }
     }
     #endregion

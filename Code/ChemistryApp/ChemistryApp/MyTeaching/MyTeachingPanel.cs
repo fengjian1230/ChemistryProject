@@ -38,6 +38,17 @@ namespace ChemistryApp
         /// 一键生成
         /// </summary>
         private Button btn_yijianshengcheng;
+        /// 用来存放所有的课件Item
+        /// </summary>
+        public List<Panel> listPanelItem;
+        /// <summary>
+        /// 用来存放所有课件item 位置，用于置顶
+        /// </summary>
+        public List<Point> listPanelItemPoint;
+        /// <summary>
+        /// item的类型
+        /// </summary>
+        public TeachingItemType itemType = TeachingItemType.PPT;
         public MyTeachingPanel()
         {
             InitializeComponent();
@@ -112,14 +123,10 @@ namespace ChemistryApp
             this.btn_yijianshengcheng.Size = new System.Drawing.Size(131, 41);
             this.btn_yijianshengcheng.TabIndex = 20;
             this.btn_yijianshengcheng.UseVisualStyleBackColor = false;
-
+           
             this.Controls.Add(panelMyTeachingItemBG);
             this.Controls.Add(btn_bendiziyuan);
             this.Controls.Add(btn_yijianshengcheng);
-
-            //在panel中显示出来
-            MyTeachingItem teachingItem = new MyTeachingItem();
-            this.panelMyTeachingItemBG.Controls.Add(teachingItem.MyTeachingItemPanel(17, 300));
 
             //本地资源按钮悬停
             this.btn_bendiziyuan.MouseDown += new MouseEventHandler(btn_bendiziyuan_MouseDown);
@@ -180,7 +187,23 @@ namespace ChemistryApp
             this.btnMyTeachingButton = picBtn;
         }
 
-
+        /// <summary>
+        /// 创建item
+        /// </summary>
+        public void CreateTeachingItem()
+        {
+            //从数据库中读取数据
+            string sqlStr = "select * from MyTeaching"; //(select LessonContent from LessonList where ID = 1)";
+            DataSet data = AccessDBConn.ExecuteQuery(sqlStr, "MyTeaching");
+            DataRow[] dataRow = data.Tables["MyTeaching"].Select();
+            //创建itempanel
+            for (int i = 0; i < dataRow.Count(); i++)
+            {
+                //在panel中显示出来
+                MyTeachingItem teachingItem = new MyTeachingItem();
+                this.panelMyTeachingItemBG.Controls.Add(teachingItem.MyTeachingItemPanel(20, i * (80 + 10) + 50, dataRow[i]["TeachingTitle"].ToString(), dataRow[i]["TeachingType"].ToString()));
+            }
+        }
 
         #region 定时器
         /// <summary>
