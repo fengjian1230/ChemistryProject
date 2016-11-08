@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using ChemistryApp.EnumType;
 
 namespace ChemistryApp
 {
@@ -193,7 +194,7 @@ namespace ChemistryApp
         public void CreateTeachingItem()
         {
             //从数据库中读取数据
-            string sqlStr = "select * from MyTeaching"; //(select LessonContent from LessonList where ID = 1)";
+            string sqlStr = "select * from MyTeaching order by TeachingSort asc"; //(select LessonContent from LessonList where ID = 1)";
             DataSet data = AccessDBConn.ExecuteQuery(sqlStr, "MyTeaching");
             DataRow[] dataRow = data.Tables["MyTeaching"].Select();
             //创建itempanel

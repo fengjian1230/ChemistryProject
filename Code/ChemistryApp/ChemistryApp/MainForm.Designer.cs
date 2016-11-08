@@ -243,6 +243,7 @@
             this.btn_bianji.UseVisualStyleBackColor = false;
             this.btn_bianji.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseDown);
             this.btn_bianji.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseUp);
+            this.btn_bianji.Click += new System.EventHandler(this.btn_bianji_Click);
             // 
             // panel_item
             // 

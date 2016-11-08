@@ -11,6 +11,7 @@ using System.Diagnostics;
 using ADOX;
 using System.Data.OleDb;
 using ChemistryApp.MyLesson;
+using ChemistryApp.EnumType;
 
 namespace ChemistryApp
 {
@@ -297,6 +298,40 @@ namespace ChemistryApp
         {
             this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
         }
+       
+        /// <summary>
+        /// 点击编辑按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_bianji_Click(object sender,EventArgs e)
+        {
+            if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji && MyLessonItemManager.GetInstace.state == LessonState.Open)
+            {
+                for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+                {
+                    Point point = new Point();
+                    point.X = MyLessonItemManager.GetInstace.listPanelItem[i].Location.X - 50;
+                    point.Y = MyLessonItemManager.GetInstace.listPanelItem[i].Location.Y;
+                    MyLessonItemManager.GetInstace.listPanelItem[i].Location = point;
+                    MyLessonItemManager.GetInstace.listPanelItem[i].Size = new Size(329, 140);
+                }
+                MyLessonItemManager.GetInstace.bianjiState = BianJiState.Wancheng;
+            }
+            else if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Wancheng)
+            {
+                for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+                {
+                    Point point = new Point();
+                    point.X = 0;
+                    point.Y = MyLessonItemManager.GetInstace.listPanelItem[i].Location.Y;
+                    MyLessonItemManager.GetInstace.listPanelItem[i].Location = point;
+                    MyLessonItemManager.GetInstace.listPanelItem[i].Size = new Size(279, 140);
+                }
+                MyLessonItemManager.GetInstace.bianjiState = BianJiState.Bianji;
+            }
+            
+        }
         #endregion
 
 
@@ -323,13 +358,15 @@ namespace ChemistryApp
         private void button1_Click(object sender, EventArgs e)
         {
             ////创建item
-            MyLessonItemManager.GetInstace.CreateMyLessonItem();
-            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
-            {
-                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
-            }
+            //MyLessonItemManager.GetInstace.CreateMyLessonItem();
+            //for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+            //{
+            //    this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
+            //}
 
-            teachingPanel.CreateTeachingItem();
+            //teachingPanel.CreateTeachingItem();
+          
+
         }
     }
     #endregion

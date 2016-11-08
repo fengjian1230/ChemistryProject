@@ -10,19 +10,7 @@ using System.Windows.Forms;
 
 namespace ChemistryApp
 {
-    /// <summary>
-    /// 我的课件类型
-    /// </summary>
-    public enum TeachingItemType
-    {
-        PPT = 0,  //PPT
-        Video,    //视频
-        MandMap,  //思维导图
-        Example,  //习题
-        Test,     //实验
-        RreactionEquation //反应方程
-    }
-
+    
     /// <summary>
     /// 我的课件内容
     /// </summary>
@@ -34,6 +22,7 @@ namespace ChemistryApp
         private System.Windows.Forms.PictureBox pic_myteachingDelete;
         private System.Windows.Forms.PictureBox pic_myteachingDown;
         private System.Windows.Forms.PictureBox pic_myteachingUp;
+
         public MyTeachingItem()
         {
             panel_myTeachingItem = new Panel();
@@ -42,6 +31,7 @@ namespace ChemistryApp
             pic_myteachingDown = new PictureBox();
             pic_myteachingUp = new PictureBox();
             pic_typeIcon = new PictureBox();
+
         }
 
         #region 创建item
@@ -52,7 +42,7 @@ namespace ChemistryApp
             // 
             this.panel_myTeachingItem.BackColor = System.Drawing.Color.Transparent;
             this.panel_myTeachingItem.BackgroundImage = global::ChemistryApp.Properties.Resources.myteachingItemBG;
-            this.panel_myTeachingItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel_myTeachingItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel_myTeachingItem.Controls.Add(this.txt_myTeachingTitle);
             this.panel_myTeachingItem.Controls.Add(this.pic_typeIcon);
             this.panel_myTeachingItem.Controls.Add(this.pic_myteachingDelete);
@@ -62,6 +52,7 @@ namespace ChemistryApp
             this.panel_myTeachingItem.Name = "panel_myTeachingItem";
             this.panel_myTeachingItem.Size = new System.Drawing.Size(279, 70);
             this.panel_myTeachingItem.TabIndex = 0;
+            
             // 
             // pic_myteachingUp
             // 

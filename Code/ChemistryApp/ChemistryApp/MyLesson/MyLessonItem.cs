@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChemistryApp.MyLesson;
+using ChemistryApp.EnumType;
 
 /// <summary>
 /// 创建左边收缩panel中的课时item
@@ -24,6 +26,8 @@ namespace ChemistryApp
         private System.Windows.Forms.PictureBox pic_book;
         private System.Windows.Forms.Label lab_className;
         private System.Windows.Forms.Label lab_tips;
+        private System.Windows.Forms.PictureBox pic_delete;
+        
         /// <summary>
         #endregion
 
@@ -41,6 +45,7 @@ namespace ChemistryApp
             lab_tips = new Label();
             pic_top = new PictureBox();
             pic_book = new PictureBox();
+            pic_delete = new PictureBox();
         }
         #endregion
 
@@ -62,11 +67,22 @@ namespace ChemistryApp
             this.panelItem.Controls.Add(this.lab_open);
             this.panelItem.Controls.Add(this.lab_top);
             this.panelItem.Controls.Add(this.pic_top);
+            this.panelItem.Controls.Add(this.pic_delete);
             this.panelItem.Font = new System.Drawing.Font("苹方 特粗", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.panelItem.Location = new System.Drawing.Point(posX, posY);
             this.panelItem.Name = "panelItem";
             this.panelItem.Size = new System.Drawing.Size(279, 140);
             this.panelItem.TabIndex = 1;
+            ///删除键
+            this.pic_delete.Name = "pic_delete";
+            this.pic_delete.Size = new Size(15, 15);
+            this.pic_delete.BackgroundImage = global::ChemistryApp.Properties.Resources.删除键;
+            this.pic_delete.Location = new System.Drawing.Point(315, 70);
+            this.pic_delete.TabIndex = 0;
+            this.pic_delete.Cursor = Cursors.Hand;
+            this.pic_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pic_delete.BackColor = System.Drawing.Color.Transparent;
+            this.pic_delete.Click += new EventHandler(this.BtnDelete_Click);
             // 
             // pictureBox2
             // 
@@ -136,6 +152,8 @@ namespace ChemistryApp
         }
         #endregion
 
+
+
         #region 事件
         /// <summary>
         /// 置顶按钮点击事件
@@ -144,6 +162,8 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void TopLabelClick(object sender, EventArgs e)
         {
+            int topIndex = 0;
+            //拿到ID可以从数据库中读取然后置顶
             Label pic = (Label)sender;
             Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
             Label label = (Label)control;
@@ -152,9 +172,23 @@ namespace ChemistryApp
             try
             {
                 DataRow[] dr = ds.Tables["LessonList"].Select();
+
+                int index = int.Parse(dr[0]["ListID"].ToString());
+                MyLessonItemManager.GetInstace.listPanelItem[index].Location = MyLessonItemManager.GetInstace.listPanelItemPoint[topIndex];
+               
+                for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+                {
+                    if (i != index)
+                    {
+                        topIndex++;
+                        MyLessonItemManager.GetInstace.listPanelItem[i].Location = MyLessonItemManager.GetInstace.listPanelItemPoint[topIndex];
+
+                    }
+                }
                 foreach (var item in dr)
                 {
-                    MessageBox.Show(item["ListID"].ToString());
+                    
+                    
                 }
                
             }
@@ -171,7 +205,49 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void OpenLabelClick(object sender,EventArgs e)
         {
+            int itemLength = 0;
+            Label pic = (Label)sender;
+            Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
+            Label label = (Label)control;
+            pic.Parent.BackgroundImageLayout = ImageLayout.None;
+            for (int i = 0; i < MyLessonItemManager.GetInstace.ChildItemNum.Count; i++)
+            {
+                if (MyLessonItemManager.GetInstace.ChildItemNum.ContainsKey(label.Text))
+                {
+                    itemLength = MyLessonItemManager.GetInstace.ChildItemNum[label.Text];
+                }
+            }
+            if (MyLessonItemManager.GetInstace.state == LessonState.Close)
+            {
+                pic.Text = "展开";
+                MyLessonItemManager.GetInstace.state = LessonState.Open;
+                pic.Parent.Size = new Size(pic.Parent.Size.Width, 140);
+            }
+            else if (MyLessonItemManager.GetInstace.state == LessonState.Open && MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji)
+            {
+                pic.Text = "折叠";
+                pic.Parent.Size = new Size(pic.Parent.Size.Width, 140 + itemLength * 30);
+                MyLessonItemManager.GetInstace.state = LessonState.Close;
+            }
+           
+        }
 
+        /// <summary>
+        /// 删除按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDelete_Click(object sender,EventArgs e)
+        {
+            PictureBox pic = (PictureBox)sender;
+            Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
+            Label label = (Label)control;
+            string sqlStr = "delete from LessonList where LessonTitle = '" + label.Text + "'";
+            int i = AccessDBConn.ExecuteNonQuery(sqlStr);
+            if (i != 0)
+            {
+                MessageBox.Show("删除完成");
+            }
         }
 
         #endregion

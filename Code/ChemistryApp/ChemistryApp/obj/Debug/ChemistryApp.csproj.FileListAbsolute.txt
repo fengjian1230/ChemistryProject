@@ -43,4 +43,3 @@ F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.MyTeachingPanel.resources
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\Interop.ADOX.dll
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\Interop.ADODB.dll
-F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.csprojResolveAssemblyReference.cache
