@@ -35,6 +35,10 @@ namespace ChemistryApp.MyLesson
         /// </summary>
         public BianJiState bianjiState = BianJiState.Bianji;
         /// <summary>
+        /// 当删除完成后
+        /// </summary>
+        public Action OnDeleteFinish;
+        /// <summary>
         /// 课程的个数
         /// </summary>
         private Dictionary<string,int> childItemNum;

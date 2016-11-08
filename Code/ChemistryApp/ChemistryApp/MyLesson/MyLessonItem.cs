@@ -162,40 +162,44 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void TopLabelClick(object sender, EventArgs e)
         {
-            int topIndex = 0;
-            //拿到ID可以从数据库中读取然后置顶
-            Label pic = (Label)sender;
-            Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
-            Label label = (Label)control;
-            string sqlStr = "select * from LessonList where  LessonTitle like '%" + label.Text + "%'";
-            DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
-            try
+            if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji)
             {
-                DataRow[] dr = ds.Tables["LessonList"].Select();
-
-                int index = int.Parse(dr[0]["ListID"].ToString());
-                MyLessonItemManager.GetInstace.listPanelItem[index].Location = MyLessonItemManager.GetInstace.listPanelItemPoint[topIndex];
-               
-                for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+                int topIndex = 0;
+                //拿到ID可以从数据库中读取然后置顶
+                Label pic = (Label)sender;
+                Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
+                Label label = (Label)control;
+                string sqlStr = "select * from LessonList where  LessonTitle like '%" + label.Text + "%'";
+                DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
+                try
                 {
-                    if (i != index)
+                    DataRow[] dr = ds.Tables["LessonList"].Select();
+
+                    int index = int.Parse(dr[0]["ListID"].ToString());
+                    MyLessonItemManager.GetInstace.listPanelItem[index].Location = MyLessonItemManager.GetInstace.listPanelItemPoint[topIndex];
+
+                    for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
                     {
-                        topIndex++;
-                        MyLessonItemManager.GetInstace.listPanelItem[i].Location = MyLessonItemManager.GetInstace.listPanelItemPoint[topIndex];
+                        if (i != index)
+                        {
+                            topIndex++;
+                            MyLessonItemManager.GetInstace.listPanelItem[i].Location = MyLessonItemManager.GetInstace.listPanelItemPoint[topIndex];
+
+                        }
+                    }
+                    foreach (var item in dr)
+                    {
+
 
                     }
+
                 }
-                foreach (var item in dr)
+                catch (Exception ex)
                 {
-                    
-                    
+                    MessageBox.Show(ex.Message);
                 }
-               
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
 
         /// <summary>
@@ -246,7 +250,7 @@ namespace ChemistryApp
             int i = AccessDBConn.ExecuteNonQuery(sqlStr);
             if (i != 0)
             {
-                MessageBox.Show("删除完成");
+                MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
             }
         }
 

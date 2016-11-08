@@ -64,6 +64,7 @@ namespace ChemistryApp
             this.pic_myteachingUp.Size = new System.Drawing.Size(15, 15);
             this.pic_myteachingUp.TabIndex = 0;
             this.pic_myteachingUp.TabStop = false;
+            this.pic_myteachingUp.Click += new EventHandler(PicUp_Click);
             // 
             // pic_myteachingDown
             // 
@@ -75,6 +76,7 @@ namespace ChemistryApp
             this.pic_myteachingDown.Size = new System.Drawing.Size(15, 15);
             this.pic_myteachingDown.TabIndex = 1;
             this.pic_myteachingDown.TabStop = false;
+            this.pic_myteachingDown.Click += new EventHandler(PicDown_Click);
             // 
             // pic_myteachingDelete
             // 
@@ -86,6 +88,7 @@ namespace ChemistryApp
             this.pic_myteachingDelete.Size = new System.Drawing.Size(15, 15);
             this.pic_myteachingDelete.TabIndex = 2;
             this.pic_myteachingDelete.TabStop = false;
+            this.pic_myteachingDelete.Click += new EventHandler(PicDelete_Click);
             // 
             // pic_typeIcon
             // 
@@ -110,6 +113,38 @@ namespace ChemistryApp
             return panel_myTeachingItem;
         }
         #endregion
+
+
+        #region 按钮事件
+        /// <summary>
+        /// 删除按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PicDelete_Click(object sender,EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 向上按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PicDown_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 向下按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PicUp_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
 
         /// <summary>
         /// ICon图标

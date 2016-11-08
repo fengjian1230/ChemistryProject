@@ -83,6 +83,9 @@
     </Compile>
     <Compile Include="MyLesson\MyLessonItem.cs" />
     <Compile Include="MyLesson\MyLessonItemManager.cs" />
+    <Compile Include="MyLesson\MyLessonPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyTeaching\MyTeachingItem.cs" />
     <Compile Include="MyTeaching\MyTeachingItemManager.cs" />
     <Compile Include="MyTeaching\MyTeachingPanel.cs">

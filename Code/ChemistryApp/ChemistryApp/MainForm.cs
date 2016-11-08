@@ -288,6 +288,8 @@ namespace ChemistryApp
         }
 
 
+        #region 我的课表panel，有时间来重构这段代码
+
         #region 我的课表编辑按钮
         private void btn_bianji_MouseDown(object sender, MouseEventArgs e)
         {
@@ -336,7 +338,7 @@ namespace ChemistryApp
 
 
         /// <summary>
-        /// 我的备课动画效果
+        /// 我的课表动画效果
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -355,19 +357,33 @@ namespace ChemistryApp
             }
         }
 
+        private void OnDeleteMyLessonItem()
+        {
+            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+            {
+                this.panel_item.Controls.Remove(MyLessonItemManager.GetInstace.listPanelItem[i]);
+            }
+            MyLessonItemManager.GetInstace.CreateMyLessonItem();
+            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+            {
+                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
             ////创建item
-            //MyLessonItemManager.GetInstace.CreateMyLessonItem();
-            //for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
-            //{
-            //    this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
-            //}
+            MyLessonItemManager.GetInstace.CreateMyLessonItem();
+            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+            {
+                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
+            }
 
-            //teachingPanel.CreateTeachingItem();
-          
-
+            teachingPanel.CreateTeachingItem();
         }
+
     }
+    #endregion
     #endregion
 }
