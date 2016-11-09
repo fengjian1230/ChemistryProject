@@ -243,14 +243,24 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void BtnDelete_Click(object sender,EventArgs e)
         {
+            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
             PictureBox pic = (PictureBox)sender;
             Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
             Label label = (Label)control;
             string sqlStr = "delete from LessonList where LessonTitle = '" + label.Text + "'";
-            int i = AccessDBConn.ExecuteNonQuery(sqlStr);
-            if (i != 0)
+            DialogResult dr = MessageBox.Show("确定要删除吗?", "删除", messButton);
+            if (dr == DialogResult.OK)//如果点击“确定”按钮
             {
-                MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
+                int i = AccessDBConn.ExecuteNonQuery(sqlStr);
+                if (i != 0)
+                {
+                    MessageBox.Show("删除完成!");
+                    
+                }
+            }
+            else//如果点击“取消”按钮
+            {
+                MessageBox.Show("取消!");
             }
         }
 

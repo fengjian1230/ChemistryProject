@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp
 {
@@ -22,6 +23,7 @@ namespace ChemistryApp
         private System.Windows.Forms.PictureBox pic_myteachingDelete;
         private System.Windows.Forms.PictureBox pic_myteachingDown;
         private System.Windows.Forms.PictureBox pic_myteachingUp;
+        private System.Windows.Forms.PictureBox pic_select;
 
         public MyTeachingItem()
         {
@@ -31,7 +33,7 @@ namespace ChemistryApp
             pic_myteachingDown = new PictureBox();
             pic_myteachingUp = new PictureBox();
             pic_typeIcon = new PictureBox();
-
+            pic_select = new PictureBox();
         }
 
         #region 创建item
@@ -48,6 +50,7 @@ namespace ChemistryApp
             this.panel_myTeachingItem.Controls.Add(this.pic_myteachingDelete);
             this.panel_myTeachingItem.Controls.Add(this.pic_myteachingDown);
             this.panel_myTeachingItem.Controls.Add(this.pic_myteachingUp);
+            this.panel_myTeachingItem.Controls.Add(this.pic_select);
             this.panel_myTeachingItem.Location = new System.Drawing.Point(_posX, _posY);
             this.panel_myTeachingItem.Name = "panel_myTeachingItem";
             this.panel_myTeachingItem.Size = new System.Drawing.Size(279, 70);
@@ -77,6 +80,8 @@ namespace ChemistryApp
             this.pic_myteachingDown.TabIndex = 1;
             this.pic_myteachingDown.TabStop = false;
             this.pic_myteachingDown.Click += new EventHandler(PicDown_Click);
+
+
             // 
             // pic_myteachingDelete
             // 
@@ -110,6 +115,15 @@ namespace ChemistryApp
             this.txt_myTeachingTitle.TabIndex = 4;
             this.txt_myTeachingTitle.Text = _itemTitle ;
 
+            //选择按钮
+            this.pic_select.Image = global::ChemistryApp.Properties.Resources.删除键;
+            this.pic_select.Name = "pic_select";
+            this.pic_select.BackgroundImageLayout = ImageLayout.None;
+            this.pic_select.Location = new System.Drawing.Point(-15, 30);
+            this.pic_select.Size = new System.Drawing.Size(15, 15);
+            this.pic_select.TabIndex = 3;
+            this.pic_select.TabStop = false;
+
             return panel_myTeachingItem;
         }
         #endregion
@@ -121,9 +135,29 @@ namespace ChemistryApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PicDelete_Click(object sender,EventArgs e)
+        private void PicDelete_Click(object sender, EventArgs e)
         {
+            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+            PictureBox pic = (PictureBox)sender;
+            Control control = pic.Parent.GetChildAtPoint(new Point(100, 39));
+            Label label = (Label)control;
+            string sqlStr = "delete from MyTeaching where TeachingTitle = '" + label.Text + "'";
+            DialogResult dr = MessageBox.Show("确定要删除吗?", "删除", messButton);
 
+            if (dr == DialogResult.OK)//如果点击“确定”按钮
+            {
+                int i = AccessDBConn.ExecuteNonQuery(sqlStr);
+                if (i != 0)
+                {
+                    MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                    MessageBox.Show("删除完成!");
+                }
+            }
+            else//如果点击“取消”按钮
+            {
+                MessageBox.Show("取消!");
+            }
+            
         }
         /// <summary>
         /// 向上按钮
@@ -132,15 +166,64 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void PicDown_Click(object sender, EventArgs e)
         {
-
+            PictureBox pic = (PictureBox)sender;
+            Control control = pic.Parent.GetChildAtPoint(new Point(100, 39));
+            Label label = (Label)control;
+            string sqlStr = "select * from MyTeaching where TeachingTitle = '" + label.Text + "'";
+            try
+            {
+                DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "MyTeaching");
+                DataRow[] dr = ds.Tables["MyTeaching"].Select();
+                int index = int.Parse(dr[0]["TeachingSort"].ToString());
+                if (index + 1 != MyTeachingItemManager.GetInstace.listPanelItem.Count)
+                {
+                    Control _nextControl = MyTeachingItemManager.GetInstace.listPanelItem[index + 1].GetChildAtPoint(new Point(100, 39));
+                    Label _label = (Label)_nextControl;
+                    string _sqlStr = "update MyTeaching set TeachingSort = " + index.ToString() + " where TeachingTitle = '" + _label.Text + "'";
+                    int nextInt = AccessDBConn.ExecuteNonQuery(_sqlStr);
+                    string strUpdate = "update MyTeaching set TeachingSort = " + (index + 1).ToString() + " where TeachingTitle = '" + label.Text + "'";
+                    int curr = AccessDBConn.ExecuteNonQuery(strUpdate);
+                    MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+          
+            
         }
         /// <summary>
-        /// 向下按钮
+        /// 向上按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PicUp_Click(object sender, EventArgs e)
         {
+            PictureBox pic = (PictureBox)sender;
+            Control control = pic.Parent.GetChildAtPoint(new Point(100, 39));
+            Label label = (Label)control;
+            string sqlStr = "select * from MyTeaching where TeachingTitle = '" + label.Text + "'";
+            try
+            {
+                DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "MyTeaching");
+                DataRow[] dr = ds.Tables["MyTeaching"].Select();
+                int index = int.Parse(dr[0]["TeachingSort"].ToString());
+                if (index != 0)
+                {
+                    Control _nextControl = MyTeachingItemManager.GetInstace.listPanelItem[index - 1].GetChildAtPoint(new Point(100, 39));
+                    Label _label = (Label)_nextControl;
+                    string _sqlStr = "update MyTeaching set TeachingSort = " + index.ToString() + " where TeachingTitle = '" + _label.Text + "'";
+                    int nextInt = AccessDBConn.ExecuteNonQuery(_sqlStr);
+                    string strUpdate = "update MyTeaching set TeachingSort = " + (index - 1).ToString() + " where TeachingTitle = '" + label.Text + "'";
+                    int curr = AccessDBConn.ExecuteNonQuery(strUpdate);
+                    MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
         #endregion

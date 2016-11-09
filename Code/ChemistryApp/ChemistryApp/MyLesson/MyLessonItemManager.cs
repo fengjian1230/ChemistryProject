@@ -106,8 +106,10 @@ namespace ChemistryApp.MyLesson
                 for (int j = 0; j < childDataRow.Count(); j++)
                 {
                     
-                    MyLessonChildItem childItem = new MyLessonChildItem();
-                    panel.Controls.Add(childItem.ChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString()));
+                    MyLessonChildItem childItemClass = new MyLessonChildItem();
+                    Panel childPanel = childItemClass.ChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
+                    childPanel.Name = "childItemPanel" + j.ToString();
+                    panel.Controls.Add(childPanel);
                 }
                 childItemNum.Add(dataRow[i]["LessonTitle"].ToString(), childDataRow.Count());
             }

@@ -16,6 +16,15 @@ namespace ChemistryApp.EnumType
     }
 
     /// <summary>
+    /// 我的课件的状态
+    /// </summary>
+    public enum TeachingSelectState
+    {
+        OnSelect = 0, //打开状态
+        Close     //折叠状态
+    }
+
+    /// <summary>
     /// 我的课件类型
     /// </summary>
     public enum TeachingItemType
