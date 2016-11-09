@@ -7,21 +7,26 @@ using System.Threading.Tasks;
 namespace ChemistryApp.EnumType
 {
     /// <summary>
-    /// 我的课表的状态
+    /// 我的课表的内容的状态
     /// </summary>
-    public enum LessonState
+    public enum LessonItemState
     {
         Open = 0, //打开状态
         Close     //折叠状态
     }
 
+    public enum MyLessonState
+    {
+        OnOpen = 0, //打开状态
+        OnClose     //关闭状态
+    }
     /// <summary>
     /// 我的课件的状态
     /// </summary>
     public enum TeachingSelectState
     {
-        OnSelect = 0, //打开状态
-        Close     //折叠状态
+        OnOpen = 0, //打开状态
+        OnClose     //关闭状态
     }
 
     /// <summary>

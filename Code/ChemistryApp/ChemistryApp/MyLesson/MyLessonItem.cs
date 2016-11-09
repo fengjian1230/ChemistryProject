@@ -221,17 +221,17 @@ namespace ChemistryApp
                     itemLength = MyLessonItemManager.GetInstace.ChildItemNum[label.Text];
                 }
             }
-            if (MyLessonItemManager.GetInstace.state == LessonState.Close)
+            if (MyLessonItemManager.GetInstace.state == LessonItemState.Close)
             {
                 pic.Text = "展开";
-                MyLessonItemManager.GetInstace.state = LessonState.Open;
+                MyLessonItemManager.GetInstace.state = LessonItemState.Open;
                 pic.Parent.Size = new Size(pic.Parent.Size.Width, 140);
             }
-            else if (MyLessonItemManager.GetInstace.state == LessonState.Open && MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji)
+            else if (MyLessonItemManager.GetInstace.state == LessonItemState.Open && MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji)
             {
                 pic.Text = "折叠";
                 pic.Parent.Size = new Size(pic.Parent.Size.Width, 140 + itemLength * 30);
-                MyLessonItemManager.GetInstace.state = LessonState.Close;
+                MyLessonItemManager.GetInstace.state = LessonItemState.Close;
             }
            
         }
@@ -255,7 +255,7 @@ namespace ChemistryApp
                 if (i != 0)
                 {
                     MessageBox.Show("删除完成!");
-                    
+                    MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
                 }
             }
             else//如果点击“取消”按钮

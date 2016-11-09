@@ -12,6 +12,7 @@ using ADOX;
 using System.Data.OleDb;
 using ChemistryApp.MyLesson;
 using ChemistryApp.EnumType;
+using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp
 {
@@ -36,35 +37,25 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-           
+          
+
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
             //初始位置
             this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2);
             this.Size = new Size(mainFormWidth, mainFormWidth);
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string sql = "update LessonList set LessonID = '222?', LessonContent = '堵起！' where ID = 1";
-            DialogResult dr = MessageBox.Show("提示信息", "提示信息", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (dr == DialogResult.Yes)
+            //添加事件
+            MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
+            ////创建item
+            MyLessonItemManager.GetInstace.CreateMyLessonItem();
+            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
             {
-                int i = AccessDBConn.ExecuteNonQuery(sql);
-                if (i != 0)
-                {
-                    MessageBox.Show("操作成功");
-                }
-                else
-                {
-                    MessageBox.Show("操作失败！");
-                }
+                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
             }
-            else
-            {
-                MessageBox.Show("已经取消");
-            }
+
+            teachingPanel.CreateTeachingItem();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -76,6 +67,7 @@ namespace ChemistryApp
 
 
         #region 我的课表列表动画
+        public MyLessonState lessonState = MyLessonState.OnClose;
         /// <summary>
         /// 左边收缩按钮
         /// </summary>
@@ -83,7 +75,6 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void BtnShrink_Click(object sender, EventArgs e)
         {
-
             if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 1)
             {
                 LeftPlaneTimer.Start();
@@ -94,6 +85,15 @@ namespace ChemistryApp
                 {
                     LeftPlaneTimer.Start();  
                 }
+            }
+            //根据状态来加载内容
+            if (lessonState == MyLessonState.OnClose)
+            {
+                lessonState = MyLessonState.OnOpen;
+            }
+            else if (lessonState == MyLessonState.OnOpen)
+            {
+                lessonState = MyLessonState.OnClose;
             }
         }
 
@@ -308,7 +308,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_bianji_Click(object sender,EventArgs e)
         {
-            if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji && MyLessonItemManager.GetInstace.state == LessonState.Open)
+            if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji && MyLessonItemManager.GetInstace.state == LessonItemState.Open)
             {
                 for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
                 {
@@ -336,7 +336,7 @@ namespace ChemistryApp
         }
         #endregion
 
-
+        public TeachingSelectState teachingState = TeachingSelectState.OnClose;
         /// <summary>
         /// 我的课表动画效果
         /// </summary>
@@ -355,6 +355,17 @@ namespace ChemistryApp
                     teachingPanel.TimerStart(this.pic_myteachingMianban, this.btn_myteachingShrink);
                 }
             }
+            if (teachingState == TeachingSelectState.OnClose)
+            {
+                ////刷新
+                //teachingPanel.CreateTeachingItem();
+                //MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                teachingState = TeachingSelectState.OnOpen;
+            }
+            else if (teachingState == TeachingSelectState.OnOpen)
+            {
+                teachingState = TeachingSelectState.OnClose;
+            }
         }
 
         private void OnDeleteMyLessonItem()
@@ -372,6 +383,7 @@ namespace ChemistryApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //添加事件
             MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
             ////创建item
             MyLessonItemManager.GetInstace.CreateMyLessonItem();

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using ChemistryApp.EnumType;
 using ChemistryApp.MyTeaching;
+using ChemistryApp.MyLesson;
 
 namespace ChemistryApp
 {
@@ -168,7 +169,15 @@ namespace ChemistryApp
         }
         private void btn_yijianshengcheng_Click(object sender, EventArgs e)
         {
-
+            Button btn_yijian = (Button)sender;
+            Panel mainPanel = btn_yijian.Parent.Parent as Panel;
+            if (MyTeachingItemManager.GetInstace.listPanelItem.Count != 0)
+            {
+                CreateLessonDialogBox dialogBox = new CreateLessonDialogBox();
+                Panel panelDialogBox = dialogBox.CreateDialgBox();
+                mainPanel.Controls.Add(panelDialogBox);
+                panelDialogBox.BringToFront();
+            }
         }
         #endregion
 

@@ -241,9 +241,9 @@
             this.btn_bianji.Size = new System.Drawing.Size(131, 41);
             this.btn_bianji.TabIndex = 18;
             this.btn_bianji.UseVisualStyleBackColor = false;
+            this.btn_bianji.Click += new System.EventHandler(this.btn_bianji_Click);
             this.btn_bianji.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseDown);
             this.btn_bianji.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_bianji_MouseUp);
-            this.btn_bianji.Click += new System.EventHandler(this.btn_bianji_Click);
             // 
             // panel_item
             // 
@@ -523,6 +523,7 @@
         private System.Windows.Forms.PictureBox btn_myClassSearch;
         private System.Windows.Forms.Button btn_bianji;
         private System.Windows.Forms.Button button1;
+
     }
 }
 

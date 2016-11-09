@@ -236,7 +236,7 @@ namespace ChemistryApp
         /// <param name="filePath">数据库表文件全路径如D:\\NewDb.mdb 没有则创建 </param> 
         /// <param name="tableName">表名</param>
         /// <param name="colums">ADOX.Column对象数组</param>
-        public static void CreateAccessTable(string tableName, params ADOX.Column[] colums)
+        public static int CreateAccessTable(string tableName, params ADOX.Column[] colums)
         {
             try
             {
@@ -255,13 +255,16 @@ namespace ChemistryApp
                 //column.Properties["AutoIncrement"].Value = true; //设置自动增长
                 //table.Keys.Append("FirstTablePrimaryKey", KeyTypeEnum.adKeyPrimary, column, null, null); //定义主键
                 catalog.Tables.Append(table);
+                int num = catalog.Tables.Count;
                 cn.Close();
+                return num;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 
             }
+            return 0;
            
         }
         //========================================================================================调用

@@ -29,7 +29,7 @@ namespace ChemistryApp.MyLesson
         /// <summary>
         /// 课程折叠状态
         /// </summary>
-        public LessonState state = LessonState.Open;
+        public LessonItemState state = LessonItemState.Open;
         /// <summary>
         /// 编辑状态
         /// </summary>
