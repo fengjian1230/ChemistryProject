@@ -33,6 +33,7 @@
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_myteachingShrink = new System.Windows.Forms.PictureBox();
             this.pic_myteachingMianban = new System.Windows.Forms.PictureBox();
             this.panel_myteachingBG = new System.Windows.Forms.Panel();
@@ -101,6 +102,7 @@
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景;
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MainPanel.Controls.Add(this.button1);
             this.MainPanel.Controls.Add(this.btn_myteachingShrink);
             this.MainPanel.Controls.Add(this.pic_myteachingMianban);
             this.MainPanel.Controls.Add(this.panel_myteachingBG);
@@ -125,6 +127,16 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(107, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "返回上一页";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btn_myteachingShrink
             // 
@@ -213,6 +225,7 @@
             this.btn_myClassSearch.Size = new System.Drawing.Size(27, 31);
             this.btn_myClassSearch.TabIndex = 19;
             this.btn_myClassSearch.TabStop = false;
+            this.btn_myClassSearch.Click += new System.EventHandler(this.btn_myClassSearch_Click);
             // 
             // btn_bianji
             // 
@@ -341,6 +354,7 @@
             this.btn_search.Size = new System.Drawing.Size(30, 41);
             this.btn_search.TabIndex = 8;
             this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click_1);
             // 
             // txt_search
             // 
@@ -510,6 +524,7 @@
         private System.Windows.Forms.ListBox listBox_searchRuslut;
         private System.Windows.Forms.PictureBox btn_myClassSearch;
         private System.Windows.Forms.Button btn_bianji;
+        private System.Windows.Forms.Button button1;
     }
 }
 

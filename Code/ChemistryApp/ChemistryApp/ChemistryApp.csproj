@@ -87,6 +87,9 @@
     <Compile Include="MyLesson\MyLessonPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MyLesson\MyLessonSearchPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyTeaching\CreateTeachingItemDialogBox.cs" />
     <Compile Include="MyTeaching\MyTeachingItem.cs" />
     <Compile Include="MyTeaching\MyTeachingItemManager.cs" />
@@ -95,6 +98,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchPage\SearchContentPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SearchPage\SearchResultItemPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SearchPage\SearchResultPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -473,6 +485,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\yijianshengcheng%28xuanting%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAgain_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAgain_norml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnlittlePlay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_norml.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

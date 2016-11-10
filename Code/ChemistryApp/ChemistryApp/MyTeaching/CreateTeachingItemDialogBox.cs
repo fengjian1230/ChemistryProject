@@ -185,7 +185,7 @@ namespace ChemistryApp.MyTeaching
                             mainPanel.Controls.Remove(item);
                         }
                     }
-                    File.Copy(sourcePath, loaclPath);
+                    File.Copy(sourcePath, loaclPath,true);
                     MessageBox.Show("上传成功！");
                     MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
                 }

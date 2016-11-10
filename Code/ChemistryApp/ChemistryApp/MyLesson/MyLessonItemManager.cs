@@ -110,6 +110,7 @@ namespace ChemistryApp.MyLesson
                     Panel childPanel = childItemClass.ChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
                     childPanel.Name = "childItemPanel" + j.ToString();
                     panel.Controls.Add(childPanel);
+                    
                 }
                 childItemNum.Add(dataRow[i]["LessonTitle"].ToString(), childDataRow.Count());
             }

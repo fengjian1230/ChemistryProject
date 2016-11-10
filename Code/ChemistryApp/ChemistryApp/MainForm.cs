@@ -13,6 +13,7 @@ using System.Data.OleDb;
 using ChemistryApp.MyLesson;
 using ChemistryApp.EnumType;
 using ChemistryApp.MyTeaching;
+using ChemistryApp.SearchPage;
 
 namespace ChemistryApp
 {
@@ -395,6 +396,74 @@ namespace ChemistryApp
             teachingPanel.CreateTeachingItem();
         }
 
+        private void btn_search_Click_1(object sender, EventArgs e)
+        {
+            if (this.txt_search.Text != "搜索/Serch")
+            {
+                SearchResultPage resultPage = new SearchResultPage(this.txt_search.Text);
+                this.MainPanel.Controls.Add(resultPage);
+                resultPage.BringToFront();
+                this.listBox_searchRuslut.Visible = false;
+            }
+           
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            foreach (Control item in MainPanel.Controls)
+            {
+                if (item.Name == "panel_searchpage")
+                {
+                    this.MainPanel.Controls.Remove(item);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 我的课表搜索
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_myClassSearch_Click(object sender, EventArgs e)
+        {
+            if (this.txt_classListSerch.Text != "")
+            {
+               
+                MyLessonSearchPage lessonSearchPage = new MyLessonSearchPage();
+                this.panel_classListBG.Controls.Add(lessonSearchPage);
+                this.panel_item.Visible = false;
+                lessonSearchPage.BringToFront();
+                string selectSql = "select * from LessonList where  LessonTitle like '%" + this.txt_classListSerch.Text + "%'";
+                try
+                {
+                    DataSet ds = AccessDBConn.ExecuteQuery(selectSql, "LessonList");
+                    DataRow[] dr = ds.Tables["LessonList"].Select();
+                    for (int i = 0; i < dr.Count(); i++)
+                    {
+                        MyLessonItem item = new MyLessonItem();
+                        string strTitle = dr[i]["LessonTitle"].ToString();
+                        string strTips = dr[i]["Tips"].ToString();
+                        lessonSearchPage.Controls.Add(item.CreateControl(10, i * (140 + 10), strTitle, strTips));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                foreach (Control  item in panel_classListBG.Controls)
+                {
+                    if (item.Name == "panel_SearchItem")
+                    {
+                        this.panel_classListBG.Controls.Remove(item);
+                    }
+                }
+                this.panel_item.Visible = true;
+            }
+        }
     }
     #endregion
     #endregion

@@ -19,15 +19,16 @@ namespace ChemistryApp
     {
 
         #region 字段
-        private System.Windows.Forms.Panel panelItem;
-        private System.Windows.Forms.Label lab_open;
-        private System.Windows.Forms.Label lab_top;
-        private System.Windows.Forms.PictureBox pic_top;
-        private System.Windows.Forms.PictureBox pic_book;
-        private System.Windows.Forms.Label lab_className;
-        private System.Windows.Forms.Label lab_tips;
-        private System.Windows.Forms.PictureBox pic_delete;
-        
+        public System.Windows.Forms.Panel panelItem;
+        public System.Windows.Forms.Label lab_open;
+        public System.Windows.Forms.Label lab_top;
+        public System.Windows.Forms.PictureBox pic_top;
+        public System.Windows.Forms.PictureBox pic_book;
+        public System.Windows.Forms.Label lab_className;
+        public System.Windows.Forms.Label lab_tips;
+        public System.Windows.Forms.PictureBox pic_delete;
+        public Button btn_againPrepareLesson;
+
         /// <summary>
         #endregion
 
@@ -46,6 +47,7 @@ namespace ChemistryApp
             pic_top = new PictureBox();
             pic_book = new PictureBox();
             pic_delete = new PictureBox();
+            this.btn_againPrepareLesson = new System.Windows.Forms.Button();
         }
         #endregion
 
@@ -61,6 +63,7 @@ namespace ChemistryApp
             this.panelItem.BackColor = System.Drawing.Color.Transparent;
             this.panelItem.BackgroundImage = global::ChemistryApp.Properties.Resources.myLessonItemBG;
             this.panelItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panelItem.Controls.Add(this.btn_againPrepareLesson);
             this.panelItem.Controls.Add(this.lab_tips);
             this.panelItem.Controls.Add(this.lab_className);
             this.panelItem.Controls.Add(this.pic_book);
@@ -68,6 +71,7 @@ namespace ChemistryApp
             this.panelItem.Controls.Add(this.lab_top);
             this.panelItem.Controls.Add(this.pic_top);
             this.panelItem.Controls.Add(this.pic_delete);
+           
             this.panelItem.Font = new System.Drawing.Font("苹方 特粗", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.panelItem.Location = new System.Drawing.Point(posX, posY);
             this.panelItem.Name = "panelItem";
@@ -83,6 +87,23 @@ namespace ChemistryApp
             this.pic_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pic_delete.BackColor = System.Drawing.Color.Transparent;
             this.pic_delete.Click += new EventHandler(this.BtnDelete_Click);
+            // 
+            // btn_againPrepareLesson
+            // 
+            this.btn_againPrepareLesson.BackgroundImage = global::ChemistryApp.Properties.Resources.btnAgain_norml;
+            this.btn_againPrepareLesson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_againPrepareLesson.FlatAppearance.BorderSize = 0;
+            this.btn_againPrepareLesson.BackColor = Color.Transparent;
+            this.btn_againPrepareLesson.Cursor = Cursors.Hand;
+            this.btn_againPrepareLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_againPrepareLesson.Location = new System.Drawing.Point(80, 110);
+            this.btn_againPrepareLesson.Name = "btn_againPrepareLesson";
+            this.btn_againPrepareLesson.Size = new System.Drawing.Size(90, 24);
+            this.btn_againPrepareLesson.TabIndex = 20;
+            this.btn_againPrepareLesson.UseVisualStyleBackColor = true;
+            this.btn_againPrepareLesson.Anchor = AnchorStyles.Bottom;
+            this.btn_againPrepareLesson.Visible = false;
+            this.btn_againPrepareLesson.Click += new EventHandler(BtnAgainLesson_Click);
             // 
             // pictureBox2
             // 
@@ -224,13 +245,15 @@ namespace ChemistryApp
             if (MyLessonItemManager.GetInstace.state == LessonItemState.Close)
             {
                 pic.Text = "展开";
+                this.btn_againPrepareLesson.Visible = false;
                 MyLessonItemManager.GetInstace.state = LessonItemState.Open;
                 pic.Parent.Size = new Size(pic.Parent.Size.Width, 140);
             }
             else if (MyLessonItemManager.GetInstace.state == LessonItemState.Open && MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji)
             {
                 pic.Text = "折叠";
-                pic.Parent.Size = new Size(pic.Parent.Size.Width, 140 + itemLength * 30);
+                this.btn_againPrepareLesson.Visible = true;
+                pic.Parent.Size = new Size(pic.Parent.Size.Width, 180 + itemLength * 30);
                 MyLessonItemManager.GetInstace.state = LessonItemState.Close;
             }
            
@@ -261,6 +284,41 @@ namespace ChemistryApp
             else//如果点击“取消”按钮
             {
                 MessageBox.Show("取消!");
+            }
+        }
+
+        /// <summary>
+        /// 再次备课
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAgainLesson_Click(object sender,EventArgs e)
+        {
+            //先要清空课件表中原来的数据
+            string deleteSql = "delete * from MyTeaching";
+            int errorIndex = AccessDBConn.ExecuteNonQuery(deleteSql);
+            if (errorIndex != 0)
+            {
+                //先得到当前课表的子表的字段
+                string selectSql = "select LessonContent from LessonList where LessonTitle = '" + this.lab_className.Text + "'";
+                DataSet data = AccessDBConn.ExecuteQuery(selectSql, "LessonList");
+                DataRow[] dataRow = data.Tables["LessonList"].Select();
+                //从字段中读取表的内容
+                string _childStr = "select * from " + dataRow[0]["LessonContent"].ToString() + "";
+                DataSet childData = AccessDBConn.ExecuteQuery(_childStr, dataRow[0]["LessonContent"].ToString());
+                DataRow[] childDataRow = childData.Tables[dataRow[0]["LessonContent"].ToString()].Select();
+                //从读取的表中插入到我的课件表中
+                for (int i = 0; i < childDataRow.Count(); i++)
+                {
+                    string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + childDataRow[i]["Title"] + "','" + childDataRow[i]["Type"] + "','" + childDataRow[i]["URL"] + "','" + i.ToString() + "')";
+                    int insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
+                    if (insertErrorIndex != 0)
+                    {
+                        
+                    }
+                }
+                MessageBox.Show("在右边课件中继续备课！");
+                MyTeaching.MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
             }
         }
 
