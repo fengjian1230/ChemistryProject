@@ -11,6 +11,7 @@ using System.Windows.Forms.VisualStyles;
 using ChemistryApp.EnumType;
 using ChemistryApp.MyTeaching;
 using ChemistryApp.MyLesson;
+using System.IO;
 
 namespace ChemistryApp
 {
@@ -164,8 +165,20 @@ namespace ChemistryApp
         //点击事件
         private void btn_bendiziyuan_Click(object sender, EventArgs e)
         {
+            //获取到父物体
+            Button btn_bendi = (Button)sender;
+            Panel mainPanel = btn_bendi.Parent.Parent as Panel;
+            string _loaclPath = @System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching";
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.ShowDialog();
+            openFile.Filter = "(*.pptx)|*.pptx";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                CreateTeachingItemDialogBox item = new CreateTeachingItemDialogBox("\\ResourcesFolder\\MyTeaching\\" +  openFile.SafeFileName + "", openFile.FileName, _loaclPath + "\\" + openFile.SafeFileName);
+                Panel itemPanel = item.CreateDialgBox();
+                mainPanel.Controls.Add(itemPanel);
+                itemPanel.BringToFront();
+            }
+                
         }
         private void btn_yijianshengcheng_Click(object sender, EventArgs e)
         {
