@@ -438,10 +438,10 @@ namespace ChemistryApp
                     DataRow[] dr = ds.Tables["LessonList"].Select();
                     for (int i = 0; i < dr.Count(); i++)
                     {
-                        MyLessonItem item = new MyLessonItem();
                         string strTitle = dr[i]["LessonTitle"].ToString();
                         string strTips = dr[i]["Tips"].ToString();
-                        lessonSearchPage.Controls.Add(item.CreateControl(10, i * (140 + 10), strTitle, strTips));
+                        MyLessonItem item = new MyLessonItem(10, i * (140 + 10), strTitle, strTips);
+                        lessonSearchPage.Controls.Add(item);
                     }
                 }
                 catch (Exception ex)

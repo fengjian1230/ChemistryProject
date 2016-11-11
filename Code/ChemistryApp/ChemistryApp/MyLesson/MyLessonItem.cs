@@ -15,7 +15,7 @@ using ChemistryApp.EnumType;
 /// </summary>
 namespace ChemistryApp
 {
-    class MyLessonItem
+    class MyLessonItem : Panel
     {
 
         #region 字段
@@ -36,7 +36,7 @@ namespace ChemistryApp
         /// <summary>
         /// 构造函数
         /// </summary>
-        public MyLessonItem()
+        public MyLessonItem(int posX, int posY, string _strClassName, string _strTips)
         {
             //实例化控件
             panelItem = new Panel();
@@ -48,6 +48,8 @@ namespace ChemistryApp
             pic_book = new PictureBox();
             pic_delete = new PictureBox();
             this.btn_againPrepareLesson = new System.Windows.Forms.Button();
+            InitCompent(posX, posY, _strClassName, _strTips);
+
         }
         #endregion
 
@@ -56,27 +58,27 @@ namespace ChemistryApp
         /// 创建控件
         /// </summary>
         /// <returns></returns>
-        public Panel CreateControl(int posX, int posY, string _strClassName, string _strTips)
+        public void InitCompent(int posX, int posY, string _strClassName, string _strTips)
         {
             // panel1
             // 
-            this.panelItem.BackColor = System.Drawing.Color.Transparent;
-            this.panelItem.BackgroundImage = global::ChemistryApp.Properties.Resources.myLessonItemBG;
-            this.panelItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelItem.Controls.Add(this.btn_againPrepareLesson);
-            this.panelItem.Controls.Add(this.lab_tips);
-            this.panelItem.Controls.Add(this.lab_className);
-            this.panelItem.Controls.Add(this.pic_book);
-            this.panelItem.Controls.Add(this.lab_open);
-            this.panelItem.Controls.Add(this.lab_top);
-            this.panelItem.Controls.Add(this.pic_top);
-            this.panelItem.Controls.Add(this.pic_delete);
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.myLessonItemBG;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Controls.Add(this.btn_againPrepareLesson);
+            this.Controls.Add(this.lab_tips);
+            this.Controls.Add(this.lab_className);
+            this.Controls.Add(this.pic_book);
+            this.Controls.Add(this.lab_open);
+            this.Controls.Add(this.lab_top);
+            this.Controls.Add(this.pic_top);
+            this.Controls.Add(this.pic_delete);
            
-            this.panelItem.Font = new System.Drawing.Font("苹方 特粗", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.panelItem.Location = new System.Drawing.Point(posX, posY);
-            this.panelItem.Name = "panelItem";
-            this.panelItem.Size = new System.Drawing.Size(279, 140);
-            this.panelItem.TabIndex = 1;
+            this.Font = new System.Drawing.Font("苹方 特粗", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Location = new System.Drawing.Point(posX, posY);
+            this.Name = "panelItem";
+            this.Size = new System.Drawing.Size(279, 140);
+            this.TabIndex = 1;
             ///删除键
             this.pic_delete.Name = "pic_delete";
             this.pic_delete.Size = new Size(15, 15);
@@ -168,8 +170,6 @@ namespace ChemistryApp
             this.lab_tips.Size = new System.Drawing.Size(164, 18);
             this.lab_tips.TabIndex = 5;
             this.lab_tips.Text = "（" + _strTips + "）";
-
-            return panelItem;
         }
         #endregion
 

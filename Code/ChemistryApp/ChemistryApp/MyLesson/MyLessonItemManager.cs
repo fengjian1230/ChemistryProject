@@ -93,10 +93,10 @@ namespace ChemistryApp.MyLesson
             for (int i = 0; i < dataRow.Count(); i++)
             {
                 //创建我的课表Item
-                MyLessonItem myLessonItem = new MyLessonItem();
-                Panel panel = myLessonItem.CreateControl(10, i * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
+                MyLessonItem myLessonItem = new MyLessonItem(10, i * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
+                //Panel panel = myLessonItem.InitCompent(10, i * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
                 //把得到的值放入到链表里面
-                listPanelItem.Add(panel);
+                listPanelItem.Add(myLessonItem);
                 listPanelItemPoint.Add(new Point(10, i * (140 + 10)));
                 //从一个字段查询另外一个表
                 string _childStr = "select * from " + dataRow[i]["LessonContent"].ToString() + "";
@@ -109,7 +109,7 @@ namespace ChemistryApp.MyLesson
                     MyLessonChildItem childItemClass = new MyLessonChildItem();
                     Panel childPanel = childItemClass.ChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
                     childPanel.Name = "childItemPanel" + j.ToString();
-                    panel.Controls.Add(childPanel);
+                    myLessonItem.Controls.Add(childPanel);
                     
                 }
                 childItemNum.Add(dataRow[i]["LessonTitle"].ToString(), childDataRow.Count());

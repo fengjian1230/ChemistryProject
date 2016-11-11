@@ -82,7 +82,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyLesson\MyLessonItem.cs" />
+    <Compile Include="MyLesson\MyLessonItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyLesson\MyLessonItemManager.cs" />
     <Compile Include="MyLesson\MyLessonPanel.cs">
       <SubType>Component</SubType>
