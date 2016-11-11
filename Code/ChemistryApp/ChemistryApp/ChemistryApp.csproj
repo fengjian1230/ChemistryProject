@@ -75,7 +75,9 @@
     <Compile Include="ControlPPT\ControlWord.cs" />
     <Compile Include="EnumType\EnumClass.cs" />
     <Compile Include="MyLesson\CreateLessonDialogBox.cs" />
-    <Compile Include="MyLesson\MyLessonChildItem.cs" />
+    <Compile Include="MyLesson\MyLessonChildItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

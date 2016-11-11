@@ -105,10 +105,9 @@ namespace ChemistryApp.MyLesson
                 //创建课表列表
                 for (int j = 0; j < childDataRow.Count(); j++)
                 {
-                    
-                    MyLessonChildItem childItemClass = new MyLessonChildItem();
-                    Panel childPanel = childItemClass.ChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
-                    childPanel.Name = "childItemPanel" + j.ToString();
+                    MyLessonChildItem childPanel = new MyLessonChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
+                    //Panel childPanel = childItemClass.InitCompent(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
+                    childPanel.Name = "childPanel" + j.ToString();
                     myLessonItem.Controls.Add(childPanel);
                     
                 }

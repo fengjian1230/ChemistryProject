@@ -17,7 +17,7 @@ namespace ChemistryApp.MyLesson
     /// <summary>
     /// 创建课件列表
     /// </summary>
-    class MyLessonChildItem
+    class MyLessonChildItem : Panel
     {
         #region 字段
         Panel childItemPanel;
@@ -26,28 +26,29 @@ namespace ChemistryApp.MyLesson
         PictureBox pic_play;
         #endregion
 
-        public MyLessonChildItem()
+        public MyLessonChildItem(int posX, int posY, string _strTitle, string _strType)
         {
             childItemPanel = new Panel();
             lab_title = new Label();
             lab_type = new Label();
             pic_play = new PictureBox();
+            InitCompent(posX, posY, _strTitle, _strType);
         }
 
 
-        public Panel ChildItem(int posX,int posY,string _strTitle, string _strType)
+        public void InitCompent(int posX,int posY,string _strTitle, string _strType)
         {
             // 
             // CHILD
             // 
-            this.childItemPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.childItemPanel.Controls.Add(this.lab_title);
-            this.childItemPanel.Controls.Add(this.lab_type);
-            this.childItemPanel.Controls.Add(this.pic_play);
-            this.childItemPanel.Location = new System.Drawing.Point(posX, posY);
-            this.childItemPanel.Name = "childItemPanel";
-            this.childItemPanel.Size = new System.Drawing.Size(279, 30);
-            this.childItemPanel.TabIndex = 0;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.lab_title);
+            this.Controls.Add(this.lab_type);
+            this.Controls.Add(this.pic_play);
+            this.Location = new System.Drawing.Point(posX, posY);
+            this.Name = "childItemPanel";
+            this.Size = new System.Drawing.Size(279, 30);
+            this.TabIndex = 0;
             // 
             // label1
             // 
@@ -80,8 +81,6 @@ namespace ChemistryApp.MyLesson
             this.pic_play.TabIndex = 2;
             this.pic_play.TabStop = false;
             this.pic_play.Click += new EventHandler(PlayButton_Click);
-
-            return childItemPanel;
         }
 
         /// <summary>
