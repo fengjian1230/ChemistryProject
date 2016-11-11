@@ -38,13 +38,11 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-          
-
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
             //初始位置
-            this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2);
+            this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);
             this.Size = new Size(mainFormWidth, mainFormWidth);
 
             //添加事件
@@ -429,7 +427,6 @@ namespace ChemistryApp
         {
             if (this.txt_classListSerch.Text != "")
             {
-               
                 MyLessonSearchPage lessonSearchPage = new MyLessonSearchPage();
                 this.panel_classListBG.Controls.Add(lessonSearchPage);
                 this.panel_item.Visible = false;

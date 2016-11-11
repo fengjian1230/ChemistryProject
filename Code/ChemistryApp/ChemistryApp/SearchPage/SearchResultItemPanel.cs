@@ -23,17 +23,29 @@ namespace ChemistryApp.SearchPage
     class SearchResultItemPanel : Panel
     {
         public System.Windows.Forms.PictureBox btn_playContent;
-        public System.Windows.Forms.Label lab_typeContent;
+        public System.Windows.Forms.PictureBox pic_typeContent;
         public System.Windows.Forms.Label lab_titleContent;
         public System.Windows.Forms.PictureBox pic_insert;
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string strType;
+        /// <summary>
+        /// 路径
+        /// </summary>
+        public string strURL;
+
 
         public SearchResultItemPanel(int posX,int posY)
         {
             this.pic_insert = new System.Windows.Forms.PictureBox();
             this.lab_titleContent = new System.Windows.Forms.Label();
-            this.lab_typeContent = new System.Windows.Forms.Label();
+            this.pic_typeContent = new System.Windows.Forms.PictureBox();
             this.btn_playContent = new System.Windows.Forms.PictureBox();
             InitCompent(posX,posY);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);   //   禁止擦除背景. 
+            SetStyle(ControlStyles.DoubleBuffer, true);
         }
 
         private void InitCompent(int posX, int posY)
@@ -42,18 +54,18 @@ namespace ChemistryApp.SearchPage
             // panel_searchItem
             // 
             this.Controls.Add(this.btn_playContent);
-            this.Controls.Add(this.lab_typeContent);
+            this.Controls.Add(this.pic_typeContent);
             this.Controls.Add(this.lab_titleContent);
             this.Controls.Add(this.pic_insert);
-            this.Location = new System.Drawing.Point(posX, posY);
+            this.Location = new System.Drawing.Point(0, posY);
             this.Name = "panel_searchItem";
-            this.Size = new System.Drawing.Size(750, 36);
+            this.Size = new System.Drawing.Size(855, 36);
             this.TabIndex = 4;
             // 
             // pic_insert
             // 
             this.pic_insert.BackColor = System.Drawing.Color.Transparent;
-            this.pic_insert.BackgroundImage = global::ChemistryApp.Properties.Resources.删除键;
+            this.pic_insert.BackgroundImage = global::ChemistryApp.Properties.Resources.inserticon;
             this.pic_insert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pic_insert.Location = new System.Drawing.Point(28, 11);
             this.pic_insert.Name = "pic_insert";
@@ -61,6 +73,7 @@ namespace ChemistryApp.SearchPage
             this.pic_insert.TabIndex = 0;
             this.pic_insert.Cursor = Cursors.Hand;
             this.pic_insert.TabStop = false;
+            this.pic_insert.Click += new EventHandler(InsertButton_Click);
             // 
             // lab_titleContent
             // 
@@ -74,17 +87,16 @@ namespace ChemistryApp.SearchPage
             // 
             // lab_typeContent
             // 
-            this.lab_typeContent.AutoSize = true;
-            this.lab_typeContent.Font = new System.Drawing.Font("苹方 中等", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_typeContent.Location = new System.Drawing.Point(422, 4);
-            this.lab_typeContent.Name = "lab_typeContent";
-            this.lab_typeContent.Size = new System.Drawing.Size(68, 28);
-            this.lab_typeContent.TabIndex = 2;
-            this.lab_typeContent.Text = "label2";
+            this.pic_typeContent.AutoSize = true;
+            this.pic_typeContent.Location = new System.Drawing.Point(422, 10);
+            this.pic_typeContent.Name = "pic_typeContent";
+            this.pic_typeContent.Size = new System.Drawing.Size(68, 28);
+            this.pic_typeContent.TabIndex = 2;
+            this.pic_typeContent.Image = global::ChemistryApp.Properties.Resources.删除键;
             // 
             // btn_playContent
             // 
-            this.btn_playContent.BackgroundImage = global::ChemistryApp.Properties.Resources.删除键;
+            this.btn_playContent.BackgroundImage = global::ChemistryApp.Properties.Resources.playicon;
             this.btn_playContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_playContent.Location = new System.Drawing.Point(717, 10);
             this.btn_playContent.Name = "btn_playContent";
@@ -92,6 +104,28 @@ namespace ChemistryApp.SearchPage
             this.btn_playContent.TabIndex = 3;
             this.btn_playContent.TabStop = false;
             this.btn_playContent.Cursor = Cursors.Hand;
+        }
+
+
+        /// <summary>
+        /// 预览按键点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InsertButton_Click(object sender,EventArgs e)
+        {
+            string countSql = "select count(*) from MyTeaching";
+            int count = AccessDBConn.ExecuteScalar(countSql);
+            if (lab_titleContent.Text != "")
+            {
+                string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + lab_titleContent.Text + "','" + "" + this.strType + "','" + this.strURL + "',"+ (count-1).ToString()+")";
+                int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
+                if (_insertErrorIndex != 0)
+                {
+                    MessageBox.Show("加入成功！");
+                    MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                }
+            }
         }
     }
 }

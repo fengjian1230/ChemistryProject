@@ -162,7 +162,7 @@ namespace ChemistryApp
             this.btn_yijianshengcheng.BackgroundImage = global::ChemistryApp.Properties.Resources.yijianshengcheng_norml_;
         }
 
-        //点击事件
+        //点击事件 本地资源上传
         private void btn_bendiziyuan_Click(object sender, EventArgs e)
         {
             //获取到父物体
@@ -178,8 +178,12 @@ namespace ChemistryApp
                 mainPanel.Controls.Add(itemPanel);
                 itemPanel.BringToFront();
             }
-                
         }
+        /// <summary>
+        /// 一键生成
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_yijianshengcheng_Click(object sender, EventArgs e)
         {
             Button btn_yijian = (Button)sender;

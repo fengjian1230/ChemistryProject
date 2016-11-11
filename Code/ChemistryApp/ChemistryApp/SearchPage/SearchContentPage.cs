@@ -44,9 +44,9 @@ namespace ChemistryApp.SearchPage
             this.Controls.Add(this.lab_title);
             this.Controls.Add(this.lab_tips);
             this.AutoScroll = true;
-            this.Location = new System.Drawing.Point(0, 29);
+            this.Location = new System.Drawing.Point(0, 36);
             this.Name = "panel_content";
-            this.Size = new System.Drawing.Size(795, 431);
+            this.Size = new System.Drawing.Size(855, 431);
             this.TabIndex = 6;
             // 
             // lab_tips
@@ -100,16 +100,58 @@ namespace ChemistryApp.SearchPage
                 for (int i = 0; i < dr.Count(); i++)
                 {
                     SearchResultItemPanel item = new SearchResultItemPanel(10, 90 + (i * 36));
+                    if (i % 2 == 0)
+                    {
+                        item.BackColor = Color.FromArgb(245, 245, 247);
+                    }
+                    else
+                    {
+                        item.BackColor = Color.White;
+                    }
                     item.lab_titleContent.Text = dr[i]["Title"].ToString();
-                    item.lab_typeContent.Text = dr[i]["Type"].ToString();
+                    item.pic_typeContent.Image = SelectTypeIcon(dr[i]["Type"].ToString());
+                    item.strType = dr[i]["Type"].ToString();
+                    item.strURL = dr[i]["URL"].ToString();
                     this.Controls.Add(item);
                 }
-                MessageBox.Show(dr.Count().ToString());
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
             }
+        }
+
+        /// <summary>
+        /// 根据名字加载icon
+        /// </summary>
+        /// <param name="_typeName"></param>
+        private Image SelectTypeIcon(string _typeName)
+        {
+            Image _typeIconIamge = null;
+            switch (_typeName)
+            {
+                case "PPT":
+                    _typeIconIamge = global::ChemistryApp.Properties.Resources.pptIcon;
+                    break;
+                case "RreactionEquation":
+                    _typeIconIamge = global::ChemistryApp.Properties.Resources.fanyingfangchengIcon;
+                    break;
+                case "Video":
+                    _typeIconIamge = global::ChemistryApp.Properties.Resources.videoIcon;
+                    break;
+                case "MandMap":
+                    _typeIconIamge = global::ChemistryApp.Properties.Resources.mandMapIcon;
+                    break;
+                case "Example":
+                    _typeIconIamge = global::ChemistryApp.Properties.Resources.flashIcon;
+                    break;
+                case "Test":
+                    _typeIconIamge = global::ChemistryApp.Properties.Resources.xitiIcon;
+                    break;
+                default:
+                    break;
+            }
+            return _typeIconIamge;
         }
     }
 }

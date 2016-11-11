@@ -96,7 +96,7 @@ namespace ChemistryApp
             this.btn_againPrepareLesson.BackColor = Color.Transparent;
             this.btn_againPrepareLesson.Cursor = Cursors.Hand;
             this.btn_againPrepareLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_againPrepareLesson.Location = new System.Drawing.Point(80, 110);
+            this.btn_againPrepareLesson.Location = new System.Drawing.Point(90, 110);
             this.btn_againPrepareLesson.Name = "btn_againPrepareLesson";
             this.btn_againPrepareLesson.Size = new System.Drawing.Size(90, 24);
             this.btn_againPrepareLesson.TabIndex = 20;

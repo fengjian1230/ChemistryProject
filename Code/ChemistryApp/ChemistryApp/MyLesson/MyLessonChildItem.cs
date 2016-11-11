@@ -71,15 +71,29 @@ namespace ChemistryApp.MyLesson
             // 
             // pictureBox1
             // 
-            this.pic_play.BackgroundImage = global::ChemistryApp.Properties.Resources._1_03;
+            this.pic_play.BackgroundImage = global::ChemistryApp.Properties.Resources.playicon ;
             this.pic_play.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_play.Location = new System.Drawing.Point(230, 4);
+            this.pic_play.BackgroundImageLayout = ImageLayout.None;
+            this.pic_play.Location = new System.Drawing.Point(240, 7);
             this.pic_play.Name = "pic_play";
             this.pic_play.Size = new System.Drawing.Size(31, 20);
             this.pic_play.TabIndex = 2;
             this.pic_play.TabStop = false;
+            this.pic_play.Click += new EventHandler(PlayButton_Click);
 
             return childItemPanel;
+        }
+
+        /// <summary>
+        /// 点击预览按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PlayButton_Click(object sender,EventArgs e)
+        {
+            PictureBox pic = (PictureBox)sender;
+
+            MessageBox.Show(pic.Parent.Parent.Name);
         }
     }
 }

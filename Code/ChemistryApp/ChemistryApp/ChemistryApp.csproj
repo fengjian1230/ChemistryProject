@@ -501,6 +501,69 @@
   <ItemGroup>
     <None Include="Resources\delete_norml.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fanyingfangcheng_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fanyingfangcheng_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash btn_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash btn_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inserticon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maidmapbtn_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maidmapbtn_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PPT btn_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PPTbtn_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\videobtn_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vidoebtn_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xitibtn_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xitibtn_up.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fanyingfangchengIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flashIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mandMapIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pptIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\videoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xitiIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redLine.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

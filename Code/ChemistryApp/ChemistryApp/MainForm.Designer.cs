@@ -130,9 +130,10 @@
             // 
             // button1
             // 
+            this.button1.BackgroundImage = global::ChemistryApp.Properties.Resources.redLine;
             this.button1.Location = new System.Drawing.Point(107, 31);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.Size = new System.Drawing.Size(149, 23);
             this.button1.TabIndex = 20;
             this.button1.Text = "返回上一页";
             this.button1.UseVisualStyleBackColor = true;
@@ -349,7 +350,7 @@
             this.btn_search.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_search.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.Location = new System.Drawing.Point(740, 89);
+            this.btn_search.Location = new System.Drawing.Point(740, 88);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(30, 41);
             this.btn_search.TabIndex = 8;
@@ -470,6 +471,7 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "App";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
