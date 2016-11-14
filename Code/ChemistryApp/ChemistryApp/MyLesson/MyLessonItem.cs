@@ -150,6 +150,8 @@ namespace ChemistryApp
             this.pic_book.Size = new System.Drawing.Size(57, 64);
             this.pic_book.TabIndex = 3;
             this.pic_book.TabStop = false;
+            this.pic_book.Cursor = Cursors.Hand;
+            this.pic_book.Click += new EventHandler(OnClickPlayPPT_Click);
             // 
             // label3
             // 
@@ -322,6 +324,44 @@ namespace ChemistryApp
             }
         }
 
+        /// <summary>
+        /// 点击播放ppt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClickPlayPPT_Click(object sender,EventArgs e)
+        {
+            ControlPPT _control = new ControlPPT();
+            _control.PPTOpen(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
+            //_control.objApp.SlideShowEnd += 
+            //MessageBox.Show(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
+        }
+
+        /// <summary>
+        /// 播放完成后根据index播放下个
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        private string OnIndexGetPath(int index)
+        {
+            string _str = null;
+            string sql = "select * from LessonList where  LessonTitle = '" + this.lab_className.Text + "'";
+            try
+            {
+                DataSet ds = AccessDBConn.ExecuteQuery(sql, "LessonList");
+                DataRow[] dr = ds.Tables["LessonList"].Select();
+                //根据字段查询到子表，然后找到路径预览课件
+                string selectChildSql = "select top " + index.ToString() +" * from " + dr[0]["LessonContent"] + "";
+                DataSet childDs = AccessDBConn.ExecuteQuery(selectChildSql, dr[0]["LessonContent"].ToString());
+                DataRow[] childDr = childDs.Tables[dr[0]["LessonContent"].ToString()].Select();
+                _str = childDr[0]["URL"].ToString();
+            }
+            catch
+            {
+
+            }
+            return _str;
+        }
         #endregion
     }
 }

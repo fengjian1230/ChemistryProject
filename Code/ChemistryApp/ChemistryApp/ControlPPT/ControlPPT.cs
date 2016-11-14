@@ -15,12 +15,12 @@ namespace ChemistryApp
 {
     class ControlPPT
     {
-        POWERPOINT.Application objApp = null;
-        POWERPOINT.Presentation objPresSet = null;
-        POWERPOINT.SlideShowWindows objSSws;
-        POWERPOINT.SlideShowTransition objSST;
-        POWERPOINT.SlideShowSettings objSSS;
-        POWERPOINT.SlideRange objSldRng;
+        public POWERPOINT.Application objApp = null;
+        public POWERPOINT.Presentation objPresSet = null;
+        public POWERPOINT.SlideShowWindows objSSws;
+        public POWERPOINT.SlideShowTransition objSST;
+        public POWERPOINT.SlideShowSettings objSSS;
+        public POWERPOINT.SlideRange objSldRng;
         bool bAssistanOn;
 
 
@@ -37,6 +37,9 @@ namespace ChemistryApp
                 bAssistanOn = objApp.Assistant.On;
                 objApp.Assistant.On = false;
                 objSSS = this.objPresSet.SlideShowSettings;
+                
+                //objApp.PresentationOpen += OnPPTClose;
+               
                 objSSS.Run();
             }
             catch (Exception)
@@ -44,7 +47,6 @@ namespace ChemistryApp
                 this.objApp.Quit();
             }
         }
-
 
         public void PPTAuto(string filePath,int playTime)
         {
@@ -68,7 +70,7 @@ namespace ChemistryApp
             objSST.AdvanceOnTime = OFFICECORE.MsoTriState.msoCTrue;
             objSST.AdvanceTime = playTime;
             //翻页时的特效
-            objSST.EntryEffect = POWERPOINT.PpEntryEffect.ppEffectCircleOut;
+            objSST.EntryEffect = POWERPOINT.PpEntryEffect.ppEffectNone;
             objSSS = objPresSet.SlideShowSettings;
             objSSS.StartingSlide = 1;
             objSSS.EndingSlide = Slides;

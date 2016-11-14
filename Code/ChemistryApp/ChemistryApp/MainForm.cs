@@ -458,7 +458,12 @@ namespace ChemistryApp
         private void button2_Click(object sender, EventArgs e)
         {
             ControlPPT controlPPT = new ControlPPT();
-            controlPPT.PPTOpen(@System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching\\asdasdsa.pptx");
+            controlPPT.PPTAuto(@System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching\\asdasdsa.pptx",2);
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show(e.KeyCode.ToString());
         }
     }
     #endregion
