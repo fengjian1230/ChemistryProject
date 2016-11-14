@@ -33,7 +33,7 @@ namespace ChemistryApp
             try
             {
                 objApp = new POWERPOINT.Application();
-                objPresSet = objApp.Presentations.Open(filePath, OFFICECORE.MsoTriState.msoFalse, OFFICECORE.MsoTriState.msoFalse, OFFICECORE.MsoTriState.msoFalse);
+                objPresSet = objApp.Presentations.Open(filePath, OFFICECORE.MsoTriState.msoFalse, OFFICECORE.MsoTriState.msoCTrue, OFFICECORE.MsoTriState.msoFalse);
                 bAssistanOn = objApp.Assistant.On;
                 objApp.Assistant.On = false;
                 objSSS = this.objPresSet.SlideShowSettings;
