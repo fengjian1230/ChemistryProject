@@ -133,19 +133,19 @@ namespace ChemistryApp.SearchPage
                 case "PPT":
                     _typeIconIamge = global::ChemistryApp.Properties.Resources.pptIcon;
                     break;
-                case "RreactionEquation":
+                case "反应方程":
                     _typeIconIamge = global::ChemistryApp.Properties.Resources.fanyingfangchengIcon;
                     break;
-                case "Video":
+                case "视频":
                     _typeIconIamge = global::ChemistryApp.Properties.Resources.videoIcon;
                     break;
-                case "MandMap":
+                case "思维导图":
                     _typeIconIamge = global::ChemistryApp.Properties.Resources.mandMapIcon;
                     break;
-                case "Example":
+                case "实验":
                     _typeIconIamge = global::ChemistryApp.Properties.Resources.flashIcon;
                     break;
-                case "Test":
+                case "习题":
                     _typeIconIamge = global::ChemistryApp.Properties.Resources.xitiIcon;
                     break;
                 default:

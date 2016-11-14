@@ -94,7 +94,6 @@ namespace ChemistryApp.MyLesson
             {
                 //创建我的课表Item
                 MyLessonItem myLessonItem = new MyLessonItem(10, i * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
-                //Panel panel = myLessonItem.InitCompent(10, i * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
                 //把得到的值放入到链表里面
                 listPanelItem.Add(myLessonItem);
                 listPanelItemPoint.Add(new Point(10, i * (140 + 10)));
@@ -106,7 +105,6 @@ namespace ChemistryApp.MyLesson
                 for (int j = 0; j < childDataRow.Count(); j++)
                 {
                     MyLessonChildItem childPanel = new MyLessonChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
-                    //Panel childPanel = childItemClass.InitCompent(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
                     childPanel.Name = "childPanel" + j.ToString();
                     myLessonItem.Controls.Add(childPanel);
                     

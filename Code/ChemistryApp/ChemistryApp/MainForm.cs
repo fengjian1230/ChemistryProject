@@ -56,15 +56,6 @@ namespace ChemistryApp
 
             teachingPanel.CreateTeachingItem();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ControlPPT controlPPT = new ControlPPT();
-            controlPPT.PPTOpen(@System.Windows.Forms.Application.StartupPath + "\\111.pptx");
-            //controlPPT.PPTAuto(@System.Windows.Forms.Application.StartupPath + "\\111.pptx", 2);
-        }
-
-
         #region 我的课表列表动画
         public MyLessonState lessonState = MyLessonState.OnClose;
         /// <summary>
@@ -408,13 +399,15 @@ namespace ChemistryApp
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            foreach (Control item in MainPanel.Controls)
-            {
-                if (item.Name == "panel_searchpage")
-                {
-                    this.MainPanel.Controls.Remove(item);
-                }
-            }
+            ControlPPT controlPPT = new ControlPPT();
+            controlPPT.PPTOpen(System.Windows.Forms.Application.StartupPath + @"\ResourcesFolder\MyTeaching\asdasdsa.pptx");
+            //foreach (Control item in MainPanel.Controls)
+            //{
+            //    if (item.Name == "panel_searchpage")
+            //    {
+            //        this.MainPanel.Controls.Remove(item);
+            //    }
+            //}
         }
 
 
@@ -460,6 +453,12 @@ namespace ChemistryApp
                 }
                 this.panel_item.Visible = true;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ControlPPT controlPPT = new ControlPPT();
+            controlPPT.PPTOpen(@System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching\\asdasdsa.pptx");
         }
     }
     #endregion

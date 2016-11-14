@@ -123,7 +123,7 @@
             this.MainPanel.Controls.Add(this.btn_KnowledgeReview);
             this.MainPanel.Controls.Add(this.btn_MindMap);
             this.MainPanel.Controls.Add(this.btn_ExperlmentalPlatform);
-            this.MainPanel.Location = new System.Drawing.Point(12, 12);
+            this.MainPanel.Location = new System.Drawing.Point(2, 2);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;

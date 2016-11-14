@@ -92,7 +92,7 @@ namespace ChemistryApp.SearchPage
             this.pic_typeContent.Name = "pic_typeContent";
             this.pic_typeContent.Size = new System.Drawing.Size(68, 28);
             this.pic_typeContent.TabIndex = 2;
-            this.pic_typeContent.Image = global::ChemistryApp.Properties.Resources.删除键;
+            this.pic_typeContent.Image = global::ChemistryApp.Properties.Resources.inserticon;
             // 
             // btn_playContent
             // 

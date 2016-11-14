@@ -90,9 +90,52 @@ namespace ChemistryApp.MyLesson
         /// <param name="e"></param>
         private void PlayButton_Click(object sender,EventArgs e)
         {
+            //根据题目来查询到路径
             PictureBox pic = (PictureBox)sender;
+            MyLessonItem thisParentPanel = (MyLessonItem)pic.Parent.Parent;
+            string selectParentSql = "select * from LessonList where  LessonTitle = '" + thisParentPanel.lab_className.Text + "'";
+            try
+            {
+                DataSet ds = AccessDBConn.ExecuteQuery(selectParentSql, "LessonList");
+                DataRow[] dr = ds.Tables["LessonList"].Select();
+                //根据字段查询到子表，然后找到路径预览课件
+                string selectChildSql = "select * from " + dr[0]["LessonContent"] + "";
+                DataSet childDs = AccessDBConn.ExecuteQuery(selectChildSql, dr[0]["LessonContent"].ToString());
+                DataRow[] childDr = childDs.Tables[dr[0]["LessonContent"].ToString()].Select();
+                string _fileType = childDr[0]["Type"].ToString();
+                string _filePath = childDr[0]["URL"].ToString();
+                switch (_fileType)
+                {
+                    case "PPT":
+                        ControlPPT controlPPT = new ControlPPT();
+                        controlPPT.PPTOpen(System.Windows.Forms.Application.StartupPath + @_filePath);
+                        //MessageBox.Show(_fileType);
+                        break;
+                    case "思维导图":
+                        /* 思维导图*/
+                        break;
+                    case "视频":
+                        /* 视频文件*/
+                        break;
+                    case "实验":
+                        /* 实验*/
+                        break;
+                    case "反应方程":
+                        /* 反应方程*/
+                        break;
+                    case "习题":
+                        /*习题*/
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
 
-            MessageBox.Show(pic.Parent.Parent.Name);
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
