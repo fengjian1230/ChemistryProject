@@ -33,6 +33,15 @@
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_secondContent = new System.Windows.Forms.Panel();
+            this.panel_partBtn = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lab_title = new System.Windows.Forms.Label();
+            this.btn_four = new System.Windows.Forms.Button();
+            this.btn_three = new System.Windows.Forms.Button();
+            this.btn_two = new System.Windows.Forms.Button();
+            this.btn_one = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_myteachingShrink = new System.Windows.Forms.PictureBox();
             this.pic_myteachingMianban = new System.Windows.Forms.PictureBox();
@@ -59,7 +68,12 @@
             this.btn_KnowledgeReview = new System.Windows.Forms.PictureBox();
             this.btn_MindMap = new System.Windows.Forms.PictureBox();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
+            this.lab_title_second = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel_secondContent.SuspendLayout();
+            this.panel_partBtn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
@@ -102,6 +116,7 @@
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景;
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MainPanel.Controls.Add(this.panel1);
             this.MainPanel.Controls.Add(this.button1);
             this.MainPanel.Controls.Add(this.btn_myteachingShrink);
             this.MainPanel.Controls.Add(this.pic_myteachingMianban);
@@ -123,10 +138,129 @@
             this.MainPanel.Controls.Add(this.btn_KnowledgeReview);
             this.MainPanel.Controls.Add(this.btn_MindMap);
             this.MainPanel.Controls.Add(this.btn_ExperlmentalPlatform);
+            this.MainPanel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MainPanel.Location = new System.Drawing.Point(2, 2);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel_secondContent);
+            this.panel1.Controls.Add(this.panel_partBtn);
+            this.panel1.Location = new System.Drawing.Point(91, 174);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(810, 460);
+            this.panel1.TabIndex = 23;
+            // 
+            // panel_secondContent
+            // 
+            this.panel_secondContent.BackColor = System.Drawing.Color.White;
+            this.panel_secondContent.Controls.Add(this.lab_title_second);
+            this.panel_secondContent.Location = new System.Drawing.Point(2, 36);
+            this.panel_secondContent.Name = "panel_secondContent";
+            this.panel_secondContent.Size = new System.Drawing.Size(810, 424);
+            this.panel_secondContent.TabIndex = 23;
+            // 
+            // panel_partBtn
+            // 
+            this.panel_partBtn.Controls.Add(this.pictureBox1);
+            this.panel_partBtn.Controls.Add(this.lab_title);
+            this.panel_partBtn.Controls.Add(this.btn_four);
+            this.panel_partBtn.Controls.Add(this.btn_three);
+            this.panel_partBtn.Controls.Add(this.btn_two);
+            this.panel_partBtn.Controls.Add(this.btn_one);
+            this.panel_partBtn.Location = new System.Drawing.Point(3, 0);
+            this.panel_partBtn.Name = "panel_partBtn";
+            this.panel_partBtn.Size = new System.Drawing.Size(810, 36);
+            this.panel_partBtn.TabIndex = 22;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::ChemistryApp.Properties.Resources.redLine;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(-3, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(810, 3);
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lab_title
+            // 
+            this.lab_title.AutoSize = true;
+            this.lab_title.Font = new System.Drawing.Font("苹方 中等", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lab_title.ForeColor = System.Drawing.Color.DarkRed;
+            this.lab_title.Location = new System.Drawing.Point(684, 3);
+            this.lab_title.Name = "lab_title";
+            this.lab_title.Size = new System.Drawing.Size(123, 32);
+            this.lab_title.TabIndex = 25;
+            this.lab_title.Text = "高一(上期)";
+            // 
+            // btn_four
+            // 
+            this.btn_four.BackgroundImage = global::ChemistryApp.Properties.Resources.btnWhiteBG_up;
+            this.btn_four.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_four.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_four.FlatAppearance.BorderSize = 0;
+            this.btn_four.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btn_four.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.btn_four.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_four.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_four.ForeColor = System.Drawing.Color.DarkRed;
+            this.btn_four.Location = new System.Drawing.Point(306, 0);
+            this.btn_four.Name = "btn_four";
+            this.btn_four.Size = new System.Drawing.Size(92, 36);
+            this.btn_four.TabIndex = 24;
+            this.btn_four.Text = "四单元";
+            this.btn_four.UseVisualStyleBackColor = true;
+            // 
+            // btn_three
+            // 
+            this.btn_three.BackgroundImage = global::ChemistryApp.Properties.Resources.btnWhiteBG_up;
+            this.btn_three.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_three.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_three.FlatAppearance.BorderSize = 0;
+            this.btn_three.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_three.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_three.ForeColor = System.Drawing.Color.DarkRed;
+            this.btn_three.Location = new System.Drawing.Point(204, 0);
+            this.btn_three.Name = "btn_three";
+            this.btn_three.Size = new System.Drawing.Size(92, 36);
+            this.btn_three.TabIndex = 23;
+            this.btn_three.Text = "三单元";
+            this.btn_three.UseVisualStyleBackColor = true;
+            // 
+            // btn_two
+            // 
+            this.btn_two.BackgroundImage = global::ChemistryApp.Properties.Resources.btnWhiteBG_up;
+            this.btn_two.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_two.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_two.FlatAppearance.BorderSize = 0;
+            this.btn_two.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_two.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_two.ForeColor = System.Drawing.Color.DarkRed;
+            this.btn_two.Location = new System.Drawing.Point(102, 0);
+            this.btn_two.Name = "btn_two";
+            this.btn_two.Size = new System.Drawing.Size(92, 36);
+            this.btn_two.TabIndex = 22;
+            this.btn_two.Text = "二单元";
+            this.btn_two.UseVisualStyleBackColor = true;
+            // 
+            // btn_one
+            // 
+            this.btn_one.BackgroundImage = global::ChemistryApp.Properties.Resources.btnWhiteBG_up;
+            this.btn_one.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_one.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_one.FlatAppearance.BorderSize = 0;
+            this.btn_one.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_one.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_one.ForeColor = System.Drawing.Color.DarkRed;
+            this.btn_one.Location = new System.Drawing.Point(0, 0);
+            this.btn_one.Name = "btn_one";
+            this.btn_one.Size = new System.Drawing.Size(92, 36);
+            this.btn_one.TabIndex = 21;
+            this.btn_one.Text = "一单元";
+            this.btn_one.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -460,6 +594,18 @@
             this.btn_ExperlmentalPlatform.TabStop = false;
             this.btn_ExperlmentalPlatform.Click += new System.EventHandler(this.btn_ExperlmentalPlatform_Click);
             // 
+            // lab_title_second
+            // 
+            this.lab_title_second.AutoSize = true;
+            this.lab_title_second.BackColor = System.Drawing.Color.White;
+            this.lab_title_second.Font = new System.Drawing.Font("苹方 中等", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lab_title_second.ForeColor = System.Drawing.Color.DarkRed;
+            this.lab_title_second.Location = new System.Drawing.Point(1, 29);
+            this.lab_title_second.Name = "lab_title_second";
+            this.lab_title_second.Size = new System.Drawing.Size(185, 40);
+            this.lab_title_second.TabIndex = 0;
+            this.lab_title_second.Text = "从实验学化学";
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -476,6 +622,12 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel_secondContent.ResumeLayout(false);
+            this.panel_secondContent.PerformLayout();
+            this.panel_partBtn.ResumeLayout(false);
+            this.panel_partBtn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).EndInit();
@@ -528,6 +680,16 @@
         private System.Windows.Forms.PictureBox btn_myClassSearch;
         private System.Windows.Forms.Button btn_bianji;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_one;
+        private System.Windows.Forms.Panel panel_partBtn;
+        private System.Windows.Forms.Button btn_four;
+        private System.Windows.Forms.Button btn_three;
+        private System.Windows.Forms.Button btn_two;
+        private System.Windows.Forms.Label lab_title;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel_secondContent;
+        private System.Windows.Forms.Label lab_title_second;
     }
 }
 

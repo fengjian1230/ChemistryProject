@@ -48,6 +48,7 @@ namespace ChemistryApp
             pic_book = new PictureBox();
             pic_delete = new PictureBox();
             this.btn_againPrepareLesson = new System.Windows.Forms.Button();
+           
             InitCompent(posX, posY, _strClassName, _strTips);
 
         }
@@ -332,9 +333,20 @@ namespace ChemistryApp
         private void OnClickPlayPPT_Click(object sender,EventArgs e)
         {
             ControlPPT _control = new ControlPPT();
-            _control.PPTOpen(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
-            //_control.objApp.SlideShowEnd += 
+            _control.PPTOpen(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
+            //this._control.PPTOpen(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
+            _control.objApp.SlideShowEnd += OnSlideShowEnd;
             //MessageBox.Show(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
+        }
+        
+        /// <summary>
+        /// 当幻灯片播放完毕，播放下一个小段
+        /// </summary>
+        private void OnSlideShowEnd(Microsoft.Office.Interop.PowerPoint.Presentation pre)
+        {
+            ControlPPT _controlOne = new ControlPPT();
+            _controlOne.PPTOpen(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(2));
+            //this._control.objApp.SlideShowEnd -= OnSlideShowEnd;
         }
 
         /// <summary>

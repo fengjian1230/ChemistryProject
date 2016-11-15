@@ -363,6 +363,36 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap btnRedBg_down {
+            get {
+                object obj = ResourceManager.GetObject("btnRedBg_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap btnWhiteBG_up {
+            get {
+                object obj = ResourceManager.GetObject("btnWhiteBG_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CTLogo {
+            get {
+                object obj = ResourceManager.GetObject("CTLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap delete_down {
             get {
                 object obj = ResourceManager.GetObject("delete_down", resourceCulture);

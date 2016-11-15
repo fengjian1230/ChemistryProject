@@ -37,13 +37,12 @@ namespace ChemistryApp
                 bAssistanOn = objApp.Assistant.On;
                 objApp.Assistant.On = false;
                 objSSS = this.objPresSet.SlideShowSettings;
-                
-                //objApp.PresentationOpen += OnPPTClose;
                
                 objSSS.Run();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 this.objApp.Quit();
             }
         }
