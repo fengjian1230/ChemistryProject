@@ -113,6 +113,16 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Backicon {
+            get {
+                object obj = ResourceManager.GetObject("Backicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap bendiziyuan_norml_ {
             get {
                 object obj = ResourceManager.GetObject("bendiziyuan(norml)", resourceCulture);

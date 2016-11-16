@@ -190,7 +190,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_ExperlmentalPlatform_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         /// <summary>
@@ -200,7 +200,9 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_MindMap_Click(object sender, EventArgs e)
         {
-
+            SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
+            this.MainPanel.Controls.Add(secondPagePanel);
+            secondPagePanel.BringToFront();
         }
 
         /// <summary>
@@ -210,7 +212,9 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_VideoSource_Click(object sender, EventArgs e)
         {
-
+            SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
+            this.MainPanel.Controls.Add(secondPagePanel);
+            secondPagePanel.BringToFront();
         }
         #endregion
 
@@ -401,15 +405,13 @@ namespace ChemistryApp
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            ControlPPT controlPPT = new ControlPPT();
-            controlPPT.PPTOpen(System.Windows.Forms.Application.StartupPath + @"\ResourcesFolder\MyTeaching\asdasdsa.pptx");
-            //foreach (Control item in MainPanel.Controls)
-            //{
-            //    if (item.Name == "panel_searchpage")
-            //    {
-            //        this.MainPanel.Controls.Remove(item);
-            //    }
-            //}
+            foreach (Control item in MainPanel.Controls)
+            {
+                if (item.Name == "panel_searchpage" || item.Name == "panel_secondPage")
+                {
+                    this.MainPanel.Controls.Remove(item);
+                }
+            }
         }
 
 

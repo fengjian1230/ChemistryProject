@@ -26,6 +26,7 @@ namespace ChemistryApp.SecondPage
         private System.Windows.Forms.PictureBox pic_type_border;
         private System.Windows.Forms.Label lab_secondTitle;
         private System.Windows.Forms.PictureBox pic_titleborder;
+        SecondPageContent pageContent;
         #endregion
 
 
@@ -39,6 +40,7 @@ namespace ChemistryApp.SecondPage
             this.lab_secondTitle = new System.Windows.Forms.Label();
             this.pic_titleborder = new System.Windows.Forms.PictureBox();
             this.lab_title_second = new System.Windows.Forms.Label();
+            this.pageContent = new SecondPageContent();
             InitCompent();
         }
 
@@ -48,6 +50,7 @@ namespace ChemistryApp.SecondPage
             // panel_secondContentBG
             // 
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pageContent);
             this.Controls.Add(this.lab_secondPlay);
             this.Controls.Add(this.pic_play_border);
             this.Controls.Add(this.lab_secondType);

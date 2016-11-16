@@ -19,6 +19,15 @@ namespace ChemistryApp.SecondPage
 {
     class SecondPageContent : Panel
     {
+        /// <summary>
+        /// 表名
+        /// </summary>
+        private string tableName;
+        public string TableName
+        {
+            get { return tableName; }
+            set { tableName = value; }
+        }
 
         public SecondPageContent()
         {
@@ -42,12 +51,12 @@ namespace ChemistryApp.SecondPage
         /// </summary>
         private void CreateItem()
         {
-            string selectSql = "select * from AllTeaching";
+            string selectSql = "select * from " + tableName + "";
             //string selectSql = "select * from AllTeaching where Title like '%" + _strContent + "%'";
             try
             {
-                DataSet ds = AccessDBConn.ExecuteQuery(selectSql, "AllTeaching");
-                DataRow[] dr = ds.Tables["AllTeaching"].Select();
+                DataSet ds = AccessDBConn.ExecuteQuery(selectSql, tableName);
+                DataRow[] dr = ds.Tables[tableName].Select();
                 for (int i = 0; i < dr.Count(); i++)
                 {
                     SearchResultItemPanel item = new SearchResultItemPanel(10, i * 36);

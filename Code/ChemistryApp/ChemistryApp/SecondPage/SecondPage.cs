@@ -19,6 +19,15 @@ namespace ChemistryApp.SecondPage
 {
     class SecondPageBackGroundPanel : Panel
     {
+        /// <summary>
+        /// 表名
+        /// </summary>
+        private string tableName;
+        public string TableName
+        {
+            get { return tableName; }
+            set { tableName = value; }
+        }
         SecondPageButtonPanle secondButtonPageBG;
         SecondPageContentBackGroundPanel secondContentBG;
         public SecondPageBackGroundPanel()
@@ -43,6 +52,50 @@ namespace ChemistryApp.SecondPage
             this.Size = new System.Drawing.Size(810, 460);
             this.TabIndex = 23;
             this.Visible = true;
+            this.secondButtonPageBG.FirstPartButtonAction = FirstPartButtonClick;
+            this.secondButtonPageBG.SecondPartButtonAction = SecondPartButtonClick;
+            this.secondButtonPageBG.ThirdPartButtonAction = ThirdPartButtonClick;
+            this.secondButtonPageBG.FourthPartButtonAction = FourthPartButtonClick;
+        }
+
+        /// <summary>
+        /// 第一单元按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FirstPartButtonClick(object sender,EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 第一单元按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SecondPartButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 第一单元按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ThirdPartButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 第一单元按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FourthPartButtonClick(object sender, EventArgs e)
+        {
+
         }
     }
 }
