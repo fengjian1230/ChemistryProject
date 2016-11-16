@@ -38,12 +38,12 @@ namespace ChemistryApp.SecondPage
         #endregion
 
         #region 字段
-        private System.Windows.Forms.Button btn_four;
-        private System.Windows.Forms.Button btn_three;
-        private System.Windows.Forms.Button btn_two;
+        public System.Windows.Forms.Button btn_four;
+        public System.Windows.Forms.Button btn_three;
+        public System.Windows.Forms.Button btn_two;
         private System.Windows.Forms.Label lab_title;
         private System.Windows.Forms.PictureBox secondRedLine;
-        private System.Windows.Forms.Button btn_one;
+        public System.Windows.Forms.Button btn_one;
         #endregion
 
 
@@ -111,7 +111,6 @@ namespace ChemistryApp.SecondPage
             this.btn_four.TabIndex = 24;
             this.btn_four.Text = "四单元";
             this.btn_four.UseVisualStyleBackColor = true;
-            this.btn_four.Click += FourthPartButtonAction;
             // 
             // btn_three
             // 
@@ -128,7 +127,6 @@ namespace ChemistryApp.SecondPage
             this.btn_three.TabIndex = 23;
             this.btn_three.Text = "三单元";
             this.btn_three.UseVisualStyleBackColor = true;
-            this.btn_three.Click += ThirdPartButtonAction;
             // 
             // btn_two
             // 
@@ -145,7 +143,6 @@ namespace ChemistryApp.SecondPage
             this.btn_two.TabIndex = 22;
             this.btn_two.Text = "二单元";
             this.btn_two.UseVisualStyleBackColor = true;
-            this.btn_two.Click += SecondPartButtonAction;
             // 
             // btn_one
             // 
@@ -162,7 +159,6 @@ namespace ChemistryApp.SecondPage
             this.btn_one.TabIndex = 21;
             this.btn_one.Text = "一单元";
             this.btn_one.UseVisualStyleBackColor = true;
-            this.btn_one.Click += FirstPartButtonAction;
         }
     }
     #endregion

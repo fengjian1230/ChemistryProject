@@ -424,7 +424,7 @@
             this.btn_ClassroomTeaching.Size = new System.Drawing.Size(175, 226);
             this.btn_ClassroomTeaching.TabIndex = 3;
             this.btn_ClassroomTeaching.TabStop = false;
-            this.btn_ClassroomTeaching.Click += new System.EventHandler(this.btn_ClassroomTeaching_Click);
+            this.btn_ClassroomTeaching.Click += new System.EventHandler(this.btn_ClassRoomTeaching_Click);
             // 
             // btn_KnowledgeReview
             // 

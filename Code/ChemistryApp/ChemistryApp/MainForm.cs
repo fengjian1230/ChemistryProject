@@ -176,8 +176,9 @@ namespace ChemistryApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btn_ClassroomTeaching_Click(object sender, EventArgs e)
+        private void btn_ClassRoomTeaching_Click(object sender, EventArgs e)
         {
+            SecondPage.SecondPageManager.GetInstace.TableName = "ClassRoomTeaching";
             SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
             this.MainPanel.Controls.Add(secondPagePanel);
             secondPagePanel.BringToFront();
@@ -200,6 +201,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_MindMap_Click(object sender, EventArgs e)
         {
+            SecondPage.SecondPageManager.GetInstace.TableName = "MindMap";
             SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
             this.MainPanel.Controls.Add(secondPagePanel);
             secondPagePanel.BringToFront();
@@ -212,6 +214,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_VideoSource_Click(object sender, EventArgs e)
         {
+            SecondPage.SecondPageManager.GetInstace.TableName = "VideoSource";
             SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
             this.MainPanel.Controls.Add(secondPagePanel);
             secondPagePanel.BringToFront();

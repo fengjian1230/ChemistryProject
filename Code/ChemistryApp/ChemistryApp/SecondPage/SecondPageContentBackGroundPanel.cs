@@ -26,7 +26,7 @@ namespace ChemistryApp.SecondPage
         private System.Windows.Forms.PictureBox pic_type_border;
         private System.Windows.Forms.Label lab_secondTitle;
         private System.Windows.Forms.PictureBox pic_titleborder;
-        SecondPageContent pageContent;
+        public SecondPageContent pageContent;
         #endregion
 
 

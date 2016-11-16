@@ -19,21 +19,13 @@ namespace ChemistryApp.SecondPage
 {
     class SecondPageBackGroundPanel : Panel
     {
-        /// <summary>
-        /// 表名
-        /// </summary>
-        private string tableName;
-        public string TableName
-        {
-            get { return tableName; }
-            set { tableName = value; }
-        }
         SecondPageButtonPanle secondButtonPageBG;
         SecondPageContentBackGroundPanel secondContentBG;
         public SecondPageBackGroundPanel()
         {
             secondButtonPageBG = new SecondPageButtonPanle();
             secondContentBG = new SecondPageContentBackGroundPanel();
+
             InitCompent();
         }
 
@@ -52,10 +44,10 @@ namespace ChemistryApp.SecondPage
             this.Size = new System.Drawing.Size(810, 460);
             this.TabIndex = 23;
             this.Visible = true;
-            this.secondButtonPageBG.FirstPartButtonAction = FirstPartButtonClick;
-            this.secondButtonPageBG.SecondPartButtonAction = SecondPartButtonClick;
-            this.secondButtonPageBG.ThirdPartButtonAction = ThirdPartButtonClick;
-            this.secondButtonPageBG.FourthPartButtonAction = FourthPartButtonClick;
+            this.secondButtonPageBG.btn_one.Click += FirstPartButtonClick;
+            this.secondButtonPageBG.btn_two.Click += SecondPartButtonClick;
+            this.secondButtonPageBG.btn_three.Click += ThirdPartButtonClick;
+            this.secondButtonPageBG.btn_four.Click += FourthPartButtonClick;
         }
 
         /// <summary>
@@ -65,7 +57,8 @@ namespace ChemistryApp.SecondPage
         /// <param name="e"></param>
         private void FirstPartButtonClick(object sender,EventArgs e)
         {
-
+            this.secondContentBG.pageContent.RemoveAllControls();
+            this.secondContentBG.pageContent.SelectContentByIndex(1);
         }
 
         /// <summary>
@@ -75,7 +68,8 @@ namespace ChemistryApp.SecondPage
         /// <param name="e"></param>
         private void SecondPartButtonClick(object sender, EventArgs e)
         {
-
+            this.secondContentBG.pageContent.RemoveAllControls();
+            this.secondContentBG.pageContent.SelectContentByIndex(2);
         }
 
         /// <summary>
@@ -85,7 +79,8 @@ namespace ChemistryApp.SecondPage
         /// <param name="e"></param>
         private void ThirdPartButtonClick(object sender, EventArgs e)
         {
-
+            this.secondContentBG.pageContent.RemoveAllControls();
+            this.secondContentBG.pageContent.SelectContentByIndex(3);
         }
 
         /// <summary>
@@ -95,7 +90,8 @@ namespace ChemistryApp.SecondPage
         /// <param name="e"></param>
         private void FourthPartButtonClick(object sender, EventArgs e)
         {
-
+            this.secondContentBG.pageContent.RemoveAllControls();
+            this.secondContentBG.pageContent.SelectContentByIndex(4);
         }
     }
 }

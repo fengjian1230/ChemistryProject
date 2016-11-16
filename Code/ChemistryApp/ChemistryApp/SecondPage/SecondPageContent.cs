@@ -19,15 +19,6 @@ namespace ChemistryApp.SecondPage
 {
     class SecondPageContent : Panel
     {
-        /// <summary>
-        /// 表名
-        /// </summary>
-        private string tableName;
-        public string TableName
-        {
-            get { return tableName; }
-            set { tableName = value; }
-        }
 
         public SecondPageContent()
         {
@@ -51,12 +42,12 @@ namespace ChemistryApp.SecondPage
         /// </summary>
         private void CreateItem()
         {
-            string selectSql = "select * from " + tableName + "";
+            string selectSql = "select * from " + SecondPageManager.GetInstace.TableName + "";
             //string selectSql = "select * from AllTeaching where Title like '%" + _strContent + "%'";
             try
             {
-                DataSet ds = AccessDBConn.ExecuteQuery(selectSql, tableName);
-                DataRow[] dr = ds.Tables[tableName].Select();
+                DataSet ds = AccessDBConn.ExecuteQuery(selectSql, SecondPageManager.GetInstace.TableName);
+                DataRow[] dr = ds.Tables[SecondPageManager.GetInstace.TableName].Select();
                 for (int i = 0; i < dr.Count(); i++)
                 {
                     SearchResultItemPanel item = new SearchResultItemPanel(10, i * 36);
@@ -80,6 +71,48 @@ namespace ChemistryApp.SecondPage
                 MessageBox.Show(exp.Message);
             }
         }
+
+        /// <summary>
+        /// 删除所有的控件
+        /// </summary>
+        public void RemoveAllControls()
+        {
+            this.Controls.Clear();
+        }
+
+        public void SelectContentByIndex(int index)
+        {
+            string selectSql = "select * from " + SecondPageManager.GetInstace.TableName + " where Part = " + index.ToString() + "";
+            try
+            {
+                DataSet ds = AccessDBConn.ExecuteQuery(selectSql, SecondPageManager.GetInstace.TableName);
+                DataRow[] dr = ds.Tables[SecondPageManager.GetInstace.TableName].Select();
+                for (int i = 0; i < dr.Count(); i++)
+                {
+                    SearchResultItemPanel item = new SearchResultItemPanel(10, i * 36);
+                    if (i % 2 == 0)
+                    {
+                        item.BackColor = Color.FromArgb(245, 245, 247);
+                    }
+                    else
+                    {
+                        item.BackColor = Color.White;
+                    }
+                    item.lab_titleContent.Text = dr[i]["Title"].ToString();
+                    item.pic_typeContent.Image = SelectTypeIcon(dr[i]["Type"].ToString());
+                    item.strType = dr[i]["Type"].ToString();
+                    item.strURL = dr[i]["URL"].ToString();
+                    this.Controls.Add(item);
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+
+
 
         /// <summary>
         /// 根据名字加载icon
