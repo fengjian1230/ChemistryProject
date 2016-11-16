@@ -114,6 +114,15 @@
     <Compile Include="SecondPage\SecondPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SecondPage\SecondPageButtonPanle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SecondPage\SecondPageContent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SecondPage\SecondPageContentBackGroundPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

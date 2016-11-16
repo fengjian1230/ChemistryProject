@@ -178,7 +178,9 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_ClassroomTeaching_Click(object sender, EventArgs e)
         {
-
+            SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
+            this.MainPanel.Controls.Add(secondPagePanel);
+            secondPagePanel.BringToFront();
         }
 
         /// <summary>

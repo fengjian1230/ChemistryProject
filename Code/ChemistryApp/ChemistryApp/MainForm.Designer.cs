@@ -33,10 +33,18 @@
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_secondContent = new System.Windows.Forms.Panel();
+            this.panel_secondPage = new System.Windows.Forms.Panel();
+            this.panel_secondContentBG = new System.Windows.Forms.Panel();
+            this.panel_secondPageContent = new System.Windows.Forms.Panel();
+            this.lab_secondPlay = new System.Windows.Forms.Label();
+            this.pic_play_border = new System.Windows.Forms.PictureBox();
+            this.lab_secondType = new System.Windows.Forms.Label();
+            this.pic_type_border = new System.Windows.Forms.PictureBox();
+            this.lab_secondTitle = new System.Windows.Forms.Label();
+            this.pic_titleborder = new System.Windows.Forms.PictureBox();
+            this.lab_title_second = new System.Windows.Forms.Label();
             this.panel_partBtn = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.secondRedLine = new System.Windows.Forms.PictureBox();
             this.lab_title = new System.Windows.Forms.Label();
             this.btn_four = new System.Windows.Forms.Button();
             this.btn_three = new System.Windows.Forms.Button();
@@ -68,12 +76,14 @@
             this.btn_KnowledgeReview = new System.Windows.Forms.PictureBox();
             this.btn_MindMap = new System.Windows.Forms.PictureBox();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
-            this.lab_title_second = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel_secondContent.SuspendLayout();
+            this.panel_secondPage.SuspendLayout();
+            this.panel_secondContentBG.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_play_border)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_type_border)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_titleborder)).BeginInit();
             this.panel_partBtn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondRedLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
@@ -116,7 +126,7 @@
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景;
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MainPanel.Controls.Add(this.panel1);
+            this.MainPanel.Controls.Add(this.panel_secondPage);
             this.MainPanel.Controls.Add(this.button1);
             this.MainPanel.Controls.Add(this.btn_myteachingShrink);
             this.MainPanel.Controls.Add(this.pic_myteachingMianban);
@@ -144,46 +154,128 @@
             this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;
             // 
-            // panel1
+            // panel_secondPage
             // 
-            this.panel1.Controls.Add(this.panel_secondContent);
-            this.panel1.Controls.Add(this.panel_partBtn);
-            this.panel1.Location = new System.Drawing.Point(91, 174);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(810, 460);
-            this.panel1.TabIndex = 23;
+            this.panel_secondPage.Controls.Add(this.panel_secondContentBG);
+            this.panel_secondPage.Controls.Add(this.panel_partBtn);
+            this.panel_secondPage.Location = new System.Drawing.Point(37, 76);
+            this.panel_secondPage.Name = "panel_secondPage";
+            this.panel_secondPage.Size = new System.Drawing.Size(810, 460);
+            this.panel_secondPage.TabIndex = 23;
+            this.panel_secondPage.Visible = false;
             // 
-            // panel_secondContent
+            // panel_secondContentBG
             // 
-            this.panel_secondContent.BackColor = System.Drawing.Color.White;
-            this.panel_secondContent.Controls.Add(this.lab_title_second);
-            this.panel_secondContent.Location = new System.Drawing.Point(2, 36);
-            this.panel_secondContent.Name = "panel_secondContent";
-            this.panel_secondContent.Size = new System.Drawing.Size(810, 424);
-            this.panel_secondContent.TabIndex = 23;
+            this.panel_secondContentBG.BackColor = System.Drawing.Color.White;
+            this.panel_secondContentBG.Controls.Add(this.panel_secondPageContent);
+            this.panel_secondContentBG.Controls.Add(this.lab_secondPlay);
+            this.panel_secondContentBG.Controls.Add(this.pic_play_border);
+            this.panel_secondContentBG.Controls.Add(this.lab_secondType);
+            this.panel_secondContentBG.Controls.Add(this.pic_type_border);
+            this.panel_secondContentBG.Controls.Add(this.lab_secondTitle);
+            this.panel_secondContentBG.Controls.Add(this.pic_titleborder);
+            this.panel_secondContentBG.Controls.Add(this.lab_title_second);
+            this.panel_secondContentBG.Location = new System.Drawing.Point(70, 63);
+            this.panel_secondContentBG.Name = "panel_secondContentBG";
+            this.panel_secondContentBG.Size = new System.Drawing.Size(810, 424);
+            this.panel_secondContentBG.TabIndex = 23;
+            // 
+            // panel_secondPageContent
+            // 
+            this.panel_secondPageContent.Location = new System.Drawing.Point(2, 102);
+            this.panel_secondPageContent.Name = "panel_secondPageContent";
+            this.panel_secondPageContent.Size = new System.Drawing.Size(806, 318);
+            this.panel_secondPageContent.TabIndex = 7;
+            // 
+            // lab_secondPlay
+            // 
+            this.lab_secondPlay.AutoSize = true;
+            this.lab_secondPlay.Location = new System.Drawing.Point(754, 77);
+            this.lab_secondPlay.Name = "lab_secondPlay";
+            this.lab_secondPlay.Size = new System.Drawing.Size(39, 20);
+            this.lab_secondPlay.TabIndex = 6;
+            this.lab_secondPlay.Text = "预览";
+            // 
+            // pic_play_border
+            // 
+            this.pic_play_border.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic_play_border.Location = new System.Drawing.Point(510, 73);
+            this.pic_play_border.Name = "pic_play_border";
+            this.pic_play_border.Size = new System.Drawing.Size(340, 28);
+            this.pic_play_border.TabIndex = 5;
+            this.pic_play_border.TabStop = false;
+            // 
+            // lab_secondType
+            // 
+            this.lab_secondType.AutoSize = true;
+            this.lab_secondType.Location = new System.Drawing.Point(433, 77);
+            this.lab_secondType.Name = "lab_secondType";
+            this.lab_secondType.Size = new System.Drawing.Size(39, 20);
+            this.lab_secondType.TabIndex = 4;
+            this.lab_secondType.Text = "类型";
+            // 
+            // pic_type_border
+            // 
+            this.pic_type_border.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic_type_border.Location = new System.Drawing.Point(399, 73);
+            this.pic_type_border.Name = "pic_type_border";
+            this.pic_type_border.Size = new System.Drawing.Size(111, 28);
+            this.pic_type_border.TabIndex = 3;
+            this.pic_type_border.TabStop = false;
+            // 
+            // lab_secondTitle
+            // 
+            this.lab_secondTitle.AutoSize = true;
+            this.lab_secondTitle.Location = new System.Drawing.Point(172, 77);
+            this.lab_secondTitle.Name = "lab_secondTitle";
+            this.lab_secondTitle.Size = new System.Drawing.Size(39, 20);
+            this.lab_secondTitle.TabIndex = 2;
+            this.lab_secondTitle.Text = "标题";
+            // 
+            // pic_titleborder
+            // 
+            this.pic_titleborder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic_titleborder.Location = new System.Drawing.Point(-14, 73);
+            this.pic_titleborder.Name = "pic_titleborder";
+            this.pic_titleborder.Size = new System.Drawing.Size(413, 28);
+            this.pic_titleborder.TabIndex = 1;
+            this.pic_titleborder.TabStop = false;
+            // 
+            // lab_title_second
+            // 
+            this.lab_title_second.AutoSize = true;
+            this.lab_title_second.BackColor = System.Drawing.Color.White;
+            this.lab_title_second.Font = new System.Drawing.Font("苹方 中等", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lab_title_second.ForeColor = System.Drawing.Color.DarkRed;
+            this.lab_title_second.Location = new System.Drawing.Point(1, 29);
+            this.lab_title_second.Name = "lab_title_second";
+            this.lab_title_second.Size = new System.Drawing.Size(185, 40);
+            this.lab_title_second.TabIndex = 0;
+            this.lab_title_second.Text = "从实验学化学";
             // 
             // panel_partBtn
             // 
-            this.panel_partBtn.Controls.Add(this.pictureBox1);
+            this.panel_partBtn.Controls.Add(this.secondRedLine);
             this.panel_partBtn.Controls.Add(this.lab_title);
             this.panel_partBtn.Controls.Add(this.btn_four);
             this.panel_partBtn.Controls.Add(this.btn_three);
             this.panel_partBtn.Controls.Add(this.btn_two);
             this.panel_partBtn.Controls.Add(this.btn_one);
-            this.panel_partBtn.Location = new System.Drawing.Point(3, 0);
+            this.panel_partBtn.Location = new System.Drawing.Point(53, 2);
             this.panel_partBtn.Name = "panel_partBtn";
             this.panel_partBtn.Size = new System.Drawing.Size(810, 36);
             this.panel_partBtn.TabIndex = 22;
+            this.panel_partBtn.Visible = false;
             // 
-            // pictureBox1
+            // secondRedLine
             // 
-            this.pictureBox1.BackgroundImage = global::ChemistryApp.Properties.Resources.redLine;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(-3, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(810, 3);
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
+            this.secondRedLine.BackgroundImage = global::ChemistryApp.Properties.Resources.redLine;
+            this.secondRedLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.secondRedLine.Location = new System.Drawing.Point(-3, 33);
+            this.secondRedLine.Name = "secondRedLine";
+            this.secondRedLine.Size = new System.Drawing.Size(810, 3);
+            this.secondRedLine.TabIndex = 23;
+            this.secondRedLine.TabStop = false;
             // 
             // lab_title
             // 
@@ -192,7 +284,7 @@
             this.lab_title.ForeColor = System.Drawing.Color.DarkRed;
             this.lab_title.Location = new System.Drawing.Point(684, 3);
             this.lab_title.Name = "lab_title";
-            this.lab_title.Size = new System.Drawing.Size(123, 32);
+            this.lab_title.Size = new System.Drawing.Size(127, 33);
             this.lab_title.TabIndex = 25;
             this.lab_title.Text = "高一(上期)";
             // 
@@ -594,18 +686,6 @@
             this.btn_ExperlmentalPlatform.TabStop = false;
             this.btn_ExperlmentalPlatform.Click += new System.EventHandler(this.btn_ExperlmentalPlatform_Click);
             // 
-            // lab_title_second
-            // 
-            this.lab_title_second.AutoSize = true;
-            this.lab_title_second.BackColor = System.Drawing.Color.White;
-            this.lab_title_second.Font = new System.Drawing.Font("苹方 中等", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_title_second.ForeColor = System.Drawing.Color.DarkRed;
-            this.lab_title_second.Location = new System.Drawing.Point(1, 29);
-            this.lab_title_second.Name = "lab_title_second";
-            this.lab_title_second.Size = new System.Drawing.Size(185, 40);
-            this.lab_title_second.TabIndex = 0;
-            this.lab_title_second.Text = "从实验学化学";
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -622,12 +702,15 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel_secondContent.ResumeLayout(false);
-            this.panel_secondContent.PerformLayout();
+            this.panel_secondPage.ResumeLayout(false);
+            this.panel_secondContentBG.ResumeLayout(false);
+            this.panel_secondContentBG.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_play_border)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_type_border)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_titleborder)).EndInit();
             this.panel_partBtn.ResumeLayout(false);
             this.panel_partBtn.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondRedLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myteachingMianban)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).EndInit();
@@ -686,10 +769,17 @@
         private System.Windows.Forms.Button btn_three;
         private System.Windows.Forms.Button btn_two;
         private System.Windows.Forms.Label lab_title;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel_secondContent;
+        private System.Windows.Forms.Panel panel_secondPage;
+        private System.Windows.Forms.PictureBox secondRedLine;
+        private System.Windows.Forms.Panel panel_secondContentBG;
         private System.Windows.Forms.Label lab_title_second;
+        private System.Windows.Forms.Label lab_secondPlay;
+        private System.Windows.Forms.PictureBox pic_play_border;
+        private System.Windows.Forms.Label lab_secondType;
+        private System.Windows.Forms.PictureBox pic_type_border;
+        private System.Windows.Forms.Label lab_secondTitle;
+        private System.Windows.Forms.PictureBox pic_titleborder;
+        private System.Windows.Forms.Panel panel_secondPageContent;
     }
 }
 

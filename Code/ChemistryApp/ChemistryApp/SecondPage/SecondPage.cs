@@ -17,29 +17,15 @@ using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.SecondPage
 {
-    class SecondPage : Panel
+    class SecondPageBackGroundPanel : Panel
     {
-        /// <summary>
-        /// 一单元的按钮委托
-        /// </summary>
-        public EventHandler FirstPartButtonAction;
-        /// <summary>
-        /// 二单元的按钮委托
-        /// </summary>
-        public EventHandler SecondPartButtonAction;
-        /// <summary>
-        /// 三单元的按钮委托
-        /// </summary>
-        public EventHandler ThirdPartButtonAction;
-        /// <summary>
-        /// 四单元的按钮委托
-        /// </summary>
-        public EventHandler FourthPartButtonAction;
-
-
-        public SecondPage()
+        SecondPageButtonPanle secondButtonPageBG;
+        SecondPageContentBackGroundPanel secondContentBG;
+        public SecondPageBackGroundPanel()
         {
-            
+            secondButtonPageBG = new SecondPageButtonPanle();
+            secondContentBG = new SecondPageContentBackGroundPanel();
+            InitCompent();
         }
 
         /// <summary>
@@ -47,7 +33,16 @@ namespace ChemistryApp.SecondPage
         /// </summary>
         private void InitCompent()
         {
-
+            // 
+            // panel_secondPage
+            // 
+            this.Controls.Add(this.secondButtonPageBG);
+            this.Controls.Add(this.secondContentBG);
+            this.Location = new System.Drawing.Point(91, 174);
+            this.Name = "panel_secondPage";
+            this.Size = new System.Drawing.Size(810, 460);
+            this.TabIndex = 23;
+            this.Visible = true;
         }
     }
 }
