@@ -170,8 +170,9 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_KnowledgeReview_Click(object sender, EventArgs e)
         {
-            //MyLessonItem item = new MyLessonItem();
-            
+            SecondPage.KnowledgeReviewSecondPage konwledegeReiewPage = new SecondPage.KnowledgeReviewSecondPage();
+            this.MainPanel.Controls.Add(konwledegeReiewPage);
+            konwledegeReiewPage.BringToFront();
         }
 
         /// <summary>
@@ -194,7 +195,9 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_ExperlmentalPlatform_Click(object sender, EventArgs e)
         {
-            
+            SecondPage.ExperlmentalPlatformSecondPage experlMentalPlathformPage = new SecondPage.ExperlmentalPlatformSecondPage();
+            this.MainPanel.Controls.Add(experlMentalPlathformPage);
+            experlMentalPlathformPage.BringToFront();
         }
 
         /// <summary>
@@ -410,7 +413,7 @@ namespace ChemistryApp
         {
             foreach (Control item in MainPanel.Controls)
             {
-                if (item.Name == "panel_searchpage" || item.Name == "panel_secondPage" || item.Name == "panel_ChemicalElement")
+                if (item.Name == "panel_searchpage" || item.Name == "panel_secondPage" || item.Name == "panel_OtherSecond")
                 {
                     this.MainPanel.Controls.Remove(item);
                 }

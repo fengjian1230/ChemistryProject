@@ -62,6 +62,7 @@ namespace ChemistryApp.SecondPage
         {
             this.secondContentBG.pageContent.RemoveAllControls();
             this.secondContentBG.pageContent.SelectContentByIndex(1);
+            SecondPageManager.GetInstace.OnClickChangeBackGround(((Button)sender).Name);
         }
 
         /// <summary>
@@ -73,6 +74,7 @@ namespace ChemistryApp.SecondPage
         {
             this.secondContentBG.pageContent.RemoveAllControls();
             this.secondContentBG.pageContent.SelectContentByIndex(2);
+            SecondPageManager.GetInstace.OnClickChangeBackGround(((Button)sender).Name);
         }
 
         /// <summary>
@@ -84,6 +86,7 @@ namespace ChemistryApp.SecondPage
         {
             this.secondContentBG.pageContent.RemoveAllControls();
             this.secondContentBG.pageContent.SelectContentByIndex(3);
+            SecondPageManager.GetInstace.OnClickChangeBackGround(((Button)sender).Name);
         }
 
         /// <summary>
@@ -95,6 +98,7 @@ namespace ChemistryApp.SecondPage
         {
             this.secondContentBG.pageContent.RemoveAllControls();
             this.secondContentBG.pageContent.SelectContentByIndex(4);
+            SecondPageManager.GetInstace.OnClickChangeBackGround(((Button)sender).Name);
         }
     }
 }

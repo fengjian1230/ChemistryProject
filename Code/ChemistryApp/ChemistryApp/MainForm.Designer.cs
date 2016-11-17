@@ -473,6 +473,7 @@
             this.ClientSize = new System.Drawing.Size(1103, 768);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panle_shrink);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 using ChemistryApp.MyLesson;
 using ChemistryApp.EnumType;
+using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.SecondPage
 {
-    /// <summary>
-    /// 化学元素二级界面
-    /// </summary>
-    class ChemicalElementSecondPage : Panel
+    class ChemicalElementSecondPage : OtherSecondPage
     {
         #region 字段构造函数
         private System.Windows.Forms.PictureBox picBtn_C;
@@ -45,31 +44,22 @@ namespace ChemistryApp.SecondPage
         }
         #endregion
 
-        #region 控件初始化
+        #region 初始化
         /// <summary>
         /// 初始化
         /// </summary>
         private void InitCompent()
         {
-            // 
-            // 
-            // 
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Controls.Add(this.picBtn_Cu);
-            this.Controls.Add(this.picBtn_Fe);
-            this.Controls.Add(this.picBtn_S);
-            this.Controls.Add(this.picBtn_Cl);
-            this.Controls.Add(this.picBtn_Si);
-            this.Controls.Add(this.picBtn_Al);
-            this.Controls.Add(this.picBtn_Mg);
-            this.Controls.Add(this.picBtn_Na);
-            this.Controls.Add(this.picBtn_N);
-            this.Controls.Add(this.picBtn_C);
-            this.Location = new System.Drawing.Point(100, 174);
-            this.Name = "panel_ChemicalElement";
-            this.Size = new System.Drawing.Size(810, 460);
-            this.TabIndex = 21;
+            base.Controls.Add(this.picBtn_Cu);
+            base.Controls.Add(this.picBtn_Fe);
+            base.Controls.Add(this.picBtn_S);
+            base.Controls.Add(this.picBtn_Cl);
+            base.Controls.Add(this.picBtn_Si);
+            base.Controls.Add(this.picBtn_Al);
+            base.Controls.Add(this.picBtn_Mg);
+            base.Controls.Add(this.picBtn_Na);
+            base.Controls.Add(this.picBtn_N);
+            base.Controls.Add(this.picBtn_C);
 
             // picBtn_C
             // 
@@ -210,7 +200,7 @@ namespace ChemistryApp.SecondPage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnButtonMouseEnter(object sender,EventArgs e)
+        private void OnButtonMouseEnter(object sender, EventArgs e)
         {
             PictureBox pic = (PictureBox)sender;
             switch (pic.Name)
@@ -248,7 +238,7 @@ namespace ChemistryApp.SecondPage
                 default:
                     break;
             }
-           
+
         }
         /// <summary>
         /// c元素鼠标离开事件
@@ -258,7 +248,7 @@ namespace ChemistryApp.SecondPage
         private void OnButtonMouseLeave(object sender, EventArgs e)
         {
             PictureBox pic = (PictureBox)sender;
-            switch(pic.Name)
+            switch (pic.Name)
             {
                 case "picBtn_C":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.C_up;
@@ -293,7 +283,7 @@ namespace ChemistryApp.SecondPage
                 default:
                     break;
             }
-           
+
         }
         #endregion
     }

@@ -18,6 +18,7 @@ namespace ChemistryApp.SecondPage
 {
     class SecondPageManager
     {
+        public List<Control> partBtnList;
         /// <summary>
         /// 表名
         /// </summary>
@@ -26,6 +27,17 @@ namespace ChemistryApp.SecondPage
         {
             get { return tableName; }
             set { tableName = value; }
+        }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        public void Init()
+        {
+            if (partBtnList == null)
+            {
+                partBtnList = new List<Control>();
+            }
         }
 
         //实例
@@ -39,6 +51,25 @@ namespace ChemistryApp.SecondPage
                     instance = new SecondPageManager();
                 }
                 return instance;
+            }
+        }
+
+        /// <summary>
+        /// 根据点击名字让按钮变换背景，其他按钮变成白色背景
+        /// </summary>
+        /// <param name="_name"></param>
+        public void OnClickChangeBackGround(string _name)
+        {
+            foreach (Control item in partBtnList)
+            {
+                if (item.Name == _name)
+                {
+                    item.BackgroundImage = global::ChemistryApp.Properties.Resources.btnRedBg_down;
+                }
+                else
+                {
+                    item.BackgroundImage = global::ChemistryApp.Properties.Resources.btnWhiteBG_up;
+                }
             }
         }
     }

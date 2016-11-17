@@ -116,6 +116,15 @@
     <Compile Include="SecondPage\ChemicalElementSecondPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SecondPage\ExperlmentalPlatformSecondPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SecondPage\KnowledgeReviewSecondPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SecondPage\OtherSecondPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SecondPage\SecondPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -684,6 +693,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Si_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EP_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EP_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EPoint_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EPoint_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IE_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IE_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VR_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VR_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CE_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CE_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PS_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PS_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RE_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RE_up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -483,6 +483,26 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap CE_down {
+            get {
+                object obj = ResourceManager.GetObject("CE_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CE_up {
+            get {
+                object obj = ResourceManager.GetObject("CE_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap CI_down {
             get {
                 object obj = ResourceManager.GetObject("CI_down", resourceCulture);
@@ -546,6 +566,46 @@ namespace ChemistryApp.Properties {
         internal static System.Drawing.Bitmap delete_norml {
             get {
                 object obj = ResourceManager.GetObject("delete_norml", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap EP_down {
+            get {
+                object obj = ResourceManager.GetObject("EP_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap EP_up {
+            get {
+                object obj = ResourceManager.GetObject("EP_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap EPoint_down {
+            get {
+                object obj = ResourceManager.GetObject("EPoint_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap EPoint_up {
+            get {
+                object obj = ResourceManager.GetObject("EPoint_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -686,6 +746,26 @@ namespace ChemistryApp.Properties {
         internal static System.Drawing.Bitmap icon_1_16 {
             get {
                 object obj = ResourceManager.GetObject("icon_1_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IE_down {
+            get {
+                object obj = ResourceManager.GetObject("IE_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IE_up {
+            get {
+                object obj = ResourceManager.GetObject("IE_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -923,6 +1003,46 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap PS_down {
+            get {
+                object obj = ResourceManager.GetObject("PS_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap PS_up {
+            get {
+                object obj = ResourceManager.GetObject("PS_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap RE_down {
+            get {
+                object obj = ResourceManager.GetObject("RE_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap RE_up {
+            get {
+                object obj = ResourceManager.GetObject("RE_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap redLine {
             get {
                 object obj = ResourceManager.GetObject("redLine", resourceCulture);
@@ -1016,6 +1136,26 @@ namespace ChemistryApp.Properties {
         internal static System.Drawing.Bitmap vidoebtn_up {
             get {
                 object obj = ResourceManager.GetObject("vidoebtn_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap VR_down {
+            get {
+                object obj = ResourceManager.GetObject("VR_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap VR_up {
+            get {
+                object obj = ResourceManager.GetObject("VR_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

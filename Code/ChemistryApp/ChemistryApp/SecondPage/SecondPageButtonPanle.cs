@@ -21,25 +21,6 @@ namespace ChemistryApp.SecondPage
     /// </summary>
     class SecondPageButtonPanle : Panel
     {
-        #region 事件
-        /// <summary>
-        /// 一单元的按钮委托
-        /// </summary>
-        public EventHandler FirstPartButtonAction;
-        /// <summary>
-        /// 二单元的按钮委托
-        /// </summary>
-        public EventHandler SecondPartButtonAction;
-        /// <summary>
-        /// 三单元的按钮委托
-        /// </summary>
-        public EventHandler ThirdPartButtonAction;
-        /// <summary>
-        /// 四单元的按钮委托
-        /// </summary>
-        public EventHandler FourthPartButtonAction;
-        #endregion
-
         #region 字段
         public System.Windows.Forms.Button btn_four;
         public System.Windows.Forms.Button btn_three;
@@ -53,6 +34,7 @@ namespace ChemistryApp.SecondPage
         #region 方法
         public SecondPageButtonPanle()
         {
+            SecondPageManager.GetInstace.Init();
             btn_four = new Button();
             btn_one = new Button();
             btn_three = new Button();
@@ -65,6 +47,12 @@ namespace ChemistryApp.SecondPage
 
         private void InitCompent()
         {
+            //加入到链表中点击某个按钮变色
+            SecondPageManager.GetInstace.partBtnList.Add(btn_one);
+            SecondPageManager.GetInstace.partBtnList.Add(btn_two);
+            SecondPageManager.GetInstace.partBtnList.Add(btn_three);
+            SecondPageManager.GetInstace.partBtnList.Add(btn_four);
+
             this.Controls.Add(this.secondRedLine);
             this.Controls.Add(this.lab_title);
             this.Controls.Add(this.btn_four);
@@ -103,8 +91,6 @@ namespace ChemistryApp.SecondPage
             this.btn_four.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_four.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_four.FlatAppearance.BorderSize = 0;
-            this.btn_four.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.btn_four.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             this.btn_four.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_four.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_four.ForeColor = System.Drawing.Color.DarkRed;
