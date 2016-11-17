@@ -17,6 +17,9 @@ using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.SecondPage
 {
+    /// <summary>
+    /// 二级页面的主背景
+    /// </summary>
     class SecondPageBackGroundPanel : Panel
     {
         SecondPageButtonPanle secondButtonPageBG;

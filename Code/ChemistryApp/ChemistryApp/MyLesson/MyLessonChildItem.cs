@@ -107,7 +107,7 @@ namespace ChemistryApp.MyLesson
                 switch (_fileType)
                 {
                     case "PPT":
-                        ControlPPT controlPPT = new ControlPPT();
+                        ControlPPTFonder.ControlPPT controlPPT = new ControlPPTFonder.ControlPPT();
                         controlPPT.PPTOpen(System.Windows.Forms.Application.StartupPath + @_filePath);
                         //MessageBox.Show(_fileType);
                         break;

@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,8 +72,9 @@
     <Compile Include="BackGroundPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ControlPPT\ControlPPT.cs" />
-    <Compile Include="ControlPPT\ControlWord.cs" />
+    <Compile Include="ControlPPTFonder\ControlPPT.cs" />
+    <Compile Include="ControlPPTFonder\ControlTransparent.cs" />
+    <Compile Include="ControlPPTFonder\ControlWord.cs" />
     <Compile Include="EnumType\EnumClass.cs" />
     <Compile Include="MyLesson\CreateLessonDialogBox.cs" />
     <Compile Include="MyLesson\MyLessonChildItem.cs">
@@ -592,6 +594,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Backicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\按钮.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_shousuo_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_shousuo_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_shousuo_left_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_shousuo_left_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_shousuo_right_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_shousuo_right_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lessonListmianban.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,6 +14,7 @@ using ChemistryApp.MyLesson;
 using ChemistryApp.EnumType;
 using ChemistryApp.MyTeaching;
 using ChemistryApp.SearchPage;
+using ChemistryApp.ControlPPTFonder;
 
 namespace ChemistryApp
 {
@@ -103,7 +104,7 @@ namespace ChemistryApp
                 {
                     LeftPlaneTimer.Enabled = false;
                     panel_classListBG.Tag = 1;//设置为显示标识
-                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_left1;
+                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_shousuo_left_close;
                     //this.LeftPlane.Size = new Size(320, 728);
                 }
                 else
@@ -129,7 +130,7 @@ namespace ChemistryApp
                 {
                     LeftPlaneTimer.Enabled = false;
                     panel_classListBG.Tag = 0;//设置为隐藏标识
-                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_right;
+                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_shousuo_left_open;
                 }
                 else
                 {
@@ -356,9 +357,6 @@ namespace ChemistryApp
             }
             if (teachingState == TeachingSelectState.OnClose)
             {
-                ////刷新
-                //teachingPanel.CreateTeachingItem();
-                //MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
                 teachingState = TeachingSelectState.OnOpen;
             }
             else if (teachingState == TeachingSelectState.OnOpen)
@@ -464,7 +462,7 @@ namespace ChemistryApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ControlPPT controlPPT = new ControlPPT();
+            ControlPPTFonder.ControlPPT controlPPT = new ControlPPTFonder.ControlPPT();
             controlPPT.PPTAuto(@System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching\\asdasdsa.pptx",2);
         }
 

@@ -16,6 +16,9 @@ using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.SecondPage
 {
+    /// <summary>
+    /// 二级界面的内容背景
+    /// </summary>
     class SecondPageContentBackGroundPanel : Panel
     {
         #region 字段

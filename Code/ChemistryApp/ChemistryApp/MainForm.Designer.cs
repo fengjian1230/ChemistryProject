@@ -138,21 +138,23 @@
             this.btn_back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Location = new System.Drawing.Point(107, 31);
+            this.btn_back.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_back.Location = new System.Drawing.Point(107, 12);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(108, 39);
+            this.btn_back.Size = new System.Drawing.Size(107, 32);
             this.btn_back.TabIndex = 20;
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btn_myteachingShrink
             // 
+            //ChemistryApp.
             this.btn_myteachingShrink.BackColor = System.Drawing.Color.Transparent;
             this.btn_myteachingShrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_myteachingShrink.Image = global::ChemistryApp.Properties.Resources.shrinkRight;
-            this.btn_myteachingShrink.Location = new System.Drawing.Point(970, 349);
+            this.btn_myteachingShrink.Image = global::ChemistryApp.Properties.Resources.btn_shousuo_right_open;
+            this.btn_myteachingShrink.Location = new System.Drawing.Point(972, 350);
             this.btn_myteachingShrink.Name = "btn_myteachingShrink";
-            this.btn_myteachingShrink.Size = new System.Drawing.Size(23, 72);
+            this.btn_myteachingShrink.Size = new System.Drawing.Size(21, 69);
             this.btn_myteachingShrink.TabIndex = 17;
             this.btn_myteachingShrink.TabStop = false;
             this.btn_myteachingShrink.Tag = "0";
@@ -183,11 +185,11 @@
             // btn_shrink
             // 
             this.btn_shrink.BackColor = System.Drawing.Color.Transparent;
+            this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_shousuo_left_open;
             this.btn_shrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_shrink.Image = global::ChemistryApp.Properties.Resources.shrinkRight;
-            this.btn_shrink.Location = new System.Drawing.Point(28, 349);
+            this.btn_shrink.Location = new System.Drawing.Point(28, 350);
             this.btn_shrink.Name = "btn_shrink";
-            this.btn_shrink.Size = new System.Drawing.Size(23, 72);
+            this.btn_shrink.Size = new System.Drawing.Size(21, 69);
             this.btn_shrink.TabIndex = 13;
             this.btn_shrink.TabStop = false;
             this.btn_shrink.Tag = "0";
@@ -198,10 +200,10 @@
             this.pic_titleBG.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.pic_titleBG.BackColor = System.Drawing.Color.Transparent;
             this.pic_titleBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pic_titleBG.Image = global::ChemistryApp.Properties.Resources.mianban;
-            this.pic_titleBG.Location = new System.Drawing.Point(0, 48);
+            this.pic_titleBG.Image = global::ChemistryApp.Properties.Resources.lessonListmianban;
+            this.pic_titleBG.Location = new System.Drawing.Point(0, 60);
             this.pic_titleBG.Name = "pic_titleBG";
-            this.pic_titleBG.Size = new System.Drawing.Size(31, 668);
+            this.pic_titleBG.Size = new System.Drawing.Size(31, 626);
             this.pic_titleBG.TabIndex = 12;
             this.pic_titleBG.TabStop = false;
             this.pic_titleBG.Tag = "0";

@@ -332,7 +332,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void OnClickPlayPPT_Click(object sender,EventArgs e)
         {
-            ControlPPT _control = new ControlPPT();
+            ControlPPTFonder.ControlPPT _control = new ControlPPTFonder.ControlPPT();
             _control.PPTOpen(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
             //this._control.PPTOpen(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
             _control.objApp.SlideShowEnd += OnSlideShowEnd;
@@ -344,7 +344,7 @@ namespace ChemistryApp
         /// </summary>
         private void OnSlideShowEnd(Microsoft.Office.Interop.PowerPoint.Presentation pre)
         {
-            ControlPPT _controlOne = new ControlPPT();
+            ControlPPTFonder.ControlPPT _controlOne = new ControlPPTFonder.ControlPPT();
             _controlOne.PPTOpen(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(2));
             //this._control.objApp.SlideShowEnd -= OnSlideShowEnd;
         }

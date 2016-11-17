@@ -124,6 +124,9 @@
   <data name="fanyingfangchengIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fanyingfangchengIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btn_shousuo_right_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_shousuo_right_close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="我的备课" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\我的备课.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,14 +142,17 @@
   <data name="redLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\redLine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pptIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pptIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="xitibtn_up.png" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xitibtn_up.png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="0_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\0_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="planeBG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planeBG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="搜索条" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\搜索条.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="yijianshengcheng(norml)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yijianshengcheng(norml).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,20 +166,26 @@
   <data name="yijianshengcheng(xuanting)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yijianshengcheng(xuanting).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="按钮" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\按钮.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="inserticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\inserticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vidoebtn_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vidoebtn_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fanyingfangcheng_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fanyingfangcheng_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="删除键" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\删除键.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CTLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CTLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_1_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_1_03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btn_shousuo_right_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_shousuo_right_open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_1_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_1_06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,8 +202,8 @@
   <data name="xitiIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xitiIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btn_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btn_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_shousuo_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_shousuo_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="maidmapbtn_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\maidmapbtn_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,6 +226,9 @@
   <data name="delete_norml" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete_norml.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="planeBG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planeBG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btn_031" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_031.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -229,8 +244,8 @@
   <data name="btn_2_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_2_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="化学教学应用软件_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\化学教学应用软件_04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_shousuo_left_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_shousuo_left_open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btn_041" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_041.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -240,12 +255,6 @@
   </data>
   <data name="btn_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btn_left1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btn_left1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btn_bianji_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btn_bianji_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="videoIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\videoIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,9 +280,6 @@
   <data name="btn_2_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_2_04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="maidmapbtn_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\maidmapbtn_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icon_1_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_1_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -286,11 +292,14 @@
   <data name="icon_1_09" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_1_09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_1_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_1_03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fanyingfangcheng_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fanyingfangcheng_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="myLessonItemBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\myLessonItemBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btn_shousuo_left_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_shousuo_left_close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1_03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,14 +313,17 @@
   <data name="mianban" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mianban.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="搜索条" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\搜索条.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="maidmapbtn_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\maidmapbtn_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="向下键" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\向下键.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pptIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pptIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_shousuo_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_shousuo_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btn_bianji_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_bianji_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="flash btn_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flash btn_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -331,11 +343,11 @@
   <data name="btn_2_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_2_06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="shrinkRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shrinkRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="btnWhiteBG_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnWhiteBG_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Backicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Backicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="课件播放icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\课件播放icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -367,7 +379,7 @@
   <data name="向上键" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\向上键.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Backicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Backicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lessonListmianban" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lessonListmianban.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

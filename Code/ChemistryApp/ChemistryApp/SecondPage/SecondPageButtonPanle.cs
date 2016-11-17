@@ -16,6 +16,9 @@ using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.SecondPage
 {
+    /// <summary>
+    /// 二级页面四个单元的按钮panel
+    /// </summary>
     class SecondPageButtonPanle : Panel
     {
         #region 事件

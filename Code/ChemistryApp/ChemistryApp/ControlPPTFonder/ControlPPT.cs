@@ -11,7 +11,7 @@ using System.Windows;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace ChemistryApp
+namespace ChemistryApp.ControlPPTFonder
 {
     class ControlPPT
     {
