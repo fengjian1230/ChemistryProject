@@ -17,9 +17,9 @@ using ChemistryApp.SearchPage;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace ChemistryApp.ControlPPT
+namespace ChemistryApp.ControlPPTFonder
 {
-    class ControlTransparent
+    public class ControlTransparent
     {
         /// <summary>
         /// 根据图片计算GraphicsPath路径

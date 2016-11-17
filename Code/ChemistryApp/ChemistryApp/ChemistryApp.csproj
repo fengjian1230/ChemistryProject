@@ -113,6 +113,9 @@
     <Compile Include="SearchPage\SearchResultPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SecondPage\ChemicalElementSecondPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SecondPage\SecondPage.cs">
       <SubType>Component</SubType>
     </Compile>

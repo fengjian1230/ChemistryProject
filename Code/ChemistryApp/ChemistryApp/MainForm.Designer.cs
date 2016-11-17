@@ -148,7 +148,6 @@
             // 
             // btn_myteachingShrink
             // 
-            //ChemistryApp.
             this.btn_myteachingShrink.BackColor = System.Drawing.Color.Transparent;
             this.btn_myteachingShrink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_myteachingShrink.Image = global::ChemistryApp.Properties.Resources.btn_shousuo_right_open;

@@ -22,3 +22,4 @@ F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.MyTeachingPanel.resources
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.Properties.Resources.resources
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.csproj.GenerateResource.Cache
+F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.csprojResolveAssemblyReference.cache
