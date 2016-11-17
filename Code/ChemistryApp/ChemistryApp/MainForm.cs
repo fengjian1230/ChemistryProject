@@ -158,7 +158,9 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_ChemicalElement_Click(object sender, EventArgs e)
         {
-
+            SecondPage.ChemicalElementSecondPage cheiclElementPage = new SecondPage.ChemicalElementSecondPage();
+            this.MainPanel.Controls.Add(cheiclElementPage);
+            cheiclElementPage.BringToFront();
         }
 
         /// <summary>
@@ -408,7 +410,7 @@ namespace ChemistryApp
         {
             foreach (Control item in MainPanel.Controls)
             {
-                if (item.Name == "panel_searchpage" || item.Name == "panel_secondPage")
+                if (item.Name == "panel_searchpage" || item.Name == "panel_secondPage" || item.Name == "panel_ChemicalElement")
                 {
                     this.MainPanel.Controls.Remove(item);
                 }

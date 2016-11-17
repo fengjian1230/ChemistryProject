@@ -456,10 +456,9 @@
             // btn_ExperlmentalPlatform
             // 
             this.btn_ExperlmentalPlatform.BackColor = System.Drawing.Color.Transparent;
-            this.btn_ExperlmentalPlatform.BackgroundImage = global::ChemistryApp.Properties.Resources.课件播放icon;
+            this.btn_ExperlmentalPlatform.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_011;
             this.btn_ExperlmentalPlatform.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_ExperlmentalPlatform.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_ExperlmentalPlatform.Image = global::ChemistryApp.Properties.Resources.btn_011;
             this.btn_ExperlmentalPlatform.Location = new System.Drawing.Point(240, 176);
             this.btn_ExperlmentalPlatform.Name = "btn_ExperlmentalPlatform";
             this.btn_ExperlmentalPlatform.Size = new System.Drawing.Size(175, 226);

@@ -622,6 +622,69 @@
   <ItemGroup>
     <None Include="Resources\lessonListmianban.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AI_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AI_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\C_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\C_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CI_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CI_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cu_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cu_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fe_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fe_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mg_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mg_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Na_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Na_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\S_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\S_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Si_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Si_down.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
