@@ -116,6 +116,9 @@
     <Compile Include="SecondPage\ChemicalElementSecondPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SecondPage\ContentPlayPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SecondPage\ExperlmentalPlatformSecondPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -123,6 +126,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SecondPage\OtherSecondPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SecondPage\PlayContentPanelList.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SecondPage\SecondPage.cs">

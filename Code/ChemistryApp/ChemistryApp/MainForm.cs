@@ -39,6 +39,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
@@ -54,7 +55,6 @@ namespace ChemistryApp
             {
                 this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
             }
-
             teachingPanel.CreateTeachingItem();
         }
         #region 我的课表列表动画
@@ -473,7 +473,7 @@ namespace ChemistryApp
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show(e.KeyCode.ToString());
+            //MessageBox.Show(e.KeyCode.ToString());
         }
     }
     #endregion

@@ -332,21 +332,11 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void OnClickPlayPPT_Click(object sender,EventArgs e)
         {
-            ControlPPTFonder.ControlPPT _control = new ControlPPTFonder.ControlPPT();
-            _control.PPTOpen(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
-            //this._control.PPTOpen(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
-            _control.objApp.SlideShowEnd += OnSlideShowEnd;
-            //MessageBox.Show(System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
-        }
-        
-        /// <summary>
-        /// 当幻灯片播放完毕，播放下一个小段
-        /// </summary>
-        private void OnSlideShowEnd(Microsoft.Office.Interop.PowerPoint.Presentation pre)
-        {
-            ControlPPTFonder.ControlPPT _controlOne = new ControlPPTFonder.ControlPPT();
-            _controlOne.PPTOpen(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(2));
-            //this._control.objApp.SlideShowEnd -= OnSlideShowEnd;
+            Control mainPanel = ((PictureBox)sender).Parent.Parent.Parent.Parent;
+            mainPanel.Visible = false;
+            ChemistryApp.SecondPage.ContentPlayPanel contentPanel = new SecondPage.ContentPlayPanel();
+            mainPanel.Parent.Controls.Add(contentPanel);
+            contentPanel.ContentControlFramer.Open(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
         }
 
         /// <summary>

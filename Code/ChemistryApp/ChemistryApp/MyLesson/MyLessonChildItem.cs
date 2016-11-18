@@ -20,10 +20,11 @@ namespace ChemistryApp.MyLesson
     class MyLessonChildItem : Panel
     {
         #region 字段
-        Panel childItemPanel;
-        Label lab_title;
-        Label lab_type;
-        PictureBox pic_play;
+        protected Panel childItemPanel;
+        protected Label lab_title;
+        protected Label lab_type;
+        protected PictureBox pic_play;
+        public string fieldName = null;
         #endregion
 
         public MyLessonChildItem(int posX, int posY, string _strTitle, string _strType)
@@ -36,7 +37,7 @@ namespace ChemistryApp.MyLesson
         }
 
 
-        public void InitCompent(int posX,int posY,string _strTitle, string _strType)
+        protected void InitCompent(int posX,int posY,string _strTitle, string _strType)
         {
             // 
             // CHILD
@@ -88,12 +89,10 @@ namespace ChemistryApp.MyLesson
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PlayButton_Click(object sender,EventArgs e)
+        protected void PlayButton_Click(object sender,EventArgs e)
         {
             //根据题目来查询到路径
-            PictureBox pic = (PictureBox)sender;
-            MyLessonItem thisParentPanel = (MyLessonItem)pic.Parent.Parent;
-            string selectParentSql = "select * from LessonList where  LessonTitle = '" + thisParentPanel.lab_className.Text + "'";
+            string selectParentSql = "select * from LessonList where  LessonTitle = '" + this.fieldName + "'";
             try
             {
                 DataSet ds = AccessDBConn.ExecuteQuery(selectParentSql, "LessonList");
@@ -109,7 +108,6 @@ namespace ChemistryApp.MyLesson
                     case "PPT":
                         ControlPPTFonder.ControlPPT controlPPT = new ControlPPTFonder.ControlPPT();
                         controlPPT.PPTOpen(System.Windows.Forms.Application.StartupPath + @_filePath);
-                        //MessageBox.Show(_fileType);
                         break;
                     case "思维导图":
                         /* 思维导图*/
