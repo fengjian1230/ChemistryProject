@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System;
 
 namespace ChemistryApp.ControlPPTFonder
 {
@@ -18,52 +19,34 @@ namespace ChemistryApp.ControlPPTFonder
         {
             if (img == null) return null;
 
-            // 建立GraphicsPath, 给我们的位图路径计算使用 
+            // 建立GraphicsPath, 给我们的位图路径计算使用   
             GraphicsPath g = new GraphicsPath(FillMode.Alternate);
 
             Bitmap bitmap = new Bitmap(img);
 
             int width = bitmap.Width;
             int height = bitmap.Height;
-            BitmapData bmData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-            byte* p = (byte*)bmData.Scan0;
-            int offset = bmData.Stride - width * 3;
-            int p0, p1, p2;         // 记录左上角0，0座标的颜色值
-            p0 = p[0];
-            p1 = p[1];
-            p2 = p[2];
-
-            int start = -1;
-            // 行座标 ( Y col ) 
-            for (int Y = 0; Y < height; Y++)
-            {
-                // 列座标 ( X row ) 
-                for (int X = 0; X < width; X++)
-                {
-                    if (start == -1 && (p[0] != p0 || p[1] != p1 || p[2] != p2))     //如果 之前的点没有不透明 且 不透明 
-                    {
-                        start = X;                            //记录这个点
-                    }
-                    else if (start > -1 && (p[0] == p0 && p[1] == p1 && p[2] == p2))      //如果 之前的点是不透明 且 透明
-                    {
-                        g.AddRectangle(new Rectangle(start, Y, X - start, 1));    //添加之前的矩形到
-                        start = -1;
-                    }
-
-                    if (X == width - 1 && start > -1)        //如果 之前的点是不透明 且 是最后一个点
-                    {
-                        g.AddRectangle(new Rectangle(start, Y, X - start + 1, 1));      //添加之前的矩形到
-                        start = -1;
-                    }
-                    //if (p[0] != p0 || p[1] != p1 || p[2] != p2)
-                    //    g.AddRectangle(new Rectangle(X, Y, 1, 1));
-                    p += 3;                                   //下一个内存地址
-                }
-                p += offset;
-            }
+            BitmapData bmData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+            IntPtr ptr = bmData.Scan0;
+            int bytes = Math.Abs(bmData.Stride) * bitmap.Height;
+            byte[] argbValues = new byte[bytes];
+            System.Runtime.InteropServices.Marshal.Copy(ptr, argbValues, 0, bytes);
             bitmap.UnlockBits(bmData);
             bitmap.Dispose();
-            // 返回计算出来的不透明图片路径 
+            int X;
+            int Y;
+            int counter = 3;
+            for (Y = 0; Y < height; Y++)
+            {
+                for (X = 0; X < width; X++)
+                {
+                    if (argbValues[counter] != 0)
+                    {
+                        g.AddRectangle(new Rectangle(X, Y, 1, 1));
+                    }
+                    counter += 4;
+                }
+            }
             return g;
         }
 
@@ -73,13 +56,15 @@ namespace ChemistryApp.ControlPPTFonder
         /// <param name="control">需要处理的控件</param>
         /// <param name="img">控件的背景或图片，如PictureBox.Image
         ///   或PictureBox.BackgroundImage</param>
-        public static void ControlTrans(Control control, Image img)
+        public static void ControlTrans(Control control, Image image)
         {
-            GraphicsPath g;
-            g = subGraphicsPath(img);
-            if (g == null)
+            GraphicsPath graphic = null;
+            graphic = subGraphicsPath(image);
+
+            if (graphic == null)
                 return;
-            control.Region = new Region(g);
+
+            control.Region = new Region(graphic);
         }
     }
 }

@@ -32,7 +32,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -96,11 +96,21 @@
     <Compile Include="MyLesson\MyLessonSearchPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MyTeaching\ConfirmDialogBox.cs" />
-    <Compile Include="MyTeaching\CreateTeachingItemDialogBox.cs" />
+    <Compile Include="MyTeaching\ConfirmDialogBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyTeaching\CreateTeachingItemDialogBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyTeaching\MyTeachingItem.cs" />
     <Compile Include="MyTeaching\MyTeachingItemManager.cs" />
     <Compile Include="MyTeaching\MyTeachingPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelExtend .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PictureBoxModel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -115,6 +125,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SecondPage\ChemicalElementSecondPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SecondPage\ConfirmDialogBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SecondPage\ContentPlayPanel.cs">
@@ -763,6 +776,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\yjsc_box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deletetitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftShrinkOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftShrinkOpen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dialogboxBG.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -39,7 +39,8 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_open);
+            //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_close);
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
@@ -104,7 +105,7 @@ namespace ChemistryApp
                 {
                     LeftPlaneTimer.Enabled = false;
                     panel_classListBG.Tag = 1;//设置为显示标识
-                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_shousuo_left_close;
+                    //this.btn_shrink.Image = global::ChemistryApp.Properties.Resources.btn_shousuo_left_close;
                     //this.LeftPlane.Size = new Size(320, 728);
                 }
                 else
@@ -129,8 +130,9 @@ namespace ChemistryApp
                 if (longWidth <= 0)
                 {
                     LeftPlaneTimer.Enabled = false;
-                    panel_classListBG.Tag = 0;//设置为隐藏标识
-                    this.btn_shrink.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_shousuo_left_open;
+                    panel_classListBG.Tag = 0;//设置为隐藏标识\
+                    //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink,)
+                    //this.btn_shrink.Image = global::ChemistryApp.Properties.Resources.btn_shousuo_left_open;
                 }
                 else
                 {

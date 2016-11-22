@@ -265,6 +265,11 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void BtnDelete_Click(object sender,EventArgs e)
         {
+           
+        }
+
+        private void ButtonDeleteEvent(object sender, EventArgs e)
+        {
             MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
             PictureBox pic = (PictureBox)sender;
             Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));

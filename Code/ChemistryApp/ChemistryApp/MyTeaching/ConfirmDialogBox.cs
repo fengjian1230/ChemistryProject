@@ -13,7 +13,7 @@ using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.MyTeaching
 {
-    class ConfirmDialogBox
+    class ConfirmDialogBox : Panel
     {
     }
 }

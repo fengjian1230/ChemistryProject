@@ -21,6 +21,7 @@ namespace ChemistryApp.SecondPage
         public AxDSOFramer.AxFramerControl ContentControlFramer;
         private Panel panel_playContentPanelBtn;
         private Button btn_close;
+        PictureBox dasdas;
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 
         public ContentPlayPanel()
@@ -28,6 +29,7 @@ namespace ChemistryApp.SecondPage
             ContentControlFramer = new AxDSOFramer.AxFramerControl();
             panel_playContentPanelBtn = new Panel();
             btn_close = new Button();
+            dasdas = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ContentControlFramer)).BeginInit();
             InitCompent();
         }
@@ -42,11 +44,17 @@ namespace ChemistryApp.SecondPage
             this.Name = "PPTPlayPanel";
             this.Location = new Point(0, 0);
             this.Size = this.Size;
-            this.BackColor = Color.Black;
+            this.BackColor = Color.White;
             this.Size = new Size(width, height);
+            this.Controls.Add(dasdas);
             this.Controls.Add(btn_close);
             this.Controls.Add(ContentControlFramer);
             this.Controls.Add(panel_playContentPanelBtn);
+
+            this.dasdas.Name = "dddd";
+            this.dasdas.BackColor = Color.White;
+            this.dasdas.Size = new Size(1600, 45);
+            this.dasdas.Location = new Point(150, 0);
             // 
             // axFramerControl1
             // 

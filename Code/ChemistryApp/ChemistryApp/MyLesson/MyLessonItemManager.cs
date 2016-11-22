@@ -111,6 +111,14 @@ namespace ChemistryApp.MyLesson
                     MyLessonChildItem childPanel = new MyLessonChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
                     childPanel.fieldName = dataRow[0]["LessonTitle"].ToString();
                     childPanel.Name = "childPanel" + j.ToString();
+                    if (j % 2 == 0)
+                    {
+                        childPanel.BackColor = Color.FromArgb(245, 245, 247);
+                    }
+                    else
+                    {
+                        childPanel.BackColor = Color.White;
+                    }
                     myLessonItem.Controls.Add(childPanel);
                     
                 }

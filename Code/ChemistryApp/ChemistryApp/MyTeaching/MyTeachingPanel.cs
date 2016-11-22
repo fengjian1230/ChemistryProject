@@ -166,9 +166,8 @@ namespace ChemistryApp
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 CreateTeachingItemDialogBox item = new CreateTeachingItemDialogBox("\\ResourcesFolder\\MyTeaching\\" +  openFile.SafeFileName + "", openFile.FileName, _loaclPath + "\\" + openFile.SafeFileName);
-                Panel itemPanel = item.CreateDialgBox();
-                mainPanel.Controls.Add(itemPanel);
-                itemPanel.BringToFront();
+                mainPanel.Controls.Add(item);
+                item.BringToFront();
             }
         }
         /// <summary>

@@ -237,19 +237,19 @@ namespace ChemistryApp
                 case "PPT":
                     image = global::ChemistryApp.Properties.Resources.icon_1_06;
                     break;
-                case "Example":
+                case "实验":
                     image = global::ChemistryApp.Properties.Resources.icon_1_03;
                     break;
-                case "MandMap":
+                case "思维导图":
                     image = global::ChemistryApp.Properties.Resources.icon_1_09;
                     break;
-                case "RreactionEquation":
+                case "反应方程":
                     image = global::ChemistryApp.Properties.Resources.icon_1_16;
                     break;
-                case "Test":
+                case "习题":
                     image = global::ChemistryApp.Properties.Resources.icon_1_14;
                     break;
-                case "Video":
+                case "视频":
                     image = global::ChemistryApp.Properties.Resources.icon_1_12;
                     break;
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Drawing;
 
 namespace ChemistryApp.MyTeaching
 {
-    class CreateTeachingItemDialogBox
+    class CreateTeachingItemDialogBox : Panel
     {
         public System.Windows.Forms.Panel panel_createDialog;
         public System.Windows.Forms.PictureBox btn_cancel;
@@ -47,36 +47,12 @@ namespace ChemistryApp.MyTeaching
             this.sourcePath = _source;
             this.loaclPath = _local;
             this.pic_dialogBG = new PictureBox();
+            CreateDialgBox();
         }
-
-        /// <summary>
-        /// 创建窗口
-        /// </summary>
-        public Panel CreateDialgBox()
+       
+        public void  CreateDialgBox()
         {
-            // 
-            // pic_dialogBG
-            // 
-            this.pic_dialogBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pic_dialogBG.Image = global::ChemistryApp.Properties.Resources.d_bg;
-            this.pic_dialogBG.Location = new System.Drawing.Point(0, 0);
-            this.pic_dialogBG.Name = "pic_dialogBG";
-            this.pic_dialogBG.Size = new System.Drawing.Size(363, 158);
-            this.pic_dialogBG.TabIndex = 0;
-            this.pic_dialogBG.TabStop = false;
-
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cancel.Image = global::ChemistryApp.Properties.Resources.cancel_up;
-            this.btn_cancel.Location = new System.Drawing.Point(0, 157);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(182, 76);
-            this.btn_cancel.TabIndex = 6;
-            this.btn_cancel.TabStop = false;
-            this.btn_cancel.Click += new EventHandler(BtnCancel_Click);
-            this.btn_cancel.Cursor = Cursors.Hand;
+           
             // 
             // btn_ok
             // 
@@ -89,21 +65,49 @@ namespace ChemistryApp.MyTeaching
             this.btn_ok.TabStop = false;
             this.btn_ok.Click += new EventHandler(BtnOK_Click);
             this.btn_ok.Cursor = Cursors.Hand;
-          
+            ControlPPTFonder.ControlTransparent.ControlTrans(btn_ok, btn_ok.Image);
+
             // 
             // panel_createDialog
             // 
-            this.panel_createDialog.Controls.Add(this.btn_cancel);
-            this.panel_createDialog.Controls.Add(this.btn_ok);
-            this.panel_createDialog.Controls.Add(this.txt_className);
-            this.panel_createDialog.Controls.Add(this.lab_className);
-            this.panel_createDialog.Controls.Add(this.comboBox_type);
-            this.panel_createDialog.Controls.Add(this.lab_typeName);
-            this.panel_createDialog.Controls.Add(this.pic_dialogBG);
-            this.panel_createDialog.Location = new System.Drawing.Point(324, 277);
-            this.panel_createDialog.Name = "panel_createTeachingItemDialog";
-            this.panel_createDialog.Size = new System.Drawing.Size(363, 230);
-            this.panel_createDialog.TabIndex = 1;
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.btn_ok);
+            this.Controls.Add(this.txt_className);
+            this.Controls.Add(this.lab_className);
+            this.Controls.Add(this.comboBox_type);
+            this.Controls.Add(this.lab_typeName);
+            this.Controls.Add(this.pic_dialogBG);
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.dialogboxBG;
+            this.Location = new System.Drawing.Point(324, 277);
+            this.Name = "panel_createTeachingItemDialog";
+            this.BackColor = Color.FromArgb(0,Color.Transparent);
+            this.Size = new System.Drawing.Size(363, 230);
+            ControlPPTFonder.ControlTransparent.ControlTrans(this, this.BackgroundImage);
+            this.TabIndex = 1;
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackColor = System.Drawing.Color.Transparent;
+            this.btn_cancel.Image = global::ChemistryApp.Properties.Resources.cancel_up;
+            this.btn_cancel.Location = new System.Drawing.Point(0, 157);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(182, 76);
+            this.btn_cancel.TabIndex = 6;
+            this.btn_cancel.TabStop = false;
+            this.btn_cancel.Click += new EventHandler(BtnCancel_Click);
+            this.btn_cancel.Cursor = Cursors.Hand;
+            ControlPPTFonder.ControlTransparent.ControlTrans(btn_cancel, btn_cancel.Image);
+            // 
+            // pic_dialogBG
+            // 
+            this.pic_dialogBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pic_dialogBG.Image = global::ChemistryApp.Properties.Resources.d_bg;
+            this.pic_dialogBG.Location = new System.Drawing.Point(0, 0);
+            this.pic_dialogBG.Name = "pic_dialogBG";
+            this.pic_dialogBG.Size = new System.Drawing.Size(363, 158);
+            this.pic_dialogBG.TabIndex = 0;
+            this.pic_dialogBG.TabStop = false;
+            ControlPPTFonder.ControlTransparent.ControlTrans(pic_dialogBG, pic_dialogBG.Image);
             // 
             // txt_className
             // 
@@ -152,8 +156,6 @@ namespace ChemistryApp.MyTeaching
             this.lab_typeName.Size = new System.Drawing.Size(52, 15);
             this.lab_typeName.TabIndex = 0;
             this.lab_typeName.Text = "选择类型:";
-
-            return panel_createDialog;
         }
 
         /// <summary>
