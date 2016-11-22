@@ -1,8 +1,5 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.OleDb;
-using System.Text.RegularExpressions;
-using System.Diagnostics;
 
 namespace ChemistryApp
 {

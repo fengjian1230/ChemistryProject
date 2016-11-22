@@ -96,6 +96,7 @@
     <Compile Include="MyLesson\MyLessonSearchPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MyTeaching\ConfirmDialogBox.cs" />
     <Compile Include="MyTeaching\CreateTeachingItemDialogBox.cs" />
     <Compile Include="MyTeaching\MyTeachingItem.cs" />
     <Compile Include="MyTeaching\MyTeachingItemManager.cs" />
@@ -741,6 +742,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RE_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comfir_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comfire_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\done.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yjsc_box.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

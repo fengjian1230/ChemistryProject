@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.ComponentModel;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChemistryApp.MyLesson;
 using ChemistryApp.EnumType;
@@ -332,6 +328,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void OnClickPlayPPT_Click(object sender,EventArgs e)
         {
+            MyLessonItemManager.GetInstace.lessonFiledName = this.lab_className.Text;
             Control mainPanel = ((PictureBox)sender).Parent.Parent.Parent.Parent;
             mainPanel.Visible = false;
             ChemistryApp.SecondPage.ContentPlayPanel contentPanel = new SecondPage.ContentPlayPanel();

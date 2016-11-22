@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using ChemistryApp.EnumType;
 using ChemistryApp.MyTeaching;
 using ChemistryApp.MyLesson;
-using System.IO;
 
 namespace ChemistryApp
 {
@@ -227,10 +219,11 @@ namespace ChemistryApp
         /// </summary>
         public void RefreshItem()
         {
-            for (int i = 0; i < MyTeachingItemManager.GetInstace.listPanelItem.Count; i++)
-            {
-                this.panelMyTeachingItemBG.Controls.Remove(MyTeachingItemManager.GetInstace.listPanelItem[i]);
-            }
+            this.panelMyTeachingItemBG.Controls.Clear();
+            //for (int i = 0; i < MyTeachingItemManager.GetInstace.listPanelItem.Count; i++)
+            //{
+            //    this.panelMyTeachingItemBG.Controls.Remove(MyTeachingItemManager.GetInstace.listPanelItem[i]);
+            //}
             CreateTeachingItem();
         }
 

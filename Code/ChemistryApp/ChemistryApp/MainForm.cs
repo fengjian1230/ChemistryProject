@@ -475,6 +475,23 @@ namespace ChemistryApp
         {
             //MessageBox.Show(e.KeyCode.ToString());
         }
+
+        /// <summary>
+        /// 关闭界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_close_Click(object sender, EventArgs e)
+        {
+           
+
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     #endregion
     #endregion

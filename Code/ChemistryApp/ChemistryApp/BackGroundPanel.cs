@@ -15,7 +15,7 @@ namespace ChemistryApp
     /// <summary>
     /// 使用双缓冲
     /// </summary>
-    class BackGroundPanel : Panel
+    public class BackGroundPanel : Panel
     {
         public BackGroundPanel()
         {

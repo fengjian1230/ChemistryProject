@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using ADOX;
-using System.Data.OleDb;
 using ChemistryApp.EnumType;
 
 /// <summary>
@@ -41,10 +35,20 @@ namespace ChemistryApp.MyLesson
         /// <summary>
         /// 课程的个数
         /// </summary>
-        private Dictionary<string,int> childItemNum;
+        private Dictionary<string, int> childItemNum;
         public Dictionary<string, int> ChildItemNum
         {
             get { return childItemNum; }
+        }
+
+        /// <summary>
+        /// 字段名
+        /// </summary>
+        private string _lessonFiledName;
+        public string lessonFiledName
+        {
+            get { return _lessonFiledName; }
+            set { _lessonFiledName = value; }
         }
 
         //实例

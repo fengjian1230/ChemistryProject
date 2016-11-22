@@ -29,7 +29,6 @@ namespace ChemistryApp.SecondPage
         /// <param name="e"></param>
         private void PlayButtonOnPPTPage_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(((PictureBox)sender).Parent.Name);
             Control parentPanel = ((PictureBox)sender).Parent.Parent.Parent;
             ContentPlayPanel contentPanel = (ContentPlayPanel)parentPanel;
             //根据题目来查询到路径

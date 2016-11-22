@@ -20,12 +20,14 @@ namespace ChemistryApp.SecondPage
     {
         public AxDSOFramer.AxFramerControl ContentControlFramer;
         private Panel panel_playContentPanelBtn;
+        private Button btn_close;
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 
         public ContentPlayPanel()
         {
             ContentControlFramer = new AxDSOFramer.AxFramerControl();
             panel_playContentPanelBtn = new Panel();
+            btn_close = new Button();
             ((System.ComponentModel.ISupportInitialize)(this.ContentControlFramer)).BeginInit();
             InitCompent();
         }
@@ -42,6 +44,7 @@ namespace ChemistryApp.SecondPage
             this.Size = this.Size;
             this.BackColor = Color.Black;
             this.Size = new Size(width, height);
+            this.Controls.Add(btn_close);
             this.Controls.Add(ContentControlFramer);
             this.Controls.Add(panel_playContentPanelBtn);
             // 
@@ -64,8 +67,22 @@ namespace ChemistryApp.SecondPage
             this.panel_playContentPanelBtn.Location = new System.Drawing.Point(0, (height - 550) / 2);
             this.panel_playContentPanelBtn.Name = "panel_playContentPanelBtn";
             this.panel_playContentPanelBtn.Size = new System.Drawing.Size(280, 550);
+            this.panel_playContentPanelBtn.AutoScroll = true;
             this.panel_playContentPanelBtn.TabIndex = 21;
             this.panel_playContentPanelBtn.BackColor = Color.White;
+
+            // 
+            // button
+            // 
+            this.btn_close.Location = new System.Drawing.Point(0, 0);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(120, 29);
+            this.btn_close.TabIndex = 21;
+            this.btn_close.Text = "关闭";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new EventHandler(OnClickClosePanel);
+
+
         }
 
         /// <summary>
@@ -74,7 +91,7 @@ namespace ChemistryApp.SecondPage
         public void CreateMyLessonItem()
         {
             //从数据库中读取数据
-            string sqlStr = "select * from LessonList order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
+            string sqlStr = "select * from LessonList where LessonTitle = '" + MyLessonItemManager.GetInstace.lessonFiledName + "' order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
             DataSet data = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
             DataRow[] dataRow = data.Tables["LessonList"].Select();
             //创建itempanel
@@ -94,6 +111,22 @@ namespace ChemistryApp.SecondPage
 
                 }
             }
+        }
+
+        /// <summary>
+        /// 关闭面板
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClickClosePanel(object sender,EventArgs e)
+        {
+            Button btn = (Button)sender;
+            MainForm mainForm = btn.Parent.Parent as MainForm;
+            Panel parentPanel = btn.Parent as Panel;
+            mainForm.Controls.Remove(parentPanel);
+            mainForm.MainPanel.Visible = true;
+            btn.Dispose();
+            parentPanel.Dispose();
         }
     }
 }

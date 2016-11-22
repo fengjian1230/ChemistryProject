@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChemistryApp.EnumType
+﻿namespace ChemistryApp.EnumType
 {
     /// <summary>
     /// 我的课表的内容的状态

@@ -32,6 +32,7 @@
             this.LeftPlaneTimer = new System.Windows.Forms.Timer(this.components);
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
             this.btn_back = new System.Windows.Forms.Button();
             this.btn_myteachingShrink = new System.Windows.Forms.PictureBox();
@@ -96,6 +97,11 @@
             // RightPanelTimer
             // 
             this.RightPanelTimer.Interval = 1;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // MainPanel
             // 
@@ -324,6 +330,7 @@
             this.pic_close.Size = new System.Drawing.Size(38, 41);
             this.pic_close.TabIndex = 11;
             this.pic_close.TabStop = false;
+            this.pic_close.Click += new System.EventHandler(this.pic_close_Click);
             // 
             // pic_max
             // 
@@ -369,7 +376,7 @@
             this.txt_search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_search.Font = new System.Drawing.Font("苹方 常规", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txt_search.ForeColor = System.Drawing.Color.Silver;
-            this.txt_search.Location = new System.Drawing.Point(257, 88);
+            this.txt_search.Location = new System.Drawing.Point(254, 89);
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(480, 38);
             this.txt_search.TabIndex = 7;
@@ -508,7 +515,7 @@
         #endregion
         private System.Windows.Forms.Panel panel_item;
         private System.Windows.Forms.Panel panle_shrink;
-        private BackGroundPanel MainPanel;
+        public BackGroundPanel MainPanel;
         private System.Windows.Forms.PictureBox btn_ExperlmentalPlatform;
         private System.Windows.Forms.PictureBox btn_ChemicalElement;
         private System.Windows.Forms.PictureBox btn_ClassroomTeaching;
@@ -535,6 +542,7 @@
         private System.Windows.Forms.PictureBox btn_myClassSearch;
         private System.Windows.Forms.Button btn_bianji;
         private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

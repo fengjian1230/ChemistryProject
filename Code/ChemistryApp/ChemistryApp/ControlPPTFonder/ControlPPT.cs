@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using POWERPOINT = Microsoft.Office.Interop.PowerPoint;
-using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Word;
 using OFFICECORE = Microsoft.Office.Core;
-using System.Windows;
-using System.Collections;
 using System.Windows.Forms;
 
 namespace ChemistryApp.ControlPPTFonder
