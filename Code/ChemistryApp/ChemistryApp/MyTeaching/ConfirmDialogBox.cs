@@ -15,5 +15,6 @@ namespace ChemistryApp.MyTeaching
 {
     class ConfirmDialogBox : Panel
     {
+
     }
 }

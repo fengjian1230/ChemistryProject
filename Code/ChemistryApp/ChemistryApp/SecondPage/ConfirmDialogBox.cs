@@ -11,7 +11,6 @@ namespace ChemistryApp.SecondPage
 
     class ConfirmDialogBox : Panel
     {
-        private System.Windows.Forms.Panel panel_confirmBox;
         private System.Windows.Forms.PictureBox comfire_pic_title;
         private System.Windows.Forms.PictureBox confirm_OK;
         private System.Windows.Forms.PictureBox confire_NO;
@@ -51,6 +50,7 @@ namespace ChemistryApp.SecondPage
             this.confire_NO.TabIndex = 1;
             this.confire_NO.TabStop = false;
             this.confire_NO.Click += new EventHandler(ButtonCancelEvent);
+            this.confire_NO.Cursor = Cursors.Hand;
             // 
             // confirm_OK
             // 
@@ -60,6 +60,8 @@ namespace ChemistryApp.SecondPage
             this.confirm_OK.Size = new System.Drawing.Size(105, 44);
             this.confirm_OK.TabIndex = 2;
             this.confirm_OK.TabStop = false;
+            this.confirm_OK.Cursor = Cursors.Hand;
+            this.confirm_OK.Click += ButtonOkEvent;
             // 
             // comfire_pic_title
             // 

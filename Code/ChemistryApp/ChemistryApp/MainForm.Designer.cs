@@ -140,7 +140,7 @@
             this.btn_shrink.TabIndex = 13;
             this.btn_shrink.TabStop = false;
             this.btn_shrink.Tag = "0";
-            ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, btn_shrink.Image);
+            //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, btn_shrink.Image);
             this.btn_shrink.Click += new System.EventHandler(this.BtnShrink_Click);
             // 
             // btn_back
@@ -171,7 +171,7 @@
             this.btn_myteachingShrink.TabIndex = 17;
             this.btn_myteachingShrink.TabStop = false;
             this.btn_myteachingShrink.Tag = "0";
-            ControlPPTFonder.ControlTransparent.ControlTrans(btn_myteachingShrink, btn_myteachingShrink.Image);
+            //ControlPPTFonder.ControlTransparent.ControlTrans(btn_myteachingShrink, btn_myteachingShrink.Image);
             this.btn_myteachingShrink.Click += new System.EventHandler(this.btn_myteachingShrink_Click);
             // 
             // pic_myteachingMianban

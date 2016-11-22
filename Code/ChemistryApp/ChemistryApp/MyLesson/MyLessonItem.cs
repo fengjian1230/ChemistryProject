@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ChemistryApp.MyLesson;
 using ChemistryApp.EnumType;
+using ChemistryApp.SecondPage;
 
 /// <summary>
 /// 创建左边收缩panel中的课时item
@@ -265,30 +266,28 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void BtnDelete_Click(object sender,EventArgs e)
         {
-           
+            ConfirmDialogBox confirmBox = new ConfirmDialogBox(ButtonDeleteEvent);
+            PictureBox pic = (PictureBox)sender;
+            Control mainPanle = pic.Parent.Parent.Parent.Parent as Control;
+            mainPanle.Controls.Add(confirmBox);
+            confirmBox.BringToFront();
         }
 
         private void ButtonDeleteEvent(object sender, EventArgs e)
         {
-            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            PictureBox pic = (PictureBox)sender;
-            Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
-            Label label = (Label)control;
-            string sqlStr = "delete from LessonList where LessonTitle = '" + label.Text + "'";
-            DialogResult dr = MessageBox.Show("确定要删除吗?", "删除", messButton);
-            if (dr == DialogResult.OK)//如果点击“确定”按钮
-            {
-                int i = AccessDBConn.ExecuteNonQuery(sqlStr);
-                if (i != 0)
-                {
-                    MessageBox.Show("删除完成!");
-                    MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
-                }
-            }
-            else//如果点击“取消”按钮
-            {
-                MessageBox.Show("取消!");
-            }
+            MessageBox.Show("删除完成!");
+            //MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+            //PictureBox pic = (PictureBox)sender;
+            //Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
+            //Label label = (Label)control;
+            //string sqlStr = "delete from LessonList where LessonTitle = '" + label.Text + "'";
+            //DialogResult dr = MessageBox.Show("确定要删除吗?", "删除", messButton);
+            //int i = AccessDBConn.ExecuteNonQuery(sqlStr);
+            //if (i != 0)
+            //{
+            //    MessageBox.Show("删除完成!");
+            //    MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
+            //}
         }
 
         /// <summary>
