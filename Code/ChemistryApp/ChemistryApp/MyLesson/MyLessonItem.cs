@@ -187,10 +187,7 @@ namespace ChemistryApp
             {
                 int topIndex = 0;
                 //拿到ID可以从数据库中读取然后置顶
-                Label pic = (Label)sender;
-                Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
-                Label label = (Label)control;
-                string sqlStr = "select * from LessonList where  LessonTitle like '%" + label.Text + "%'";
+                string sqlStr = "select * from LessonList where  LessonTitle like '%" + this.lab_className.Text + "%'";
                 DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
                 try
                 {
@@ -272,22 +269,20 @@ namespace ChemistryApp
             mainPanle.Controls.Add(confirmBox);
             confirmBox.BringToFront();
         }
-
         private void ButtonDeleteEvent(object sender, EventArgs e)
         {
-            MessageBox.Show("删除完成!");
-            //MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            //PictureBox pic = (PictureBox)sender;
-            //Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
-            //Label label = (Label)control;
-            //string sqlStr = "delete from LessonList where LessonTitle = '" + label.Text + "'";
-            //DialogResult dr = MessageBox.Show("确定要删除吗?", "删除", messButton);
-            //int i = AccessDBConn.ExecuteNonQuery(sqlStr);
-            //if (i != 0)
-            //{
-            //    MessageBox.Show("删除完成!");
-            //    MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
-            //}
+            string sqlStr = "delete from LessonList where LessonTitle = '" + this.lab_className.Text + "'";
+            int i = AccessDBConn.ExecuteNonQuery(sqlStr);
+            if (i != 0)
+            {
+                ((PictureBox)sender).Parent.Parent.Controls.Remove(((PictureBox)sender).Parent);
+                MessageBox.Show("删除完成!");
+                MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
+            }
+            else
+            {
+                MessageBox.Show("删除未完成！");
+            }
         }
 
         /// <summary>
