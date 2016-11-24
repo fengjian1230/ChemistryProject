@@ -19,6 +19,7 @@ namespace ChemistryApp.SecondPage
     class ContentPlayPanel : Panel
     {
         public AxDSOFramer.AxFramerControl ContentControlFramer;
+        public AxWMPLib.AxWindowsMediaPlayer axAudioPlayer;
         private Panel panel_playContentPanelBtn;
         private Button btn_close;
         PictureBox dasdas;
@@ -27,6 +28,7 @@ namespace ChemistryApp.SecondPage
         public ContentPlayPanel()
         {
             ContentControlFramer = new AxDSOFramer.AxFramerControl();
+            axAudioPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             panel_playContentPanelBtn = new Panel();
             btn_close = new Button();
             dasdas = new PictureBox();
@@ -44,31 +46,27 @@ namespace ChemistryApp.SecondPage
             this.Name = "PPTPlayPanel";
             this.Location = new Point(0, 0);
             this.Size = this.Size;
-            this.BackColor = Color.White;
+            this.BackColor = Color.Black;
             this.Size = new Size(width, height);
+            this.Controls.Add(this.axAudioPlayer);
             this.Controls.Add(dasdas);
             this.Controls.Add(btn_close);
             this.Controls.Add(ContentControlFramer);
             this.Controls.Add(panel_playContentPanelBtn);
 
             this.dasdas.Name = "dddd";
-            this.dasdas.BackColor = Color.White;
+            this.dasdas.BackColor = Color.Black;
             this.dasdas.Size = new Size(1600, 45);
             this.dasdas.Location = new Point(150, 0);
             // 
             // axFramerControl1
             // 
             this.ContentControlFramer.CausesValidation = false;
-            //this.ContentControlFramer.BorderStyle = DSOFramer.dsoBorderStyle.dsoBorderNone;
-            //this.ContentControlFramer.Toolbars = true;
-            //this.ContentControlFramer.Titlebar = false;
-            //this.ContentControlFramer.Menubar = false;
             this.ContentControlFramer.Enabled = true;
             this.ContentControlFramer.Location = new System.Drawing.Point((width - (height / 3) * 4) / 2 + 100, 0);
             this.ContentControlFramer.Name = "ContentControlFramer";
             this.ContentControlFramer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axFramerControl1.OcxState")));
             this.ContentControlFramer.Size = new System.Drawing.Size((height / 3) * 4, height);
-            this.ContentControlFramer.TabIndex = 21;
             // 
             // panel_playContentPanelBtn
             // 
@@ -89,7 +87,16 @@ namespace ChemistryApp.SecondPage
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new EventHandler(OnClickClosePanel);
-
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axAudioPlayer.Enabled = true;
+            this.axAudioPlayer.Location = new System.Drawing.Point((width - (height / 3) * 4) / 2 + 100, 0);
+            this.axAudioPlayer.Name = "axAudioPlayer";
+            this.axAudioPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axAudioPlayer.Size = new System.Drawing.Size((height / 3) * 4, height);
+            this.axAudioPlayer.TabIndex = 21;
+            this.axAudioPlayer.Visible = false;
 
         }
 

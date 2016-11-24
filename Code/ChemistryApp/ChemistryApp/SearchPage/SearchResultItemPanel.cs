@@ -47,7 +47,7 @@ namespace ChemistryApp.SearchPage
             this.Controls.Add(this.pic_insert);
             this.Location = new System.Drawing.Point(0, posY);
             this.Name = "panel_searchItem";
-            this.Size = new System.Drawing.Size(855, 36);
+            this.Size = new System.Drawing.Size(778, 36);
             this.TabIndex = 4;
             // 
             // pic_insert
@@ -66,8 +66,8 @@ namespace ChemistryApp.SearchPage
             // lab_titleContent
             // 
             this.lab_titleContent.AutoSize = true;
-            this.lab_titleContent.Font = new System.Drawing.Font("苹方 中等", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_titleContent.Location = new System.Drawing.Point(111, 4);
+            this.lab_titleContent.Font = new System.Drawing.Font("苹方 常规", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lab_titleContent.Location = new System.Drawing.Point(80, 4);
             this.lab_titleContent.Name = "lab_titleContent";
             this.lab_titleContent.Size = new System.Drawing.Size(68, 28);
             this.lab_titleContent.TabIndex = 1;
@@ -76,7 +76,7 @@ namespace ChemistryApp.SearchPage
             // lab_typeContent
             // 
             this.pic_typeContent.AutoSize = true;
-            this.pic_typeContent.Location = new System.Drawing.Point(422, 10);
+            this.pic_typeContent.Location = new System.Drawing.Point(430, 10);
             this.pic_typeContent.Name = "pic_typeContent";
             this.pic_typeContent.Size = new System.Drawing.Size(68, 28);
             this.pic_typeContent.TabIndex = 2;

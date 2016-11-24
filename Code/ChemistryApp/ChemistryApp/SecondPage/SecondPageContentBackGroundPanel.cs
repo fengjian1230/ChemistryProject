@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
-using ADOX;
-using System.Data.OleDb;
-using ChemistryApp.MyLesson;
-using ChemistryApp.EnumType;
-using ChemistryApp.MyTeaching;
+﻿using System.Windows.Forms;
 
 namespace ChemistryApp.SecondPage
 {
@@ -61,15 +47,19 @@ namespace ChemistryApp.SecondPage
             this.Controls.Add(this.lab_secondTitle);
             this.Controls.Add(this.pic_titleborder);
             this.Controls.Add(this.lab_title_second);
-            this.Location = new System.Drawing.Point(2, 36);
+            this.AutoScroll = true;
+            this.Location = new System.Drawing.Point(0, 36);
             this.Name = "panel_secondContentBG";
             this.Size = new System.Drawing.Size(810, 424);
+            //this.HorizontalScroll.Visible = false;
+            //this.VerticalScroll.Visible = true;
+          
             this.TabIndex = 23;
             // 
             // lab_secondPlay
             // 
             this.lab_secondPlay.AutoSize = true;
-            this.lab_secondPlay.Location = new System.Drawing.Point(754, 77);
+            this.lab_secondPlay.Location = new System.Drawing.Point(710, 77);
             this.lab_secondPlay.Name = "lab_secondPlay";
             this.lab_secondPlay.Size = new System.Drawing.Size(39, 20);
             this.lab_secondPlay.TabIndex = 6;
@@ -80,14 +70,14 @@ namespace ChemistryApp.SecondPage
             this.pic_play_border.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic_play_border.Location = new System.Drawing.Point(510, 73);
             this.pic_play_border.Name = "pic_play_border";
-            this.pic_play_border.Size = new System.Drawing.Size(340, 28);
+            this.pic_play_border.Size = new System.Drawing.Size(290, 28);
             this.pic_play_border.TabIndex = 5;
             this.pic_play_border.TabStop = false;
             // 
             // lab_secondType
             // 
             this.lab_secondType.AutoSize = true;
-            this.lab_secondType.Location = new System.Drawing.Point(433, 77);
+            this.lab_secondType.Location = new System.Drawing.Point(430, 77);
             this.lab_secondType.Name = "lab_secondType";
             this.lab_secondType.Size = new System.Drawing.Size(39, 20);
             this.lab_secondType.TabIndex = 4;
@@ -114,7 +104,7 @@ namespace ChemistryApp.SecondPage
             // pic_titleborder
             // 
             this.pic_titleborder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic_titleborder.Location = new System.Drawing.Point(-14, 73);
+            this.pic_titleborder.Location = new System.Drawing.Point(0, 73);
             this.pic_titleborder.Name = "pic_titleborder";
             this.pic_titleborder.Size = new System.Drawing.Size(413, 28);
             this.pic_titleborder.TabIndex = 1;

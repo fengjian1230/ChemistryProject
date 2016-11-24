@@ -31,9 +31,10 @@ namespace ChemistryApp.SecondPage
             // panel_secondPageContent
             // 
             CreateItem();
-            this.Location = new System.Drawing.Point(2, 102);
+            this.Location = new System.Drawing.Point(0, 102);
             this.Name = "panel_secondPageContent";
-            this.Size = new System.Drawing.Size(806, 318);
+            this.Size = new System.Drawing.Size(800, 318);
+            this.AutoScroll = true;
             this.TabIndex = 7;
         }
 

@@ -48,6 +48,12 @@ namespace ChemistryApp.SecondPage
                 {
                   
                     case "PPT":
+                        contentPanel.ContentControlFramer.BorderStyle = DSOFramer.dsoBorderStyle.dsoBorderNone;
+                        contentPanel.ContentControlFramer.Toolbars = true;
+                        contentPanel.ContentControlFramer.Titlebar = false;
+                        contentPanel.ContentControlFramer.Menubar = false;
+                        contentPanel.axAudioPlayer.Visible = false;
+                        contentPanel.ContentControlFramer.Visible = true;
                         contentPanel.ContentControlFramer.Close();
                         contentPanel.ContentControlFramer.Open(System.Windows.Forms.Application.StartupPath + @_filePath);
                         break;
@@ -55,7 +61,10 @@ namespace ChemistryApp.SecondPage
                         /* 思维导图*/
                         break;
                     case "视频":
-                        /* 视频文件*/
+                        contentPanel.axAudioPlayer.Visible = true;
+                        contentPanel.ContentControlFramer.Visible = false;
+                        contentPanel.axAudioPlayer.URL = System.Windows.Forms.Application.StartupPath + @_filePath;
+                        //contentPanel.axAudioPlayer.openPlayer(System.Windows.Forms.Application.StartupPath + @_filePath);
                         break;
                     case "实验":
                         /* 实验*/

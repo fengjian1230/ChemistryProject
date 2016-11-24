@@ -1223,6 +1223,16 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap SearchingRuslutBG {
+            get {
+                object obj = ResourceManager.GetObject("SearchingRuslutBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Si_down {
             get {
                 object obj = ResourceManager.GetObject("Si_down", resourceCulture);

@@ -85,22 +85,32 @@ namespace ChemistryApp.MyLesson
         /// </summary>
         public void CreateMyLessonItem()
         {
+            int _posIndex = 1;
             Init();
-            listPanelItemPoint.Clear();
             listPanelItem.Clear();
             childItemNum.Clear();
             //从数据库中读取数据
-            string sqlStr = "select * from LessonList order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
+            string sqlStr = "select * from LessonList ";//order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
             DataSet data = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
             DataRow[] dataRow = data.Tables["LessonList"].Select();
             //创建itempanel
             for (int i = 0; i < dataRow.Count(); i++)
             {
+               
+                MyLessonItem myLessonItem;
                 //创建我的课表Item
-                MyLessonItem myLessonItem = new MyLessonItem(10, i * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
                 //把得到的值放入到链表里面
+                if (dataRow[i]["IsTop"].ToString() == "true")
+                {
+                     myLessonItem = new MyLessonItem(10, 0, dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
+                }
+                else
+                {
+                    myLessonItem = new MyLessonItem(10, _posIndex * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString());
+                    _posIndex++;
+                   
+                }
                 listPanelItem.Add(myLessonItem);
-                listPanelItemPoint.Add(new Point(10, i * (140 + 10)));
                 //从一个字段查询另外一个表
                 string _childStr = "select * from " + dataRow[i]["LessonContent"].ToString() + "";
                 DataSet childData = AccessDBConn.ExecuteQuery(_childStr, dataRow[i]["LessonContent"].ToString());

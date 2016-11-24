@@ -23,3 +23,7 @@ F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.exe
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.pdb
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\ChemistryApp.csprojResolveAssemblyReference.cache
+F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\bin\Debug\Interop.WMPLib.dll
+F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\bin\Debug\AxInterop.WMPLib.dll
+F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\Interop.WMPLib.dll
+F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\AxInterop.WMPLib.dll
