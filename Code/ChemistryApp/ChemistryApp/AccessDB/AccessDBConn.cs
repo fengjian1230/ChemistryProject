@@ -12,7 +12,7 @@ namespace ChemistryApp
     /// </summary>
     class AccessDBConn
     {
-        public static string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= ChemistryDB.accdb;Persist Security Info=False";
+        public static string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\DataBase\\ChemistryDB.accdb;Persist Security Info=False";
 
         public AccessDBConn()
         {

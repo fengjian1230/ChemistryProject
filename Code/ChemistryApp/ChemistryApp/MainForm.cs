@@ -39,6 +39,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+           
             //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_open);
             //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_close);
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
@@ -163,6 +164,7 @@ namespace ChemistryApp
             SecondPage.ChemicalElementSecondPage cheiclElementPage = new SecondPage.ChemicalElementSecondPage();
             this.MainPanel.Controls.Add(cheiclElementPage);
             cheiclElementPage.BringToFront();
+            ControlBringToFront();
         }
 
         /// <summary>
@@ -175,6 +177,7 @@ namespace ChemistryApp
             SecondPage.KnowledgeReviewSecondPage konwledegeReiewPage = new SecondPage.KnowledgeReviewSecondPage();
             this.MainPanel.Controls.Add(konwledegeReiewPage);
             konwledegeReiewPage.BringToFront();
+            ControlBringToFront();
         }
 
         /// <summary>
@@ -188,6 +191,7 @@ namespace ChemistryApp
             SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
             this.MainPanel.Controls.Add(secondPagePanel);
             secondPagePanel.BringToFront();
+            ControlBringToFront();
         }
 
         /// <summary>
@@ -200,6 +204,7 @@ namespace ChemistryApp
             SecondPage.ExperlmentalPlatformSecondPage experlMentalPlathformPage = new SecondPage.ExperlmentalPlatformSecondPage();
             this.MainPanel.Controls.Add(experlMentalPlathformPage);
             experlMentalPlathformPage.BringToFront();
+            ControlBringToFront();
         }
 
         /// <summary>
@@ -213,6 +218,7 @@ namespace ChemistryApp
             SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
             this.MainPanel.Controls.Add(secondPagePanel);
             secondPagePanel.BringToFront();
+            ControlBringToFront();
         }
 
         /// <summary>
@@ -226,6 +232,19 @@ namespace ChemistryApp
             SecondPage.SecondPageBackGroundPanel secondPagePanel = new SecondPage.SecondPageBackGroundPanel();
             this.MainPanel.Controls.Add(secondPagePanel);
             secondPagePanel.BringToFront();
+            ControlBringToFront();
+        }
+        /// <summary>
+        /// 所有的面板置顶
+        /// </summary>
+        public void ControlBringToFront()
+        {
+            this.pic_titleBG.BringToFront();
+            this.btn_shrink.BringToFront();
+            this.btn_myteachingShrink.BringToFront();
+            this.pic_myteachingMianban.BringToFront();
+            this.panel_classListBG.BringToFront();
+            this.teachingPanel.BringToFront();
         }
         #endregion
 
@@ -374,10 +393,7 @@ namespace ChemistryApp
 
         private void OnDeleteMyLessonItem()
         {
-            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
-            {
-                this.panel_item.Controls.Remove(MyLessonItemManager.GetInstace.listPanelItem[i]);
-            }
+            this.panel_item.Controls.Clear();
             MyLessonItemManager.GetInstace.CreateMyLessonItem();
             for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
             {
@@ -388,15 +404,15 @@ namespace ChemistryApp
         private void button1_Click(object sender, EventArgs e)
         {
             //添加事件
-            MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
-            ////创建item
-            MyLessonItemManager.GetInstace.CreateMyLessonItem();
-            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
-            {
-                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
-            }
+            //MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
+            //////创建item
+            //MyLessonItemManager.GetInstace.CreateMyLessonItem();
+            //for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+            //{
+            //    this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
+            //}
 
-            teachingPanel.CreateTeachingItem();
+            //teachingPanel.CreateTeachingItem();
         }
 
         private void btn_search_Click_1(object sender, EventArgs e)

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using ChemistryApp.MyTeaching;
-
+using ChemistryApp.SecondPage;
+using System.Data;
+using System.Linq;
+using System.Drawing;
 
 namespace ChemistryApp.SearchPage
 {
@@ -10,6 +13,7 @@ namespace ChemistryApp.SearchPage
     /// </summary>
     class SearchResultItemPanel : Panel
     {
+        
         public System.Windows.Forms.PictureBox btn_playContent;
         public System.Windows.Forms.PictureBox pic_typeContent;
         public System.Windows.Forms.Label lab_titleContent;
@@ -22,7 +26,6 @@ namespace ChemistryApp.SearchPage
         /// 路径
         /// </summary>
         public string strURL;
-
 
         public SearchResultItemPanel(int posX,int posY)
         {
@@ -66,8 +69,8 @@ namespace ChemistryApp.SearchPage
             // lab_titleContent
             // 
             this.lab_titleContent.AutoSize = true;
-            this.lab_titleContent.Font = new System.Drawing.Font("苹方 常规", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_titleContent.Location = new System.Drawing.Point(80, 4);
+            this.lab_titleContent.Font = new System.Drawing.Font("苹方 常规", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(130)));
+            this.lab_titleContent.Location = new System.Drawing.Point(80, 8);
             this.lab_titleContent.Name = "lab_titleContent";
             this.lab_titleContent.Size = new System.Drawing.Size(68, 28);
             this.lab_titleContent.TabIndex = 1;
@@ -91,6 +94,7 @@ namespace ChemistryApp.SearchPage
             this.btn_playContent.Size = new System.Drawing.Size(18, 21);
             this.btn_playContent.TabIndex = 3;
             this.btn_playContent.TabStop = false;
+            this.btn_playContent.Click += new EventHandler(ButtonPlayClick);
             this.btn_playContent.Cursor = Cursors.Hand;
         }
 
@@ -114,6 +118,40 @@ namespace ChemistryApp.SearchPage
                     MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
                 }
             }
+        }
+        /// <summary>
+        /// 点击预览按键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonPlayClick(object sender, EventArgs e)
+        {
+            try
+            {
+                //获取到mianpanel
+                PictureBox currControl = (PictureBox)sender;
+                MainForm mainForm = currControl.Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
+                string selectSql = "select * from " + SecondPageManager.GetInstace.TableName + " where Title = '" + this.lab_titleContent.Text + "'";
+                DataSet ds = AccessDBConn.ExecuteQuery(selectSql, SecondPageManager.GetInstace.TableName);
+                DataRow[] dr = ds.Tables[SecondPageManager.GetInstace.TableName].Select();
+                PlaySwfPanel swfPanel = new PlaySwfPanel();
+                mainForm.Controls.Add(swfPanel);
+                //播放 flash的控件
+                int width = Screen.PrimaryScreen.Bounds.Width;
+                int height = Screen.PrimaryScreen.Bounds.Height;
+                mainForm.MainFlashBox.Visible = true;
+                mainForm.MainFlashBox.Location = new System.Drawing.Point((width - 1024) / 2, (height - 768) / 2 - 30);
+                mainForm.MainFlashBox.Size = new System.Drawing.Size(1024, 768);
+                mainForm.MainFlashBox.Movie = System.Windows.Forms.Application.StartupPath + @dr[0]["URL"].ToString();
+                swfPanel.Controls.Add(mainForm.MainFlashBox);
+                swfPanel.BringToFront();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
+
         }
     }
 }

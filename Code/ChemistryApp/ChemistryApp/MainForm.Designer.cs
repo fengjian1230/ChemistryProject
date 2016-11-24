@@ -34,7 +34,7 @@
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
-            this.FlashBox = new AxShockwaveFlashObjects.AxShockwaveFlash();
+            this.MainFlashBox = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.pic_titleBG = new System.Windows.Forms.PictureBox();
             this.btn_shrink = new System.Windows.Forms.PictureBox();
             this.btn_myteachingShrink = new System.Windows.Forms.PictureBox();
@@ -61,7 +61,7 @@
             this.btn_MindMap = new System.Windows.Forms.PictureBox();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
             this.MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FlashBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainFlashBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).BeginInit();
@@ -104,7 +104,7 @@
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MainPanel.BackgroundImage")));
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.MainPanel.Controls.Add(this.FlashBox);
+            this.MainPanel.Controls.Add(this.MainFlashBox);
             this.MainPanel.Controls.Add(this.pic_titleBG);
             this.MainPanel.Controls.Add(this.btn_shrink);
             this.MainPanel.Controls.Add(this.btn_myteachingShrink);
@@ -131,14 +131,15 @@
             this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;
             // 
-            // FlashBox
+            // MainFlashBox
             // 
-            this.FlashBox.Enabled = true;
-            this.FlashBox.Location = new System.Drawing.Point(776, 76);
-            this.FlashBox.Name = "FlashBox";
-            this.FlashBox.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("FlashBox.OcxState")));
-            this.FlashBox.Size = new System.Drawing.Size(223, 152);
-            this.FlashBox.TabIndex = 0;
+            this.MainFlashBox.Enabled = true;
+            this.MainFlashBox.Location = new System.Drawing.Point(-240, 120);
+            this.MainFlashBox.Name = "MainFlashBox";
+            this.MainFlashBox.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("MainFlashBox.OcxState")));
+            this.MainFlashBox.Size = new System.Drawing.Size(240, 240);
+            this.MainFlashBox.TabIndex = 21;
+            this.MainFlashBox.Visible = false;
             // 
             // pic_titleBG
             // 
@@ -486,7 +487,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FlashBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainFlashBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_myteachingShrink)).EndInit();
@@ -510,7 +511,6 @@
         }
 
         #endregion
-        private AxShockwaveFlashObjects.AxShockwaveFlash FlashBox;
         private System.Windows.Forms.Panel panel_item;
         private System.Windows.Forms.Panel panle_shrink;
         public BackGroundPanel MainPanel;
@@ -539,6 +539,7 @@
         private System.Windows.Forms.Button btn_bianji;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.PictureBox btn_shrink;
+        public AxShockwaveFlashObjects.AxShockwaveFlash MainFlashBox;
     }
 }
 

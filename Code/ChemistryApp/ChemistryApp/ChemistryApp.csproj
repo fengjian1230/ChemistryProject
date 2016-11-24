@@ -139,6 +139,10 @@
     <Compile Include="SecondPage\PlayContentPanelList.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SecondPage\PlaySwfPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SecondPage\resources.cs" />
     <Compile Include="SecondPage\SecondPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -154,6 +158,7 @@
     <Compile Include="SecondPage\SecondPageManager.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MyTeaching\MyTeachingPanel.resx">
       <DependentUpon>MyTeachingPanel.cs</DependentUpon>
@@ -218,6 +223,14 @@
     </COMReference>
     <COMReference Include="AxShockwaveFlashObjects">
       <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
@@ -302,6 +315,15 @@
       <VersionMinor>3</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
@@ -794,6 +816,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dialogboxBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchingRuslutBG.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
