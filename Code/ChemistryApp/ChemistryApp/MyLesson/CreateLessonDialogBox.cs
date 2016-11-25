@@ -165,65 +165,73 @@ namespace ChemistryApp.MyLesson
         /// <param name="e"></param>
         private void BtnOK_Click(object sender,EventArgs e)
         {
-            string _strTitle = "";
-            string _strType = "";
-            string _strURL = "";
-            //创建课件的数据表
-            ADOX.Column[] columns = {
-                                 new ADOX.Column(){Name="Title",DefinedSize=9},
+            try
+            {
+                string _strTitle = "";
+                string _strType = "";
+                string _strURL = "";
+                //创建课件的数据表
+                ADOX.Column[] columns = {
+                                 new ADOX.Column(){Name="Title",DefinedSize=50},
                                  new ADOX.Column(){Name="URL",DefinedSize=50},
                                  new ADOX.Column(){Name="Type",DefinedSize=50}
                              };
-            int _creatErrorIndex = AccessDBConn.CreateAccessTable("课件" + txt_className.Text, columns);
-            if (_creatErrorIndex == 0)
-            {
-                MessageBox.Show("创建不成功！");
-            }
-            //从课件表中读取数据，然后放入到课表中去
-            if (MyTeachingItemManager.GetInstace.listPanelItem.Count != 0)
-            {
-                for (int i = 0; i < MyTeachingItemManager.GetInstace.listPanelItem.Count; i++)
+                int _creatErrorIndex = AccessDBConn.CreateAccessTable("课件" + txt_className.Text, columns);
+                if (_creatErrorIndex == 0)
                 {
-
-                    Label item = MyTeachingItemManager.GetInstace.listPanelItem[i].GetChildAtPoint(new Point(100, 39)) as Label;
-                    string _selectSql = "select * from MyTeaching where TeachingTitle = '" + item.Text + "'";
-                    DataSet ds = AccessDBConn.ExecuteQuery(_selectSql, "MyTeaching");
-                    DataRow[] dr = ds.Tables["MyTeaching"].Select();
-                    _strTitle = item.Text;
-                    _strType = dr[0]["TeachingType"].ToString();
-                    _strURL = dr[0]["URL"].ToString();
-                    //在空表中插入数据
-                    string insertSql = "insert into 课件" + txt_className.Text + "(Title,URL,Type)values('" + _strTitle + "','" + _strURL + "','" + _strType + "')";
-                    int inserErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
-                    if (inserErrorIndex == 0)
+                    MessageBox.Show("创建不成功！");
+                }
+                //从课件表中读取数据，然后放入到课表中去
+                if (MyTeachingItemManager.GetInstace.listPanelItem.Count != 0)
+                {
+                    for (int i = 0; i < MyTeachingItemManager.GetInstace.listPanelItem.Count; i++)
                     {
-                        MessageBox.Show("失败！");
+
+                        Label item = MyTeachingItemManager.GetInstace.listPanelItem[i].GetChildAtPoint(new Point(100, 39)) as Label;
+                        string _selectSql = "select * from MyTeaching where TeachingTitle = '" + item.Text + "'";
+                        DataSet ds = AccessDBConn.ExecuteQuery(_selectSql, "MyTeaching");
+                        DataRow[] dr = ds.Tables["MyTeaching"].Select();
+                        _strTitle = item.Text;
+                        _strType = dr[0]["TeachingType"].ToString();
+                        _strURL = dr[0]["URL"].ToString();
+                        //在空表中插入数据
+                        string insertSql = "insert into 课件" + txt_className.Text + "(Title,URL,Type)values('" + _strTitle + "','" + _strURL + "','" + _strType + "')";
+                        int inserErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
+                        if (inserErrorIndex == 0)
+                        {
+                            MessageBox.Show("失败！");
+                        }
                     }
                 }
-            }
 
-            //插入到lessonlist表中
-            string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + txt_className.Text + "','" + "课件" + txt_className.Text + "','" + txt_tips.Text + "','false','Finish',3)";
-            //MessageBox.Show(sql);
-            int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(sql);
-            if (_insertErrorIndex != 0)
-            {
-                PictureBox btn = (PictureBox)sender;
-                Panel mainPanel = btn.Parent.Parent as Panel;
-                foreach (Control item in mainPanel.Controls)
+                //插入到lessonlist表中
+                string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + txt_className.Text + "','" + "课件" + txt_className.Text + "','" + txt_tips.Text + "','false','Finish',3)";
+                //MessageBox.Show(sql);
+                int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(sql);
+                if (_insertErrorIndex != 0)
                 {
-                    if (item.Name == "panel_createDialog")
+                    PictureBox btn = (PictureBox)sender;
+                    Panel mainPanel = btn.Parent.Parent as Panel;
+                    foreach (Control item in mainPanel.Controls)
                     {
-                        mainPanel.Controls.Remove(item);
+                        if (item.Name == "panel_createDialog")
+                        {
+                            mainPanel.Controls.Remove(item);
+                        }
                     }
+                    MessageBox.Show("创建成功！");
+                    MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
                 }
-                MessageBox.Show("创建成功！");
-                MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
+                else
+                {
+                    MessageBox.Show("创建失败！");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("创建失败！");
+                MessageBox.Show(ex.Message);
             }
+           
         }
     }
 

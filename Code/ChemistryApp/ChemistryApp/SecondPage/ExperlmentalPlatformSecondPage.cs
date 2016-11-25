@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 
@@ -42,6 +44,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_VR.Cursor = Cursors.Hand;
             this.picBtn_VR.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_VR.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_VR.Click += new EventHandler(OnClickOpenVRProject);
             // 
             // picBtn_EPoint
             // 
@@ -69,7 +72,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_IE.Cursor = Cursors.Hand;
             this.picBtn_IE.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_IE.MouseLeave += new EventHandler(OnButtonMouseLeave);
-            this.picBtn_IE.Click += new EventHandler(OnButtonClick);
+            this.picBtn_IE.Click += new EventHandler(IndependentExperimentsButtonClick);
             // 
             // picBtn_EP
             // 
@@ -150,7 +153,6 @@ namespace ChemistryApp.SecondPage
         private void OnButtonClick(object sender,EventArgs e)
         {
             PictureBox picBox = (PictureBox)sender;
-
             SecondPageManager.GetInstace.TableName = picBox.Name;
             SecondPageBackGroundPanel secondPagePanel = new SecondPageBackGroundPanel();
             Panel mainPanel = picBox.Parent.Parent as Panel;
@@ -158,6 +160,57 @@ namespace ChemistryApp.SecondPage
             mainPanel.Controls.Add(secondPagePanel);
             secondPagePanel.BringToFront();
             mainForm.ControlBringToFront();
+        }
+
+        /// <summary>
+        /// 自主实验按钮点击(以后要修改)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IndependentExperimentsButtonClick(object sender,EventArgs e)
+        {
+            try
+            {
+                //获取到mianpanel
+                PictureBox currControl = (PictureBox)sender;
+                MainForm mainForm = currControl.Parent.Parent.Parent as MainForm;
+                PlaySwfPanel swfPanel = new PlaySwfPanel();
+                mainForm.Controls.Add(swfPanel);
+                //播放 flash的控件 
+                int width = Screen.PrimaryScreen.Bounds.Width;
+                int height = Screen.PrimaryScreen.Bounds.Height;
+                mainForm.MainFlashBox.Visible = true;
+                mainForm.MainFlashBox.Location = new System.Drawing.Point((width - 1024) / 2, (height - 768) / 2 - 30);
+                mainForm.MainFlashBox.Size = new System.Drawing.Size(1024, 768);
+                mainForm.MainFlashBox.Movie = System.Windows.Forms.Application.StartupPath + @"\ResourcesFolder\ktjx\bx1\1\1_1.swf";
+                swfPanel.Controls.Add(mainForm.MainFlashBox);
+                swfPanel.BringToFront();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+        }
+
+        /// <summary>
+        /// 点击打开VR程序
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClickOpenVRProject(object sender,EventArgs e)
+        {
+            Process myProcess = new Process();
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = false;
+                myProcess.StartInfo.FileName = System.Windows.Forms.Application.StartupPath + @"\ResourcesFolder\VRProject\氯气制备实验\氯气制备实验.exe";
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         #endregion
     }

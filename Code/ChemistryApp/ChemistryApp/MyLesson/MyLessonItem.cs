@@ -196,9 +196,8 @@ namespace ChemistryApp
                     //拿到ID可以从数据库中读取然后置顶
                     string updateSqlStrTrue = "update LessonList set IsTop = 'true' where LessonTitle = '" + this.lab_className.Text + "'";
                     DataSet updateDsTure = AccessDBConn.ExecuteQuery(updateSqlStrTrue, "LessonList");
-
-
                     MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
+                   
                 }
                 catch (Exception ex)
                 {
@@ -217,14 +216,13 @@ namespace ChemistryApp
         {
             int itemLength = 0;
             Label pic = (Label)sender;
-            Control control = pic.Parent.GetChildAtPoint(new Point(86, 41));
-            Label label = (Label)control;
             pic.Parent.BackgroundImageLayout = ImageLayout.None;
+            pic.Parent.BringToFront();
             for (int i = 0; i < MyLessonItemManager.GetInstace.ChildItemNum.Count; i++)
             {
-                if (MyLessonItemManager.GetInstace.ChildItemNum.ContainsKey(label.Text))
+                if (MyLessonItemManager.GetInstace.ChildItemNum.ContainsKey(this.lab_className.Text))
                 {
-                    itemLength = MyLessonItemManager.GetInstace.ChildItemNum[label.Text];
+                    itemLength = MyLessonItemManager.GetInstace.ChildItemNum[this.lab_className.Text];
                 }
             }
             if (MyLessonItemManager.GetInstace.state == LessonItemState.Close)
@@ -233,6 +231,7 @@ namespace ChemistryApp
                 this.btn_againPrepareLesson.Visible = false;
                 MyLessonItemManager.GetInstace.state = LessonItemState.Open;
                 pic.Parent.Size = new Size(pic.Parent.Size.Width, 140);
+                
             }
             else if (MyLessonItemManager.GetInstace.state == LessonItemState.Open && MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji)
             {
@@ -273,25 +272,30 @@ namespace ChemistryApp
                     {
                        
                     }
+
                 }
+                //拿到ID可以从数据库中读取然后置顶
+                string sqlStr = "delete from LessonList where LessonTitle = '" + this.lab_className.Text + "'";
+                string deleteChildTabel = "drop table " + selectRow[0]["LessonContent"].ToString() + "";
+                int i = AccessDBConn.ExecuteNonQuery(sqlStr);// && deleteErrorIndex != 0
+                int deleteErrorIndex = AccessDBConn.ExecuteNonQuery(deleteChildTabel);
+                if (i != 0)
+                {
+                    ((PictureBox)sender).Parent.Parent.Controls.Remove(((PictureBox)sender).Parent);
+                    MessageBox.Show("删除完成!");
+                    MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
+                }
+                else
+                {
+                    MessageBox.Show("删除未完成！");
+                }
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            //拿到ID可以从数据库中读取然后置顶
-            string sqlStr = "delete from LessonList where LessonTitle = '" + this.lab_className.Text + "'";
-            int i = AccessDBConn.ExecuteNonQuery(sqlStr);
-            if (i != 0)
-            {
-                ((PictureBox)sender).Parent.Parent.Controls.Remove(((PictureBox)sender).Parent);
-                MessageBox.Show("删除完成!");
-                MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
-            }
-            else
-            {
-                MessageBox.Show("删除未完成！");
-            }
+          
            
           
             

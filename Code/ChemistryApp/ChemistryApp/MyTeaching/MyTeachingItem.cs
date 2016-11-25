@@ -104,7 +104,7 @@ namespace ChemistryApp
             // 
             this.txt_myTeachingTitle.AutoSize = true;
             this.txt_myTeachingTitle.Font = new System.Drawing.Font("苹方 中等", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_myTeachingTitle.Location = new System.Drawing.Point(100, 39);
+            this.txt_myTeachingTitle.Location = new System.Drawing.Point(65, 39);
             this.txt_myTeachingTitle.Name = "txt_myTeachingTitle";
             this.txt_myTeachingTitle.Size = new System.Drawing.Size(130, 21);
             this.txt_myTeachingTitle.TabIndex = 4;

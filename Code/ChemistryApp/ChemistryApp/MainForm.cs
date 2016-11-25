@@ -39,14 +39,14 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-           
+            //this.BackColor = Color.FromArgb(197, 236, 251);
             //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_open);
             //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_close);
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
             //初始位置
-            this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);
+            this.MainPanel.Location = new Point(0, 0);//((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);
             this.Size = new Size(mainFormWidth, mainFormWidth);
 
             //添加事件

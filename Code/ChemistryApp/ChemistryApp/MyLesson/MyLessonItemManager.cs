@@ -130,6 +130,7 @@ namespace ChemistryApp.MyLesson
                         childPanel.BackColor = Color.White;
                     }
                     myLessonItem.Controls.Add(childPanel);
+                    childPanel.BringToFront();
                     
                 }
                 childItemNum.Add(dataRow[i]["LessonTitle"].ToString(), childDataRow.Count());
