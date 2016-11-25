@@ -23,7 +23,7 @@ namespace ChemistryApp.SecondPage
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Location = new System.Drawing.Point(100, 174);
             this.Name = "panel_OtherSecond";
-            this.Size = new System.Drawing.Size(810, 460);
+            this.Size = new System.Drawing.Size(800, 460);
             this.TabIndex = 21;
         }
 

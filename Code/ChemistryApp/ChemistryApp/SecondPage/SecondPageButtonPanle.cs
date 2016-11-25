@@ -61,7 +61,7 @@ namespace ChemistryApp.SecondPage
             this.Controls.Add(this.btn_one);
             this.Location = new System.Drawing.Point(3, 0);
             this.Name = "panel_partBtn";
-            this.Size = new System.Drawing.Size(810, 36);
+            this.Size = new System.Drawing.Size(800, 36);
             this.TabIndex = 22;
             // 
             // secondRedLine
@@ -70,7 +70,7 @@ namespace ChemistryApp.SecondPage
             this.secondRedLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.secondRedLine.Location = new System.Drawing.Point(-3, 33);
             this.secondRedLine.Name = "secondRedLine";
-            this.secondRedLine.Size = new System.Drawing.Size(810, 3);
+            this.secondRedLine.Size = new System.Drawing.Size(800, 3);
             this.secondRedLine.TabIndex = 23;
             this.secondRedLine.TabStop = false;
             // 
@@ -79,7 +79,7 @@ namespace ChemistryApp.SecondPage
             this.lab_title.AutoSize = true;
             this.lab_title.Font = new System.Drawing.Font("苹方 中等", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lab_title.ForeColor = System.Drawing.Color.DarkRed;
-            this.lab_title.Location = new System.Drawing.Point(684, 3);
+            this.lab_title.Location = new System.Drawing.Point(670, 3);
             this.lab_title.Name = "lab_title";
             this.lab_title.Size = new System.Drawing.Size(127, 33);
             this.lab_title.TabIndex = 25;

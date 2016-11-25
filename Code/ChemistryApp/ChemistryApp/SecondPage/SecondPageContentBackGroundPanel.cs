@@ -50,9 +50,7 @@ namespace ChemistryApp.SecondPage
             this.AutoScroll = true;
             this.Location = new System.Drawing.Point(3, 36);
             this.Name = "panel_secondContentBG";
-            this.Size = new System.Drawing.Size(811, 424);
-            //this.HorizontalScroll.Visible = false;
-            //this.VerticalScroll.Visible = true;
+            this.Size = new System.Drawing.Size(810, 424);
           
             this.TabIndex = 23;
             // 

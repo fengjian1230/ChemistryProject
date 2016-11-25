@@ -42,9 +42,9 @@ namespace ChemistryApp.SecondPage
             // 
             this.Controls.Add(this.secondButtonPageBG);
             this.Controls.Add(this.secondContentBG);
-            this.Location = new System.Drawing.Point(91, 174);
+            this.Location = new System.Drawing.Point(100, 174);
             this.Name = "panel_secondPage";
-            this.Size = new System.Drawing.Size(810, 460);
+            this.Size = new System.Drawing.Size(800, 460);
             this.TabIndex = 23;
             this.Visible = true;
             this.secondButtonPageBG.btn_one.Click += FirstPartButtonClick;

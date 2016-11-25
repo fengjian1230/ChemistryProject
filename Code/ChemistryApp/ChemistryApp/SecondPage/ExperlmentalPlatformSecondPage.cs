@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using ChemistryApp.MyLesson;
-using ChemistryApp.EnumType;
-using ChemistryApp.MyTeaching;
 
 
 namespace ChemistryApp.SecondPage
@@ -59,39 +48,43 @@ namespace ChemistryApp.SecondPage
             this.picBtn_EPoint.BackColor = System.Drawing.Color.Transparent;
             this.picBtn_EPoint.BackgroundImage = global::ChemistryApp.Properties.Resources.EPoint_up;
             this.picBtn_EPoint.Location = new System.Drawing.Point(412, 131);
-            this.picBtn_EPoint.Name = "picBtn_EPoint";
+            this.picBtn_EPoint.Name = "ExperimentalPoints";
             this.picBtn_EPoint.Size = new System.Drawing.Size(141, 167);
             this.picBtn_EPoint.TabIndex = 2;
             this.picBtn_EPoint.TabStop = false;
             this.picBtn_EPoint.Cursor = Cursors.Hand;
             this.picBtn_EPoint.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_EPoint.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_EPoint.Click += new EventHandler(OnButtonClick);
             // 
             // picBtn_IE
             // 
             this.picBtn_IE.BackColor = System.Drawing.Color.Transparent;
             this.picBtn_IE.BackgroundImage = global::ChemistryApp.Properties.Resources.IE_up;
             this.picBtn_IE.Location = new System.Drawing.Point(271, 131);
-            this.picBtn_IE.Name = "picBtn_IE";
+            this.picBtn_IE.Name = "IndependentExperiments";
             this.picBtn_IE.Size = new System.Drawing.Size(141, 167);
             this.picBtn_IE.TabIndex = 1;
             this.picBtn_IE.TabStop = false;
             this.picBtn_IE.Cursor = Cursors.Hand;
             this.picBtn_IE.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_IE.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_IE.Click += new EventHandler(OnButtonClick);
             // 
             // picBtn_EP
             // 
             this.picBtn_EP.BackColor = System.Drawing.Color.Transparent;
             this.picBtn_EP.BackgroundImage = global::ChemistryApp.Properties.Resources.EP_up;
             this.picBtn_EP.Location = new System.Drawing.Point(130, 131);
-            this.picBtn_EP.Name = "picBtn_EP";
+            this.picBtn_EP.Name = "ExperimentalPractices";
             this.picBtn_EP.Size = new System.Drawing.Size(141, 167);
             this.picBtn_EP.TabIndex = 0;
             this.picBtn_EP.TabStop = false;
             this.picBtn_EP.Cursor = Cursors.Hand;
             this.picBtn_EP.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_EP.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_EP.Click += new EventHandler(OnButtonClick);
+
         }
         #region 鼠标事件
         /// <summary>
@@ -107,13 +100,13 @@ namespace ChemistryApp.SecondPage
                 case "picBtn_VR":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.VR_down;
                     break;
-                case "picBtn_EPoint":
+                case "ExperimentalPoints":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.EPoint_down;
                     break;
-                case "picBtn_IE":
+                case "IndependentExperiments":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.IE_down;
                     break;
-                case "picBtn_EP":
+                case "ExperimentalPractices":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.EP_down;
                     break;
                 default:
@@ -134,19 +127,37 @@ namespace ChemistryApp.SecondPage
                 case "picBtn_VR":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.VR_up;
                     break;
-                case "picBtn_EPoint":
+                case "ExperimentalPoints":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.EPoint_up;
                     break;
-                case "picBtn_IE":
+                case "IndependentExperiments":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.IE_up;
                     break;
-                case "picBtn_EP":
+                case "ExperimentalPractices":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.EP_up;
                     break;
                 default:
                     break;
             }
 
+        }
+
+        /// <summary>
+        /// 点击按钮的时候触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnButtonClick(object sender,EventArgs e)
+        {
+            PictureBox picBox = (PictureBox)sender;
+
+            SecondPageManager.GetInstace.TableName = picBox.Name;
+            SecondPageBackGroundPanel secondPagePanel = new SecondPageBackGroundPanel();
+            Panel mainPanel = picBox.Parent.Parent as Panel;
+            MainForm mainForm = mainPanel.Parent as MainForm;
+            mainPanel.Controls.Add(secondPagePanel);
+            secondPagePanel.BringToFront();
+            mainForm.ControlBringToFront();
         }
         #endregion
     }

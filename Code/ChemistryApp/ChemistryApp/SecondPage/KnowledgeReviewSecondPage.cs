@@ -42,39 +42,43 @@ namespace ChemistryApp.SecondPage
             this.picBtn_RE.BackColor = System.Drawing.Color.Transparent;
             this.picBtn_RE.BackgroundImage = global::ChemistryApp.Properties.Resources.RE_up;
             this.picBtn_RE.Location = new System.Drawing.Point(544, 131);
-            this.picBtn_RE.Name = "picBtn_RE";
+            this.picBtn_RE.Name = "ReactionEquation";
             this.picBtn_RE.Size = new System.Drawing.Size(141, 167);
             this.picBtn_RE.TabIndex = 3;
             this.picBtn_RE.TabStop = false;
             this.picBtn_RE.Cursor = Cursors.Hand;
             this.picBtn_RE.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_RE.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_RE.Click += new EventHandler(OnButtonClick);
             // 
             // picBtn_PS
             // 
             this.picBtn_PS.BackColor = System.Drawing.Color.Transparent;
             this.picBtn_PS.BackgroundImage = global::ChemistryApp.Properties.Resources.PS_up;
             this.picBtn_PS.Location = new System.Drawing.Point(343, 131);
-            this.picBtn_PS.Name = "picBtn_PS";
+            this.picBtn_PS.Name = "PointSummarizing";
             this.picBtn_PS.Size = new System.Drawing.Size(141, 167);
             this.picBtn_PS.TabIndex = 1;
             this.picBtn_PS.TabStop = false;
             this.picBtn_PS.Cursor = Cursors.Hand;
             this.picBtn_PS.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_PS.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_PS.Click += new EventHandler(OnButtonClick);
             // 
             // picBtn_CE
             // 
             this.picBtn_CE.BackColor = System.Drawing.Color.Transparent;
             this.picBtn_CE.BackgroundImage = global::ChemistryApp.Properties.Resources.CE_up;
             this.picBtn_CE.Location = new System.Drawing.Point(133, 131);
-            this.picBtn_CE.Name = "picBtn_CE";
+            this.picBtn_CE.Name = "ClassicExercises";
             this.picBtn_CE.Size = new System.Drawing.Size(141, 167);
             this.picBtn_CE.TabIndex = 0;
             this.picBtn_CE.TabStop = false;
             this.picBtn_CE.Cursor = Cursors.Hand;
             this.picBtn_CE.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_CE.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_CE.Click += new EventHandler(OnButtonClick);
+
         }
 
         #region 鼠标事件
@@ -88,13 +92,13 @@ namespace ChemistryApp.SecondPage
             PictureBox pic = (PictureBox)sender;
             switch (pic.Name)
             {
-                case "picBtn_PS":
+                case "PointSummarizing":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.PS_down;
                     break;
-                case "picBtn_RE":
+                case "ReactionEquation":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.RE_down;
                     break;
-                case "picBtn_CE":
+                case "ClassicExercises":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.CE_down;
                     break;
                 default:
@@ -112,19 +116,36 @@ namespace ChemistryApp.SecondPage
             PictureBox pic = (PictureBox)sender;
             switch (pic.Name)
             {
-                case "picBtn_PS":
+                case "PointSummarizing":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.PS_up;
                     break;
-                case "picBtn_RE":
+                case "ReactionEquation":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.RE_up;
                     break;
-                case "picBtn_CE":
+                case "ClassicExercises":
                     pic.BackgroundImage = global::ChemistryApp.Properties.Resources.CE_up;
                     break;
                 default:
                     break;
             }
 
+        }
+
+        /// <summary>
+        /// 点击按钮的时候触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnButtonClick(object sender, EventArgs e)
+        {
+            PictureBox picBox = (PictureBox)sender;
+            SecondPageManager.GetInstace.TableName = picBox.Name;
+            SecondPageBackGroundPanel secondPagePanel = new SecondPageBackGroundPanel();
+            Panel mainPanel = picBox.Parent.Parent as Panel;
+            MainForm mainForm = mainPanel.Parent as MainForm;
+            mainPanel.Controls.Add(secondPagePanel);
+            secondPagePanel.BringToFront();
+            mainForm.ControlBringToFront();
         }
         #endregion
     }
