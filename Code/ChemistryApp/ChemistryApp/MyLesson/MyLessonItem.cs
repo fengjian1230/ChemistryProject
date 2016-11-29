@@ -25,7 +25,7 @@ namespace ChemistryApp
         public System.Windows.Forms.Label lab_tips;
         public System.Windows.Forms.PictureBox pic_delete;
         public Button btn_againPrepareLesson;
-
+        private bool isSearch;
         /// <summary>
         #endregion
 
@@ -33,7 +33,7 @@ namespace ChemistryApp
         /// <summary>
         /// 构造函数
         /// </summary>
-        public MyLessonItem(int posX, int posY, string _strClassName, string _strTips)
+        public MyLessonItem(int posX, int posY, string _strClassName, string _strTips,bool _isSearch )
         {
             //实例化控件
             panelItem = new Panel();
@@ -45,7 +45,7 @@ namespace ChemistryApp
             pic_book = new PictureBox();
             pic_delete = new PictureBox();
             this.btn_againPrepareLesson = new System.Windows.Forms.Button();
-           
+            this.isSearch = _isSearch;
             InitCompent(posX, posY, _strClassName, _strTips);
 
         }
@@ -58,6 +58,7 @@ namespace ChemistryApp
         /// <returns></returns>
         public void InitCompent(int posX, int posY, string _strClassName, string _strTips)
         {
+           
             // panel1
             // 
             this.BackColor = System.Drawing.Color.Transparent;
@@ -170,6 +171,8 @@ namespace ChemistryApp
             this.lab_tips.Size = new System.Drawing.Size(164, 18);
             this.lab_tips.TabIndex = 5;
             this.lab_tips.Text = "（" + _strTips + "）";
+
+            CreateChildItem();
         }
         #endregion
 
@@ -374,6 +377,38 @@ namespace ChemistryApp
 
             }
             return _str;
+        }
+
+        private void CreateChildItem()
+        {
+            //先拿到字段
+            string sqlStr = "select * from LessonList where LessonTitle = '" + this.lab_className.Text + "'";//order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
+            DataSet data = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
+            DataRow[] dataRow = data.Tables["LessonList"].Select();
+            //在从字段中读取到表名
+            string _childStr = "select * from  " + dataRow[0]["LessonContent"].ToString() + "";
+            DataSet childData = AccessDBConn.ExecuteQuery(_childStr, dataRow[0]["LessonContent"].ToString());
+            DataRow[] childDataRow = childData.Tables[dataRow[0]["LessonContent"].ToString()].Select();
+            //创建课表列表
+            for (int j = 0; j < childDataRow.Count(); j++)
+            {
+                MyLessonChildItem childPanel = new MyLessonChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
+                childPanel.fieldName = dataRow[0]["LessonTitle"].ToString();
+                if (j % 2 == 0)
+                {
+                    childPanel.BackColor = Color.FromArgb(245, 245, 247);
+                }
+                else
+                {
+                    childPanel.BackColor = Color.White;
+                }
+                this.Controls.Add(childPanel);
+                childPanel.BringToFront();
+            }
+            if (!isSearch)
+            {
+                MyLessonItemManager.GetInstace.ChildItemNum.Add(this.lab_className.Text, childDataRow.Count());
+            }
         }
         #endregion
     }

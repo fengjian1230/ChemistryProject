@@ -410,20 +410,6 @@ namespace ChemistryApp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //添加事件
-            //MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
-            //////创建item
-            //MyLessonItemManager.GetInstace.CreateMyLessonItem();
-            //for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
-            //{
-            //    this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
-            //}
-
-            //teachingPanel.CreateTeachingItem();
-        }
-
         private void btn_search_Click_1(object sender, EventArgs e)
         {
             if (this.txt_search.Text != "搜索/Serch")
@@ -470,7 +456,7 @@ namespace ChemistryApp
                     {
                         string strTitle = dr[i]["LessonTitle"].ToString();
                         string strTips = dr[i]["Tips"].ToString();
-                        MyLessonItem item = new MyLessonItem(10, i * (140 + 10), strTitle, strTips);
+                        MyLessonItem item = new MyLessonItem(10, i * (140 + 10), strTitle, strTips,true);
                         lessonSearchPage.Controls.Add(item);
                     }
                 }

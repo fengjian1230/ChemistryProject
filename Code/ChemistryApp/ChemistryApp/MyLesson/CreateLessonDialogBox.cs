@@ -17,6 +17,10 @@ namespace ChemistryApp.MyLesson
         public System.Windows.Forms.TextBox txt_className;
         public System.Windows.Forms.Label lab_className;
         public PictureBox pic_dialogBG;
+        /// <summary>
+        /// 当生成后清空全部课件
+        /// </summary>
+        public Action<object, EventArgs> OnCreateDeleteAllTeachingAction;
 
         /// <summary>
         /// 构造函数
@@ -222,6 +226,8 @@ namespace ChemistryApp.MyLesson
                         }
                     }
                     MessageBox.Show("创建成功！");
+                    //如果委托不为空则调用委托
+                    OnCreateDeleteAllTeachingAction?.Invoke(sender, e);
                     MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
                 }
                 else

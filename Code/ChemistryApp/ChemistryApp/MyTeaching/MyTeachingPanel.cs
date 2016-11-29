@@ -162,7 +162,7 @@ namespace ChemistryApp
             Panel mainPanel = btn_bendi.Parent.Parent as Panel;
             string _loaclPath = @System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching";
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "(*.pptx)|*.pptx";
+            //openFile.Filter = "(*.pptx)|*.pptx";
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 CreateTeachingItemDialogBox item = new CreateTeachingItemDialogBox("\\ResourcesFolder\\MyTeaching\\" +  openFile.SafeFileName + "", openFile.FileName, _loaclPath + "\\" + openFile.SafeFileName);
@@ -177,14 +177,34 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_yijianshengcheng_Click(object sender, EventArgs e)
         {
+            //if (this.panelMyTeachingItemBG.Controls.Clear();)
+            //{
+
+            //}
             Button btn_yijian = (Button)sender;
             Panel mainPanel = btn_yijian.Parent.Parent as Panel;
             if (MyTeachingItemManager.GetInstace.listPanelItem.Count != 0)
             {
                 CreateLessonDialogBox dialogBox = new CreateLessonDialogBox();
                 Panel panelDialogBox = dialogBox.CreateDialgBox();
+                dialogBox.OnCreateDeleteAllTeachingAction = btn_OnClickClaer;
                 mainPanel.Controls.Add(panelDialogBox);
                 panelDialogBox.BringToFront();
+            }
+        }
+
+        /// <summary>
+        /// 一键清空
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name=""></param>
+        private void btn_OnClickClaer(object sender, EventArgs e)
+        {
+            string clearTabelSql = "delete * from MyTeaching";
+            int errorIndex = AccessDBConn.ExecuteNonQuery(clearTabelSql);
+            if (errorIndex != 0)
+            {
+                this.panelMyTeachingItemBG.Controls.Clear();
             }
         }
         #endregion
@@ -200,6 +220,7 @@ namespace ChemistryApp
             this.picMyTeachingMianBan = picMianban;
             this.btnMyTeachingButton = picBtn;
         }
+
 
         /// <summary>
         /// 创建item
