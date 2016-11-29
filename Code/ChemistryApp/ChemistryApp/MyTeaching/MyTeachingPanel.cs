@@ -219,10 +219,6 @@ namespace ChemistryApp
         public void RefreshItem()
         {
             this.panelMyTeachingItemBG.Controls.Clear();
-            //for (int i = 0; i < MyTeachingItemManager.GetInstace.listPanelItem.Count; i++)
-            //{
-            //    this.panelMyTeachingItemBG.Controls.Remove(MyTeachingItemManager.GetInstace.listPanelItem[i]);
-            //}
             CreateTeachingItem();
         }
 

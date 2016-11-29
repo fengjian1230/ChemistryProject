@@ -102,7 +102,7 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
-            this.MainPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MainPanel.BackgroundImage")));
+            this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景;
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.MainPanel.Controls.Add(this.MainFlashBox);
             this.MainPanel.Controls.Add(this.pic_titleBG);
@@ -260,7 +260,7 @@
             this.txt_classListSerch.ForeColor = System.Drawing.Color.Silver;
             this.txt_classListSerch.Location = new System.Drawing.Point(28, 20);
             this.txt_classListSerch.Name = "txt_classListSerch";
-            this.txt_classListSerch.Size = new System.Drawing.Size(198, 26);
+            this.txt_classListSerch.Size = new System.Drawing.Size(198, 21);
             this.txt_classListSerch.TabIndex = 14;
             this.txt_classListSerch.Text = "搜索课表";
             // 
@@ -360,10 +360,10 @@
             this.listBox_searchRuslut.ForeColor = System.Drawing.Color.Silver;
             this.listBox_searchRuslut.FormattingEnabled = true;
             this.listBox_searchRuslut.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listBox_searchRuslut.ItemHeight = 42;
+            this.listBox_searchRuslut.ItemHeight = 33;
             this.listBox_searchRuslut.Location = new System.Drawing.Point(239, 120);
             this.listBox_searchRuslut.Name = "listBox_searchRuslut";
-            this.listBox_searchRuslut.Size = new System.Drawing.Size(547, 126);
+            this.listBox_searchRuslut.Size = new System.Drawing.Size(547, 99);
             this.listBox_searchRuslut.TabIndex = 19;
             this.listBox_searchRuslut.Visible = false;
             this.listBox_searchRuslut.SelectedIndexChanged += new System.EventHandler(this.listBox_searchRuslut_SelectedIndexChanged);
@@ -375,7 +375,7 @@
             this.txt_search.ForeColor = System.Drawing.Color.Silver;
             this.txt_search.Location = new System.Drawing.Point(265, 79);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(468, 38);
+            this.txt_search.Size = new System.Drawing.Size(468, 31);
             this.txt_search.TabIndex = 7;
             this.txt_search.Text = "搜索/Search";
             this.txt_search.Click += new System.EventHandler(this.txt_search_Click);

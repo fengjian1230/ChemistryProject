@@ -17,10 +17,6 @@ namespace ChemistryApp.MyLesson
         /// </summary>
         public List<Panel> listPanelItem;
         /// <summary>
-        /// 用来存放所有课件item 位置，用于置顶
-        /// </summary>
-        public List<Point> listPanelItemPoint;
-        /// <summary>
         /// 课程折叠状态
         /// </summary>
         public LessonItemState state = LessonItemState.Open;
@@ -32,6 +28,14 @@ namespace ChemistryApp.MyLesson
         /// 当删除完成后
         /// </summary>
         public Action OnDeleteFinish;
+        /// <summary>
+        /// 如果删除第一个则最上面一个置顶
+        /// </summary>
+        public bool isDeleteFirstItem;
+        /// <summary>
+        /// 删除的字段名
+        /// </summary>
+        public string filedName;
         /// <summary>
         /// 课程的个数
         /// </summary>
@@ -71,10 +75,9 @@ namespace ChemistryApp.MyLesson
         public void Init()
         {
             //实例化链表
-            if (listPanelItem == null || listPanelItemPoint == null || childItemNum == null)
+            if (listPanelItem == null || childItemNum == null)
             {
                 listPanelItem = new List<Panel>();
-                listPanelItemPoint = new List<Point>();
                 childItemNum = new Dictionary<string, int>();
             }
         }

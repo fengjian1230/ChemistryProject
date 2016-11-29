@@ -192,12 +192,12 @@ namespace ChemistryApp
                     //DataSet selectDs = AccessDBConn.ExecuteQuery(selectSqlStr, "LessonList");
                     //更改全部列为flase
                     string updateSqlStrFlase = "update LessonList set IsTop = 'false'";
-                    DataSet updateDsFlase = AccessDBConn.ExecuteQuery(updateSqlStrFlase, "LessonList");
+                    AccessDBConn.ExecuteNonQuery(updateSqlStrFlase);
                     //拿到ID可以从数据库中读取然后置顶
                     string updateSqlStrTrue = "update LessonList set IsTop = 'true' where LessonTitle = '" + this.lab_className.Text + "'";
-                    DataSet updateDsTure = AccessDBConn.ExecuteQuery(updateSqlStrTrue, "LessonList");
+                    AccessDBConn.ExecuteNonQuery(updateSqlStrTrue);
                     MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -261,20 +261,16 @@ namespace ChemistryApp
             try
             {
                 //查询到所有结果
-                string selectSqlStr = "select * from LessonList where  LessonTitle like '%" + this.lab_className.Text + "%'";
+                string selectSqlStr = "select * from LessonList where  LessonTitle = '" + this.lab_className.Text + "'";
                 DataSet selectDs = AccessDBConn.ExecuteQuery(selectSqlStr, "LessonList");
                 DataRow[] selectRow = selectDs.Tables["LessonList"].Select();
                 if (selectRow[0]["IsTop"].ToString() == "true")
                 {
-                    string updateSql = "update LessonList set IsTop = 'true' where @rowcount = 2";
-                    int errorIndex = AccessDBConn.ExecuteNonQuery(updateSql);
-                    if (errorIndex != 0)
-                    {
-                       
-                    }
+                    MyLessonItemManager.GetInstace.isDeleteFirstItem = true;
+                    MyLessonItemManager.GetInstace.filedName = this.lab_className.Text;
 
                 }
-                //拿到ID可以从数据库中读取然后置顶
+                //拿到ID可以从数据库中读取然后置顶x
                 string sqlStr = "delete from LessonList where LessonTitle = '" + this.lab_className.Text + "'";
                 string deleteChildTabel = "drop table " + selectRow[0]["LessonContent"].ToString() + "";
                 int i = AccessDBConn.ExecuteNonQuery(sqlStr);// && deleteErrorIndex != 0
@@ -283,6 +279,7 @@ namespace ChemistryApp
                 {
                     ((PictureBox)sender).Parent.Parent.Controls.Remove(((PictureBox)sender).Parent);
                     MessageBox.Show("删除完成!");
+                    MyLessonItemManager.GetInstace.bianjiState = BianJiState.Bianji;
                     MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
                 }
                 else

@@ -39,14 +39,11 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //this.BackColor = Color.FromArgb(197, 236, 251);
-            //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_open);
-            //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink, global::ChemistryApp.Properties.Resources.btn_shousuo_left_close);
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
 
             //初始位置
-            this.MainPanel.Location = new Point(0, 0);//((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);
+            this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);//((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);
             this.Size = new Size(mainFormWidth, mainFormWidth);
 
             //添加事件
@@ -345,6 +342,7 @@ namespace ChemistryApp
                     MyLessonItemManager.GetInstace.listPanelItem[i].Size = new Size(329, 140);
                 }
                 MyLessonItemManager.GetInstace.bianjiState = BianJiState.Wancheng;
+
             }
             else if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Wancheng)
             {
@@ -394,6 +392,17 @@ namespace ChemistryApp
         private void OnDeleteMyLessonItem()
         {
             this.panel_item.Controls.Clear();
+            //如果是删除第一个则下个置顶
+            if (MyLessonItemManager.GetInstace.isDeleteFirstItem)
+            {
+                string selectSqlStr = "select top 1 * from LessonList";
+                DataSet selectDs = AccessDBConn.ExecuteQuery(selectSqlStr, "LessonList");
+                DataRow[] selectRow = selectDs.Tables["LessonList"].Select();
+                string updateSqlStr = "update LessonList set IsTop = 'true' where LessonTitle = '" + selectRow[0]["LessonTitle"].ToString() + "'";
+                AccessDBConn.ExecuteNonQuery(updateSqlStr);
+                MyLessonItemManager.GetInstace.isDeleteFirstItem = false;
+            }
+           
             MyLessonItemManager.GetInstace.CreateMyLessonItem();
             for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
             {
@@ -501,8 +510,8 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void pic_close_Click(object sender, EventArgs e)
         {
-           
 
+            this.Close();
 
         }
 

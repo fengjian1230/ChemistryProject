@@ -252,7 +252,6 @@ namespace ChemistryApp
                 case "视频":
                     image = global::ChemistryApp.Properties.Resources.icon_1_12;
                     break;
-
             }
             return image;
         }

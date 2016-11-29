@@ -48,10 +48,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>256x256 ico.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
-    <Reference Include="MyClassItem">
-      <HintPath>C:\Users\Administrator.WIN7-1609091602\Desktop\MyClassItem.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -819,6 +820,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SearchingRuslutBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="112-01.ico" />
+    <Content Include="2.ico" />
+    <Content Include="256x256 ico.ico" />
+    <Content Include="ico 128x128-01.ico" />
+    <Content Include="ico 32x32.ico" />
+    <Content Include="icon64.ico" />
+    <None Include="Resources\playTop.png" />
+    <None Include="Resources\playList.png" />
+    <None Include="Resources\PlayBG.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

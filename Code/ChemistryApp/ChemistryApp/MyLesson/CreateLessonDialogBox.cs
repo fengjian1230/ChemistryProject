@@ -205,7 +205,9 @@ namespace ChemistryApp.MyLesson
                 }
 
                 //插入到lessonlist表中
-                string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + txt_className.Text + "','" + "课件" + txt_className.Text + "','" + txt_tips.Text + "','false','Finish',3)";
+                string updateSqlStrFlase = "update LessonList set IsTop = 'false'";
+                AccessDBConn.ExecuteNonQuery(updateSqlStrFlase);
+                string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + this.txt_className.Text + "','" + "课件" + this.txt_className.Text + "','" + this.txt_tips.Text + "','true','Finish',3)";
                 //MessageBox.Show(sql);
                 int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(sql);
                 if (_insertErrorIndex != 0)
