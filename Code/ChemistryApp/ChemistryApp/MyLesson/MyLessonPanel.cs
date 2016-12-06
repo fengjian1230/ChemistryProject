@@ -4,6 +4,6 @@ namespace ChemistryApp.MyLesson
 {
     class MyLessonPanel : Panel
     {
-
+        
     }
 }

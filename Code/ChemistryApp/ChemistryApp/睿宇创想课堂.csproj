@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -47,6 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>256x256 ico.ico</ApplicationIcon>
@@ -56,6 +57,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -97,9 +99,6 @@
     <Compile Include="MyLesson\MyLessonSearchPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MyTeaching\ConfirmDialogBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="MyTeaching\CreateTeachingItemDialogBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -110,6 +109,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register\RegisterPanle.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SearchPage\SearchContentPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -137,6 +139,9 @@
     <Compile Include="SecondPage\OtherSecondPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SecondPage\PlayAudioPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SecondPage\PlayContentPanelList.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -157,6 +162,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SecondPage\SecondPageManager.cs" />
+    <Compile Include="ShowTipsPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -828,10 +836,20 @@
     <Content Include="ico 128x128-01.ico" />
     <Content Include="ico 32x32.ico" />
     <Content Include="icon64.ico" />
+    <None Include="Resources\yijianqingk.png" />
+    <None Include="Resources\背景shen.jpg" />
+    <None Include="Resources\thirdPageBG.jpg" />
+    <None Include="Resources\deletedialogBG.png" />
+    <None Include="Resources\uploaddialogBG.png" />
+    <None Include="Resources\front_up.png" />
+    <None Include="Resources\front_down.png" />
+    <None Include="Resources\back_up.png" />
+    <None Include="Resources\back_down.png" />
     <None Include="Resources\playTop.png" />
     <None Include="Resources\playList.png" />
     <None Include="Resources\PlayBG.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

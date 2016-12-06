@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 using ChemistryApp.MyTeaching;
+using ChemistryApp.SecondPage;
 
 namespace ChemistryApp
 {
@@ -88,7 +89,7 @@ namespace ChemistryApp
             this.pic_myteachingDelete.Size = new System.Drawing.Size(15, 15);
             this.pic_myteachingDelete.TabIndex = 2;
             this.pic_myteachingDelete.TabStop = false;
-            this.pic_myteachingDelete.Click += new EventHandler(PicDelete_Click);
+            this.pic_myteachingDelete.Click += new EventHandler(OnDeleteCilck);
             // 
             // pic_typeIcon
             // 
@@ -125,34 +126,41 @@ namespace ChemistryApp
 
 
         #region 按钮事件
+
+        private void OnDeleteCilck(object sender, EventArgs e)
+        {
+            ConfirmDialogBox confirmBox = new ConfirmDialogBox(PicDeleteClickEvent);
+            PictureBox pic = (PictureBox)sender;
+            Control mainPanle = pic.Parent.Parent.Parent.Parent as Control;
+            mainPanle.Controls.Add(confirmBox);
+            confirmBox.BringToFront();
+        }
+
         /// <summary>
         /// 删除按钮事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PicDelete_Click(object sender, EventArgs e)
+        private void PicDeleteClickEvent(object sender, EventArgs e)
         {
-            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            PictureBox pic = (PictureBox)sender;
-            Control control = pic.Parent.GetChildAtPoint(new Point(100, 39));
-            Label label = (Label)control;
-            string sqlStr = "delete from MyTeaching where TeachingTitle = '" + label.Text + "'";
-            DialogResult dr = MessageBox.Show("确定要删除吗?", "删除", messButton);
+            MessageBox.Show(((Control)sender).Parent.Parent.Parent.Name);
 
-            if (dr == DialogResult.OK)//如果点击“确定”按钮
+            string sqlStr = "delete from MyTeaching where TeachingTitle = '" + this.txt_myTeachingTitle.Text + "'";
+            int i = AccessDBConn.ExecuteNonQuery(sqlStr);
+            if (i != 0)
             {
-                int i = AccessDBConn.ExecuteNonQuery(sqlStr);
-                if (i != 0)
-                {
-                    MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
-                    MessageBox.Show("删除完成!");
-                }
+                MainForm mainForm = ((Control)sender).Parent.Parent.Parent as MainForm;
+                string countSql1 = "select count(*) from MyTeaching";
+                int myTeachingCountInt = AccessDBConn.ExecuteScalar(countSql1);
+                mainForm.myTeachingCount.Text = myTeachingCountInt.ToString();
+                MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                ((PictureBox)sender).Parent.Parent.Controls.Remove(((PictureBox)sender).Parent);
+                MessageBox.Show("删除完成!");
+
+
+               
             }
-            else//如果点击“取消”按钮
-            {
-                MessageBox.Show("取消!");
-            }
-            
+
         }
         /// <summary>
         /// 向上按钮

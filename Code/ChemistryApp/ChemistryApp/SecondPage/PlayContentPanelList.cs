@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using ChemistryApp.EnumType;
 using ChemistryApp.MyLesson;
 
 namespace ChemistryApp.SecondPage
 {
     class PlayContentPanelList : MyLessonChildItem
     {
-        public PlayContentPanelList(int posX, int posY, string _strTitle, string _strType) : base(posX, posY, _strTitle, _strType)
+        public PlayContentPanelList(int posX, int posY, string _strTitle, string _strType,string _fildName) : base(posX, posY, _strTitle, _strType,_fildName)
         {
             base.pic_play.Click -= base.PlayButton_Click;
             base.pic_play.Click += new EventHandler(PlayButtonOnPPTPage_Click);

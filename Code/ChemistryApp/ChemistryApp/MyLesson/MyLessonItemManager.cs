@@ -96,47 +96,28 @@ namespace ChemistryApp.MyLesson
             string sqlStr = "select * from LessonList ";//order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
             DataSet data = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
             DataRow[] dataRow = data.Tables["LessonList"].Select();
-            //创建itempanel
-            for (int i = 0; i < dataRow.Count(); i++)
+            if (dataRow.Count() != 0)
             {
-               
-                MyLessonItem myLessonItem;
-                //创建我的课表Item
-                //把得到的值放入到链表里面
-                if (dataRow[i]["IsTop"].ToString() == "true")
+                //创建itempanel
+                for (int i = 0; i < dataRow.Count(); i++)
                 {
-                     myLessonItem = new MyLessonItem(10, 0, dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString(),false);
+                    MyLessonItem myLessonItem;
+                    //创建我的课表Item
+                    //把得到的值放入到链表里面
+                    if (dataRow[i]["IsTop"].ToString() == "true")
+                    {
+                        myLessonItem = new MyLessonItem(10, 0, dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString(), false);
+                    }
+                    else
+                    {
+                        myLessonItem = new MyLessonItem(10, _posIndex * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString(), false);
+                        _posIndex++;
+
+                    }
+                    listPanelItem.Add(myLessonItem);
                 }
-                else
-                {
-                    myLessonItem = new MyLessonItem(10, _posIndex * (140 + 10), dataRow[i]["LessonTitle"].ToString(), dataRow[i]["Tips"].ToString(),false);
-                    _posIndex++;
-                   
-                }
-                listPanelItem.Add(myLessonItem);
-                //从一个字段查询另外一个表
-                //string _childStr = "select * from " + dataRow[i]["LessonContent"].ToString() + "";
-                //DataSet childData = AccessDBConn.ExecuteQuery(_childStr, dataRow[i]["LessonContent"].ToString());
-                //DataRow[] childDataRow = childData.Tables[dataRow[i]["LessonContent"].ToString()].Select();
-                ////创建课表列表
-                //for (int j = 0; j < childDataRow.Count(); j++)
-                //{
-                //    MyLessonChildItem childPanel = new MyLessonChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
-                //    childPanel.fieldName = dataRow[0]["LessonTitle"].ToString();
-                //    childPanel.Name = "childPanel" + j.ToString();
-                //    if (j % 2 == 0)
-                //    {
-                //        childPanel.BackColor = Color.FromArgb(245, 245, 247);
-                //    }
-                //    else
-                //    {
-                //        childPanel.BackColor = Color.White;
-                //    }
-                //    myLessonItem.Controls.Add(childPanel);
-                //    childPanel.BringToFront();
-                //}
-                //childItemNum.Add(dataRow[i]["LessonTitle"].ToString(), childDataRow.Count());
             }
+           
         }
     }
 }

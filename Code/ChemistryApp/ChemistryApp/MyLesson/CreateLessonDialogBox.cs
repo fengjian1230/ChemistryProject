@@ -3,7 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using ChemistryApp.MyTeaching;
-
+using System.Threading;
 
 namespace ChemistryApp.MyLesson
 {
@@ -17,6 +17,8 @@ namespace ChemistryApp.MyLesson
         public System.Windows.Forms.TextBox txt_className;
         public System.Windows.Forms.Label lab_className;
         public PictureBox pic_dialogBG;
+        private System.Windows.Forms.Timer clearTimer;
+        private MainForm mainForm;
         /// <summary>
         /// 当生成后清空全部课件
         /// </summary>
@@ -27,6 +29,8 @@ namespace ChemistryApp.MyLesson
         /// </summary>
         public CreateLessonDialogBox()
         {
+
+
             panel_createDialog = new Panel();
             btn_cancel = new PictureBox();
             btn_ok = new PictureBox();
@@ -35,6 +39,7 @@ namespace ChemistryApp.MyLesson
             lab_tips = new Label();
             lab_className = new Label();
             pic_dialogBG = new PictureBox();
+            clearTimer = new System.Windows.Forms.Timer();
         }
 
         /// <summary>
@@ -43,8 +48,8 @@ namespace ChemistryApp.MyLesson
         public Panel CreateDialgBox()
         {
 
-
-           
+            clearTimer.Interval = 2000;
+            clearTimer.Tick += ClearTimer_Tick;
             // 
             // panel_createDialog
             // 
@@ -58,9 +63,10 @@ namespace ChemistryApp.MyLesson
             this.panel_createDialog.Location = new System.Drawing.Point(324, 277);
             this.panel_createDialog.Name = "panel_createDialog";
             this.panel_createDialog.Size = new System.Drawing.Size(363, 230);
+            this.panel_createDialog.BackgroundImage = global::ChemistryApp.Properties.Resources.uploaddialogBG;
             this.panel_createDialog.TabIndex = 1;
             this.panel_createDialog.BringToFront();
-            
+            ControlPPTFonder.ControlTransparent.ControlTrans(this.panel_createDialog, this.panel_createDialog.BackgroundImage);
             // 
             // pic_dialogBG
             // 
@@ -144,22 +150,25 @@ namespace ChemistryApp.MyLesson
             return panel_createDialog;
         }
 
+        private void ClearTimer_Tick(object sender, EventArgs e)
+        {
+            //如果委托不为空则调用委托
+            OnCreateDeleteAllTeachingAction?.Invoke(sender, e);
+            MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
+            mainForm.pic_done.Visible = false;
+            clearTimer.Stop();
+        }
+
         /// <summary>
         /// 点击取消
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnCancel_Click(object sender,EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             PictureBox btn = (PictureBox)sender;
             Panel mainPanel = btn.Parent.Parent as Panel;
-            foreach (Control item in mainPanel.Controls)
-            {
-                if (item.Name == "panel_createDialog")
-                {
-                    mainPanel.Controls.Remove(item);
-                }
-            }
+            mainPanel.Controls.Remove(this.panel_createDialog);
         }
 
         /// <summary>
@@ -167,80 +176,79 @@ namespace ChemistryApp.MyLesson
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnOK_Click(object sender,EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
-            try
+            if (txt_className.Text == "" || this.txt_tips.Text == "")
             {
-                string _strTitle = "";
-                string _strType = "";
-                string _strURL = "";
-                //创建课件的数据表
-                ADOX.Column[] columns = {
+                MessageBox.Show("请输入课件名或备注！");
+                return;
+            }
+            else
+            {
+                string haveTableSql = "select * from LessonList where LessonTitle = '" + this.txt_className.Text + "'";
+                DataSet dsTable = AccessDBConn.ExecuteQuery(haveTableSql, "LessonList");
+                DataRow[] drTable = dsTable.Tables["LessonList"].Select();
+
+                if (drTable.Length != 0)
+                {
+                    MessageBox.Show("课件名已经存在，请重新命名！");
+                    return;
+                }
+                else
+                {
+                    //创建课件的数据表
+                    ADOX.Column[] columns = {
                                  new ADOX.Column(){Name="Title",DefinedSize=50},
                                  new ADOX.Column(){Name="URL",DefinedSize=50},
                                  new ADOX.Column(){Name="Type",DefinedSize=50}
                              };
-                int _creatErrorIndex = AccessDBConn.CreateAccessTable("课件" + txt_className.Text, columns);
-                if (_creatErrorIndex == 0)
-                {
-                    MessageBox.Show("创建不成功！");
-                }
-                //从课件表中读取数据，然后放入到课表中去
-                if (MyTeachingItemManager.GetInstace.listPanelItem.Count != 0)
-                {
-                    for (int i = 0; i < MyTeachingItemManager.GetInstace.listPanelItem.Count; i++)
-                    {
+                    int _creatErrorIndex = AccessDBConn.CreateAccessTable("课件" + this.txt_className.Text, columns);
 
-                        Label item = MyTeachingItemManager.GetInstace.listPanelItem[i].GetChildAtPoint(new Point(100, 39)) as Label;
-                        string _selectSql = "select * from MyTeaching where TeachingTitle = '" + item.Text + "'";
-                        DataSet ds = AccessDBConn.ExecuteQuery(_selectSql, "MyTeaching");
-                        DataRow[] dr = ds.Tables["MyTeaching"].Select();
-                        _strTitle = item.Text;
-                        _strType = dr[0]["TeachingType"].ToString();
-                        _strURL = dr[0]["URL"].ToString();
-                        //在空表中插入数据
-                        string insertSql = "insert into 课件" + txt_className.Text + "(Title,URL,Type)values('" + _strTitle + "','" + _strURL + "','" + _strType + "')";
-                        int inserErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
-                        if (inserErrorIndex == 0)
+                    string _selectSql = "select * from MyTeaching where TeachingTitle";
+                    DataSet ds = AccessDBConn.ExecuteQuery(_selectSql, "MyTeaching");
+                    DataRow[] dr = ds.Tables["MyTeaching"].Select();
+                    //从课件表中读取数据，然后放入到课表中去
+                    for (int i = 0; i < dr.Length; i++)
+                    {
+                        try
                         {
-                            MessageBox.Show("失败！");
+                            //在空表中插入数据
+                            string insertSql = "insert into 课件" + txt_className.Text + "(Title,URL,Type)values('" + dr[i]["TeachingTitle"].ToString() + "','" + dr[i]["URL"].ToString() + "','" + dr[i]["TeachingType"].ToString() + "')";
+                            int inserErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
+                            if (inserErrorIndex == 0)
+                            {
+                                MessageBox.Show("失败！");
+                            }
                         }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show("表不存在");
+                        }
+
+                    }
+                    //插入到lessonlist表中
+                    string updateSqlStrFlase = "update LessonList set IsTop = 'false'";
+                    AccessDBConn.ExecuteNonQuery(updateSqlStrFlase);
+                    string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + this.txt_className.Text + "','" + "课件" + this.txt_className.Text + "','" + this.txt_tips.Text + "','true','Finish',3)";
+                    int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(sql);
+                    if (_insertErrorIndex != 0)
+                    {
+                        PictureBox btn = (PictureBox)sender;
+                        Panel mainPanel = btn.Parent.Parent as Panel;
+                        mainPanel.Controls.Remove(this.panel_createDialog);
+                        this.clearTimer.Start();
+                        mainForm = mainPanel.Parent as MainForm;
+                        mainForm.pic_done.Visible = true;
+                        mainForm.pic_done.BringToFront();
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("创建失败！");
                     }
                 }
-
-                //插入到lessonlist表中
-                string updateSqlStrFlase = "update LessonList set IsTop = 'false'";
-                AccessDBConn.ExecuteNonQuery(updateSqlStrFlase);
-                string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + this.txt_className.Text + "','" + "课件" + this.txt_className.Text + "','" + this.txt_tips.Text + "','true','Finish',3)";
-                //MessageBox.Show(sql);
-                int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(sql);
-                if (_insertErrorIndex != 0)
-                {
-                    PictureBox btn = (PictureBox)sender;
-                    Panel mainPanel = btn.Parent.Parent as Panel;
-                    foreach (Control item in mainPanel.Controls)
-                    {
-                        if (item.Name == "panel_createDialog")
-                        {
-                            mainPanel.Controls.Remove(item);
-                        }
-                    }
-                    MessageBox.Show("创建成功！");
-                    //如果委托不为空则调用委托
-                    OnCreateDeleteAllTeachingAction?.Invoke(sender, e);
-                    MyLessonItemManager.GetInstace.OnDeleteFinish?.Invoke();
-                }
-                else
-                {
-                    MessageBox.Show("创建失败！");
-                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-           
         }
     }
-
 }

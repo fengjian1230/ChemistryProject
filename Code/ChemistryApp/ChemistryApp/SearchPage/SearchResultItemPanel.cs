@@ -52,13 +52,14 @@ namespace ChemistryApp.SearchPage
             this.Name = "panel_searchItem";
             this.Size = new System.Drawing.Size(778, 36);
             this.TabIndex = 4;
+            this.DoubleClick += new EventHandler(ButtonPlayClick);
             // 
             // pic_insert
             // 
             this.pic_insert.BackColor = System.Drawing.Color.Transparent;
             this.pic_insert.BackgroundImage = global::ChemistryApp.Properties.Resources.inserticon;
             this.pic_insert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pic_insert.Location = new System.Drawing.Point(28, 11);
+            this.pic_insert.Location = new System.Drawing.Point(690, 11);
             this.pic_insert.Name = "pic_insert";
             this.pic_insert.Size = new System.Drawing.Size(19, 20);
             this.pic_insert.TabIndex = 0;
@@ -100,24 +101,44 @@ namespace ChemistryApp.SearchPage
 
 
         /// <summary>
-        /// 预览按键点击事件
+        /// 添加按键点击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void InsertButton_Click(object sender,EventArgs e)
         {
-            string countSql = "select count(*) from MyTeaching";
-            int count = AccessDBConn.ExecuteScalar(countSql);
-            if (lab_titleContent.Text != "")
+            try
             {
-                string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + lab_titleContent.Text + "','" + "" + this.strType + "','" + this.strURL + "',"+ (count-1).ToString()+")";
-                int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
-                if (_insertErrorIndex != 0)
+                string selectSql = "select * from MyTeaching where TeachingTitle= '"+ lab_titleContent.Text + "'";
+                DataSet ds = AccessDBConn.ExecuteQuery(selectSql, "MyTeaching");
+                DataRow[] dr = ds.Tables["MyTeaching"].Select();
+                if (dr.Length == 0)
                 {
-                    MessageBox.Show("加入成功！");
-                    MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                    string countSql = "select count(*) from MyTeaching";
+                    int count = AccessDBConn.ExecuteScalar(countSql);
+                    if (lab_titleContent.Text != "")
+                    {
+                        string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + lab_titleContent.Text + "','" + "" + this.strType + "','" + this.strURL + "'," + (count - 1).ToString() + ")";
+                        int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
+                        if (_insertErrorIndex != 0)
+                        {
+                            MessageBox.Show("加入成功！");
+                            MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                        }
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("不能重复添加课件!");
+                }
+               
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+           
         }
         /// <summary>
         /// 点击预览按键
@@ -129,8 +150,24 @@ namespace ChemistryApp.SearchPage
             try
             {
                 //获取到mianpanel
-                PictureBox currControl = (PictureBox)sender;
-                MainForm mainForm = currControl.Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
+              
+                Control currControl = (Control)sender;
+                MainForm mainForm = null;
+                if (SecondPageManager.GetInstace.TableName == "AllTeaching")
+                {
+                    mainForm = currControl.Parent.Parent.Parent.Parent as MainForm;
+                }
+                else
+                {
+                    if (currControl.Name == this.Name)
+                    {
+                        mainForm = currControl.Parent.Parent.Parent.Parent.Parent as MainForm;
+                    }
+                    else
+                    {
+                        mainForm = currControl.Parent.Parent.Parent.Parent.Parent.Parent as MainForm;
+                    }
+                }
                 string selectSql = "select * from " + SecondPageManager.GetInstace.TableName + " where Title = '" + this.lab_titleContent.Text + "'";
                 DataSet ds = AccessDBConn.ExecuteQuery(selectSql, SecondPageManager.GetInstace.TableName);
                 DataRow[] dr = ds.Tables[SecondPageManager.GetInstace.TableName].Select();

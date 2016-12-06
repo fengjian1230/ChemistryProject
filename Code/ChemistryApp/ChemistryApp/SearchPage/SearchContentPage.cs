@@ -14,6 +14,10 @@ namespace ChemistryApp.SearchPage
         private System.Windows.Forms.Label lab_title;
         public SearchContentPage(string _strContent)
         {
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             this.lab_title = new System.Windows.Forms.Label();
             this.lab_type = new System.Windows.Forms.Label();
             this.lab_play = new System.Windows.Forms.Label();

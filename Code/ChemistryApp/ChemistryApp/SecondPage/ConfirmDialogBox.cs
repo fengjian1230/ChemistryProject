@@ -21,6 +21,11 @@ namespace ChemistryApp.SecondPage
 
         public ConfirmDialogBox(EventHandler btnOkEvent)
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             this.ButtonOkEvent = btnOkEvent;
             this.confire_NO = new System.Windows.Forms.PictureBox();
             this.confirm_OK = new System.Windows.Forms.PictureBox();
@@ -36,10 +41,12 @@ namespace ChemistryApp.SecondPage
             this.Controls.Add(this.confirm_OK);
             this.Controls.Add(this.confire_NO);
             this.Controls.Add(this.comfire_pic_title);
-            this.Location = new System.Drawing.Point(412, 362);
+            this.Location = new System.Drawing.Point(410, 350);
             this.Name = "panel_confirmBox";
             this.Size = new System.Drawing.Size(210, 100);
             this.TabIndex = 21;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.deletedialogBG;
+            ControlPPTFonder.ControlTransparent.ControlTrans(this, this.BackgroundImage);
             // 
             // confire_NO
             // 

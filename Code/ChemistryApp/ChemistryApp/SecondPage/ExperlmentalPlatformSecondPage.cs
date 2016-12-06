@@ -182,7 +182,7 @@ namespace ChemistryApp.SecondPage
                 mainForm.MainFlashBox.Visible = true;
                 mainForm.MainFlashBox.Location = new System.Drawing.Point((width - 1024) / 2, (height - 768) / 2 - 30);
                 mainForm.MainFlashBox.Size = new System.Drawing.Size(1024, 768);
-                mainForm.MainFlashBox.Movie = System.Windows.Forms.Application.StartupPath + @"\ResourcesFolder\ktjx\bx1\1\1_1.swf";
+                mainForm.MainFlashBox.Movie = System.Windows.Forms.Application.StartupPath + @"\ResourcesFolder\zzsy\初中实验设计平台.swf";
                 swfPanel.Controls.Add(mainForm.MainFlashBox);
                 swfPanel.BringToFront();
             }

@@ -143,6 +143,26 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap back_down {
+            get {
+                object obj = ResourceManager.GetObject("back_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap back_up {
+            get {
+                object obj = ResourceManager.GetObject("back_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Backicon {
             get {
                 object obj = ResourceManager.GetObject("Backicon", resourceCulture);
@@ -623,6 +643,16 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap deletedialogBG {
+            get {
+                object obj = ResourceManager.GetObject("deletedialogBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap deletetitle {
             get {
                 object obj = ResourceManager.GetObject("deletetitle", resourceCulture);
@@ -766,6 +796,26 @@ namespace ChemistryApp.Properties {
         internal static System.Drawing.Bitmap flashIcon {
             get {
                 object obj = ResourceManager.GetObject("flashIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap front_down {
+            get {
+                object obj = ResourceManager.GetObject("front_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap front_up {
+            get {
+                object obj = ResourceManager.GetObject("front_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1283,9 +1333,29 @@ namespace ChemistryApp.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap thirdPageBG {
+            get {
+                object obj = ResourceManager.GetObject("thirdPageBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap title {
             get {
                 object obj = ResourceManager.GetObject("title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap uploaddialogBG {
+            get {
+                object obj = ResourceManager.GetObject("uploaddialogBG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1366,6 +1436,16 @@ namespace ChemistryApp.Properties {
         internal static System.Drawing.Bitmap xitiIcon {
             get {
                 object obj = ResourceManager.GetObject("xitiIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap yijianqingk {
+            get {
+                object obj = ResourceManager.GetObject("yijianqingk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1466,6 +1546,16 @@ namespace ChemistryApp.Properties {
         internal static System.Drawing.Bitmap 背景 {
             get {
                 object obj = ResourceManager.GetObject("背景", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 背景shen {
+            get {
+                object obj = ResourceManager.GetObject("背景shen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -36,13 +36,13 @@ namespace ChemistryApp.ControlPPTFonder
             int X;
             int Y;
             int counter = 3;
-            for (Y = 0; Y < height; Y++)
+            for (X = 0; X < height; X++)
             {
-                for (X = 0; X < width; X++)
+                for (Y = 0; Y < width; Y++)
                 {
                     if (argbValues[counter] != 0)
                     {
-                        g.AddRectangle(new Rectangle(X, Y, 1, 1));
+                        g.AddRectangle(new Rectangle(Y, X, 1, 1));
                     }
                     counter += 4;
                 }

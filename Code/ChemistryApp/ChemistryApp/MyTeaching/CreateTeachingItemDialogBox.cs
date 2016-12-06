@@ -7,6 +7,7 @@ namespace ChemistryApp.MyTeaching
 {
     class CreateTeachingItemDialogBox : Panel
     {
+        
         public System.Windows.Forms.Panel panel_createDialog;
         public System.Windows.Forms.PictureBox btn_cancel;
         public System.Windows.Forms.PictureBox btn_ok;
@@ -34,6 +35,11 @@ namespace ChemistryApp.MyTeaching
         /// </summary>
         public CreateTeachingItemDialogBox(string filePath,string _source,string _local)
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             panel_createDialog = new Panel();
             btn_cancel = new PictureBox();
             btn_ok = new PictureBox();
@@ -77,7 +83,7 @@ namespace ChemistryApp.MyTeaching
             this.Controls.Add(this.comboBox_type);
             this.Controls.Add(this.lab_typeName);
             this.Controls.Add(this.pic_dialogBG);
-            this.BackgroundImage = global::ChemistryApp.Properties.Resources.dialogboxBG;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.uploaddialogBG;
             this.Location = new System.Drawing.Point(324, 277);
             this.Name = "panel_createTeachingItemDialog";
             this.BackColor = Color.FromArgb(0,Color.Transparent);
@@ -183,13 +189,22 @@ namespace ChemistryApp.MyTeaching
         /// <param name="e"></param>
         private void BtnOK_Click(object sender, EventArgs e)
         {
+          
             //MessageBox.Show(this.comboBox_type.Text);
             if (txt_className.Text != "" && this.comboBox_type.Text != "")
             {
-                string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL)values('" + txt_className.Text + "','" + "" + this.comboBox_type.Text + "','" + this.filePath + "')";
+                string countSql = "select count(*) from MyTeaching";
+                int count = AccessDBConn.ExecuteScalar(countSql);
+                string insertIntoAllTeachingSql = "insert into AllTeaching(Title,Type,URL)values('" + txt_className.Text + "','" + "" + this.comboBox_type.Text + "','" + this.filePath + "')";
+                int insertIntoAllTeachingErrorIndex = AccessDBConn.ExecuteNonQuery(insertIntoAllTeachingSql);
+                string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + txt_className.Text + "','" + "" + this.comboBox_type.Text + "','" + this.filePath + "','" + (count + 1).ToString() +"')";
                 int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
                 if (_insertErrorIndex != 0)
                 {
+                    MainForm mainForm = ((Control)sender).Parent.Parent.Parent as MainForm;
+                    string countSql1 = "select count(*) from MyTeaching";
+                    int myTeachingCountInt = AccessDBConn.ExecuteScalar(countSql1);
+                    mainForm.myTeachingCount.Text = myTeachingCountInt.ToString();
                     PictureBox btn = (PictureBox)sender;
                     Panel mainPanel = btn.Parent.Parent as Panel;
                     foreach (Control item in mainPanel.Controls)
@@ -202,6 +217,7 @@ namespace ChemistryApp.MyTeaching
                     File.Copy(sourcePath, loaclPath,true);
                     MessageBox.Show("上传成功！");
                     MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+                    
                 }
             }
             else

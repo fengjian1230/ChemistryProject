@@ -35,6 +35,11 @@ namespace ChemistryApp
         /// </summary>
         public MyLessonItem(int posX, int posY, string _strClassName, string _strTips,bool _isSearch )
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             //实例化控件
             panelItem = new Panel();
             lab_top = new Label();
@@ -294,13 +299,7 @@ namespace ChemistryApp
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-          
-           
-          
-            
-
-          
+            }   
         }
 
         /// <summary>
@@ -313,29 +312,26 @@ namespace ChemistryApp
             //先要清空课件表中原来的数据
             string deleteSql = "delete * from MyTeaching";
             int errorIndex = AccessDBConn.ExecuteNonQuery(deleteSql);
-            if (errorIndex != 0)
+            //先得到当前课表的子表的字段
+            string selectSql = "select LessonContent from LessonList where LessonTitle = '" + this.lab_className.Text + "'";
+            DataSet data = AccessDBConn.ExecuteQuery(selectSql, "LessonList");
+            DataRow[] dataRow = data.Tables["LessonList"].Select();
+            //从字段中读取表的内容
+            string _childStr = "select * from " + dataRow[0]["LessonContent"].ToString() + "";
+            DataSet childData = AccessDBConn.ExecuteQuery(_childStr, dataRow[0]["LessonContent"].ToString());
+            DataRow[] childDataRow = childData.Tables[dataRow[0]["LessonContent"].ToString()].Select();
+            //从读取的表中插入到我的课件表中
+            for (int i = 0; i < childDataRow.Count(); i++)
             {
-                //先得到当前课表的子表的字段
-                string selectSql = "select LessonContent from LessonList where LessonTitle = '" + this.lab_className.Text + "'";
-                DataSet data = AccessDBConn.ExecuteQuery(selectSql, "LessonList");
-                DataRow[] dataRow = data.Tables["LessonList"].Select();
-                //从字段中读取表的内容
-                string _childStr = "select * from " + dataRow[0]["LessonContent"].ToString() + "";
-                DataSet childData = AccessDBConn.ExecuteQuery(_childStr, dataRow[0]["LessonContent"].ToString());
-                DataRow[] childDataRow = childData.Tables[dataRow[0]["LessonContent"].ToString()].Select();
-                //从读取的表中插入到我的课件表中
-                for (int i = 0; i < childDataRow.Count(); i++)
+                string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + childDataRow[i]["Title"] + "','" + childDataRow[i]["Type"] + "','" + childDataRow[i]["URL"] + "','" + i.ToString() + "')";
+                int insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
+                if (insertErrorIndex != 0)
                 {
-                    string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + childDataRow[i]["Title"] + "','" + childDataRow[i]["Type"] + "','" + childDataRow[i]["URL"] + "','" + i.ToString() + "')";
-                    int insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
-                    if (insertErrorIndex != 0)
-                    {
-                        
-                    }
+
                 }
-                MessageBox.Show("在右边课件中继续备课！");
-                MyTeaching.MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
             }
+            MessageBox.Show("在右边课件中继续备课！");
+            MyTeaching.MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
         }
 
         /// <summary>
@@ -345,12 +341,16 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void OnClickPlayPPT_Click(object sender,EventArgs e)
         {
+            if (MyLessonItemManager.GetInstace.state == LessonItemState.Open)
+            {
+                return;
+            }
             MyLessonItemManager.GetInstace.lessonFiledName = this.lab_className.Text;
-            Control mainPanel = ((PictureBox)sender).Parent.Parent.Parent.Parent;
+            Control mainPanel = ((Control)sender).Parent.Parent.Parent.Parent;
             mainPanel.Visible = false;
-            ChemistryApp.SecondPage.ContentPlayPanel contentPanel = new SecondPage.ContentPlayPanel();
+            ContentPlayPanel contentPanel = new SecondPage.ContentPlayPanel(false);
             mainPanel.Parent.Controls.Add(contentPanel);
-            contentPanel.ContentControlFramer.Open(@System.Windows.Forms.Application.StartupPath + @OnIndexGetPath(1));
+            contentPanel.listContentItem[0].PlayButtonOnPPTPage_Click(sender, e);
         }
 
         /// <summary>
@@ -358,7 +358,7 @@ namespace ChemistryApp
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        private string OnIndexGetPath(int index)
+        private string OnIndexGetPath(int index,string _string)
         {
             string _str = null;
             string sql = "select * from LessonList where  LessonTitle = '" + this.lab_className.Text + "'";
@@ -370,11 +370,11 @@ namespace ChemistryApp
                 string selectChildSql = "select top " + index.ToString() +" * from " + dr[0]["LessonContent"] + "";
                 DataSet childDs = AccessDBConn.ExecuteQuery(selectChildSql, dr[0]["LessonContent"].ToString());
                 DataRow[] childDr = childDs.Tables[dr[0]["LessonContent"].ToString()].Select();
-                _str = childDr[0]["URL"].ToString();
+                _str = childDr[0][_string].ToString();
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             return _str;
         }
@@ -392,8 +392,7 @@ namespace ChemistryApp
             //创建课表列表
             for (int j = 0; j < childDataRow.Count(); j++)
             {
-                MyLessonChildItem childPanel = new MyLessonChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString());
-                childPanel.fieldName = dataRow[0]["LessonTitle"].ToString();
+                MyLessonChildItem childPanel = new MyLessonChildItem(0, 140 + j * 30, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString(), dataRow[0]["LessonTitle"].ToString());
                 if (j % 2 == 0)
                 {
                     childPanel.BackColor = Color.FromArgb(245, 245, 247);

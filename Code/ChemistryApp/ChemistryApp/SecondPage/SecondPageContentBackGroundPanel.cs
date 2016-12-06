@@ -22,6 +22,11 @@ namespace ChemistryApp.SecondPage
         #region 方法
         public SecondPageContentBackGroundPanel()
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             this.lab_secondPlay = new System.Windows.Forms.Label();
             this.pic_play_border = new System.Windows.Forms.PictureBox();
             this.lab_secondType = new System.Windows.Forms.Label();

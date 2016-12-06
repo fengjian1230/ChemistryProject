@@ -26,3 +26,4 @@ F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\bin\Debug\
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\bin\Debug\睿宇创想课堂.pdb
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\睿宇创想课堂.exe
 F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\睿宇创想课堂.pdb
+F:\WorkPath\ChemistryProject.git\trunk\Code\ChemistryApp\ChemistryApp\obj\Debug\睿宇创想课堂.csprojResolveAssemblyReference.cache

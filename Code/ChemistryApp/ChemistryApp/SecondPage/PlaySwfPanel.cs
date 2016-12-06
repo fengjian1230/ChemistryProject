@@ -23,6 +23,11 @@ namespace ChemistryApp.SecondPage
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
         public PlaySwfPanel()
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             this.FlashBox = new AxShockwaveFlashObjects.AxShockwaveFlash();
             btn_close = new Button();
             CreatePanel();
@@ -37,9 +42,10 @@ namespace ChemistryApp.SecondPage
             int height = Screen.PrimaryScreen.Bounds.Height;
             this.Name = "PPTPlayPanel";
             this.Location = new Point(0, 0);
-            this.BackColor = Color.Black;
+            //this.BackColor = Color.Transparent;
             this.Size = new Size(width, height);
             this.Controls.Add(this.btn_close);
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.thirdPageBG;
             //this.Controls.Add(this.FlashBox);
 
             //关闭按钮
@@ -64,10 +70,13 @@ namespace ChemistryApp.SecondPage
             Panel parentPanel = btn.Parent as Panel;
             mainForm.Controls.Remove(parentPanel);
             mainForm.Controls.Add(mainForm.MainFlashBox);
+            mainForm.Controls.Add(mainForm.previewAudioWindow);
+            mainForm.previewAudioWindow.Ctlcontrols.stop();
+            mainForm.previewAudioWindow.Visible = false;
+            mainForm.previewAudioWindow.URL = null;
             mainForm.MainFlashBox.Visible = false;
             mainForm.MainPanel.Visible = true;
-            btn.Dispose();
-            parentPanel.Dispose();
+
         }
     }
 }

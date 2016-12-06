@@ -35,6 +35,10 @@ namespace ChemistryApp
         /// </summary>
         private Button btn_yijianshengcheng;
         /// <summary>
+        /// 一键清空
+        /// </summary>
+        private Button btn_yijianqingkong;
+        /// <summary>
         /// item的类型
         /// </summary>
         public TeachingItemType itemType = TeachingItemType.PPT;
@@ -78,7 +82,24 @@ namespace ChemistryApp
             this.panelMyTeachingItemBG.Name = "panelMyTeachingItemBG";
             this.panelMyTeachingItemBG.Size = new System.Drawing.Size(320, 543);
             this.panelMyTeachingItemBG.TabIndex = 0;
-
+            // 
+            // btn_yijianqingkong
+            // 
+            btn_yijianqingkong = new Button();
+            this.btn_yijianqingkong.BackColor = System.Drawing.Color.Transparent;
+            this.btn_yijianqingkong.BackgroundImage = global::ChemistryApp.Properties.Resources.yijianqingk;
+            this.btn_yijianqingkong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_yijianqingkong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_yijianqingkong.FlatAppearance.BorderSize = 0;
+            this.btn_yijianqingkong.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_yijianqingkong.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_yijianqingkong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_yijianqingkong.Location = new System.Drawing.Point(161, 20);
+            this.btn_yijianqingkong.Name = "btn_yijianqingkong";
+            this.btn_yijianqingkong.Size = new System.Drawing.Size(131, 41);
+            this.btn_yijianqingkong.TabIndex = 20;
+            this.btn_yijianqingkong.UseVisualStyleBackColor = false;
+            this.btn_yijianqingkong.Click += new EventHandler(btn_OnClickClaer);
             // 
             // btn_bendiziyuan
             //
@@ -114,10 +135,11 @@ namespace ChemistryApp
             this.btn_yijianshengcheng.TabIndex = 20;
             this.btn_yijianshengcheng.UseVisualStyleBackColor = false;
 
+            this.Controls.Add(btn_yijianqingkong);
             this.Controls.Add(panelMyTeachingItemBG);
             this.Controls.Add(btn_bendiziyuan);
             this.Controls.Add(btn_yijianshengcheng);
-
+           
             //本地资源按钮悬停
             this.btn_bendiziyuan.MouseDown += new MouseEventHandler(btn_bendiziyuan_MouseDown);
             this.btn_bendiziyuan.MouseUp += new MouseEventHandler(btn_bendiziyuan_MouseUp);
@@ -129,6 +151,8 @@ namespace ChemistryApp
             //按钮点击事件
             this.btn_bendiziyuan.Click += new EventHandler(btn_bendiziyuan_Click);
             this.btn_yijianshengcheng.Click += new EventHandler(btn_yijianshengcheng_Click);
+           
+
         }
         #endregion
 
@@ -157,18 +181,26 @@ namespace ChemistryApp
         //点击事件 本地资源上传
         private void btn_bendiziyuan_Click(object sender, EventArgs e)
         {
-            //获取到父物体
-            Button btn_bendi = (Button)sender;
-            Panel mainPanel = btn_bendi.Parent.Parent as Panel;
-            string _loaclPath = @System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching";
-            OpenFileDialog openFile = new OpenFileDialog();
-            //openFile.Filter = "(*.pptx)|*.pptx";
-            if (openFile.ShowDialog() == DialogResult.OK)
+            try
             {
-                CreateTeachingItemDialogBox item = new CreateTeachingItemDialogBox("\\ResourcesFolder\\MyTeaching\\" +  openFile.SafeFileName + "", openFile.FileName, _loaclPath + "\\" + openFile.SafeFileName);
-                mainPanel.Controls.Add(item);
-                item.BringToFront();
+                //获取到父物体
+                Button btn_bendi = (Button)sender;
+                Panel mainPanel = btn_bendi.Parent.Parent as Panel;
+                string _loaclPath = @System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching";
+                OpenFileDialog openFile = new OpenFileDialog();
+                openFile.Filter = "ppt(*.pptx)|*.pptx|mp4(*.mp4)|*.mp4|docx(*.docx)|*.docx";//"(*.pptx)|*.pptx, (*.mp4)|*.mp4";
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    CreateTeachingItemDialogBox item = new CreateTeachingItemDialogBox("\\ResourcesFolder\\MyTeaching\\" + openFile.SafeFileName + "", openFile.FileName, _loaclPath + "\\" + openFile.SafeFileName);
+                    mainPanel.Controls.Add(item);
+                    item.BringToFront();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message); 
+            }
+           
         }
         /// <summary>
         /// 一键生成
@@ -177,17 +209,21 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void btn_yijianshengcheng_Click(object sender, EventArgs e)
         {
-            //if (this.panelMyTeachingItemBG.Controls.Clear();)
-            //{
-
-            //}
+            CreateLessonDialogBox dialogBox = null;
             Button btn_yijian = (Button)sender;
             Panel mainPanel = btn_yijian.Parent.Parent as Panel;
             if (MyTeachingItemManager.GetInstace.listPanelItem.Count != 0)
             {
-                CreateLessonDialogBox dialogBox = new CreateLessonDialogBox();
+                foreach (Control item in mainPanel.Controls)
+                {
+                    if (item.Name == "panel_createDialog")
+                    {
+                        return;
+                    }
+                }
+                dialogBox = new CreateLessonDialogBox();
                 Panel panelDialogBox = dialogBox.CreateDialgBox();
-                dialogBox.OnCreateDeleteAllTeachingAction = btn_OnClickClaer;
+                //dialogBox.OnCreateDeleteAllTeachingAction = btn_OnClickClaer;
                 mainPanel.Controls.Add(panelDialogBox);
                 panelDialogBox.BringToFront();
             }
@@ -206,6 +242,7 @@ namespace ChemistryApp
             {
                 this.panelMyTeachingItemBG.Controls.Clear();
             }
+            RefreshItem();
         }
         #endregion
 

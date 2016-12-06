@@ -26,6 +26,11 @@ namespace ChemistryApp.SecondPage
         SecondPageContentBackGroundPanel secondContentBG;
         public SecondPageBackGroundPanel()
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             secondButtonPageBG = new SecondPageButtonPanle();
             secondContentBG = new SecondPageContentBackGroundPanel();
 

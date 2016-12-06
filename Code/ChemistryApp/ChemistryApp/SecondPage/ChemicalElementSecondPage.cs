@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using ChemistryApp.MyLesson;
-using ChemistryApp.EnumType;
-using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.SecondPage
 {
@@ -73,7 +62,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_C.Cursor = Cursors.Hand;
             this.picBtn_C.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_C.MouseLeave += new EventHandler(OnButtonMouseLeave);
-
+            this.picBtn_C.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_N
             // 
@@ -87,6 +76,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_N.Cursor = Cursors.Hand;
             this.picBtn_N.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_N.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_N.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_Na
             // 
@@ -100,6 +90,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_Na.Cursor = Cursors.Hand;
             this.picBtn_Na.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_Na.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_Na.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_Mg
             // 
@@ -113,6 +104,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_Mg.Cursor = Cursors.Hand;
             this.picBtn_Mg.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_Mg.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_Mg.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_Al
             // 
@@ -126,6 +118,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_Al.Cursor = Cursors.Hand;
             this.picBtn_Al.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_Al.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_Al.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_Cu
             // 
@@ -139,6 +132,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_Cu.Cursor = Cursors.Hand;
             this.picBtn_Cu.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_Cu.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_Cu.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_Fe
             // 
@@ -152,6 +146,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_Fe.Cursor = Cursors.Hand;
             this.picBtn_Fe.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_Fe.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_Fe.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_S
             // 
@@ -165,6 +160,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_S.Cursor = Cursors.Hand;
             this.picBtn_S.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_S.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_S.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_Cl
             // 
@@ -178,6 +174,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_Cl.Cursor = Cursors.Hand;
             this.picBtn_Cl.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_Cl.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_Cl.Click += new EventHandler(OnClickOpenFlash);
             // 
             // picBtn_Si
             // 
@@ -191,6 +188,7 @@ namespace ChemistryApp.SecondPage
             this.picBtn_Si.Cursor = Cursors.Hand;
             this.picBtn_Si.MouseEnter += new EventHandler(OnButtonMouseEnter);
             this.picBtn_Si.MouseLeave += new EventHandler(OnButtonMouseLeave);
+            this.picBtn_Si.Click += new EventHandler(OnClickOpenFlash);
         }
         #endregion
 
@@ -284,6 +282,61 @@ namespace ChemistryApp.SecondPage
                     break;
             }
 
+        }
+
+
+        private void OnClickOpenFlash(object sender,EventArgs e)
+        {
+           
+            PictureBox pic = (PictureBox)sender;
+            MainForm mainForm = pic.Parent.Parent.Parent as MainForm;
+            PlaySwfPanel swfPanel = new PlaySwfPanel();
+            mainForm.Controls.Add(swfPanel);
+            //播放 flash的控件 
+            int width = Screen.PrimaryScreen.Bounds.Width;
+            int height = Screen.PrimaryScreen.Bounds.Height;
+            string filepath = null;
+            switch (pic.Name)
+            {
+                case "picBtn_C":
+                    filepath = @"\ResourcesFolder\yshx\C\碳元素.swf";
+                    break;
+                case "picBtn_N":
+                    filepath = @"\ResourcesFolder\yshx\N\氮元素.swf";
+                    break;
+                case "picBtn_Na":
+                    filepath = @"\ResourcesFolder\yshx\Na\钠元素.swf";
+                    break;
+                case "picBtn_Mg":
+                    filepath = @"\ResourcesFolder\yshx\Mg\镁元素.swf";
+                    break;
+                case "picBtn_Al":
+                    filepath = @"\ResourcesFolder\yshx\Al\铝元素.swf";
+                    break;
+                case "picBtn_Cu":
+                    filepath = @"\ResourcesFolder\yshx\Cu\铜元素.swf";
+                    break;
+                case "picBtn_Fe":
+                    filepath = @"\ResourcesFolder\yshx\Fe\铁元素.swf";
+                    break;
+                case "picBtn_S":
+                    filepath = @"\ResourcesFolder\yshx\S\硫元素.swf";
+                    break;
+                case "picBtn_Cl":
+                    filepath = @"\ResourcesFolder\yshx\Cl\氯元素.swf";
+                    break;
+                case "picBtn_Si":
+                    filepath = @"\ResourcesFolder\yshx\si\硅元素.swf";
+                    break;
+                default:
+                    break;
+            }
+            mainForm.MainFlashBox.Visible = true;
+            mainForm.MainFlashBox.Location = new System.Drawing.Point((width - 1024) / 2, (height - 768) / 2 - 30);
+            mainForm.MainFlashBox.Size = new System.Drawing.Size(1024, 768);
+            mainForm.MainFlashBox.Movie = System.Windows.Forms.Application.StartupPath + filepath;
+            swfPanel.Controls.Add(mainForm.MainFlashBox);
+            swfPanel.BringToFront();
         }
         #endregion
     }

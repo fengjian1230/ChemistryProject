@@ -34,6 +34,9 @@
             this.panle_shrink = new System.Windows.Forms.Panel();
             this.RightPanelTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel = new ChemistryApp.BackGroundPanel();
+            this.previewAudioWindow = new AxWMPLib.AxWindowsMediaPlayer();
+            this.myTeachingCount = new System.Windows.Forms.Label();
+            this.pic_done = new System.Windows.Forms.PictureBox();
             this.MainFlashBox = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.pic_titleBG = new System.Windows.Forms.PictureBox();
             this.btn_shrink = new System.Windows.Forms.PictureBox();
@@ -61,6 +64,8 @@
             this.btn_MindMap = new System.Windows.Forms.PictureBox();
             this.btn_ExperlmentalPlatform = new System.Windows.Forms.PictureBox();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.previewAudioWindow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_done)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainFlashBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).BeginInit();
@@ -102,8 +107,11 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
-            this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景;
+            this.MainPanel.BackgroundImage = global::ChemistryApp.Properties.Resources.背景shen;
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MainPanel.Controls.Add(this.pic_done);
+            this.MainPanel.Controls.Add(this.previewAudioWindow);
+            this.MainPanel.Controls.Add(this.myTeachingCount);
             this.MainPanel.Controls.Add(this.MainFlashBox);
             this.MainPanel.Controls.Add(this.pic_titleBG);
             this.MainPanel.Controls.Add(this.btn_shrink);
@@ -130,6 +138,38 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1024, 768);
             this.MainPanel.TabIndex = 18;
+            // 
+            // previewAudioWindow
+            // 
+            this.previewAudioWindow.Enabled = true;
+            this.previewAudioWindow.Location = new System.Drawing.Point(200, 176);
+            this.previewAudioWindow.Name = "previewAudioWindow";
+            this.previewAudioWindow.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("previewAudioWindow.OcxState")));
+            this.previewAudioWindow.Size = new System.Drawing.Size(0, 0);
+            this.previewAudioWindow.TabIndex = 24;
+            // 
+            // myTeachingCount
+            // 
+            this.myTeachingCount.AutoSize = true;
+            this.myTeachingCount.BackColor = System.Drawing.Color.White;
+            this.myTeachingCount.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.myTeachingCount.ForeColor = System.Drawing.Color.Maroon;
+            this.myTeachingCount.Location = new System.Drawing.Point(0, 446);
+            this.myTeachingCount.Name = "myTeachingCount";
+            this.myTeachingCount.Size = new System.Drawing.Size(28, 31);
+            this.myTeachingCount.TabIndex = 23;
+            this.myTeachingCount.Text = "0";
+            this.myTeachingCount.Visible = false;
+            // 
+            // pic_done
+            // 
+            this.pic_done.Image = global::ChemistryApp.Properties.Resources.done;
+            this.pic_done.Location = new System.Drawing.Point(410, 350);
+            this.pic_done.Name = "pic_done";
+            this.pic_done.Size = new System.Drawing.Size(210, 100);
+            this.pic_done.TabIndex = 22;
+            this.pic_done.TabStop = false;
+            this.pic_done.Visible = false;
             // 
             // MainFlashBox
             // 
@@ -295,7 +335,7 @@
             this.btn_back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_back.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_back.Location = new System.Drawing.Point(107, 12);
+            this.btn_back.Location = new System.Drawing.Point(81, 698);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(107, 32);
             this.btn_back.TabIndex = 20;
@@ -363,7 +403,7 @@
             this.listBox_searchRuslut.ItemHeight = 33;
             this.listBox_searchRuslut.Location = new System.Drawing.Point(239, 120);
             this.listBox_searchRuslut.Name = "listBox_searchRuslut";
-            this.listBox_searchRuslut.Size = new System.Drawing.Size(547, 99);
+            this.listBox_searchRuslut.Size = new System.Drawing.Size(547, 297);
             this.listBox_searchRuslut.TabIndex = 19;
             this.listBox_searchRuslut.Visible = false;
             this.listBox_searchRuslut.SelectedIndexChanged += new System.EventHandler(this.listBox_searchRuslut_SelectedIndexChanged);
@@ -477,7 +517,7 @@
             this.ClientSize = new System.Drawing.Size(1103, 768);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panle_shrink);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainForm";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -487,6 +527,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.previewAudioWindow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_done)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainFlashBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_titleBG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_shrink)).EndInit();
@@ -540,6 +582,9 @@
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.PictureBox btn_shrink;
         public AxShockwaveFlashObjects.AxShockwaveFlash MainFlashBox;
+        public System.Windows.Forms.PictureBox pic_done;
+        public System.Windows.Forms.Label myTeachingCount;
+        public AxWMPLib.AxWindowsMediaPlayer previewAudioWindow;
     }
 }
 

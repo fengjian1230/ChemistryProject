@@ -34,6 +34,11 @@ namespace ChemistryApp.SecondPage
         #region 方法
         public SecondPageButtonPanle()
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             SecondPageManager.GetInstace.Init();
             btn_four = new Button();
             btn_one = new Button();

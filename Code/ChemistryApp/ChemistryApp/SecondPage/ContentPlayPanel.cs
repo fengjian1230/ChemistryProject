@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using ADOX;
-using System.Data.OleDb;
 using ChemistryApp.MyLesson;
-using ChemistryApp.EnumType;
-using ChemistryApp.MyTeaching;
 
 namespace ChemistryApp.SecondPage
 {
+    /// <summary>
+    /// 点击课件的播放列表内容
+    /// </summary>
     public class ContentPlayPanel : Panel
     {
         public AxDSOFramer.AxFramerControl ContentControlFramer;
@@ -26,10 +21,29 @@ namespace ChemistryApp.SecondPage
         public PictureBox pic_close;
         public Panel playBlackBG;
         public Panel playListBG;
+        public PictureBox picBtn_back;
+        public PictureBox picBtn_front;
+        /// <summary>
+        /// 当前点击课表的index 
+        /// </summary>
+        public int currListIndex = 0;
+        /// <summary>
+        /// 内容和index
+        /// </summary>
+        public Dictionary<string, int> dicListTitle;
+        /// <summary>
+        /// 存放item，用于上一个和下一个点击
+        /// </summary>
+        public List<ContentItem> listContentItem;
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 
-        public ContentPlayPanel()
+        public ContentPlayPanel(bool isSearch)
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             ContentControlFramer = new AxDSOFramer.AxFramerControl();
             axAudioPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             panel_playContentPanelBtn = new Panel();
@@ -38,27 +52,34 @@ namespace ChemistryApp.SecondPage
             playListBG = new Panel();
             pic_top = new PictureBox();
             pic_close = new PictureBox();
+            picBtn_back = new PictureBox();
+            picBtn_front = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ContentControlFramer)).BeginInit();
-            InitCompent();
+            dicListTitle = new Dictionary<string, int>();
+            listContentItem = new List<ContentItem>();
+            InitCompent(isSearch);
         }
 
 
-
-        private void InitCompent()
+        /// <summary>
+        /// 初始化控件
+        /// </summary>
+        /// <param name="isSearch"></param>
+        private void InitCompent(bool isSearch)
         {
             CreateMyLessonItem();
             int width = Screen.PrimaryScreen.Bounds.Width;
             int height = Screen.PrimaryScreen.Bounds.Height;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.thirdPageBG;
             this.Name = "ContentPlayPanel";
             this.Location = new Point(0, 0);
             this.Size = this.Size;
-            this.BackColor = Color.Black;
+            //this.BackColor = Color.Black;
             this.Size = new Size(width, height);
             this.AutoScroll = true;
-            //this.Controls.Add(this.axAudioPlayer);
-            //this.Controls.Add(ContentControlFramer);
             this.Controls.Add(this.playBG);
             this.Controls.Add(panel_playContentPanelBtn);
+            
 
             // 
             // playBG
@@ -67,9 +88,14 @@ namespace ChemistryApp.SecondPage
             this.playBG.Controls.Add(this.pic_close);
             this.playBG.Controls.Add(this.axAudioPlayer);
             this.playBG.Controls.Add(ContentControlFramer);
-            this.playBG.Controls.Add(this.playListBG);
-            this.playBG.Controls.Add(this.pic_top);
-            this.playBG.Controls.Add(this.playBlackBG);
+            if (!isSearch)
+            {
+                this.playBG.Controls.Add(this.playListBG);
+                this.playBG.Controls.Add(this.picBtn_back);
+                this.playBG.Controls.Add(this.picBtn_front);
+                this.playBG.Controls.Add(this.pic_top);
+                this.playBG.Controls.Add(this.playBlackBG);
+            }
             this.playBG.Location = new System.Drawing.Point((width - 1024) / 2, (height - 768) / 2 - 30);
             this.playBG.Name = "playBG";
             this.playBG.Size = new System.Drawing.Size(1024, 768);
@@ -139,6 +165,31 @@ namespace ChemistryApp.SecondPage
             this.axAudioPlayer.Size = new System.Drawing.Size(743, 653);
             this.axAudioPlayer.TabIndex = 21;
             this.axAudioPlayer.Visible = false;
+            // 
+            // picBtn_front
+            // 
+            this.picBtn_front.Image = global::ChemistryApp.Properties.Resources.front_up;
+            this.picBtn_front.Location = new System.Drawing.Point(960,65);
+            this.picBtn_front.Name = "picBtn_front";
+            this.picBtn_front.Size = new System.Drawing.Size(18, 16);
+            this.picBtn_front.TabIndex = 22;
+            this.picBtn_front.TabStop = false;
+            this.picBtn_front.Cursor = Cursors.Hand;
+            this.picBtn_front.Click += new EventHandler(OnClickFrontOrBackButton);
+            ControlPPTFonder.ControlTransparent.ControlTrans(this.picBtn_front, this.picBtn_front.Image);
+            // 
+            // picBtn_back
+            // 
+            this.picBtn_back.Image = global::ChemistryApp.Properties.Resources.back_up;
+            this.picBtn_back.Location = new System.Drawing.Point(920, 65);
+            this.picBtn_back.Name = "picBtn_back";
+            this.picBtn_back.Size = new System.Drawing.Size(18, 16);
+            this.picBtn_back.TabIndex = 22;
+            this.picBtn_back.TabStop = false;
+            this.picBtn_back.Cursor = Cursors.Hand;
+            this.picBtn_back.Click += new EventHandler(OnClickFrontOrBackButton);
+            ControlPPTFonder.ControlTransparent.ControlTrans(this.picBtn_back, this.picBtn_back.Image);
+            // 
 
         }
 
@@ -162,7 +213,9 @@ namespace ChemistryApp.SecondPage
                 for (int j = 0; j < childDataRow.Count(); j++)
                 {
                     ContentItem childPanel = new ContentItem(0, 10 + j * 50, childDataRow[j]["Title"].ToString(), childDataRow[j]["Type"].ToString(), childDataRow[j]["URL"].ToString(), this);
+                    dicListTitle.Add(childDataRow[j]["Title"].ToString() , j);
                     childPanel.Name = "childPanel" + j.ToString();
+                    listContentItem.Add(childPanel);
                     this.playListBG.Controls.Add(childPanel);
                 }
             }
@@ -180,8 +233,33 @@ namespace ChemistryApp.SecondPage
             Panel parentPanel = btn.Parent.Parent as Panel;
             mainForm.Controls.Remove(parentPanel);
             mainForm.MainPanel.Visible = true;
-            btn.Dispose();
-            parentPanel.Dispose();
+            //btn.Dispose();
+            //parentPanel.Dispose();
+        }
+
+        /// <summary>
+        /// 点击前进或后退键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClickFrontOrBackButton(object sender,EventArgs e)
+        {
+            if (((PictureBox)sender).Name == "picBtn_back")
+            {
+                //当前索引不能为零，如果为0往前则越界
+                if (currListIndex != 0)
+                {
+                    listContentItem[currListIndex - 1].PlayButtonOnPPTPage_Click(listContentItem[currListIndex - 1].kejianName, e);
+                }
+            }
+            else if (((PictureBox)sender).Name == "picBtn_front")
+            {
+                //当前索引不能超过count，如果超过则越界了
+                if (currListIndex < listContentItem.Count - 1)
+                {
+                    listContentItem[currListIndex + 1].PlayButtonOnPPTPage_Click(listContentItem[currListIndex + 1].kejianName, e);
+                }
+            }
         }
     }
 
@@ -190,6 +268,8 @@ namespace ChemistryApp.SecondPage
     /// </summary>
     public class ContentItem : Panel
     {
+        //当第一次进入会模拟点击事件
+        public Control onFirstEnter;
         public Label kejianName;
         public PictureBox pic_type;
         public int pos_x;
@@ -252,11 +332,17 @@ namespace ChemistryApp.SecondPage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PlayButtonOnPPTPage_Click(object sender, EventArgs e)
+        public void PlayButtonOnPPTPage_Click(object sender, EventArgs e)
         {
-
+            //如果包含点击的item名字，则返回到当前点击item索引
+            if (contentPlay.dicListTitle.ContainsKey(strTitleName))
+            {
+                contentPlay.currListIndex = contentPlay.dicListTitle[strTitleName];
+            }
             try
             {
+              
+
                 ////获取到mianpanel
                 Control currControl = (Control)sender;
                 MainForm mainForm = currControl.Parent.Parent.Parent.Parent.Parent as MainForm;

@@ -22,11 +22,16 @@ namespace ChemistryApp.SecondPage
 
         public SecondPageContent()
         {
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             InitCompent();
         }
 
         private void InitCompent()
         {
+
             // 
             // panel_secondPageContent
             // 

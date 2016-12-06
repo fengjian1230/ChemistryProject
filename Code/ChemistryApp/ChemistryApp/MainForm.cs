@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using ADOX;
-using System.Data.OleDb;
 using ChemistryApp.MyLesson;
 using ChemistryApp.EnumType;
-using ChemistryApp.MyTeaching;
 using ChemistryApp.SearchPage;
-using ChemistryApp.ControlPPTFonder;
+using ChemistryApp.SecondPage;
 
 namespace ChemistryApp
 {
@@ -24,12 +17,22 @@ namespace ChemistryApp
         /// 我的备课panel
         /// </summary>
         MyTeachingPanel teachingPanel;
+        /// <summary>
+        /// 连接
+        /// </summary>
+        private List<string> listBoxItemListURL;
+        /// <summary>
+        /// 类型
+        /// </summary>
+        private List<string> listBoxItemListType;
         public MainForm()
         {
             InitializeComponent();
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.thirdPageBG; 
+            //this.MainPanel.Visible = false;
         }
 
         /// <summary>
@@ -39,17 +42,27 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+            //ChemistryApp.Register.RegisterPanle register = new Register.RegisterPanle(this);
+            //register.IsRegister();
+
+            string countSql = "select count(*) from MyTeaching";
+            int myTeachingCountInt = AccessDBConn.ExecuteScalar(countSql);
+            this.myTeachingCount.Text = myTeachingCountInt.ToString();
+            this.myTeachingCount.Parent = this.pic_myteachingMianban;
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
-
+            this.listBoxItemListURL = new List<string>();
+            this.listBoxItemListType = new List<string>();
             //初始位置
             this.MainPanel.Location = new Point((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);//((mainFormWidth - 1024) / 2, (mainFormHeight - 768) / 2 - 30);
             this.Size = new Size(mainFormWidth, mainFormWidth);
 
             //添加事件
             MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
-            ////创建item
             MyLessonItemManager.GetInstace.CreateMyLessonItem();
+            ////创建item
+
             for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
             {
                 this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
@@ -263,16 +276,20 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void TextSearch_TextChanged(object sender, EventArgs e)
         {
+            this.listBoxItemListURL.Clear();
+            this.listBoxItemListType.Clear();
             this.listBox_searchRuslut.Visible = true;
-            string sql = "select * from LessonList where  LessonTitle like '%" + this.txt_search.Text + "%'";
-            DataSet ds = AccessDBConn.ExecuteQuery(sql, "LessonList");
+            string sql = "select * from AllTeaching where Title like '%" + this.txt_search.Text + "%'";
+            DataSet ds = AccessDBConn.ExecuteQuery(sql, "AllTeaching");
             try
             {
                 this.listBox_searchRuslut.Items.Clear();
-                DataRow[] dr = ds.Tables["LessonList"].Select();
+                DataRow[] dr = ds.Tables["AllTeaching"].Select();
                 foreach (var item in dr)
                 {
-                    this.listBox_searchRuslut.Items.Add(item["LessonTitle"].ToString());
+                    this.listBox_searchRuslut.Items.Add(item["Title"].ToString());
+                    this.listBoxItemListURL.Add(item["URL"].ToString());
+                    this.listBoxItemListType.Add(item["Type"].ToString());
                 }
             }
             catch (Exception exp)
@@ -304,11 +321,62 @@ namespace ChemistryApp
         {
 
         }
-
+        
+        /// <summary>
+        /// 选择下拉框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox_searchRuslut_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //string selectStr = this.listBox_searchRuslut.SelectedItem as string;
+            int index = this.listBox_searchRuslut.SelectedIndex;
+            string strURL = this.listBoxItemListURL[index];
+            string strType = this.listBoxItemListType[index];
+            if (strURL.Substring(strURL.Length - 3,3) == "swf")
+            {
+                PlaySwfPanel swfPanel = new PlaySwfPanel();
+                this.Controls.Add(swfPanel);
+                //播放 flash的控件
+                int width = Screen.PrimaryScreen.Bounds.Width;
+                int height = Screen.PrimaryScreen.Bounds.Height;
+                this.MainFlashBox.Visible = true;
+                this.MainFlashBox.Location = new System.Drawing.Point((width - 1024) / 2, (height - 768) / 2 - 30);
+                this.MainFlashBox.Size = new System.Drawing.Size(1024, 768);
+                this.MainFlashBox.Movie = System.Windows.Forms.Application.StartupPath + @strURL;
+                swfPanel.Controls.Add(this.MainFlashBox);
+                swfPanel.BringToFront();
+            }
+            else
+            {
+                switch (strType)
+                {
+                    case "PPT":
+                        ControlPPTFonder.ControlPPT controlPPT = new ControlPPTFonder.ControlPPT();
+                        controlPPT.PPTOpen(System.Windows.Forms.Application.StartupPath + @strURL);
+                        break;
+                    case "思维导图":
+                        /* 思维导图*/
+                        break;
+                    case "视频":
+                        /* 视频文件*/
+                        break;
+                    case "实验":
+                        /* 实验*/
+                        break;
+                    case "反应方程":
+                        /* 反应方程*/
+                        break;
+                    case "习题":
+                        /*习题*/
+                        break;
+                    default:
+                        break;
+                }
+            }
            
         }
+
 
 
         #region 我的课表panel，有时间来重构这段代码
@@ -333,26 +401,55 @@ namespace ChemistryApp
         {
             if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji && MyLessonItemManager.GetInstace.state == LessonItemState.Open)
             {
-                for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+                if (panel_item.Visible == true)
                 {
-                    Point point = new Point();
-                    point.X = MyLessonItemManager.GetInstace.listPanelItem[i].Location.X - 50;
-                    point.Y = MyLessonItemManager.GetInstace.listPanelItem[i].Location.Y;
-                    MyLessonItemManager.GetInstace.listPanelItem[i].Location = point;
-                    MyLessonItemManager.GetInstace.listPanelItem[i].Size = new Size(329, 140);
+                    foreach (MyLessonItem item in panel_item.Controls)
+                    {
+                        Point point = new Point();
+                        point.X = item.Location.X - 50;
+                        point.Y = item.Location.Y;
+                        item.Location = point;
+                        item.Size = new Size(329, 140);
+                    }
+                }
+                else if(panel_item.Visible == false && lessonSearchPage != null)
+                {
+
+                    foreach (MyLessonItem item in lessonSearchPage.Controls)
+                    {
+                        Point point = new Point();
+                        point.X = item.Location.X - 50;
+                        point.Y = item.Location.Y;
+                        item.Location = point;
+                        item.Size = new Size(329, 140);
+                    }
                 }
                 MyLessonItemManager.GetInstace.bianjiState = BianJiState.Wancheng;
 
             }
             else if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Wancheng)
             {
-                for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
+                if (panel_item.Visible == true)
                 {
-                    Point point = new Point();
-                    point.X = 0;
-                    point.Y = MyLessonItemManager.GetInstace.listPanelItem[i].Location.Y;
-                    MyLessonItemManager.GetInstace.listPanelItem[i].Location = point;
-                    MyLessonItemManager.GetInstace.listPanelItem[i].Size = new Size(279, 140);
+                    foreach (MyLessonItem item in panel_item.Controls)
+                    {
+                        Point point = new Point();
+                        point.X = 0;
+                        point.Y = item.Location.Y;
+                        item.Location = point;
+                        item.Size = new Size(279, 140);
+                    }
+                }
+                else if (panel_item.Visible == false && lessonSearchPage != null)
+                {
+                    foreach (MyLessonItem item in lessonSearchPage.Controls)
+                    {
+                        Point point = new Point();
+                        point.X = 0;
+                        point.Y = item.Location.Y;
+                        item.Location = point;
+                        item.Size = new Size(279, 140);
+                    }
                 }
                 MyLessonItemManager.GetInstace.bianjiState = BianJiState.Bianji;
             }
@@ -398,16 +495,20 @@ namespace ChemistryApp
                 string selectSqlStr = "select top 1 * from LessonList";
                 DataSet selectDs = AccessDBConn.ExecuteQuery(selectSqlStr, "LessonList");
                 DataRow[] selectRow = selectDs.Tables["LessonList"].Select();
-                string updateSqlStr = "update LessonList set IsTop = 'true' where LessonTitle = '" + selectRow[0]["LessonTitle"].ToString() + "'";
-                AccessDBConn.ExecuteNonQuery(updateSqlStr);
-                MyLessonItemManager.GetInstace.isDeleteFirstItem = false;
+                if (selectRow.Length != 0)
+                {
+                    string updateSqlStr = "update LessonList set IsTop = 'true' where LessonTitle = '" + selectRow[0]["LessonTitle"].ToString() + "'";
+                    AccessDBConn.ExecuteNonQuery(updateSqlStr);
+                    MyLessonItemManager.GetInstace.isDeleteFirstItem = false;
+                }
             }
-           
+
             MyLessonItemManager.GetInstace.CreateMyLessonItem();
             for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
             {
                 this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
             }
+
         }
 
         private void btn_search_Click_1(object sender, EventArgs e)
@@ -415,6 +516,7 @@ namespace ChemistryApp
             if (this.txt_search.Text != "搜索/Serch")
             {
                 SearchResultPage resultPage = new SearchResultPage(this.txt_search.Text);
+                SecondPageManager.GetInstace.TableName = "AllTeaching";
                 this.MainPanel.Controls.Add(resultPage);
                 resultPage.BringToFront();
                 this.listBox_searchRuslut.Visible = false;
@@ -433,7 +535,7 @@ namespace ChemistryApp
             }
         }
 
-
+        MyLessonSearchPage lessonSearchPage;
         /// <summary>
         /// 我的课表搜索
         /// </summary>
@@ -443,7 +545,14 @@ namespace ChemistryApp
         {
             if (this.txt_classListSerch.Text != "")
             {
-                MyLessonSearchPage lessonSearchPage = new MyLessonSearchPage();
+                foreach (Control item in panel_classListBG.Controls)
+                {
+                    if (item.Name == "panel_SearchItem")
+                    {
+                        this.panel_classListBG.Controls.Remove(item);
+                    }
+                }
+                lessonSearchPage = new MyLessonSearchPage();
                 this.panel_classListBG.Controls.Add(lessonSearchPage);
                 this.panel_item.Visible = false;
                 lessonSearchPage.BringToFront();
@@ -456,7 +565,7 @@ namespace ChemistryApp
                     {
                         string strTitle = dr[i]["LessonTitle"].ToString();
                         string strTips = dr[i]["Tips"].ToString();
-                        MyLessonItem item = new MyLessonItem(10, i * (140 + 10), strTitle, strTips,true);
+                        MyLessonItem item = new MyLessonItem(10, i * (140 + 10), strTitle, strTips, true);
                         lessonSearchPage.Controls.Add(item);
                     }
                 }
@@ -467,7 +576,7 @@ namespace ChemistryApp
             }
             else
             {
-                foreach (Control  item in panel_classListBG.Controls)
+                foreach (Control item in panel_classListBG.Controls)
                 {
                     if (item.Name == "panel_SearchItem")
                     {
@@ -476,6 +585,7 @@ namespace ChemistryApp
                 }
                 this.panel_item.Visible = true;
             }
+            this.lessonSearchPage = null;
         }
 
         private void button2_Click(object sender, EventArgs e)
