@@ -228,9 +228,16 @@ namespace ChemistryApp.MyLesson
 
                     }
                     //插入到lessonlist表中
+                    //先获取到个数
+                    string lessoncountSql = "select count(*) from LessonList";
+                    int lessonCount = AccessDBConn.ExecuteScalar(lessoncountSql);
+                    //修改当前置顶的item放在最前
+                    string updateLessonSql = "update LessonList set ListID = '0' where IsTop = 'true'";
+                    AccessDBConn.ExecuteNonQuery(updateLessonSql);
+
                     string updateSqlStrFlase = "update LessonList set IsTop = 'false'";
                     AccessDBConn.ExecuteNonQuery(updateSqlStrFlase);
-                    string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + this.txt_className.Text + "','" + "课件" + this.txt_className.Text + "','" + this.txt_tips.Text + "','true','Finish',3)";
+                    string sql = "insert into LessonList(LessonTitle,LessonContent,Tips,IsTop,State,ListID)values('" + this.txt_className.Text + "','" + "课件" + this.txt_className.Text + "','" + this.txt_tips.Text + "','true','Finish','"+ lessonCount +"')";
                     int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(sql);
                     if (_insertErrorIndex != 0)
                     {

@@ -10,7 +10,7 @@ namespace ChemistryApp
     /// <summary>
     /// 我的备课panel
     /// </summary>
-    class MyTeachingPanel : Panel
+    public class MyTeachingPanel : Panel
     {
         //做动画的计时器
         private Timer myTeachingTimer;
@@ -188,10 +188,10 @@ namespace ChemistryApp
                 Panel mainPanel = btn_bendi.Parent.Parent as Panel;
                 string _loaclPath = @System.Windows.Forms.Application.StartupPath + "\\ResourcesFolder\\MyTeaching";
                 OpenFileDialog openFile = new OpenFileDialog();
-                openFile.Filter = "ppt(*.pptx)|*.pptx|mp4(*.mp4)|*.mp4|docx(*.docx)|*.docx";//"(*.pptx)|*.pptx, (*.mp4)|*.mp4";
+                openFile.Filter = "ppt(*.pptx)|*.pptx|mp4(*.mp4)|*.mp4|docx(*.docx)|*.docx|all file(*.*)|*.*";//"(*.pptx)|*.pptx, (*.mp4)|*.mp4";
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
-                    CreateTeachingItemDialogBox item = new CreateTeachingItemDialogBox("\\ResourcesFolder\\MyTeaching\\" + openFile.SafeFileName + "", openFile.FileName, _loaclPath + "\\" + openFile.SafeFileName);
+                    CreateTeachingItemDialogBox item = new CreateTeachingItemDialogBox("\\ResourcesFolder\\MyTeaching\\" + openFile.SafeFileName + "", openFile.FileName, _loaclPath + "\\" + openFile.SafeFileName, System.IO.Path.GetFileNameWithoutExtension(openFile.FileName));
                     mainPanel.Controls.Add(item);
                     item.BringToFront();
                 }
@@ -242,6 +242,8 @@ namespace ChemistryApp
             {
                 this.panelMyTeachingItemBG.Controls.Clear();
             }
+            MainForm mainForm = ((Control)sender).Parent.Parent.Parent as MainForm;
+            MyTeachingItemManager.GetInstace.ShowTeachingCount(mainForm);
             RefreshItem();
         }
         #endregion

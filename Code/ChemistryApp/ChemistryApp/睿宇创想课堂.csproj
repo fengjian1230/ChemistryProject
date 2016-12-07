@@ -79,6 +79,9 @@
     <Compile Include="ControlPPTFonder\ControlTransparent.cs" />
     <Compile Include="ControlPPTFonder\ControlWord.cs" />
     <Compile Include="EnumType\EnumClass.cs" />
+    <Compile Include="MainPanelClass.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyLesson\CreateLessonDialogBox.cs" />
     <Compile Include="MyLesson\MyLessonChildItem.cs">
       <SubType>Component</SubType>
@@ -96,13 +99,15 @@
     <Compile Include="MyLesson\MyLessonPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MyLesson\MyLessonSearchPage.cs">
+    <Compile Include="MyLesson\UpdateLessonItemTips.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MyTeaching\CreateTeachingItemDialogBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MyTeaching\MyTeachingItem.cs" />
+    <Compile Include="MyTeaching\MyTeachingItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyTeaching\MyTeachingItemManager.cs" />
     <Compile Include="MyTeaching\MyTeachingPanel.cs">
       <SubType>Component</SubType>
@@ -836,6 +841,12 @@
     <Content Include="ico 128x128-01.ico" />
     <Content Include="ico 32x32.ico" />
     <Content Include="icon64.ico" />
+    <None Include="Resources\countBG2.png" />
+    <None Include="Resources\countBG1.png" />
+    <None Include="Resources\countBG.png" />
+    <None Include="Resources\delete_norml1.png" />
+    <None Include="Resources\delete_down1.png" />
+    <None Include="Resources\1600x900背景.jpg" />
     <None Include="Resources\yijianqingk.png" />
     <None Include="Resources\背景shen.jpg" />
     <None Include="Resources\thirdPageBG.jpg" />

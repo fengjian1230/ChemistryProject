@@ -36,7 +36,7 @@ namespace ChemistryApp
             this.Location = new System.Drawing.Point(410, 350);
             this.Size = new System.Drawing.Size(210, 100);
             this.Controls.Add(this.lab_tips);
-            this.BackgroundImage = global::ChemistryApp.Properties.Resources.thirdPageBG;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources._1600x900背景;
 
             this.lab_tips.Name = "lab_tips";
             this.lab_tips.Location = new System.Drawing.Point(0, 0);

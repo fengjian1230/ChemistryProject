@@ -16,7 +16,12 @@ namespace ChemistryApp
         /// <summary>
         /// 我的备课panel
         /// </summary>
-        MyTeachingPanel teachingPanel;
+        public MyTeachingPanel teachingPanel;
+        /// <summary>
+        /// 我的课件panel
+        /// </summary>
+        MyLessonPanel lessonPanel;
+
         /// <summary>
         /// 连接
         /// </summary>
@@ -31,7 +36,8 @@ namespace ChemistryApp
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            this.BackgroundImage = global::ChemistryApp.Properties.Resources.thirdPageBG; 
+           
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources._1600x900背景; 
             //this.MainPanel.Visible = false;
         }
 
@@ -46,10 +52,9 @@ namespace ChemistryApp
             //ChemistryApp.Register.RegisterPanle register = new Register.RegisterPanle(this);
             //register.IsRegister();
 
-            string countSql = "select count(*) from MyTeaching";
-            int myTeachingCountInt = AccessDBConn.ExecuteScalar(countSql);
-            this.myTeachingCount.Text = myTeachingCountInt.ToString();
-            this.myTeachingCount.Parent = this.pic_myteachingMianban;
+            MyTeaching.MyTeachingItemManager.GetInstace.ShowTeachingCount(this);
+
+
             int mainFormWidth = Screen.PrimaryScreen.Bounds.Width;
             int mainFormHeight = Screen.PrimaryScreen.Bounds.Height;
             this.listBoxItemListURL = new List<string>();
@@ -59,13 +64,12 @@ namespace ChemistryApp
             this.Size = new Size(mainFormWidth, mainFormWidth);
 
             //添加事件
-            MyLessonItemManager.GetInstace.OnDeleteFinish += OnDeleteMyLessonItem;
+            MyLessonItemManager.GetInstace.OnDeleteFinish += lessonPanel.OnDeleteMyLessonItem;
             MyLessonItemManager.GetInstace.CreateMyLessonItem();
             ////创建item
-
             for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
             {
-                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
+                this.lessonPanel.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
             }
             teachingPanel.CreateTeachingItem();
         }
@@ -78,15 +82,15 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void BtnShrink_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 1)
+            if (Convert.ToInt16(teachingPanel.Tag.ToString()) == 1)
             {
-                LeftPlaneTimer.Start();
+                lessonPanel.TimerStart(this.pic_titleBG, this.btn_shrink);
             }
             else
             {
-                if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 0)
+                if (Convert.ToInt16(teachingPanel.Tag.ToString()) == 0)
                 {
-                    LeftPlaneTimer.Start();  
+                    lessonPanel.TimerStart(this.pic_titleBG, this.btn_shrink);
                 }
             }
             //根据状态来加载内容
@@ -97,68 +101,6 @@ namespace ChemistryApp
             else if (lessonState == MyLessonState.OnOpen)
             {
                 lessonState = MyLessonState.OnClose;
-            }
-        }
-
-        /// <summary>
-        /// 定时器，做左边收缩按钮动画
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void LeftPlaneTimer_Tick(object sender, EventArgs e)
-        {
-            int scrollWight = 20;
-            long longWidth = panel_classListBG.Size.Width;
-            //如果panel目前是隐藏的
-            if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 0)
-            {
-                if (longWidth >= 330)
-                {
-                    LeftPlaneTimer.Enabled = false;
-                    panel_classListBG.Tag = 1;//设置为显示标识
-                    //this.btn_shrink.Image = global::ChemistryApp.Properties.Resources.btn_shousuo_left_close;
-                    //this.LeftPlane.Size = new Size(320, 728);
-                }
-                else
-                {
-                    Point m_point = new Point();
-                    m_point.X = this.pic_titleBG.Location.X + scrollWight;
-                    m_point.Y = this.pic_titleBG.Location.Y;
-
-                    Point btnPoint = new Point();
-                    btnPoint.X = btn_shrink.Location.X + scrollWight;
-                    btnPoint.Y = btn_shrink.Location.Y;
-
-                    this.pic_titleBG.Location = m_point;
-                    this.btn_shrink.Location = btnPoint;
-
-                    panel_classListBG.Width += scrollWight;
-                }
-            }
-            //如果panel目前是显示的
-            if (Convert.ToInt16(panel_classListBG.Tag.ToString()) == 1)
-            {
-                if (longWidth <= 0)
-                {
-                    LeftPlaneTimer.Enabled = false;
-                    panel_classListBG.Tag = 0;//设置为隐藏标识\
-                    //ControlPPTFonder.ControlTransparent.ControlTrans(btn_shrink,)
-                    //this.btn_shrink.Image = global::ChemistryApp.Properties.Resources.btn_shousuo_left_open;
-                }
-                else
-                {
-                    Point m_point = new Point();
-                    m_point.X = this.pic_titleBG.Location.X - scrollWight;
-                    m_point.Y = this.pic_titleBG.Location.Y;
-
-                    Point btnPoint = new Point();
-                    btnPoint.X = btn_shrink.Location.X - scrollWight;
-                    btnPoint.Y = btn_shrink.Location.Y;
-
-                    this.btn_shrink.Location = btnPoint;
-                    this.pic_titleBG.Location = m_point;
-                    panel_classListBG.Width -= scrollWight;
-                }
             }
         }
         #endregion
@@ -253,8 +195,8 @@ namespace ChemistryApp
             this.btn_shrink.BringToFront();
             this.btn_myteachingShrink.BringToFront();
             this.pic_myteachingMianban.BringToFront();
-            this.panel_classListBG.BringToFront();
             this.teachingPanel.BringToFront();
+            this.lessonPanel.BringToFront();
         }
         #endregion
 
@@ -376,85 +318,6 @@ namespace ChemistryApp
             }
            
         }
-
-
-
-        #region 我的课表panel，有时间来重构这段代码
-
-        #region 我的课表编辑按钮
-        private void btn_bianji_MouseDown(object sender, MouseEventArgs e)
-        {
-            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji_2;
-        }
-
-        private void btn_bianji_MouseUp(object sender, MouseEventArgs e)
-        {
-            this.btn_bianji.BackgroundImage = global::ChemistryApp.Properties.Resources.btn_bianji;
-        }
-       
-        /// <summary>
-        /// 点击编辑按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_bianji_Click(object sender,EventArgs e)
-        {
-            if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Bianji && MyLessonItemManager.GetInstace.state == LessonItemState.Open)
-            {
-                if (panel_item.Visible == true)
-                {
-                    foreach (MyLessonItem item in panel_item.Controls)
-                    {
-                        Point point = new Point();
-                        point.X = item.Location.X - 50;
-                        point.Y = item.Location.Y;
-                        item.Location = point;
-                        item.Size = new Size(329, 140);
-                    }
-                }
-                else if(panel_item.Visible == false && lessonSearchPage != null)
-                {
-
-                    foreach (MyLessonItem item in lessonSearchPage.Controls)
-                    {
-                        Point point = new Point();
-                        point.X = item.Location.X - 50;
-                        point.Y = item.Location.Y;
-                        item.Location = point;
-                        item.Size = new Size(329, 140);
-                    }
-                }
-                MyLessonItemManager.GetInstace.bianjiState = BianJiState.Wancheng;
-
-            }
-            else if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Wancheng)
-            {
-                if (panel_item.Visible == true)
-                {
-                    foreach (MyLessonItem item in panel_item.Controls)
-                    {
-                        Point point = new Point();
-                        point.X = 0;
-                        point.Y = item.Location.Y;
-                        item.Location = point;
-                        item.Size = new Size(279, 140);
-                    }
-                }
-                else if (panel_item.Visible == false && lessonSearchPage != null)
-                {
-                    foreach (MyLessonItem item in lessonSearchPage.Controls)
-                    {
-                        Point point = new Point();
-                        point.X = 0;
-                        point.Y = item.Location.Y;
-                        item.Location = point;
-                        item.Size = new Size(279, 140);
-                    }
-                }
-                MyLessonItemManager.GetInstace.bianjiState = BianJiState.Bianji;
-            }
-            
-        }
         #endregion
 
         public TeachingSelectState teachingState = TeachingSelectState.OnClose;
@@ -486,42 +349,20 @@ namespace ChemistryApp
             }
         }
 
-        private void OnDeleteMyLessonItem()
-        {
-            this.panel_item.Controls.Clear();
-            //如果是删除第一个则下个置顶
-            if (MyLessonItemManager.GetInstace.isDeleteFirstItem)
-            {
-                string selectSqlStr = "select top 1 * from LessonList";
-                DataSet selectDs = AccessDBConn.ExecuteQuery(selectSqlStr, "LessonList");
-                DataRow[] selectRow = selectDs.Tables["LessonList"].Select();
-                if (selectRow.Length != 0)
-                {
-                    string updateSqlStr = "update LessonList set IsTop = 'true' where LessonTitle = '" + selectRow[0]["LessonTitle"].ToString() + "'";
-                    AccessDBConn.ExecuteNonQuery(updateSqlStr);
-                    MyLessonItemManager.GetInstace.isDeleteFirstItem = false;
-                }
-            }
-
-            MyLessonItemManager.GetInstace.CreateMyLessonItem();
-            for (int i = 0; i < MyLessonItemManager.GetInstace.listPanelItem.Count; i++)
-            {
-                this.panel_item.Controls.Add(MyLessonItemManager.GetInstace.listPanelItem[i]);
-            }
-
-        }
-
         private void btn_search_Click_1(object sender, EventArgs e)
         {
-            if (this.txt_search.Text != "搜索/Serch")
+            if (this.txt_search.Text == "搜索/Search" || this.txt_search.Text == "")
             {
-                SearchResultPage resultPage = new SearchResultPage(this.txt_search.Text);
-                SecondPageManager.GetInstace.TableName = "AllTeaching";
-                this.MainPanel.Controls.Add(resultPage);
-                resultPage.BringToFront();
-                this.listBox_searchRuslut.Visible = false;
+                return;
             }
-           
+            SearchResultPage resultPage = new SearchResultPage(this.txt_search.Text);
+            SecondPageManager.GetInstace.TableName = "AllTeaching";
+            this.MainPanel.Controls.Add(resultPage);
+            resultPage.BringToFront();
+            this.listBox_searchRuslut.Visible = false;
+            this.ControlBringToFront();
+            this.listBox_searchRuslut.BringToFront();
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -534,59 +375,7 @@ namespace ChemistryApp
                 }
             }
         }
-
-        MyLessonSearchPage lessonSearchPage;
-        /// <summary>
-        /// 我的课表搜索
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_myClassSearch_Click(object sender, EventArgs e)
-        {
-            if (this.txt_classListSerch.Text != "")
-            {
-                foreach (Control item in panel_classListBG.Controls)
-                {
-                    if (item.Name == "panel_SearchItem")
-                    {
-                        this.panel_classListBG.Controls.Remove(item);
-                    }
-                }
-                lessonSearchPage = new MyLessonSearchPage();
-                this.panel_classListBG.Controls.Add(lessonSearchPage);
-                this.panel_item.Visible = false;
-                lessonSearchPage.BringToFront();
-                string selectSql = "select * from LessonList where  LessonTitle like '%" + this.txt_classListSerch.Text + "%'";
-                try
-                {
-                    DataSet ds = AccessDBConn.ExecuteQuery(selectSql, "LessonList");
-                    DataRow[] dr = ds.Tables["LessonList"].Select();
-                    for (int i = 0; i < dr.Count(); i++)
-                    {
-                        string strTitle = dr[i]["LessonTitle"].ToString();
-                        string strTips = dr[i]["Tips"].ToString();
-                        MyLessonItem item = new MyLessonItem(10, i * (140 + 10), strTitle, strTips, true);
-                        lessonSearchPage.Controls.Add(item);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                foreach (Control item in panel_classListBG.Controls)
-                {
-                    if (item.Name == "panel_SearchItem")
-                    {
-                        this.panel_classListBG.Controls.Remove(item);
-                    }
-                }
-                this.panel_item.Visible = true;
-            }
-            this.lessonSearchPage = null;
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -611,11 +400,19 @@ namespace ChemistryApp
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void btn_myClassSearch_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void pic_min_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pic_max_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
-    #endregion
-    #endregion
 }

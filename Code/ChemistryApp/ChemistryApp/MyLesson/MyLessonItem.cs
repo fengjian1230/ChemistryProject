@@ -12,6 +12,35 @@ using ChemistryApp.SecondPage;
 /// </summary>
 namespace ChemistryApp
 {
+    //生成item的背景
+    class MyLessonItemBGPanel : Panel
+    {
+        public MyLessonItemBGPanel()
+        {
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            InitControls();
+        }
+
+        private void InitControls()
+        {
+            // 
+            // panel_item
+            // 
+            this.AutoScroll = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ForeColor = System.Drawing.Color.Black;
+            this.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.Location = new System.Drawing.Point(20, 110);
+            this.Name = "MyLessonItemBGPanel";
+            this.Size = new System.Drawing.Size(315, 463);
+            this.TabIndex = 17;
+        }
+    }
+
     class MyLessonItem : Panel
     {
 
@@ -36,9 +65,9 @@ namespace ChemistryApp
         public MyLessonItem(int posX, int posY, string _strClassName, string _strTips,bool _isSearch )
         {
 
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            //SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            //SetStyle(ControlStyles.UserPaint, true);
+            //SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             //实例化控件
             panelItem = new Panel();
@@ -120,6 +149,8 @@ namespace ChemistryApp
             this.pic_top.Size = new System.Drawing.Size(19, 21);
             this.pic_top.TabIndex = 0;
             this.pic_top.TabStop = false;
+            this.pic_top.Cursor = Cursors.Hand;
+            this.pic_top.Click += new EventHandler(TopLabelClick);
             // 
             // label1
             // 
@@ -171,14 +202,17 @@ namespace ChemistryApp
             // 
             this.lab_tips.AutoSize = true;
             this.lab_tips.Font = new System.Drawing.Font("苹方 中等", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_tips.Location = new System.Drawing.Point(83, 88);
+            this.lab_tips.Location = new System.Drawing.Point(90, 88);
             this.lab_tips.Name = "lab_tips";
             this.lab_tips.Size = new System.Drawing.Size(164, 18);
             this.lab_tips.TabIndex = 5;
-            this.lab_tips.Text = "（" + _strTips + "）";
+            this.lab_tips.DoubleClick += Lab_tips_DoubleClick;
+            this.lab_tips.Text = _strTips;
 
             CreateChildItem();
         }
+
+      
         #endregion
 
 
@@ -327,11 +361,18 @@ namespace ChemistryApp
                 int insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
                 if (insertErrorIndex != 0)
                 {
-
+                   
                 }
             }
             MessageBox.Show("在右边课件中继续备课！");
+            MainForm mainForm = ((Control)sender).Parent.Parent.Parent.Parent.Parent as MainForm;
+            MyTeaching.MyTeachingItemManager.GetInstace.ShowTeachingCount(mainForm);
             MyTeaching.MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
+            if (Convert.ToInt16(mainForm.teachingPanel.Tag.ToString()) == 1)
+            {
+                mainForm.teachingPanel.TimerStart(mainForm.pic_myteachingMianban, mainForm.btn_myteachingShrink);
+            }
+
         }
 
         /// <summary>
@@ -341,7 +382,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void OnClickPlayPPT_Click(object sender,EventArgs e)
         {
-            if (MyLessonItemManager.GetInstace.state == LessonItemState.Open)
+            if (MyLessonItemManager.GetInstace.bianjiState == BianJiState.Wancheng)
             {
                 return;
             }
@@ -408,6 +449,22 @@ namespace ChemistryApp
             {
                 MyLessonItemManager.GetInstace.ChildItemNum.Add(this.lab_className.Text, childDataRow.Count());
             }
+        }
+
+        /// <summary>
+        /// 双击备注修改备注
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Lab_tips_DoubleClick(object sender, EventArgs e)
+        {
+            UpdateLessonItemTips updateTips = new UpdateLessonItemTips();
+            updateTips.txt_className.Text = this.lab_className.Text;
+            updateTips.txt_tips.Text = this.lab_tips.Text;
+            updateTips.updateLessonItem = this;
+            Control mainpanel = ((Control)sender).Parent.Parent.Parent.Parent as  Control;
+            mainpanel.Controls.Add(updateTips);
+            updateTips.BringToFront();
         }
         #endregion
     }

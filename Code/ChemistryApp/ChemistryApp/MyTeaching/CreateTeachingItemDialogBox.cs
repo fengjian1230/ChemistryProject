@@ -33,7 +33,7 @@ namespace ChemistryApp.MyTeaching
         /// <summary>
         /// 构造函数
         /// </summary>
-        public CreateTeachingItemDialogBox(string filePath,string _source,string _local)
+        public CreateTeachingItemDialogBox(string filePath,string _source,string _local, string _fileName)
         {
 
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -52,6 +52,7 @@ namespace ChemistryApp.MyTeaching
             this.filePath = filePath;
             this.sourcePath = _source;
             this.loaclPath = _local;
+            this.txt_className.Text = _fileName;
             this.pic_dialogBG = new PictureBox();
             CreateDialgBox();
         }
@@ -189,22 +190,25 @@ namespace ChemistryApp.MyTeaching
         /// <param name="e"></param>
         private void BtnOK_Click(object sender, EventArgs e)
         {
-          
+
             //MessageBox.Show(this.comboBox_type.Text);
+            if (this.txt_className.Text.IndexOf(" ") >= 0)
+            {
+                MessageBox.Show("名字不能有空格符号！");
+                return;
+            }
             if (txt_className.Text != "" && this.comboBox_type.Text != "")
             {
                 string countSql = "select count(*) from MyTeaching";
                 int count = AccessDBConn.ExecuteScalar(countSql);
                 string insertIntoAllTeachingSql = "insert into AllTeaching(Title,Type,URL)values('" + txt_className.Text + "','" + "" + this.comboBox_type.Text + "','" + this.filePath + "')";
                 int insertIntoAllTeachingErrorIndex = AccessDBConn.ExecuteNonQuery(insertIntoAllTeachingSql);
-                string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + txt_className.Text + "','" + "" + this.comboBox_type.Text + "','" + this.filePath + "','" + (count + 1).ToString() +"')";
+                string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + txt_className.Text + "','" + "" + this.comboBox_type.Text + "','" + this.filePath + "','" + count.ToString() +"')";
                 int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
                 if (_insertErrorIndex != 0)
                 {
                     MainForm mainForm = ((Control)sender).Parent.Parent.Parent as MainForm;
-                    string countSql1 = "select count(*) from MyTeaching";
-                    int myTeachingCountInt = AccessDBConn.ExecuteScalar(countSql1);
-                    mainForm.myTeachingCount.Text = myTeachingCountInt.ToString();
+                    MyTeachingItemManager.GetInstace.ShowTeachingCount(mainForm);
                     PictureBox btn = (PictureBox)sender;
                     Panel mainPanel = btn.Parent.Parent as Panel;
                     foreach (Control item in mainPanel.Controls)

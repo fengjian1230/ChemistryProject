@@ -11,46 +11,47 @@ namespace ChemistryApp
     /// <summary>
     /// 我的课件内容
     /// </summary>
-    class MyTeachingItem
+    class MyTeachingItem : Panel
     {
-        private System.Windows.Forms.Panel panel_myTeachingItem;
         private System.Windows.Forms.Label txt_myTeachingTitle;
         private System.Windows.Forms.PictureBox pic_typeIcon;
         private System.Windows.Forms.PictureBox pic_myteachingDelete;
         private System.Windows.Forms.PictureBox pic_myteachingDown;
         private System.Windows.Forms.PictureBox pic_myteachingUp;
         private System.Windows.Forms.PictureBox pic_select;
-
-        public MyTeachingItem()
+        public string itemName;
+        public MyTeachingItem(int _posX, int _posY, string _itemTitle, string _type)
         {
-            panel_myTeachingItem = new Panel();
             txt_myTeachingTitle = new Label();
             pic_myteachingDelete = new PictureBox();
             pic_myteachingDown = new PictureBox();
             pic_myteachingUp = new PictureBox();
             pic_typeIcon = new PictureBox();
             pic_select = new PictureBox();
+            this.itemName = _itemTitle;
+            MyTeachingItemPanel(_posX, _posY, _itemTitle, _type);
         }
 
         #region 创建item
-        public Panel MyTeachingItemPanel(int _posX,int _posY,string _itemTitle,string _type)
+        public void MyTeachingItemPanel(int _posX,int _posY,string _itemTitle,string _type)
         {
+           
             // 
             // panel_myTeachingItem
             // 
-            this.panel_myTeachingItem.BackColor = System.Drawing.Color.Transparent;
-            this.panel_myTeachingItem.BackgroundImage = global::ChemistryApp.Properties.Resources.myteachingItemBG;
-            this.panel_myTeachingItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel_myTeachingItem.Controls.Add(this.txt_myTeachingTitle);
-            this.panel_myTeachingItem.Controls.Add(this.pic_typeIcon);
-            this.panel_myTeachingItem.Controls.Add(this.pic_myteachingDelete);
-            this.panel_myTeachingItem.Controls.Add(this.pic_myteachingDown);
-            this.panel_myTeachingItem.Controls.Add(this.pic_myteachingUp);
-            this.panel_myTeachingItem.Controls.Add(this.pic_select);
-            this.panel_myTeachingItem.Location = new System.Drawing.Point(_posX, _posY);
-            this.panel_myTeachingItem.Name = "panel_myTeachingItem";
-            this.panel_myTeachingItem.Size = new System.Drawing.Size(279, 70);
-            this.panel_myTeachingItem.TabIndex = 0;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources.myteachingItemBG;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Controls.Add(this.txt_myTeachingTitle);
+            this.Controls.Add(this.pic_typeIcon);
+            this.Controls.Add(this.pic_myteachingDelete);
+            this.Controls.Add(this.pic_myteachingDown);
+            this.Controls.Add(this.pic_myteachingUp);
+            this.Controls.Add(this.pic_select);
+            this.Location = new System.Drawing.Point(_posX, _posY);
+            this.Name = "panel_myTeachingItem";
+            this.Size = new System.Drawing.Size(279, 70);
+            this.TabIndex = 0;
             
             // 
             // pic_myteachingUp
@@ -119,8 +120,6 @@ namespace ChemistryApp
             this.pic_select.Size = new System.Drawing.Size(15, 15);
             this.pic_select.TabIndex = 3;
             this.pic_select.TabStop = false;
-
-            return panel_myTeachingItem;
         }
         #endregion
 
@@ -143,22 +142,15 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void PicDeleteClickEvent(object sender, EventArgs e)
         {
-            MessageBox.Show(((Control)sender).Parent.Parent.Parent.Name);
-
             string sqlStr = "delete from MyTeaching where TeachingTitle = '" + this.txt_myTeachingTitle.Text + "'";
             int i = AccessDBConn.ExecuteNonQuery(sqlStr);
             if (i != 0)
             {
                 MainForm mainForm = ((Control)sender).Parent.Parent.Parent as MainForm;
-                string countSql1 = "select count(*) from MyTeaching";
-                int myTeachingCountInt = AccessDBConn.ExecuteScalar(countSql1);
-                mainForm.myTeachingCount.Text = myTeachingCountInt.ToString();
+                MyTeachingItemManager.GetInstace.ShowTeachingCount(mainForm);
                 MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
                 ((PictureBox)sender).Parent.Parent.Controls.Remove(((PictureBox)sender).Parent);
-                MessageBox.Show("删除完成!");
-
-
-               
+                MessageBox.Show("删除完成!");     
             }
 
         }
@@ -169,10 +161,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void PicDown_Click(object sender, EventArgs e)
         {
-            PictureBox pic = (PictureBox)sender;
-            Control control = pic.Parent.GetChildAtPoint(new Point(100, 39));
-            Label label = (Label)control;
-            string sqlStr = "select * from MyTeaching where TeachingTitle = '" + label.Text + "'";
+            string sqlStr = "select * from MyTeaching where TeachingTitle = '" + itemName + "'";
             try
             {
                 DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "MyTeaching");
@@ -180,11 +169,9 @@ namespace ChemistryApp
                 int index = int.Parse(dr[0]["TeachingSort"].ToString());
                 if (index + 1 != MyTeachingItemManager.GetInstace.listPanelItem.Count)
                 {
-                    Control _nextControl = MyTeachingItemManager.GetInstace.listPanelItem[index + 1].GetChildAtPoint(new Point(100, 39));
-                    Label _label = (Label)_nextControl;
-                    string _sqlStr = "update MyTeaching set TeachingSort = " + index.ToString() + " where TeachingTitle = '" + _label.Text + "'";
+                    string _sqlStr = "update MyTeaching set TeachingSort = " + index.ToString() + " where TeachingTitle = '" + MyTeachingItemManager.GetInstace.listPanelItem[index + 1].itemName + "'";
                     int nextInt = AccessDBConn.ExecuteNonQuery(_sqlStr);
-                    string strUpdate = "update MyTeaching set TeachingSort = " + (index + 1).ToString() + " where TeachingTitle = '" + label.Text + "'";
+                    string strUpdate = "update MyTeaching set TeachingSort = " + (index + 1).ToString() + " where TeachingTitle = '" + itemName + "'";
                     int curr = AccessDBConn.ExecuteNonQuery(strUpdate);
                     MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
                 }
@@ -203,10 +190,7 @@ namespace ChemistryApp
         /// <param name="e"></param>
         private void PicUp_Click(object sender, EventArgs e)
         {
-            PictureBox pic = (PictureBox)sender;
-            Control control = pic.Parent.GetChildAtPoint(new Point(100, 39));
-            Label label = (Label)control;
-            string sqlStr = "select * from MyTeaching where TeachingTitle = '" + label.Text + "'";
+            string sqlStr = "select * from MyTeaching where TeachingTitle = '" + itemName + "'";
             try
             {
                 DataSet ds = AccessDBConn.ExecuteQuery(sqlStr, "MyTeaching");
@@ -214,11 +198,9 @@ namespace ChemistryApp
                 int index = int.Parse(dr[0]["TeachingSort"].ToString());
                 if (index != 0)
                 {
-                    Control _nextControl = MyTeachingItemManager.GetInstace.listPanelItem[index - 1].GetChildAtPoint(new Point(100, 39));
-                    Label _label = (Label)_nextControl;
-                    string _sqlStr = "update MyTeaching set TeachingSort = " + index.ToString() + " where TeachingTitle = '" + _label.Text + "'";
+                    string _sqlStr = "update MyTeaching set TeachingSort = " + index.ToString() + " where TeachingTitle = '" + MyTeachingItemManager.GetInstace.listPanelItem[index - 1].itemName + "'";
                     int nextInt = AccessDBConn.ExecuteNonQuery(_sqlStr);
-                    string strUpdate = "update MyTeaching set TeachingSort = " + (index - 1).ToString() + " where TeachingTitle = '" + label.Text + "'";
+                    string strUpdate = "update MyTeaching set TeachingSort = " + (index - 1).ToString() + " where TeachingTitle = '" + itemName + "'";
                     int curr = AccessDBConn.ExecuteNonQuery(strUpdate);
                     MyTeachingItemManager.GetInstace.OnItemDelete?.Invoke();
                 }

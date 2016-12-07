@@ -70,7 +70,7 @@ namespace ChemistryApp.SecondPage
             CreateMyLessonItem();
             int width = Screen.PrimaryScreen.Bounds.Width;
             int height = Screen.PrimaryScreen.Bounds.Height;
-            this.BackgroundImage = global::ChemistryApp.Properties.Resources.thirdPageBG;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources._1600x900背景;
             this.Name = "ContentPlayPanel";
             this.Location = new Point(0, 0);
             this.Size = this.Size;

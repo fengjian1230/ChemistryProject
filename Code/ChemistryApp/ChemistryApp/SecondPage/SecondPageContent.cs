@@ -117,9 +117,6 @@ namespace ChemistryApp.SecondPage
             }
         }
 
-
-
-
         /// <summary>
         /// 根据名字加载icon
         /// </summary>

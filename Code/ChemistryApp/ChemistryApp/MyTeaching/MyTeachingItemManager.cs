@@ -11,7 +11,7 @@ namespace ChemistryApp.MyTeaching
     {
         /// 用来存放所有的课件Item
         /// </summary>
-        public List<Panel> listPanelItem;
+        public List<MyTeachingItem> listPanelItem;
         /// <summary>
         /// 用来存放所有课件item 位置，用于置顶
         /// </summary>
@@ -42,7 +42,7 @@ namespace ChemistryApp.MyTeaching
             //实例化链表
             if (listPanelItem == null || listPanelItemPoint == null)
             {
-                listPanelItem = new List<Panel>();
+                listPanelItem = new List<MyTeachingItem>();
                 listPanelItemPoint = new List<Point>();
             }
         }
@@ -63,11 +63,45 @@ namespace ChemistryApp.MyTeaching
             for (int i = 0; i < dataRow.Count(); i++)
             {
                 //在panel中显示出来
-                MyTeachingItem teachingItem = new MyTeachingItem();
-                Panel itemPanel = teachingItem.MyTeachingItemPanel(20, i * (80 + 10) + 50, dataRow[i]["TeachingTitle"].ToString(), dataRow[i]["TeachingType"].ToString());
-                itemPanel.Name = "panel_myTeachingItem" + i.ToString();
-                GetInstace.listPanelItem.Add(itemPanel);
+                MyTeachingItem teachingItem = new MyTeachingItem(20, i * (80 + 10) + 50, dataRow[i]["TeachingTitle"].ToString(), dataRow[i]["TeachingType"].ToString());
+                teachingItem.Name = "panel_myTeachingItem" + i.ToString();
+                GetInstace.listPanelItem.Add(teachingItem);
                 GetInstace.listPanelItemPoint.Add(new Point(20, i * (80 + 10) + 50));
+            }
+        }
+
+        /// <summary>
+        /// 显示我的课表的个数
+        /// </summary>
+        /// <param name="mainForm"></param>
+        public void ShowTeachingCount(MainForm mainForm)
+        {
+            string countSql = "select count(*) from MyTeaching";
+            int myTeachingCountInt = AccessDBConn.ExecuteScalar(countSql);
+            mainForm.myTeachingCount.Text = myTeachingCountInt.ToString();
+            mainForm.countBG.Parent = mainForm.pic_myteachingMianban;
+            mainForm.countBG.Location = new Point(13, 370);
+            mainForm.myTeachingCount.Parent = mainForm.countBG;
+            mainForm.myTeachingCount.Location = new Point(-2, -2);
+            string teachingCountLength = myTeachingCountInt.ToString();
+            switch (teachingCountLength.Length)
+            {
+                case 1:
+                    mainForm.countBG.Size = new Size(15, 15);
+                    mainForm.countBG.Image = global::ChemistryApp.Properties.Resources.countBG;
+                    break;
+                case 2:
+                    mainForm.countBG.Size = new Size(22, 15);
+                    mainForm.countBG.Location = new Point(7, 370);
+                    mainForm.countBG.Image = global::ChemistryApp.Properties.Resources.countBG1;
+                    break;
+                case 3:
+                    mainForm.countBG.Size = new Size(25, 15);
+                    mainForm.countBG.Location = new Point(5, 370);
+                    mainForm.countBG.Image = global::ChemistryApp.Properties.Resources.countBG2;
+                    break;
+                default:
+                    break;
             }
         }
     }

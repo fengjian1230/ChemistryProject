@@ -93,7 +93,7 @@ namespace ChemistryApp.MyLesson
             listPanelItem.Clear();
             childItemNum.Clear();
             //从数据库中读取数据
-            string sqlStr = "select * from LessonList ";//order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
+            string sqlStr = "select * from LessonList order by ListID asc";//order by ListID asc"; //(select LessonContent from LessonList where ID = 1)";
             DataSet data = AccessDBConn.ExecuteQuery(sqlStr, "LessonList");
             DataRow[] dataRow = data.Tables["LessonList"].Select();
             if (dataRow.Count() != 0)

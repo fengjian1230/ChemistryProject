@@ -49,7 +49,7 @@ namespace ChemistryApp.SecondPage
             this.Size = new Size(width, height);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.axAudioPlayer);
-            this.BackgroundImage = global::ChemistryApp.Properties.Resources.thirdPageBG;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources._1600x900背景;
 
             //关闭按钮
             this.btn_close.Location = new System.Drawing.Point(0, 0);
