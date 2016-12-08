@@ -128,7 +128,7 @@ namespace ChemistryApp.SearchPage
         {
             try
             {
-                string selectSql = "select * from MyTeaching where TeachingTitle= '" + strTitle + "'";
+                string selectSql = "select * from MyTeaching where TeachingTitle= '" + this.lab_titleContent.Text + "'";
                 DataSet ds = AccessDBConn.ExecuteQuery(selectSql, "MyTeaching");
                 DataRow[] dr = ds.Tables["MyTeaching"].Select();
                 if (dr.Length == 0)
@@ -137,7 +137,7 @@ namespace ChemistryApp.SearchPage
                     int count = AccessDBConn.ExecuteScalar(countSql);
                     if (lab_titleContent.Text != "")
                     {
-                        string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + strTitle + "','" + "" + this.strType + "','" + this.strURL + "'," + count.ToString() + ")";
+                        string insertSql = "insert into MyTeaching(TeachingTitle,TeachingType,URL,TeachingSort)values('" + this.lab_titleContent.Text + "','" + "" + this.strType + "','" + this.strURL + "'," + count.ToString() + ")";
                         int _insertErrorIndex = AccessDBConn.ExecuteNonQuery(insertSql);
                         if (_insertErrorIndex != 0)
                         {

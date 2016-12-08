@@ -141,8 +141,55 @@ namespace ChemistryApp.Register
             tLong = (Int32)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\MySoft", "UseTimes", 0);
             if (tLong < 30)
             {
-                int tTimes = tLong + 0;
+                int tTimes = tLong + 1;
                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\MySoft", "UseTimes", tTimes);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("试用期限已到！如果需要继续使用请联系管理员！", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mianForm.MainPanel.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// 时间
+        /// </summary>
+        public void IsRegisterTime()
+        {
+
+            DateTime nowTime = DateTime.Now;
+            //判断软件是否注册  
+            RegistryKey retkey = Registry.CurrentUser.OpenSubKey("SOFTWARE", true).CreateSubKey("wxf").CreateSubKey("wxf.INI");
+            foreach (string strRNum in retkey.GetSubKeyNames())
+            {
+                if (strRNum == this.GetRNum())
+                {
+                    //MessageBox.Show("已经注册!");
+                    return;
+                }
+            }
+            
+            string strTime = null;
+            try
+            {
+                strTime = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\MySoftDate", "UseTimes", nowTime.ToString());
+                //MessageBox.Show("您已经使用了" + strTime + "次！", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("欢迎使用本软件！", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\MySoftDate", "UseTimes", nowTime.ToString(), RegistryValueKind.String);
+            }
+            //strTime = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\MySoftDate", "UseTimes", nowTime.ToString());
+            //获取到注册时间
+            DateTime registerTime = Convert.ToDateTime(strTime);
+            //注册时间和当前时间的时间戳
+            TimeSpan oddTime = (TimeSpan)(DateTime.Now - registerTime);
+            int oddTimeInt = 30 - ((int)oddTime.TotalDays);
+            if (oddTimeInt <= 30 && oddTimeInt > 0)
+            {
+                MessageBox.Show("您现在使用的是试用版，还剩 " + oddTimeInt.ToString() + "天！", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\MySoft", "UseTimes", tTimes);
             }
             else
             {

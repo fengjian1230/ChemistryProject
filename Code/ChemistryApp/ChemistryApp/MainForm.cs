@@ -37,8 +37,11 @@ namespace ChemistryApp
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
            
-            this.BackgroundImage = global::ChemistryApp.Properties.Resources._1600x900背景; 
-            //this.MainPanel.Visible = false;
+            this.BackgroundImage = global::ChemistryApp.Properties.Resources._1600x900背景;
+            ChemistryApp.Register.RegisterPanle register = new Register.RegisterPanle(this);
+            register.IsRegisterTime();
+            register.IsRegister();
+            this.MainPanel.Visible = false;
         }
 
         /// <summary>
@@ -49,9 +52,8 @@ namespace ChemistryApp
         private void MainForm_Load(object sender, EventArgs e)
         {
 
-            //ChemistryApp.Register.RegisterPanle register = new Register.RegisterPanle(this);
-            //register.IsRegister();
 
+            this.MainPanel.Visible = true;
             MyTeaching.MyTeachingItemManager.GetInstace.ShowTeachingCount(this);
 
 
